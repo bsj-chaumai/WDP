@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>現状UI — 稼働分析の設定（複数画面）</title>
+  <style>
+    :root {
+      --bg: #e9eef4; --panel: #fff; --line: #cfd8e3; --text: #1a2332;
+      --muted: #6b7c93; --primary: #2a5a9a; --danger: #c0392b; --warn: #b45309;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: "Hiragino Sans","Meiryo","Segoe UI",sans-serif; background: var(--bg); color: var(--text); padding: 16px; }
+    .banner {
+      background: #fff7ed; border: 1px solid #fdba74; color: #9a3412;
+      border-radius: 8px; padding: 10px 14px; font-size: 0.82rem; margin-bottom: 14px; line-height: 1.55;
+    }
+    .flow { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 16px; font-size: 0.78rem; }
+    .flow .s { background: #fff; border: 1px solid var(--line); padding: 6px 10px; border-radius: 6px; }
+    .flow .s.active { border-color: var(--primary); color: var(--primary); font-weight: 700; }
+    .flow .arrow { color: var(--muted); }
+    .screens { display: grid; gap: 14px; }
+    @media(min-width:900px){ .screens { grid-template-columns: 1fr 1fr; } }
+    .screen {
+      background: var(--panel); border: 1px solid var(--line); border-radius: 10px; overflow: hidden;
+      box-shadow: 0 4px 14px rgba(0,0,0,.06);
+    }
+    .screen-bar {
+      background: #f3f6fa; border-bottom: 1px solid var(--line);
+      padding: 8px 12px; display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem;
+    }
+    .screen-bar .url { color: var(--muted); font-family: ui-monospace, monospace; font-size: 0.7rem; }
+    .badge { font-size: 0.68rem; font-weight: 700; background: #fee2e2; color: var(--danger); padding: 2px 8px; border-radius: 99px; }
+    .screen-body { padding: 14px; }
+    .screen h3 { font-size: 0.95rem; margin-bottom: 10px; }
+    .field { margin-bottom: 12px; }
+    .field label { display: block; font-size: 0.75rem; color: var(--muted); margin-bottom: 4px; }
+    .field input, .field select {
+      width: 100%; padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px; font-size: 0.85rem; background: #fff;
+    }
+    .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .note {
+      font-size: 0.75rem; color: var(--warn); background: #fffbeb; border: 1px dashed #fcd34d;
+      padding: 8px 10px; border-radius: 6px; margin: 8px 0 12px; line-height: 1.5;
+    }
+    .silent-error {
+      font-size: 0.78rem; color: var(--muted); border: 1px solid var(--line); border-radius: 6px;
+      padding: 12px; text-align: center; background: #f8fafc;
+    }
+    .silent-error strong { display: block; color: var(--danger); margin-bottom: 4px; }
+    .btns { display: flex; gap: 8px; justify-content: flex-end; margin-top: 12px; }
+    .btn { padding: 8px 14px; border-radius: 6px; border: 1px solid var(--line); background: #fff; font-size: 0.8rem; }
+    .btn.primary { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .tabs { display: flex; gap: 0; border-bottom: 1px solid var(--line); margin-bottom: 12px; }
+    .tabs span { padding: 8px 12px; font-size: 0.78rem; color: var(--muted); border-bottom: 2px solid transparent; }
+    .tabs span.on { color: var(--primary); border-bottom-color: var(--primary); font-weight: 700; }
+    .pain { margin-top: 10px; font-size: 0.75rem; color: var(--danger); }
+  </style>
+</head>
+<body>
+  <div class="banner">
+    <strong>現状の画面イメージ（再現）</strong> — 稼働分析の設定は画面が分かれ、手順が多く、失敗しても理由が表示されないことがあります。
+  </div>
+
+  <div class="flow">
+    <span class="s">① 稼働分析トップ</span><span class="arrow">→</span>
+    <span class="s active">② データ方式を選ぶ</span><span class="arrow">→</span>
+    <span class="s active">③ ファイルを上げる</span><span class="arrow">→</span>
+    <span class="s active">④ 詳細設定（別画面）</span><span class="arrow">→</span>
+    <span class="s">⑤ 集計条件</span><span class="arrow">→</span>
+    <span class="s">⑥ 保存</span>
+  </div>
+
+  <div class="screens">
+    <div class="screen">
+      <div class="screen-bar">
+        <span>画面 A · 稼働分析情報</span>
+        <span class="url">/operation-analysis</span>
+      </div>
+      <div class="screen-body">
+        <div class="tabs">
+          <span class="on">出社滞在情報</span>
+          <span>従業員情報</span>
+          <span>集計条件</span>
+        </div>
+        <h3>データ方式の選択</h3>
+        <div class="field">
+          <label>取り込み方式</label>
+          <select>
+            <option>手入力のExcelデータ</option>
+            <option>WifiアクセスポイントCSV</option>
+            <option>入退室ログのExcel</option>
+            <option>Meraki自動収集</option>
+          </select>
+        </div>
+        <div class="note">方式を選んだあと、別の「詳細設定」画面で列名を手入力する必要があります。</div>
+        <div class="btns">
+          <button class="btn">キャンセル</button>
+          <button class="btn primary">詳細設定へ</button>
+        </div>
+        <p class="pain">課題: 最初に方式を決めても、次の画面で何を入れるか分かりにくい</p>
+      </div>
+    </div>
+
+    <div class="screen">
+      <div class="screen-bar">
+        <span>画面 B · ファイルアップロード</span>
+        <span class="badge">エラー表示なし</span>
+      </div>
+      <div class="screen-body">
+        <h3>出社滞在情報のアップロード</h3>
+        <div class="field">
+          <label>ファイル</label>
+          <input type="text" value="attendance_2026_03.xlsx" readonly />
+        </div>
+        <div class="silent-error">
+          <strong>処理に失敗しました</strong>
+          形式が違う場合でも、どこが違うかの説明が出ません。
+        </div>
+        <div class="btns">
+          <button class="btn">やり直す</button>
+          <button class="btn primary">送信</button>
+        </div>
+        <p class="pain">課題: 失敗理由が分からず、Excelを何度も直すことになる</p>
+      </div>
+    </div>
+
+    <div class="screen">
+      <div class="screen-bar">
+        <span>画面 C · 詳細設定（列名の手入力）</span>
+        <span class="url">/operation-analysis/detail</span>
+      </div>
+      <div class="screen-body">
+        <h3>カラム設定</h3>
+        <div class="row2">
+          <div class="field">
+            <label>ユーザーIDの列名</label>
+            <input type="text" placeholder="例: 社員ID" />
+          </div>
+          <div class="field">
+            <label>Timestampの列名</label>
+            <input type="text" placeholder="例: 日時" />
+          </div>
+        </div>
+        <div class="field">
+          <label>日時の形式</label>
+          <input type="text" placeholder="%Y/%m/%d %H:%M:%S" />
+        </div>
+        <div class="note">列名を正確に手で入力する必要があります。1文字違うと失敗します。</div>
+        <div class="btns">
+          <button class="btn">戻る</button>
+          <button class="btn primary">保存</button>
+        </div>
+        <p class="pain">課題: 手入力が多く、ミスが起きやすい</p>
+      </div>
+    </div>
+
+    <div class="screen">
+      <div class="screen-bar">
+        <span>画面 D · 従業員情報（別タブ）</span>
+        <span class="badge">画面が分かれている</span>
+      </div>
+      <div class="screen-body">
+        <h3>従業員マスタのアップロード</h3>
+        <div class="field">
+          <label>従業員ファイル</label>
+          <input type="text" value="employees.csv" readonly />
+        </div>
+        <div class="field">
+          <label>社員ID列 / MAC列 など</label>
+          <input type="text" placeholder="再度、列名を手入力" />
+        </div>
+        <div class="note">出社滞在と従業員で画面が分かれ、同じような設定を繰り返します。</div>
+        <div class="btns">
+          <button class="btn primary">アップロード</button>
+        </div>
+        <p class="pain">課題: 手順が長く、全体の流れが見えない</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

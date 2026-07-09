@@ -1,13 +1,25 @@
-# WDP 提案 / Đề xuất cải tiến
+# WDP 改善提案 / Đề xuất cải thiện
 
-## Documents
+## 開き方
 
-| File | Description |
-|------|-------------|
-| [`wdp-proposal.html`](./wdp-proposal.html) | **提案書本体** — 課題分解・改善案・AIレベル・Mockup埋め込み。日本語 / Tiếng Việt 切替対応 |
-| [`mockup-operation-setup-wizard.html`](./mockup-operation-setup-wizard.html) | フェーズ1「入力最適化」インタラクティブ Mockup（稼働分析セットアップ） |
-| `operation-setup-wizard-mockup (3).html` | 元の Mockup ファイル（同上内容） |
+ブラウザで [`wdp-proposal.html`](./wdp-proposal.html) を開いてください。右上で **日本語 / Tiếng Việt** を切り替えられます。
 
-## How to view
+## ファイル一覧
 
-ブラウザで `wdp-proposal.html` を開いてください。右上の **日本語 / Tiếng Việt** で言語を切り替えられます。Mockup は提案書内に埋め込み済みです（別タブでも開けます）。
+| ファイル | 内容 |
+|---------|------|
+| `wdp-proposal.html` | 提案書本体（暗い背景・日越切替・困りごとごとの改善案） |
+| `evidence-current-operation-settings.html` | いまの稼働分析設定の再現（手順が多い・画面が分かれる・失敗理由が出ない） |
+| `mockup-operation-setup-wizard.html` | 稼働分析セットアップの改善画面例 |
+| `mockup-space-analysis-wizard.html` | 空間分析セットアップの改善画面例 |
+| `mockup-survey-dashboard.html` | 調査（サーベイ）進捗管理の画面例 |
+
+## 構成
+
+1. 目指す姿
+2. いまの困りごと（製品 / 事業 / 社内運用）
+3. 改善案（困りごとごと）
+   - 入力の改善（現状再現 + 稼働分析 / 空間分析の画面例）
+   - 調査の運用（進捗ダッシュボード）
+   - 結果の読み取り支援（3つの形）
+4. まとめ表

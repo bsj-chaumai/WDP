@@ -1,87 +1,84 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" data-lang="ja">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WDP 改善提案 / Đề xuất cải tiến WDP</title>
+  <title>WDP 改善提案 / Đề xuất cải thiện WDP</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP:wght@400;500;600;700&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --ink: #142033;
-      --ink-soft: #3d4f66;
-      --muted: #6b7c93;
-      --line: #d8e0ea;
-      --paper: #f7f9fc;
-      --white: #ffffff;
-      --navy: #1a3a6b;
-      --navy-deep: #0f2748;
-      --teal: #0d7a6f;
-      --teal-soft: #e6f5f3;
-      --amber: #c47a12;
-      --amber-soft: #fff6e8;
-      --rose: #b42318;
-      --rose-soft: #fef3f2;
-      --green: #1f7a45;
-      --green-soft: #eaf7ef;
-      --shadow: 0 10px 30px rgba(15, 39, 72, 0.08);
+      --bg: #0b1220;
+      --bg-2: #111a2b;
+      --panel: #152238;
+      --panel-2: #1a2b44;
+      --line: #2a3d5c;
+      --line-soft: #223552;
+      --text: #e8eef7;
+      --text-soft: #b7c5d8;
+      --muted: #8496b0;
+      --navy: #5b9bd5;
+      --teal: #3db8a8;
+      --teal-dim: rgba(61, 184, 168, 0.14);
+      --amber: #e0a23a;
+      --amber-dim: rgba(224, 162, 58, 0.14);
+      --rose: #e07070;
+      --rose-dim: rgba(224, 112, 112, 0.14);
+      --green: #4caf7a;
+      --green-dim: rgba(76, 175, 122, 0.14);
+      --violet: #8b9cf7;
+      --violet-dim: rgba(139, 156, 247, 0.14);
+      --shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
       --radius: 14px;
-      --max: 1080px;
+      --max: 1100px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
       font-family: "IBM Plex Sans JP", "Be Vietnam Pro", sans-serif;
-      color: var(--ink);
+      color: var(--text);
       background:
-        radial-gradient(1200px 500px at 10% -10%, #dceaf8 0%, transparent 55%),
-        radial-gradient(900px 400px at 100% 0%, #d8f0ec 0%, transparent 50%),
-        var(--paper);
+        radial-gradient(1000px 480px at 8% -8%, rgba(61, 184, 168, 0.12), transparent 55%),
+        radial-gradient(900px 420px at 100% 0%, rgba(91, 155, 213, 0.14), transparent 50%),
+        var(--bg);
       line-height: 1.65;
+      min-height: 100vh;
     }
     body.lang-vi { font-family: "Be Vietnam Pro", "IBM Plex Sans JP", sans-serif; }
 
-    .lang-ja { display: none; }
-    .lang-vi { display: none; }
+    .lang-ja, .lang-vi { display: none; }
     html[data-lang="ja"] .lang-ja { display: contents; }
     html[data-lang="vi"] .lang-vi { display: contents; }
-    html[data-lang="ja"] .only-ja { display: block; }
-    html[data-lang="vi"] .only-vi { display: block; }
-    .only-ja, .only-vi { display: none; }
 
-    a { color: var(--navy); }
+    a { color: var(--teal); }
     .wrap { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
 
     /* Top bar */
     .topbar {
       position: sticky; top: 0; z-index: 50;
-      backdrop-filter: blur(12px);
-      background: rgba(247, 249, 252, 0.88);
+      backdrop-filter: blur(14px);
+      background: rgba(11, 18, 32, 0.88);
       border-bottom: 1px solid var(--line);
     }
     .topbar-inner {
       max-width: var(--max); margin: 0 auto; padding: 12px 20px;
       display: flex; align-items: center; justify-content: space-between; gap: 12px;
     }
-    .brand {
-      display: flex; align-items: center; gap: 10px; min-width: 0;
-    }
+    .brand { display: flex; align-items: center; gap: 10px; min-width: 0; }
     .brand-mark {
       width: 34px; height: 34px; border-radius: 9px;
-      background: linear-gradient(145deg, var(--navy), var(--teal));
+      background: linear-gradient(145deg, #1e4d8c, #0d7a6f);
       color: #fff; display: grid; place-items: center;
-      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.02em;
-      flex-shrink: 0;
+      font-size: 0.72rem; font-weight: 700; flex-shrink: 0;
     }
-    .brand-text { min-width: 0; }
     .brand-text strong { display: block; font-size: 0.92rem; line-height: 1.2; }
     .brand-text span { font-size: 0.72rem; color: var(--muted); }
 
     .top-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
     .lang-switch {
-      display: inline-flex; background: var(--white);
+      display: inline-flex; background: var(--panel);
       border: 1px solid var(--line); border-radius: 999px; padding: 3px;
     }
     .lang-switch button {
@@ -90,353 +87,268 @@
       font-size: 0.78rem; font-weight: 600; color: var(--muted);
       font-family: inherit;
     }
-    .lang-switch button.active {
-      background: var(--navy); color: #fff;
-    }
-    .nav-jump {
-      display: none; gap: 4px;
-    }
-    @media (min-width: 900px) {
-      .nav-jump { display: flex; }
-    }
+    .lang-switch button.active { background: var(--teal); color: #06221f; }
+    .nav-jump { display: none; gap: 2px; }
+    @media (min-width: 960px) { .nav-jump { display: flex; } }
     .nav-jump a {
-      text-decoration: none; font-size: 0.75rem; font-weight: 600;
-      color: var(--ink-soft); padding: 6px 10px; border-radius: 8px;
+      text-decoration: none; font-size: 0.74rem; font-weight: 600;
+      color: var(--text-soft); padding: 6px 9px; border-radius: 8px;
     }
-    .nav-jump a:hover { background: #e8eef6; color: var(--navy); }
+    .nav-jump a:hover { background: var(--panel-2); color: var(--text); }
 
     /* Hero */
-    .hero {
-      padding: 48px 0 28px;
-    }
+    .hero { padding: 40px 0 20px; }
     .hero-panel {
-      background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 55%, #1f5f6b 100%);
-      color: #fff; border-radius: 22px; padding: 36px 32px;
+      background: linear-gradient(145deg, #12233d 0%, #153047 55%, #0f3a38 100%);
+      border: 1px solid var(--line); border-radius: 22px; padding: 34px 30px;
       box-shadow: var(--shadow); position: relative; overflow: hidden;
     }
     .hero-panel::after {
-      content: ""; position: absolute; right: -80px; top: -60px;
-      width: 280px; height: 280px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,255,255,.12), transparent 70%);
+      content: ""; position: absolute; right: -70px; top: -50px;
+      width: 260px; height: 260px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(61,184,168,.18), transparent 70%);
     }
     .eyebrow {
-      display: inline-block; font-size: 0.75rem; font-weight: 600;
-      letter-spacing: 0.06em; text-transform: uppercase;
-      opacity: 0.8; margin-bottom: 12px;
+      display: inline-block; font-size: 0.74rem; font-weight: 600;
+      letter-spacing: 0.05em; color: var(--teal); margin-bottom: 10px;
     }
     .hero h1 {
-      font-size: clamp(1.55rem, 3.2vw, 2.15rem);
-      line-height: 1.25; font-weight: 700; max-width: 18em;
-      margin-bottom: 14px; position: relative;
+      font-size: clamp(1.45rem, 3vw, 2rem);
+      line-height: 1.3; font-weight: 700; max-width: 18em;
+      margin-bottom: 12px; position: relative;
     }
     .hero-lead {
-      font-size: 0.98rem; opacity: 0.9; max-width: 42em;
-      margin-bottom: 22px; position: relative;
+      font-size: 0.96rem; color: var(--text-soft); max-width: 44em;
+      margin-bottom: 20px; position: relative;
     }
-    .hero-meta {
-      display: flex; flex-wrap: wrap; gap: 10px; position: relative;
-    }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 8px; position: relative; }
     .chip {
-      background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2);
-      border-radius: 999px; padding: 6px 12px; font-size: 0.78rem; font-weight: 500;
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12);
+      border-radius: 999px; padding: 6px 12px; font-size: 0.76rem; font-weight: 500;
+      color: var(--text-soft);
     }
 
-    /* TOC */
     .toc {
-      margin: 22px 0 8px;
-      display: grid; gap: 10px;
+      margin: 20px 0 4px; display: grid; gap: 10px;
       grid-template-columns: repeat(2, 1fr);
     }
-    @media (min-width: 760px) {
-      .toc { grid-template-columns: repeat(4, 1fr); }
-    }
+    @media (min-width: 800px) { .toc { grid-template-columns: repeat(4, 1fr); } }
     .toc a {
-      text-decoration: none; background: var(--white);
+      text-decoration: none; background: var(--panel);
       border: 1px solid var(--line); border-radius: 12px;
-      padding: 14px 14px 12px; color: inherit;
-      transition: border-color .15s, transform .15s;
+      padding: 14px; color: inherit; transition: border-color .15s, transform .15s;
     }
-    .toc a:hover { border-color: #9bb4d4; transform: translateY(-1px); }
-    .toc .n {
-      font-size: 0.7rem; font-weight: 700; color: var(--teal); margin-bottom: 4px;
-    }
-    .toc .t { font-size: 0.86rem; font-weight: 600; line-height: 1.35; }
+    .toc a:hover { border-color: var(--teal); transform: translateY(-1px); }
+    .toc .n { font-size: 0.7rem; font-weight: 700; color: var(--teal); margin-bottom: 4px; }
+    .toc .t { font-size: 0.84rem; font-weight: 600; line-height: 1.35; color: var(--text); }
 
-    /* Sections */
-    section { padding: 36px 0 8px; }
-    .section-head { margin-bottom: 18px; }
+    section { padding: 34px 0 6px; }
+    .section-head { margin-bottom: 16px; }
     .section-kicker {
       font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em;
       text-transform: uppercase; color: var(--teal); margin-bottom: 6px;
     }
     .section-head h2 {
-      font-size: clamp(1.25rem, 2.4vw, 1.55rem);
+      font-size: clamp(1.2rem, 2.3vw, 1.5rem);
       line-height: 1.3; margin-bottom: 8px;
     }
-    .section-head p {
-      color: var(--ink-soft); font-size: 0.95rem; max-width: 48em;
-    }
+    .section-head p { color: var(--text-soft); font-size: 0.94rem; max-width: 48em; }
 
-    .grid-2 {
-      display: grid; gap: 14px;
-      grid-template-columns: 1fr;
-    }
-    @media (min-width: 760px) {
-      .grid-2 { grid-template-columns: 1fr 1fr; }
-    }
-    .grid-3 {
-      display: grid; gap: 14px;
-      grid-template-columns: 1fr;
-    }
-    @media (min-width: 860px) {
-      .grid-3 { grid-template-columns: repeat(3, 1fr); }
-    }
+    .grid-2 { display: grid; gap: 12px; grid-template-columns: 1fr; }
+    @media (min-width: 760px) { .grid-2 { grid-template-columns: 1fr 1fr; } }
+    .grid-3 { display: grid; gap: 12px; grid-template-columns: 1fr; }
+    @media (min-width: 860px) { .grid-3 { grid-template-columns: repeat(3, 1fr); } }
 
     .card {
-      background: var(--white); border: 1px solid var(--line);
-      border-radius: var(--radius); padding: 18px 18px 16px;
+      background: var(--panel); border: 1px solid var(--line);
+      border-radius: var(--radius); padding: 16px 16px 14px;
     }
-    .card h3 {
-      font-size: 0.98rem; margin-bottom: 8px; line-height: 1.35;
-    }
-    .card p, .card li { font-size: 0.88rem; color: var(--ink-soft); }
+    .card h3 { font-size: 0.96rem; margin-bottom: 8px; line-height: 1.35; }
+    .card p, .card li { font-size: 0.86rem; color: var(--text-soft); }
     .card ul { padding-left: 1.1em; }
     .card li + li { margin-top: 6px; }
-
-    .goal-card {
-      border-top: 3px solid var(--teal);
-    }
+    .goal-card { border-top: 3px solid var(--teal); }
     .goal-card .who {
       font-size: 0.72rem; font-weight: 700; color: var(--teal);
-      margin-bottom: 6px; letter-spacing: 0.04em;
+      margin-bottom: 6px; letter-spacing: 0.03em;
     }
 
     /* Pain */
-    .pain-group { margin-bottom: 16px; }
+    .pain-group { margin-bottom: 14px; }
     .pain-label {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 0.8rem; font-weight: 700; margin-bottom: 10px;
-      padding: 5px 10px; border-radius: 8px;
+      display: inline-flex; font-size: 0.78rem; font-weight: 700;
+      margin-bottom: 10px; padding: 5px 10px; border-radius: 8px;
     }
-    .pain-label.product { background: var(--rose-soft); color: var(--rose); }
-    .pain-label.biz { background: var(--amber-soft); color: var(--amber); }
-    .pain-label.org { background: #eef2ff; color: #4338ca; }
-
+    .pain-label.product { background: var(--rose-dim); color: #f0a0a0; }
+    .pain-label.biz { background: var(--amber-dim); color: #f0c878; }
+    .pain-label.org { background: var(--violet-dim); color: #b4c0ff; }
     .pain-item {
-      display: grid; gap: 4px;
-      padding: 14px 16px; border-radius: 12px;
-      background: var(--white); border: 1px solid var(--line);
+      padding: 13px 15px; border-radius: 12px;
+      background: var(--panel); border: 1px solid var(--line);
       border-left: 4px solid var(--rose);
     }
     .pain-item.biz { border-left-color: var(--amber); }
-    .pain-item.org { border-left-color: #6366f1; }
+    .pain-item.org { border-left-color: var(--violet); }
     .pain-item + .pain-item { margin-top: 8px; }
-    .pain-item strong {
-      font-size: 0.9rem; color: var(--ink); display: block;
-    }
-    .pain-item span {
-      font-size: 0.84rem; color: var(--ink-soft);
-    }
+    .pain-item strong { font-size: 0.9rem; color: var(--text); display: block; margin-bottom: 2px; }
+    .pain-item span { font-size: 0.84rem; color: var(--text-soft); }
 
-    /* As-is / To-be */
-    .compare {
-      display: grid; gap: 12px;
-      grid-template-columns: 1fr;
+    /* Problem blocks */
+    .problem {
+      background: var(--panel); border: 1px solid var(--line);
+      border-radius: 18px; overflow: hidden; margin-bottom: 18px;
     }
-    @media (min-width: 760px) {
-      .compare { grid-template-columns: 1fr 1fr; }
-    }
-    .as-is {
-      background: var(--rose-soft); border: 1px solid #f5c2c0;
-      border-radius: var(--radius); padding: 16px 18px;
-    }
-    .to-be {
-      background: var(--green-soft); border: 1px solid #b7e0c5;
-      border-radius: var(--radius); padding: 16px 18px;
-    }
-    .as-is h4, .to-be h4 {
-      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.04em;
-      margin-bottom: 8px; text-transform: uppercase;
-    }
-    .as-is h4 { color: var(--rose); }
-    .to-be h4 { color: var(--green); }
-    .as-is p, .to-be p, .as-is li, .to-be li {
-      font-size: 0.86rem; color: var(--ink-soft);
-    }
-    .as-is ul, .to-be ul { padding-left: 1.1em; }
-    .as-is li + li, .to-be li + li { margin-top: 5px; }
-
-    /* Phase */
-    .phase {
-      background: var(--white); border: 1px solid var(--line);
-      border-radius: 18px; overflow: hidden; margin-bottom: 16px;
-    }
-    .phase-head {
+    .problem-head {
       display: flex; flex-wrap: wrap; align-items: flex-start;
       justify-content: space-between; gap: 10px;
-      padding: 18px 20px; background: #f3f7fb;
+      padding: 18px 20px; background: var(--panel-2);
       border-bottom: 1px solid var(--line);
     }
-    .phase-badge {
+    .problem-no {
       display: inline-block; font-size: 0.72rem; font-weight: 700;
-      background: var(--navy); color: #fff; padding: 4px 10px;
-      border-radius: 999px; margin-bottom: 8px;
+      background: var(--teal-dim); color: var(--teal);
+      padding: 4px 10px; border-radius: 999px; margin-bottom: 8px;
     }
-    .phase-head h3 { font-size: 1.05rem; line-height: 1.35; }
-    .phase-scope {
-      font-size: 0.78rem; color: var(--muted); background: var(--white);
+    .problem-head h3 { font-size: 1.05rem; line-height: 1.35; }
+    .problem-scope {
+      font-size: 0.76rem; color: var(--muted); background: var(--bg-2);
       border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px;
       max-width: 280px;
     }
-    .phase-body { padding: 18px 20px 20px; }
+    .problem-body { padding: 18px 20px 20px; }
+
+    .compare { display: grid; gap: 12px; grid-template-columns: 1fr; }
+    @media (min-width: 760px) { .compare { grid-template-columns: 1fr 1fr; } }
+    .as-is {
+      background: var(--rose-dim); border: 1px solid rgba(224,112,112,.35);
+      border-radius: var(--radius); padding: 14px 16px;
+    }
+    .to-be {
+      background: var(--green-dim); border: 1px solid rgba(76,175,122,.35);
+      border-radius: var(--radius); padding: 14px 16px;
+    }
+    .as-is h4, .to-be h4 {
+      font-size: 0.76rem; font-weight: 700; letter-spacing: 0.04em;
+      margin-bottom: 8px;
+    }
+    .as-is h4 { color: #f0a0a0; }
+    .to-be h4 { color: #7dcea0; }
+    .as-is p, .to-be p, .as-is li, .to-be li { font-size: 0.85rem; color: var(--text-soft); }
+    .as-is ul, .to-be ul { padding-left: 1.1em; }
+    .as-is li + li, .to-be li + li { margin-top: 5px; }
+
     .feature-list { display: grid; gap: 10px; margin-top: 14px; }
     .feature {
       display: grid; grid-template-columns: 28px 1fr; gap: 10px;
-      padding: 12px 14px; border-radius: 12px; background: var(--paper);
-      border: 1px solid var(--line);
+      padding: 12px 14px; border-radius: 12px; background: var(--bg-2);
+      border: 1px solid var(--line-soft);
     }
     .feature .ico {
       width: 28px; height: 28px; border-radius: 8px;
-      background: var(--teal-soft); color: var(--teal);
+      background: var(--teal-dim); color: var(--teal);
       display: grid; place-items: center; font-size: 0.8rem; font-weight: 700;
     }
     .feature strong { display: block; font-size: 0.9rem; margin-bottom: 2px; }
-    .feature span { font-size: 0.84rem; color: var(--ink-soft); }
+    .feature span { font-size: 0.84rem; color: var(--text-soft); }
 
-    /* AI levels */
+    /* Evidence / mockup shells */
+    .evidence, .mockup-shell {
+      margin-top: 16px; background: var(--bg-2);
+      border: 1px solid var(--line); border-radius: 16px; overflow: hidden;
+    }
+    .evidence-toolbar, .mockup-toolbar {
+      display: flex; flex-wrap: wrap; align-items: center;
+      justify-content: space-between; gap: 10px;
+      padding: 12px 14px; background: #0e1829; border-bottom: 1px solid var(--line);
+    }
+    .evidence-toolbar h4, .mockup-toolbar h3 { font-size: 0.9rem; }
+    .evidence-toolbar p, .mockup-toolbar p { font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
+    .evidence-actions, .mockup-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      text-decoration: none; border: 0; cursor: pointer;
+      font-family: inherit; font-weight: 600; font-size: 0.8rem;
+      padding: 8px 12px; border-radius: 8px;
+    }
+    .btn-primary { background: var(--teal); color: #06221f; }
+    .btn-ghost { background: var(--panel); color: var(--text-soft); border: 1px solid var(--line); }
+    .frame-wrap { background: #0a101c; padding: 10px; }
+    .frame {
+      width: 100%; height: min(72vh, 760px);
+      border: 1px solid var(--line); border-radius: 10px;
+      background: #fff; display: block;
+    }
+    .frame.tall { height: min(78vh, 820px); }
+    .frame.mid { height: min(64vh, 680px); }
+
+    .caption {
+      margin-top: 10px; font-size: 0.8rem; color: var(--muted);
+      padding: 0 2px; line-height: 1.5;
+    }
+
     .ai-level {
-      position: relative; padding: 18px; border-radius: var(--radius);
-      background: var(--white); border: 1px solid var(--line);
-      height: 100%;
+      padding: 16px; border-radius: var(--radius);
+      background: var(--bg-2); border: 1px solid var(--line); height: 100%;
     }
     .ai-level .lvl {
-      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em;
-      margin-bottom: 8px;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; margin-bottom: 8px;
     }
     .ai-level.l1 .lvl { color: var(--teal); }
     .ai-level.l2 .lvl { color: var(--amber); }
     .ai-level.l3 .lvl { color: var(--navy); }
-    .ai-level h3 { font-size: 1rem; margin-bottom: 8px; }
-    .ai-level p { font-size: 0.86rem; color: var(--ink-soft); margin-bottom: 12px; }
-    .ai-level .effort {
+    .ai-level h3 { font-size: 0.98rem; margin-bottom: 8px; }
+    .ai-level p { font-size: 0.85rem; color: var(--text-soft); margin-bottom: 10px; }
+    .ai-level .note {
       font-size: 0.75rem; font-weight: 600; color: var(--muted);
       border-top: 1px dashed var(--line); padding-top: 10px;
     }
     .example {
-      margin-top: 10px; font-size: 0.82rem; background: var(--paper);
-      border-radius: 8px; padding: 10px 12px; color: var(--ink-soft);
+      margin-top: 10px; font-size: 0.82rem; background: var(--panel);
+      border-radius: 8px; padding: 10px 12px; color: var(--text-soft);
       border-left: 3px solid var(--navy);
     }
 
-    /* Mockup */
-    .mockup-shell {
-      background: var(--white); border: 1px solid var(--line);
-      border-radius: 18px; overflow: hidden; box-shadow: var(--shadow);
-    }
-    .mockup-toolbar {
-      display: flex; flex-wrap: wrap; align-items: center;
-      justify-content: space-between; gap: 10px;
-      padding: 14px 16px; background: #f3f7fb; border-bottom: 1px solid var(--line);
-    }
-    .mockup-toolbar h3 { font-size: 0.95rem; }
-    .mockup-toolbar p { font-size: 0.8rem; color: var(--muted); margin-top: 2px; }
-    .mockup-actions { display: flex; gap: 8px; flex-wrap: wrap; }
-    .btn {
-      display: inline-flex; align-items: center; gap: 6px;
-      text-decoration: none; border: 0; cursor: pointer;
-      font-family: inherit; font-weight: 600; font-size: 0.82rem;
-      padding: 9px 14px; border-radius: 9px;
-    }
-    .btn-primary { background: var(--navy); color: #fff; }
-    .btn-ghost { background: var(--white); color: var(--ink-soft); border: 1px solid var(--line); }
-    .mockup-frame-wrap {
-      background: #e8edf3; padding: 12px;
-    }
-    .mockup-frame {
-      width: 100%; height: min(78vh, 820px);
-      border: 1px solid var(--line); border-radius: 12px;
-      background: #fff; display: block;
-    }
-    .mockup-highlights {
-      display: grid; gap: 10px; margin-top: 14px;
-      grid-template-columns: 1fr;
-    }
-    @media (min-width: 760px) {
-      .mockup-highlights { grid-template-columns: repeat(4, 1fr); }
-    }
-    .mh {
-      background: var(--white); border: 1px solid var(--line);
-      border-radius: 12px; padding: 12px 14px;
-    }
-    .mh .n { font-size: 0.7rem; font-weight: 700; color: var(--teal); margin-bottom: 4px; }
-    .mh strong { display: block; font-size: 0.84rem; margin-bottom: 4px; }
-    .mh span { font-size: 0.78rem; color: var(--ink-soft); }
-
-    /* Roadmap */
-    .roadmap {
-      display: grid; gap: 0; position: relative;
-    }
-    .roadmap-item {
-      display: grid; grid-template-columns: 56px 1fr; gap: 12px;
-      padding: 0 0 18px;
-    }
-    .roadmap-item:last-child { padding-bottom: 0; }
-    .rm-dot-col { position: relative; display: flex; justify-content: center; }
-    .rm-dot {
-      width: 14px; height: 14px; border-radius: 50%;
-      background: var(--teal); border: 3px solid #c8ebe6;
-      margin-top: 6px; z-index: 1;
-    }
-    .rm-dot-col::before {
-      content: ""; position: absolute; top: 18px; bottom: -6px;
-      width: 2px; background: var(--line);
-    }
-    .roadmap-item:last-child .rm-dot-col::before { display: none; }
-    .rm-body {
-      background: var(--white); border: 1px solid var(--line);
-      border-radius: 12px; padding: 14px 16px;
-    }
-    .rm-body .tag {
-      font-size: 0.7rem; font-weight: 700; color: var(--teal); margin-bottom: 4px;
-    }
-    .rm-body h3 { font-size: 0.95rem; margin-bottom: 4px; }
-    .rm-body p { font-size: 0.84rem; color: var(--ink-soft); }
-
-    /* Summary table */
     .summary-table {
-      width: 100%; border-collapse: collapse; background: var(--white);
+      width: 100%; border-collapse: collapse; background: var(--panel);
       border: 1px solid var(--line); border-radius: 14px; overflow: hidden;
-      font-size: 0.86rem;
+      font-size: 0.85rem;
     }
     .summary-table th, .summary-table td {
       text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line);
       vertical-align: top;
     }
     .summary-table th {
-      background: #f3f7fb; font-size: 0.75rem; color: var(--muted);
-      font-weight: 700; letter-spacing: 0.03em;
+      background: var(--panel-2); font-size: 0.74rem; color: var(--muted);
+      font-weight: 700;
     }
     .summary-table tr:last-child td { border-bottom: 0; }
-    .tag-pill {
-      display: inline-block; font-size: 0.7rem; font-weight: 700;
-      padding: 3px 8px; border-radius: 999px;
-    }
-    .tag-pill.now { background: var(--teal-soft); color: var(--teal); }
-    .tag-pill.next { background: var(--amber-soft); color: var(--amber); }
-    .tag-pill.later { background: #eef2ff; color: #4338ca; }
+    .summary-table td { color: var(--text-soft); }
+    .summary-table td strong { color: var(--text); }
 
-    /* Footer */
+    .mh-grid {
+      display: grid; gap: 10px; margin-top: 12px;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 760px) { .mh-grid { grid-template-columns: repeat(4, 1fr); } }
+    .mh {
+      background: var(--bg-2); border: 1px solid var(--line);
+      border-radius: 12px; padding: 12px 14px;
+    }
+    .mh .n { font-size: 0.7rem; font-weight: 700; color: var(--teal); margin-bottom: 4px; }
+    .mh strong { display: block; font-size: 0.84rem; margin-bottom: 4px; }
+    .mh span { font-size: 0.76rem; color: var(--text-soft); }
+
     footer {
-      margin: 40px 0 28px; padding: 20px;
+      margin: 36px 0 28px; padding: 18px 0 0;
       border-top: 1px solid var(--line);
-      color: var(--muted); font-size: 0.8rem;
+      color: var(--muted); font-size: 0.78rem;
       display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px;
     }
 
     @media (max-width: 640px) {
-      .hero-panel { padding: 28px 20px; }
-      .phase-scope { max-width: none; }
-      .mockup-frame { height: 70vh; }
+      .hero-panel { padding: 26px 18px; }
+      .problem-scope { max-width: none; }
+      .frame { height: 68vh; }
     }
   </style>
 </head>
@@ -451,24 +363,18 @@
       <div class="brand-mark">WDP</div>
       <div class="brand-text">
         <strong>
-          <span class="lang-ja">改善・機能追加 提案書</span>
-          <span class="lang-vi">Đề xuất cải tiến / Thêm tính năng</span>
+          <span class="lang-ja">改善と機能追加の提案</span>
+          <span class="lang-vi">Đề xuất cải thiện và thêm chức năng</span>
         </strong>
         <span>Workplace Data Platform</span>
       </div>
     </div>
     <div class="top-actions">
       <nav class="nav-jump" aria-label="Section jump">
-        <a href="#pain">
-          <span class="lang-ja">課題</span>
-          <span class="lang-vi">Vấn đề</span>
-        </a>
-        <a href="#phases">
-          <span class="lang-ja">改善案</span>
-          <span class="lang-vi">Giải pháp</span>
-        </a>
-        <a href="#mockup">Mockup</a>
-        <a href="#ai">AI</a>
+        <a href="#pain"><span class="lang-ja">課題</span><span class="lang-vi">Vấn đề</span></a>
+        <a href="#input"><span class="lang-ja">入力</span><span class="lang-vi">Nhập liệu</span></a>
+        <a href="#survey"><span class="lang-ja">調査</span><span class="lang-vi">Khảo sát</span></a>
+        <a href="#ai"><span class="lang-ja">分析</span><span class="lang-vi">Phân tích</span></a>
       </nav>
       <div class="lang-switch" role="group" aria-label="Language">
         <button type="button" id="btn-ja" class="active" onclick="setLang('ja')">日本語</button>
@@ -479,62 +385,40 @@
 </header>
 
 <main class="wrap">
-  <!-- HERO -->
   <div class="hero">
     <div class="hero-panel">
-      <div class="eyebrow">VIS × WDP · Proposal</div>
+      <div class="eyebrow">VIS × WDP</div>
       <h1>
-        <span class="lang-ja">静的ダッシュボードから、<br>AI駆動のSaaSへ。</span>
-        <span class="lang-vi">Từ dashboard tĩnh<br>đến SaaS AI-driven.</span>
+        <span class="lang-ja">グラフを見る仕組みから、<br>判断を助ける仕組みへ。</span>
+        <span class="lang-vi">Từ công cụ xem biểu đồ<br>sang công cụ hỗ trợ quyết định.</span>
       </h1>
       <p class="hero-lead">
-        <span class="lang-ja">本資料は、WDPの現状課題を分解し、「入力最適化 → Survey運用 → AI分析」の3段階で改善・新機能を提案します。フェーズ1の入力フロー改善については、開発側モックアップを同梱しています。</span>
-        <span class="lang-vi">Tài liệu này phân rã các vấn đề hiện tại của WDP và đề xuất cải tiến / tính năng mới theo 3 giai đoạn: tối ưu nhập liệu → vận hành Survey → phân tích AI. Giai đoạn 1 kèm mockup do dev tạo thử.</span>
+        <span class="lang-ja">この資料では、WDPのいまの困りごとを整理し、改善案を「困りごとごと」に分けて示します。入力の改善案には、いまの画面の再現と新しい画面例を並べて載せています。</span>
+        <span class="lang-vi">Tài liệu này sắp xếp các khó khăn hiện tại của WDP và trình bày hướng cải thiện theo từng vấn đề. Phần nhập liệu có cả hình mô tả màn hình hiện tại và ví dụ màn hình mới để dễ so sánh.</span>
       </p>
       <div class="hero-meta">
-        <span class="chip">
-          <span class="lang-ja">対象: Tenant Admin / Sales / XD</span>
-          <span class="lang-vi">Đối tượng: Tenant Admin / Sales / XD</span>
-        </span>
-        <span class="chip">
-          <span class="lang-ja">範囲: 稼働分析・空間分析・サーベイ</span>
-          <span class="lang-vi">Phạm vi: 稼働分析 · 空間分析 · Survey</span>
-        </span>
-        <span class="chip">
-          <span class="lang-ja">形式: 課題 → 提案 → Mockup</span>
-          <span class="lang-vi">Cấu trúc: Vấn đề → Đề xuất → Mockup</span>
-        </span>
+        <span class="chip"><span class="lang-ja">読む人: 管理者 / 営業 / 相談担当</span><span class="lang-vi">Đối tượng: quản trị viên / kinh doanh / tư vấn</span></span>
+        <span class="chip"><span class="lang-ja">範囲: 稼働分析・空間分析・調査</span><span class="lang-vi">Phạm vi: phân tích hoạt động · không gian · khảo sát</span></span>
+        <span class="chip"><span class="lang-ja">構成: 課題 → 改善案 → 画面例</span><span class="lang-vi">Cấu trúc: vấn đề → hướng cải thiện → ví dụ màn hình</span></span>
       </div>
     </div>
 
     <nav class="toc" aria-label="Table of contents">
       <a href="#vision">
         <div class="n">01</div>
-        <div class="t">
-          <span class="lang-ja">ビジョンと目標</span>
-          <span class="lang-vi">Tầm nhìn & Mục tiêu</span>
-        </div>
+        <div class="t"><span class="lang-ja">目指す姿</span><span class="lang-vi">Hướng đi</span></div>
       </a>
       <a href="#pain">
         <div class="n">02</div>
-        <div class="t">
-          <span class="lang-ja">現状の課題（3軸）</span>
-          <span class="lang-vi">Vấn đề hiện tại (3 trục)</span>
-        </div>
+        <div class="t"><span class="lang-ja">いまの困りごと</span><span class="lang-vi">Khó khăn hiện tại</span></div>
       </a>
-      <a href="#phases">
+      <a href="#input">
         <div class="n">03</div>
-        <div class="t">
-          <span class="lang-ja">改善ロードマップ</span>
-          <span class="lang-vi">Lộ trình cải tiến</span>
-        </div>
+        <div class="t"><span class="lang-ja">入力の改善</span><span class="lang-vi">Cải thiện nhập liệu</span></div>
       </a>
-      <a href="#mockup">
+      <a href="#survey">
         <div class="n">04</div>
-        <div class="t">
-          <span class="lang-ja">入力最適化 Mockup</span>
-          <span class="lang-vi">Mockup tối ưu nhập liệu</span>
-        </div>
+        <div class="t"><span class="lang-ja">調査の運用</span><span class="lang-vi">Vận hành khảo sát</span></div>
       </a>
     </nav>
   </div>
@@ -542,63 +426,39 @@
   <!-- 1. VISION -->
   <section id="vision">
     <div class="section-head">
-      <div class="section-kicker">01 · Vision</div>
+      <div class="section-kicker">01</div>
       <h2>
-        <span class="lang-ja">戦略ビジョンと目標</span>
-        <span class="lang-vi">Tầm nhìn chiến lược & Mục tiêu</span>
+        <span class="lang-ja">目指す姿と目的</span>
+        <span class="lang-vi">Hướng đi và mục đích</span>
       </h2>
       <p>
-        <span class="lang-ja">WDPを「グラフを見るツール」から「意思決定を支援するAI SaaS」へ転換する。</span>
-        <span class="lang-vi">Chuyển WDP từ công cụ xem biểu đồ thành SaaS AI hỗ trợ ra quyết định.</span>
+        <span class="lang-ja">WDPを「グラフを表示する道具」から「判断を助ける仕組み」へ変えます。</span>
+        <span class="lang-vi">Đưa WDP từ công cụ hiển thị biểu đồ thành hệ thống hỗ trợ ra quyết định.</span>
       </p>
     </div>
     <div class="grid-2">
       <article class="card goal-card">
-        <div class="who">
-          <span class="lang-ja">顧客（Tenant Admin）向け</span>
-          <span class="lang-vi">Với khách hàng (Tenant Admin)</span>
-        </div>
+        <div class="who"><span class="lang-ja">お客様（管理者）向け</span><span class="lang-vi">Với khách hàng (quản trị viên)</span></div>
         <h3>
-          <span class="lang-ja">手作業を減らし、流れを見える化する</span>
-          <span class="lang-vi">Giảm thao tác thủ công, trực quan hóa quy trình</span>
+          <span class="lang-ja">手作業を減らし、手順を分かりやすくする</span>
+          <span class="lang-vi">Giảm thao tác tay, làm rõ từng bước</span>
         </h3>
         <ul>
-          <li>
-            <span class="lang-ja">UX最適化：セットアップをステップ化し、迷わない導線へ</span>
-            <span class="lang-vi">Tối ưu UX: wizard từng bước, luồng rõ ràng</span>
-          </li>
-          <li>
-            <span class="lang-ja">処理フローの可視化とエラーの即時フィードバック</span>
-            <span class="lang-vi">Hiển thị luồng xử lý và phản hồi lỗi ngay</span>
-          </li>
-          <li>
-            <span class="lang-ja">Excel整形などの手動作業を最小化</span>
-            <span class="lang-vi">Giảm tối đa việc format Excel thủ công</span>
-          </li>
+          <li><span class="lang-ja">設定の流れを一つにまとめ、迷いにくくする</span><span class="lang-vi">Gom luồng thiết lập thành một chuỗi bước rõ ràng</span></li>
+          <li><span class="lang-ja">失敗したとき、理由と直し方を画面で示す</span><span class="lang-vi">Khi lỗi, hiện rõ lý do và cách sửa trên màn hình</span></li>
+          <li><span class="lang-ja">表計算ソフトでの事前整形をできるだけ減らす</span><span class="lang-vi">Giảm tối đa việc chỉnh sửa bảng tính trước khi đưa lên</span></li>
         </ul>
       </article>
       <article class="card goal-card">
-        <div class="who">
-          <span class="lang-ja">Visビジネス向け</span>
-          <span class="lang-vi">Với kinh doanh Vis</span>
-        </div>
+        <div class="who"><span class="lang-ja">Visの事業向け</span><span class="lang-vi">Với hoạt động kinh doanh của Vis</span></div>
         <h3>
-          <span class="lang-ja">差別化USPでCVRとXD生産性を上げる</span>
-          <span class="lang-vi">USP đột phá → tăng CVR & năng suất XD</span>
+          <span class="lang-ja">他社との差を作り、導入と相談の負担を下げる</span>
+          <span class="lang-vi">Tạo điểm khác biệt, giảm gánh nặng triển khai và tư vấn</span>
         </h3>
         <ul>
-          <li>
-            <span class="lang-ja">競合に勝つ「Wow」機能（AI分析）を武器化</span>
-            <span class="lang-vi">Tính năng “Wow” (AI) làm vũ khí cạnh tranh</span>
-          </li>
-          <li>
-            <span class="lang-ja">初期設定の摩擦を下げ、SaaS成約率を改善</span>
-            <span class="lang-vi">Giảm ma sát setup ban đầu → cải thiện CVR SaaS</span>
-          </li>
-          <li>
-            <span class="lang-ja">コンサル（XD）のレポート作成負荷を削減しスケール可能に</span>
-            <span class="lang-vi">Giảm tải báo cáo cho XD, dễ scale dịch vụ</span>
-          </li>
+          <li><span class="lang-ja">説明しやすい強みを増やし、導入の決め手にする</span><span class="lang-vi">Thêm điểm mạnh dễ giải thích để hỗ trợ quyết định mua</span></li>
+          <li><span class="lang-ja">最初の設定の手間を下げ、有料利用への移行を後押しする</span><span class="lang-vi">Giảm công thiết lập ban đầu, hỗ trợ chuyển sang bản trả phí</span></li>
+          <li><span class="lang-ja">相談担当の報告書づくりを楽にし、人数を増やしやすくする</span><span class="lang-vi">Giảm việc làm báo cáo thủ công cho tư vấn, dễ mở rộng đội ngũ</span></li>
         </ul>
       </article>
     </div>
@@ -607,415 +467,348 @@
   <!-- 2. PAIN -->
   <section id="pain">
     <div class="section-head">
-      <div class="section-kicker">02 · Pain Points</div>
+      <div class="section-kicker">02</div>
       <h2>
-        <span class="lang-ja">現状の課題 — 3つの軸で分解</span>
-        <span class="lang-vi">Vấn đề hiện tại — phân rã theo 3 trục</span>
+        <span class="lang-ja">いまの困りごと（3つの視点）</span>
+        <span class="lang-vi">Khó khăn hiện tại (3 góc nhìn)</span>
       </h2>
       <p>
-        <span class="lang-ja">課題を「製品・技術」「ビジネス」「運用・組織」に分け、どこを先に直すべきか一目で把握できるようにします。</span>
-        <span class="lang-vi">Tách vấn đề thành Sản phẩm/Kỹ thuật · Kinh doanh · Vận hành/Tổ chức để nắm nhanh ưu tiên.</span>
+        <span class="lang-ja">製品・事業・社内運用の3つに分けて整理します。あとの改善案は、この困りごとに対応する形で並べます。</span>
+        <span class="lang-vi">Chia thành sản phẩm, kinh doanh và vận hành nội bộ. Các đề xuất sau sẽ gắn trực tiếp với từng khó khăn này.</span>
       </p>
     </div>
 
     <div class="pain-group">
-      <div class="pain-label product">
-        <span class="lang-ja">A. 製品・技術面</span>
-        <span class="lang-vi">A. Sản phẩm & Kỹ thuật</span>
+      <div class="pain-label product"><span class="lang-ja">A. 製品・技術</span><span class="lang-vi">A. Sản phẩm và kỹ thuật</span></div>
+      <div class="pain-item">
+        <strong><span class="lang-ja">手作業が多い</span><span class="lang-vi">Nhiều thao tác tay</span></strong>
+        <span><span class="lang-ja">従業員情報や出社・滞在の表を、上げる前に何度も直す必要がある。</span><span class="lang-vi">Phải chỉnh sửa nhiều lần bảng thông tin nhân viên và lịch sử đến/ở lại trước khi đưa lên hệ thống.</span></span>
       </div>
       <div class="pain-item">
-        <strong>
-          <span class="lang-ja">手作業の負担が大きい</span>
-          <span class="lang-vi">Gánh nặng thao tác thủ công</span>
-        </strong>
-        <span>
-          <span class="lang-ja">従業員情報・出社滞在情報のExcel/CSV整形に時間がかかり、アップロード前の準備コストが高い。</span>
-          <span class="lang-vi">Mất nhiều thời gian format Excel/CSV (nhân viên, lịch sử ra vào) trước khi upload.</span>
-        </span>
+        <strong><span class="lang-ja">グラフを見せるだけで終わる</span><span class="lang-vi">Chỉ dừng ở việc hiện biểu đồ</span></strong>
+        <span><span class="lang-ja">傾向や回答結果は見えるが、意味の読み取りは人が行う。</span><span class="lang-vi">Có thể xem xu hướng và kết quả trả lời, nhưng việc đọc hiểu vẫn do người làm.</span></span>
       </div>
       <div class="pain-item">
-        <strong>
-          <span class="lang-ja">可視化で止まっている</span>
-          <span class="lang-vi">Chỉ dừng ở mức hiển thị</span>
-        </strong>
-        <span>
-          <span class="lang-ja">傾向・出社率・サーベイ結果のグラフ表示のみ。読み取り・分析は人が担う。</span>
-          <span class="lang-vi">Chỉ vẽ biểu đồ (xu hướng, tỷ lệ lên công ty, survey). Đọc hiểu & phân tích vẫn phụ thuộc con người.</span>
-        </span>
-      </div>
-      <div class="pain-item">
-        <strong>
-          <span class="lang-ja">技術的負債（ハードコード）</span>
-          <span class="lang-vi">Nợ kỹ thuật (hard-code)</span>
-        </strong>
-        <span>
-          <span class="lang-ja">ハードコード領域が多く、データずれリスクとAI即時統合の障壁になっている。</span>
-          <span class="lang-vi">Nhiều vùng hard-code → rủi ro lệch dữ liệu và cản trở tích hợp AI ngay.</span>
-        </span>
+        <strong><span class="lang-ja">直書きの設定が多く、広げにくい</span><span class="lang-vi">Nhiều chỗ viết cứng, khó mở rộng</span></strong>
+        <span><span class="lang-ja">プログラム内の固定値が多く、データのずれや新しい分析機能の追加を難しくしている。</span><span class="lang-vi">Nhiều giá trị cố định trong chương trình, dễ lệch dữ liệu và khó thêm chức năng phân tích mới.</span></span>
       </div>
     </div>
 
     <div class="pain-group">
-      <div class="pain-label biz">
-        <span class="lang-ja">B. ビジネス・市場面</span>
-        <span class="lang-vi">B. Thị trường & Kinh doanh SaaS</span>
+      <div class="pain-label biz"><span class="lang-ja">B. 事業・市場</span><span class="lang-vi">B. Kinh doanh và thị trường</span></div>
+      <div class="pain-item biz">
+        <strong><span class="lang-ja">他社より遅れている印象</span><span class="lang-vi">Dễ bị cảm nhận là đi sau đối thủ</span></strong>
+        <span><span class="lang-ja">人事向けの他社が先に高度な分析を出しており、差が伝わりにくい。</span><span class="lang-vi">Đối thủ trong lĩnh vực nhân sự đã có phân tích sâu hơn, điểm khác biệt của Vis chưa rõ.</span></span>
       </div>
       <div class="pain-item biz">
-        <strong>
-          <span class="lang-ja">認知拡大の遅れ</span>
-          <span class="lang-vi">Nhận diện thương hiệu chậm</span>
-        </strong>
-        <span>
-          <span class="lang-ja">AI分析を先に実装したHR-tech競合に対し、差別化メッセージが弱い。</span>
-          <span class="lang-vi">Đối thủ HR-tech đã có AI phân tích sâu trước Vis → thông điệp khác biệt yếu.</span>
-        </span>
+        <strong><span class="lang-ja">説明しやすい強みが弱い</span><span class="lang-vi">Thiếu điểm mạnh dễ thuyết phục</span></strong>
+        <span><span class="lang-ja">商談で「これがあるから選ぶ」と言える機能が少ない。</span><span class="lang-vi">Ít chức năng đủ mạnh để nói “chọn vì có cái này” trong buổi giới thiệu.</span></span>
       </div>
       <div class="pain-item biz">
-        <strong>
-          <span class="lang-ja">強み（USP）不足</span>
-          <span class="lang-vi">Thiếu tính năng mũi nhọn (USP)</span>
-        </strong>
-        <span>
-          <span class="lang-ja">営業が使える「Wow効果」の機能がなく、商談の決め手が弱い。</span>
-          <span class="lang-vi">Sales chưa có tính năng “Wow” để làm vũ khí chốt deal.</span>
-        </span>
-      </div>
-      <div class="pain-item biz">
-        <strong>
-          <span class="lang-ja">成約率の課題</span>
-          <span class="lang-vi">Tỷ lệ chuyển đổi thấp</span>
-        </strong>
-        <span>
-          <span class="lang-ja">需要は高いが、初期設定の複雑さが有料SaaS購入のボトルネック。</span>
-          <span class="lang-vi">Nhu cầu cao nhưng setup ban đầu phức tạp → nghẽn CVR bản SaaS trả phí.</span>
-        </span>
+        <strong><span class="lang-ja">最初の設定が重く、有料利用が進みにくい</span><span class="lang-vi">Thiết lập ban đầu nặng, khó chuyển sang bản trả phí</span></strong>
+        <span><span class="lang-ja">需要はあるが、始め方が複雑で購入の判断が止まりやすい。</span><span class="lang-vi">Nhu cầu có, nhưng cách bắt đầu phức tạp khiến quyết định mua bị dừng lại.</span></span>
       </div>
     </div>
 
     <div class="pain-group">
-      <div class="pain-label org">
-        <span class="lang-ja">C. 運用・組織面</span>
-        <span class="lang-vi">C. Vận hành & Tổ chức Vis</span>
+      <div class="pain-label org"><span class="lang-ja">C. 社内の運用</span><span class="lang-vi">C. Vận hành nội bộ</span></div>
+      <div class="pain-item org">
+        <strong><span class="lang-ja">相談担当の負担が大きい</span><span class="lang-vi">Gánh nặng lớn cho đội tư vấn</span></strong>
+        <span><span class="lang-ja">グラフを見て報告書を手作業で作るため、人数を増やしにくい。</span><span class="lang-vi">Phải nhìn biểu đồ rồi tự viết báo cáo, nên khó mở rộng quy mô dịch vụ.</span></span>
       </div>
       <div class="pain-item org">
-        <strong>
-          <span class="lang-ja">コンサル業務の高負荷</span>
-          <span class="lang-vi">Quá tải mảng tư vấn (XD)</span>
-        </strong>
-        <span>
-          <span class="lang-ja">グラフを見て手作業でレポート作成 → 時間がかかり、サービス拡大が難しい。</span>
-          <span class="lang-vi">Consultant tự nhìn biểu đồ rồi làm báo cáo thủ công → khó scale dịch vụ.</span>
-        </span>
-      </div>
-      <div class="pain-item org">
-        <strong>
-          <span class="lang-ja">内製化の技術力の壁</span>
-          <span class="lang-vi">Rào cản công nghệ khi in-house</span>
-        </strong>
-        <span>
-          <span class="lang-ja">通常の採用だけではAI等の高度技術を自走開発しづらい。</span>
-          <span class="lang-vi">Chỉ tuyển kỹ sư thông thường thì khó tự nghiên cứu/phát triển AI để cạnh tranh.</span>
-        </span>
+        <strong><span class="lang-ja">社内だけで高度な機能を育てにくい</span><span class="lang-vi">Khó tự phát triển chức năng cao trong nội bộ</span></strong>
+        <span><span class="lang-ja">通常の採用だけでは、高度な分析機能を自前で進めにくい。</span><span class="lang-vi">Chỉ tuyển kỹ sư thông thường thì khó tự làm các chức năng phân tích cao cấp.</span></span>
       </div>
     </div>
   </section>
 
-  <!-- 3. PHASES -->
-  <section id="phases">
+  <!-- 3. IMPROVEMENTS BY PROBLEM -->
+  <section id="improvements">
     <div class="section-head">
-      <div class="section-kicker">03 · To-Be</div>
+      <div class="section-kicker">03</div>
       <h2>
-        <span class="lang-ja">改善・新機能の提案（3フェーズ）</span>
-        <span class="lang-vi">Đề xuất cải tiến / tính năng mới (3 giai đoạn)</span>
+        <span class="lang-ja">改善案（困りごとごとに整理）</span>
+        <span class="lang-vi">Đề xuất cải thiện (theo từng vấn đề)</span>
       </h2>
       <p>
-        <span class="lang-ja">まず「入れる・直す」を楽にし、次に「運用」、最後に「AIで読む」へ。摩擦の大きい順に投資します。</span>
-        <span class="lang-vi">Ưu tiên giảm ma sát nhập liệu trước, rồi vận hành Survey, cuối cùng mới tới AI phân tích.</span>
+        <span class="lang-ja">優先度では分けません。どの困りごとをどう良くするかを軸に並べます。</span>
+        <span class="lang-vi">Không xếp theo mức ưu tiên. Trình bày theo từng vấn đề cần cải thiện.</span>
       </p>
     </div>
 
-    <!-- Phase 1 -->
-    <article class="phase" id="phase1">
-      <div class="phase-head">
+    <!-- PROBLEM 1: INPUT -->
+    <article class="problem" id="input">
+      <div class="problem-head">
         <div>
-          <div class="phase-badge">
-            <span class="lang-ja">フェーズ 1 · 優先度 High</span>
-            <span class="lang-vi">Giai đoạn 1 · Ưu tiên cao</span>
-          </div>
+          <div class="problem-no"><span class="lang-ja">困りごと 1</span><span class="lang-vi">Vấn đề 1</span></div>
           <h3>
-            <span class="lang-ja">入力フロー最適化（Input & Data Cleansing）</span>
-            <span class="lang-vi">Tối ưu hóa luồng nhập liệu (Input & Data Cleansing)</span>
+            <span class="lang-ja">データの入れ方が分かりにくく、手作業が多い</span>
+            <span class="lang-vi">Cách đưa dữ liệu vào khó hiểu và nhiều thao tác tay</span>
           </h3>
         </div>
-        <div class="phase-scope">
-          <span class="lang-ja">適用: Top / 稼働分析 / 空間分析</span>
-          <span class="lang-vi">Áp dụng: Top · 稼働分析 · 空間分析</span>
+        <div class="problem-scope">
+          <span class="lang-ja">対象: トップ / 稼働分析 / 空間分析</span>
+          <span class="lang-vi">Phạm vi: trang đầu · phân tích hoạt động · phân tích không gian</span>
         </div>
       </div>
-      <div class="phase-body">
+      <div class="problem-body">
         <div class="compare">
           <div class="as-is">
-            <h4>
-              <span class="lang-ja">As-Is（現状）</span>
-              <span class="lang-vi">As-Is (Hiện tại)</span>
-            </h4>
+            <h4><span class="lang-ja">いま</span><span class="lang-vi">Hiện tại</span></h4>
             <ul>
-              <li>
-                <span class="lang-ja">出社滞在・従業員ファイルの整形に時間がかかる</span>
-                <span class="lang-vi">Mất thời gian format file 出社滞在 / 従業員</span>
-              </li>
-              <li>
-                <span class="lang-ja">フォーマット不正時に拒否されるが、エラー表示がない</span>
-                <span class="lang-vi">File sai format bị từ chối nhưng không có thông báo lỗi</span>
-              </li>
-              <li>
-                <span class="lang-ja">画面が分散し、同じ操作を繰り返す</span>
-                <span class="lang-vi">Thao tác rời rạc, lặp lại trên nhiều màn hình</span>
-              </li>
+              <li><span class="lang-ja">出社・滞在と従業員の表を、上げる前に手で整える</span><span class="lang-vi">Phải chỉnh tay bảng đến/ở lại và bảng nhân viên trước khi đưa lên</span></li>
+              <li><span class="lang-ja">形式が違うと止まるが、理由が表示されない</span><span class="lang-vi">Sai định dạng thì dừng, nhưng không hiện lý do</span></li>
+              <li><span class="lang-ja">画面が分かれ、同じような設定を繰り返す</span><span class="lang-vi">Màn hình tách rời, phải lặp lại các bước thiết lập tương tự</span></li>
             </ul>
           </div>
           <div class="to-be">
-            <h4>
-              <span class="lang-ja">To-Be（改善後）</span>
-              <span class="lang-vi">To-Be (Sau cải tiến)</span>
-            </h4>
+            <h4><span class="lang-ja">改善後</span><span class="lang-vi">Sau cải thiện</span></h4>
             <ul>
-              <li>
-                <span class="lang-ja">1つのステップ式ポップアップにアップロードを集約</span>
-                <span class="lang-vi">Gom upload vào 1 popup wizard từng bước</span>
-              </li>
-              <li>
-                <span class="lang-ja">エラーUIで問題箇所と修正案を提示</span>
-                <span class="lang-vi">Error UI chỉ rõ lỗi và gợi ý sửa</span>
-              </li>
-              <li>
-                <span class="lang-ja">FEがカラムを即時提案（ルールベース）</span>
-                <span class="lang-vi">FE đề xuất cột ngay (rule-based, không cần AI)</span>
-              </li>
+              <li><span class="lang-ja">案内つきの一つの流れにまとめる</span><span class="lang-vi">Gom thành một luồng có hướng dẫn từng bước</span></li>
+              <li><span class="lang-ja">失敗時に、どこが違うかと直し方を示す</span><span class="lang-vi">Khi lỗi, chỉ rõ chỗ sai và cách sửa</span></li>
+              <li><span class="lang-ja">列の対応を画面が提案し、人は確認する</span><span class="lang-vi">Màn hình đề xuất cột tương ứng, người chỉ cần xác nhận</span></li>
             </ul>
           </div>
         </div>
+
         <div class="feature-list">
           <div class="feature">
             <div class="ico">1</div>
             <div>
-              <strong>
-                <span class="lang-ja">統合ウィザード（Step-by-step）</span>
-                <span class="lang-vi">Wizard hợp nhất (Step-by-step)</span>
-              </strong>
-              <span>
-                <span class="lang-ja">Wifi CSV / 入退室Excel / 手入力Excel / Meraki を1フローに統合。</span>
-                <span class="lang-vi">Gộp Wifi CSV · 入退室 Excel · Excel tay · Meraki vào 1 luồng.</span>
-              </span>
+              <strong><span class="lang-ja">一つの案内画面にまとめる</span><span class="lang-vi">Gom vào một màn hình hướng dẫn</span></strong>
+              <span><span class="lang-ja">稼働分析・空間分析とも、種類の選択から保存までを同じ流れにする。</span><span class="lang-vi">Cả phân tích hoạt động và không gian đều đi từ chọn loại đến lưu trong cùng một luồng.</span></span>
             </div>
           </div>
           <div class="feature">
             <div class="ico">2</div>
             <div>
-              <strong>
-                <span class="lang-ja">エラーUI & 即時バリデーション</span>
-                <span class="lang-vi">Error UI & validate tức thì</span>
-              </strong>
-              <span>
-                <span class="lang-ja">不正ファイルを拒否するだけでなく、何が違うかを画面上で説明。</span>
-                <span class="lang-vi">Không chỉ từ chối file sai — giải thích rõ lỗi ngay trên UI.</span>
-              </span>
+              <strong><span class="lang-ja">失敗理由をその場で見せる</span><span class="lang-vi">Hiện lý do lỗi ngay tại chỗ</span></strong>
+              <span><span class="lang-ja">「失敗しました」だけで終わらせず、直し方まで案内する。</span><span class="lang-vi">Không dừng ở “thất bại”, mà hướng dẫn luôn cách sửa.</span></span>
             </div>
           </div>
           <div class="feature">
             <div class="ico">3</div>
             <div>
-              <strong>
-                <span class="lang-ja">カラム自動提案 → 確認</span>
-                <span class="lang-vi">Tự đề xuất cột → người dùng xác nhận</span>
-              </strong>
-              <span>
-                <span class="lang-ja">旧「詳細設定」の手入力を、提案＋プルダウン確認に置き換え。</span>
-                <span class="lang-vi">Thay nhập tay “詳細設定” bằng đề xuất + chọn lại bằng dropdown.</span>
-              </span>
+              <strong><span class="lang-ja">列の対応を提案する</span><span class="lang-vi">Đề xuất cách gắn cột</span></strong>
+              <span><span class="lang-ja">手入力の列名指定をやめ、候補から選ぶ形にする。</span><span class="lang-vi">Bỏ việc gõ tên cột bằng tay, chuyển sang chọn từ danh sách gợi ý.</span></span>
             </div>
           </div>
         </div>
-        <p style="margin-top:14px;font-size:0.86rem;color:var(--ink-soft)">
-          <span class="lang-ja">→ 下の <a href="#mockup">Mockup</a> で実際の操作感を確認できます。</span>
-          <span class="lang-vi">→ Xem cảm giác thao tác thực tế ở phần <a href="#mockup">Mockup</a> bên dưới.</span>
+
+        <!-- Evidence: current UI -->
+        <div class="evidence">
+          <div class="evidence-toolbar">
+            <div>
+              <h4><span class="lang-ja">いまの画面の再現（稼働分析の設定）</span><span class="lang-vi">Mô tả màn hình hiện tại (thiết lập phân tích hoạt động)</span></h4>
+              <p><span class="lang-ja">手順が多く、画面が分かれ、失敗理由が出ない様子を示しています。</span><span class="lang-vi">Minh họa nhiều bước, màn hình tách rời, và không hiện lý do lỗi.</span></p>
+            </div>
+            <div class="evidence-actions">
+              <a class="btn btn-ghost" href="evidence-current-operation-settings.html" target="_blank" rel="noopener"><span class="lang-ja">別の窓で開く</span><span class="lang-vi">Mở cửa sổ mới</span></a>
+            </div>
+          </div>
+          <div class="frame-wrap">
+            <iframe class="frame mid" title="Current operation settings evidence" src="evidence-current-operation-settings.html" loading="lazy"></iframe>
+          </div>
+        </div>
+        <p class="caption">
+          <span class="lang-ja">上図は、現行の稼働分析設定で起きやすい困りごとを分かりやすく再現したものです（実画面に近い構成）。</span>
+          <span class="lang-vi">Hình trên tái hiện các khó khăn thường gặp trong thiết lập phân tích hoạt động hiện tại (bố cục gần với màn hình thật).</span>
+        </p>
+
+        <!-- Mockup operation -->
+        <div class="mockup-shell" style="margin-top:18px">
+          <div class="mockup-toolbar">
+            <div>
+              <h3><span class="lang-ja">改善案の画面例 — 稼働分析</span><span class="lang-vi">Ví dụ màn hình cải thiện — phân tích hoạt động</span></h3>
+              <p><span class="lang-ja">4つのデータ元を一つの案内にまとめ、列の対応をその場で提案します。</span><span class="lang-vi">Gộp 4 nguồn dữ liệu vào một hướng dẫn, đề xuất gắn cột ngay trên màn hình.</span></p>
+            </div>
+            <div class="mockup-actions">
+              <a class="btn btn-ghost" href="mockup-operation-setup-wizard.html" target="_blank" rel="noopener"><span class="lang-ja">別の窓で開く</span><span class="lang-vi">Mở cửa sổ mới</span></a>
+              <button type="button" class="btn btn-primary" onclick="reloadFrame('frame-op')"><span class="lang-ja">再読み込み</span><span class="lang-vi">Tải lại</span></button>
+            </div>
+          </div>
+          <div class="frame-wrap">
+            <iframe id="frame-op" class="frame tall" title="Operation setup wizard mockup" src="mockup-operation-setup-wizard.html" loading="lazy"></iframe>
+          </div>
+        </div>
+
+        <div class="mh-grid">
+          <div class="mh"><div class="n">1</div><strong><span class="lang-ja">データ元を選ぶ</span><span class="lang-vi">Chọn nguồn dữ liệu</span></strong><span><span class="lang-ja">無線 / 入退室 / 手入力 / 自動収集</span><span class="lang-vi">Không dây · ra vào · nhập tay · thu thập tự động</span></span></div>
+          <div class="mh"><div class="n">2</div><strong><span class="lang-ja">ファイルを上げる</span><span class="lang-vi">Đưa tệp lên</span></strong><span><span class="lang-ja">その場で形式を確認</span><span class="lang-vi">Kiểm tra định dạng ngay</span></span></div>
+          <div class="mh"><div class="n">3</div><strong><span class="lang-ja">列の対応を確認</span><span class="lang-vi">Xác nhận gắn cột</span></strong><span><span class="lang-ja">提案を見て直せる</span><span class="lang-vi">Xem gợi ý và chỉnh lại được</span></span></div>
+          <div class="mh"><div class="n">4</div><strong><span class="lang-ja">条件を確認して保存</span><span class="lang-vi">Xác nhận điều kiện rồi lưu</span></strong><span><span class="lang-ja">1回の保存で完了</span><span class="lang-vi">Lưu một lần là xong</span></span></div>
+        </div>
+
+        <!-- Mockup space -->
+        <div class="mockup-shell" style="margin-top:18px">
+          <div class="mockup-toolbar">
+            <div>
+              <h3><span class="lang-ja">改善案の画面例 — 空間分析</span><span class="lang-vi">Ví dụ màn hình cải thiện — phân tích không gian</span></h3>
+              <p><span class="lang-ja">利用ログとフロア図面の取り込みを、同じ案内の流れにまとめます。</span><span class="lang-vi">Gộp việc đưa nhật ký sử dụng và sơ đồ tầng vào cùng một luồng hướng dẫn.</span></p>
+            </div>
+            <div class="mockup-actions">
+              <a class="btn btn-ghost" href="mockup-space-analysis-wizard.html" target="_blank" rel="noopener"><span class="lang-ja">別の窓で開く</span><span class="lang-vi">Mở cửa sổ mới</span></a>
+              <button type="button" class="btn btn-primary" onclick="reloadFrame('frame-space')"><span class="lang-ja">再読み込み</span><span class="lang-vi">Tải lại</span></button>
+            </div>
+          </div>
+          <div class="frame-wrap">
+            <iframe id="frame-space" class="frame tall" title="Space analysis setup mockup" src="mockup-space-analysis-wizard.html" loading="lazy"></iframe>
+          </div>
+        </div>
+        <p class="caption">
+          <span class="lang-ja">空間分析でも、稼働分析と同じ考え方（一つの流れ・失敗理由の表示・列の提案）を使います。</span>
+          <span class="lang-vi">Phân tích không gian cũng dùng cùng cách làm với phân tích hoạt động: một luồng, hiện lý do lỗi, đề xuất gắn cột.</span>
         </p>
       </div>
     </article>
 
-    <!-- Phase 2 -->
-    <article class="phase" id="phase2">
-      <div class="phase-head">
+    <!-- PROBLEM 2: SURVEY -->
+    <article class="problem" id="survey">
+      <div class="problem-head">
         <div>
-          <div class="phase-badge" style="background:var(--amber)">
-            <span class="lang-ja">フェーズ 2 · 優先度 Mid</span>
-            <span class="lang-vi">Giai đoạn 2 · Ưu tiên trung bình</span>
-          </div>
+          <div class="problem-no"><span class="lang-ja">困りごと 2</span><span class="lang-vi">Vấn đề 2</span></div>
           <h3>
-            <span class="lang-ja">スマートなSurvey運用</span>
-            <span class="lang-vi">Vận hành Survey thông minh</span>
+            <span class="lang-ja">調査の進み具合が分かりにくく、催促が手作業</span>
+            <span class="lang-vi">Khó theo dõi tiến độ khảo sát, việc nhắc nhở làm bằng tay</span>
           </h3>
         </div>
-        <div class="phase-scope">
-          <span class="lang-ja">適用: サーベイ設定・進捗管理</span>
-          <span class="lang-vi">Áp dụng: thiết lập & theo dõi Survey</span>
+        <div class="problem-scope">
+          <span class="lang-ja">対象: 調査の設定と進捗確認</span>
+          <span class="lang-vi">Phạm vi: thiết lập và theo dõi khảo sát</span>
         </div>
       </div>
-      <div class="phase-body">
+      <div class="problem-body">
         <div class="compare">
           <div class="as-is">
-            <h4>
-              <span class="lang-ja">As-Is（現状）</span>
-              <span class="lang-vi">As-Is (Hiện tại)</span>
-            </h4>
+            <h4><span class="lang-ja">いま</span><span class="lang-vi">Hiện tại</span></h4>
             <ul>
-              <li>
-                <span class="lang-ja">Survey設定が手動中心</span>
-                <span class="lang-vi">Thiết lập survey chủ yếu thủ công</span>
-              </li>
-              <li>
-                <span class="lang-ja">未回答者確認はCSVエクスポート→Excel目視</span>
-                <span class="lang-vi">Check người chưa làm: Export CSV → lọc mắt trên Excel</span>
-              </li>
-              <li>
-                <span class="lang-ja">リマインドはシステム外で個別連絡</span>
-                <span class="lang-vi">Nhắc nhở phải liên hệ ngoài hệ thống</span>
-              </li>
+              <li><span class="lang-ja">誰が未回答かを知るために表を書き出す</span><span class="lang-vi">Phải xuất bảng ra ngoài để biết ai chưa trả lời</span></li>
+              <li><span class="lang-ja">表計算ソフトで目視確認する</span><span class="lang-vi">Mở bảng tính và kiểm tra bằng mắt</span></li>
+              <li><span class="lang-ja">催促はシステム外で個別に行う</span><span class="lang-vi">Nhắc nhở phải làm riêng bên ngoài hệ thống</span></li>
             </ul>
           </div>
           <div class="to-be">
-            <h4>
-              <span class="lang-ja">To-Be（改善後）</span>
-              <span class="lang-vi">To-Be (Sau cải tiến)</span>
-            </h4>
+            <h4><span class="lang-ja">改善後</span><span class="lang-vi">Sau cải thiện</span></h4>
             <ul>
-              <li>
-                <span class="lang-ja">進捗ダッシュボード（回答済 / 未回答）をWeb表示</span>
-                <span class="lang-vi">Dashboard tiến độ realtime (Đã làm / Chưa làm) trên Web</span>
-              </li>
-              <li>
-                <span class="lang-ja">自動リマインド or 1クリック一括通知</span>
-                <span class="lang-vi">Auto-remind hoặc nhắc 1-chạm tới user chưa hoàn thành</span>
-              </li>
-              <li>
-                <span class="lang-ja">CSVを「状態確認のためだけ」に使う必要がなくなる</span>
-                <span class="lang-vi">Không còn phải export CSV chỉ để check trạng thái</span>
-              </li>
+              <li><span class="lang-ja">画面上で回答済み / 未回答をすぐ見る</span><span class="lang-vi">Xem ngay trên màn hình ai đã trả lời / chưa trả lời</span></li>
+              <li><span class="lang-ja">未回答者へまとめて案内できる</span><span class="lang-vi">Gửi hướng dẫn hàng loạt cho người chưa trả lời</span></li>
+              <li><span class="lang-ja">定期案内を設定できる</span><span class="lang-vi">Có thể đặt lịch gửi hướng dẫn định kỳ</span></li>
             </ul>
           </div>
         </div>
+
         <div class="feature-list">
           <div class="feature">
             <div class="ico">A</div>
             <div>
-              <strong>
-                <span class="lang-ja">リアルタイム進捗ダッシュボード</span>
-                <span class="lang-vi">Dashboard trạng thái realtime</span>
-              </strong>
-              <span>
-                <span class="lang-ja">回答率をグラフで即把握。運用の「見える化」。</span>
-                <span class="lang-vi">Nắm tỷ lệ hoàn thành ngay trên biểu đồ — vận hành trực quan.</span>
-              </span>
+              <strong><span class="lang-ja">進捗の一覧画面</span><span class="lang-vi">Màn hình theo dõi tiến độ</span></strong>
+              <span><span class="lang-ja">回答率や部署別の進み具合を、書き出しなしで確認する。</span><span class="lang-vi">Xem tỷ lệ trả lời và tiến độ theo bộ phận mà không cần xuất tệp.</span></span>
             </div>
           </div>
           <div class="feature">
             <div class="ico">B</div>
             <div>
-              <strong>
-                <span class="lang-ja">Automation Queue（自動リマインド）</span>
-                <span class="lang-vi">Automation Queue (nhắc tự động)</span>
-              </strong>
-              <span>
-                <span class="lang-ja">メールSurvey向けに定期自動送信、または未完了者への一括送信。</span>
-                <span class="lang-vi">Gửi mail định kỳ hoặc bulk tới user chưa xong (luồng survey qua mail).</span>
-              </span>
+              <strong><span class="lang-ja">案内の自動化</span><span class="lang-vi">Gửi hướng dẫn tự động</span></strong>
+              <span><span class="lang-ja">未回答者への一括案内、または決まった日時の自動送信。</span><span class="lang-vi">Gửi hàng loạt cho người chưa trả lời, hoặc gửi tự động theo lịch cố định.</span></span>
             </div>
           </div>
         </div>
+
+        <div class="mockup-shell" style="margin-top:16px">
+          <div class="mockup-toolbar">
+            <div>
+              <h3><span class="lang-ja">改善案の画面例 — 調査の進捗管理</span><span class="lang-vi">Ví dụ màn hình cải thiện — theo dõi khảo sát</span></h3>
+              <p><span class="lang-ja">回答率、未回答者、一括案内、定期案内を一つの画面にまとめた例です。</span><span class="lang-vi">Ví dụ gom tỷ lệ trả lời, danh sách chưa trả lời, gửi hàng loạt và lịch định kỳ vào một màn hình.</span></p>
+            </div>
+            <div class="mockup-actions">
+              <a class="btn btn-ghost" href="mockup-survey-dashboard.html" target="_blank" rel="noopener"><span class="lang-ja">別の窓で開く</span><span class="lang-vi">Mở cửa sổ mới</span></a>
+              <button type="button" class="btn btn-primary" onclick="reloadFrame('frame-survey')"><span class="lang-ja">再読み込み</span><span class="lang-vi">Tải lại</span></button>
+            </div>
+          </div>
+          <div class="frame-wrap">
+            <iframe id="frame-survey" class="frame mid" title="Survey operations dashboard mockup" src="mockup-survey-dashboard.html" loading="lazy"></iframe>
+          </div>
+        </div>
+        <p class="caption">
+          <span class="lang-ja">この画面例では、進捗確認のために表を書き出す必要がなくなります。</span>
+          <span class="lang-vi">Với ví dụ này, không còn cần xuất bảng chỉ để kiểm tra tiến độ.</span>
+        </p>
       </div>
     </article>
 
-    <!-- Phase 3 -->
-    <article class="phase" id="phase3">
-      <div class="phase-head">
+    <!-- PROBLEM 3: AI / OUTPUT -->
+    <article class="problem" id="ai">
+      <div class="problem-head">
         <div>
-          <div class="phase-badge" style="background:#4338ca">
-            <span class="lang-ja">フェーズ 3 · 差別化（要議論）</span>
-            <span class="lang-vi">Giai đoạn 3 · Khác biệt hóa (cần thảo luận)</span>
-          </div>
+          <div class="problem-no"><span class="lang-ja">困りごと 3</span><span class="lang-vi">Vấn đề 3</span></div>
           <h3>
-            <span class="lang-ja">出力分析 × AI活用（3レベル）</span>
-            <span class="lang-vi">Phân tích đầu ra × AI (3 mức độ)</span>
+            <span class="lang-ja">結果は見えるが、読み取りと提案が人頼み</span>
+            <span class="lang-vi">Có kết quả nhưng việc đọc hiểu và đề xuất vẫn phụ thuộc người</span>
           </h3>
         </div>
-        <div class="phase-scope">
-          <span class="lang-ja">適用: 稼働分析 / サーベイ結果</span>
-          <span class="lang-vi">Áp dụng: 稼働分析 · kết quả Survey</span>
+        <div class="problem-scope">
+          <span class="lang-ja">対象: 稼働分析 / 調査結果</span>
+          <span class="lang-vi">Phạm vi: phân tích hoạt động · kết quả khảo sát</span>
         </div>
       </div>
-      <div class="phase-body">
+      <div class="problem-body">
         <div class="compare" style="margin-bottom:16px">
           <div class="as-is">
-            <h4>
-              <span class="lang-ja">As-Is（現状）</span>
-              <span class="lang-vi">As-Is (Hiện tại)</span>
-            </h4>
+            <h4><span class="lang-ja">いま</span><span class="lang-vi">Hiện tại</span></h4>
             <p>
-              <span class="lang-ja">静的グラフのみ。顧客もXDも、目視で読み取り空間施策を考える必要がある。</span>
-              <span class="lang-vi">Chỉ biểu đồ tĩnh. Khách hàng và XD vẫn phải tự nhìn, tự phân tích để đề xuất giải pháp không gian.</span>
+              <span class="lang-ja">静的なグラフのみ。お客様も相談担当も、目で見て意味を考え、空間の打ち手を決める必要がある。</span>
+              <span class="lang-vi">Chỉ có biểu đồ tĩnh. Khách hàng và tư vấn đều phải tự nhìn, tự hiểu, rồi mới nghĩ hướng xử lý không gian.</span>
             </p>
           </div>
           <div class="to-be">
-            <h4>
-              <span class="lang-ja">To-Be（方向性）</span>
-              <span class="lang-vi">To-Be (Định hướng)</span>
-            </h4>
+            <h4><span class="lang-ja">改善の方向</span><span class="lang-vi">Hướng cải thiện</span></h4>
             <p>
-              <span class="lang-ja">AIが「読む・つなぐ・答える」。投資規模に応じて3段階から選択可能。</span>
-              <span class="lang-vi">AI “đọc · liên kết · trả lời”. Có thể chọn 1 trong 3 mức theo mức đầu tư.</span>
+              <span class="lang-ja">仕組みが「読む・つなぐ・答える」を助ける。深さの違う3つの形から選べる。</span>
+              <span class="lang-vi">Hệ thống hỗ trợ “đọc · nối dữ liệu · trả lời”. Có thể chọn một trong ba mức độ sâu khác nhau.</span>
             </p>
           </div>
         </div>
 
-        <div class="grid-3" id="ai">
+        <div class="grid-3">
           <article class="ai-level l1">
-            <div class="lvl">LEVEL 1 · Low</div>
-            <h3>AI Insight Card</h3>
+            <div class="lvl"><span class="lang-ja">形 1 · 軽い</span><span class="lang-vi">Dạng 1 · Nhẹ</span></div>
+            <h3><span class="lang-ja">短い読み取りメモ</span><span class="lang-vi">Ghi chú đọc hiểu ngắn</span></h3>
             <p>
-              <span class="lang-ja">各グラフの下に、短い分析テキスト＋ミニチャートを追加。従来の見方はそのまま、AIが「読み取りコメント」を自動生成。</span>
-              <span class="lang-vi">Thêm thẻ text phân tích + mini-chart dưới mỗi biểu đồ. Vẫn xem chart truyền thống, AI tự viết nhận xét.</span>
+              <span class="lang-ja">各グラフの下に、短い説明文を自動で添える。いまの見方はそのまま残す。</span>
+              <span class="lang-vi">Tự thêm đoạn giải thích ngắn dưới mỗi biểu đồ. Cách xem hiện tại vẫn giữ nguyên.</span>
             </p>
-            <div class="effort">
-              <span class="lang-ja">導入しやすい / 既存画面に差し込み</span>
-              <span class="lang-vi">Dễ triển khai / gắn vào màn hình hiện có</span>
+            <div class="note">
+              <span class="lang-ja">既存画面に足しやすい</span>
+              <span class="lang-vi">Dễ gắn vào màn hình sẵn có</span>
             </div>
           </article>
           <article class="ai-level l2">
-            <div class="lvl">LEVEL 2 · Mid</div>
-            <h3>Workplace Brief</h3>
+            <div class="lvl"><span class="lang-ja">形 2 · 中くらい</span><span class="lang-vi">Dạng 2 · Vừa</span></div>
+            <h3><span class="lang-ja">職場の月次まとめ</span><span class="lang-vi">Bản tổng hợp hàng tháng về nơi làm việc</span></h3>
             <p>
-              <span class="lang-ja">稼働 × Survey × 空間を横断した月次「オフィス通信」。Health Score、クロス分析、具体アクションを自動発行。</span>
-              <span class="lang-vi">Dashboard tổng hợp Operation + Survey + Space. Hàng tháng AI xuất “bản tin văn phòng”: Health Score, insight chéo, hành động cụ thể.</span>
+              <span class="lang-ja">稼働・調査・空間をつなぎ、健康度・気づき・次の行動を毎月まとめる。</span>
+              <span class="lang-vi">Nối dữ liệu hoạt động · khảo sát · không gian, mỗi tháng gom điểm sức khỏe, nhận xét và việc cần làm tiếp.</span>
             </p>
-            <div class="effort">
-              <span class="lang-ja">差別化の核 / クロスドメイン分析</span>
-              <span class="lang-vi">Trụ cột khác biệt / phân tích cross-domain</span>
+            <div class="note">
+              <span class="lang-ja">他社との差を出しやすい</span>
+              <span class="lang-vi">Dễ tạo điểm khác biệt với đối thủ</span>
             </div>
           </article>
           <article class="ai-level l3">
-            <div class="lvl">LEVEL 3 · High</div>
-            <h3>AI Chat</h3>
+            <div class="lvl"><span class="lang-ja">形 3 · 深い</span><span class="lang-vi">Dạng 3 · Sâu</span></div>
+            <h3><span class="lang-ja">質問でデータを聞く</span><span class="lang-vi">Hỏi dữ liệu bằng câu hỏi thường</span></h3>
             <p>
-              <span class="lang-ja">自然言語でデータに質問（セキュアなText-to-SQL）。回答＋グラフをチャット内で返す。XD依存を大幅削減。</span>
-              <span class="lang-vi">Hỏi đáp dữ liệu bằng ngôn ngữ tự nhiên (Text-to-SQL bảo mật). Trả lời + biểu đồ trong chat — giảm phụ thuộc Consultant.</span>
+              <span class="lang-ja">普段の言葉で質問すると、文章とグラフで返す。相談担当への依存を減らせる。</span>
+              <span class="lang-vi">Hỏi bằng lời thường ngày, hệ thống trả lời bằng chữ và biểu đồ. Giảm phụ thuộc vào tư vấn.</span>
             </p>
             <div class="example">
               <span class="lang-ja">例:「先月、出社が最も少なかった部署は？」</span>
-              <span class="lang-vi">VD: “Tháng trước phòng nào đi làm trực tiếp ít nhất?”</span>
+              <span class="lang-vi">Ví dụ: “Tháng trước, bộ phận nào đến công ty ít nhất?”</span>
             </div>
-            <div class="effort" style="margin-top:10px">
-              <span class="lang-ja">Wow効果最大 / 要セキュリティ設計</span>
-              <span class="lang-vi">Wow mạnh nhất / cần thiết kế bảo mật kỹ</span>
+            <div class="note" style="margin-top:10px">
+              <span class="lang-ja">効果は大きいが、安全設計が必要</span>
+              <span class="lang-vi">Hiệu quả lớn nhưng cần thiết kế an toàn dữ liệu</span>
             </div>
           </article>
         </div>
@@ -1023,240 +816,49 @@
     </article>
   </section>
 
-  <!-- 4. MOCKUP -->
-  <section id="mockup">
-    <div class="section-head">
-      <div class="section-kicker">04 · Mockup</div>
-      <h2>
-        <span class="lang-ja">フェーズ1 モックアップ — 稼働分析セットアップ</span>
-        <span class="lang-vi">Mockup Giai đoạn 1 — Setup 稼働分析</span>
-      </h2>
-      <p>
-        <span class="lang-ja">開発側が作成した試作品です。4データソースを1ウィザードに統合し、アップロード直後にFEがカラムを提案します（ルールベース・AI不使用）。</span>
-        <span class="lang-vi">Bản thử do dev tạo. Gộp 4 nguồn dữ liệu vào 1 wizard; sau upload FE đề xuất cột ngay (rule-based, không dùng AI).</span>
-      </p>
-    </div>
-
-    <div class="mockup-highlights">
-      <div class="mh">
-        <div class="n">STEP 1</div>
-        <strong>
-          <span class="lang-ja">データソース選択</span>
-          <span class="lang-vi">Chọn nguồn dữ liệu</span>
-        </strong>
-        <span>
-          <span class="lang-ja">Wifi / 入退室 / 手入力 / Meraki</span>
-          <span class="lang-vi">Wifi · 入退室 · Nhập tay · Meraki</span>
-        </span>
-      </div>
-      <div class="mh">
-        <div class="n">STEP 2</div>
-        <strong>
-          <span class="lang-ja">アップロード & 即時チェック</span>
-          <span class="lang-vi">Upload & check tức thì</span>
-        </strong>
-        <span>
-          <span class="lang-ja">旧2画面 → 新1画面</span>
-          <span class="lang-vi">Cũ 2 màn → Mới 1 màn</span>
-        </span>
-      </div>
-      <div class="mh">
-        <div class="n">STEP 3</div>
-        <strong>
-          <span class="lang-ja">カラム自動提案</span>
-          <span class="lang-vi">Tự đề xuất cột</span>
-        </strong>
-        <span>
-          <span class="lang-ja">提案後にプルダウンで修正可</span>
-          <span class="lang-vi">Có thể sửa lại bằng dropdown</span>
-        </span>
-      </div>
-      <div class="mh">
-        <div class="n">STEP 4–5</div>
-        <strong>
-          <span class="lang-ja">集計条件 → 確認保存</span>
-          <span class="lang-vi">Điều kiện tổng hợp → Lưu</span>
-        </strong>
-        <span>
-          <span class="lang-ja">1回の保存でセットアップ完了</span>
-          <span class="lang-vi">1 lần lưu là xong setup</span>
-        </span>
-      </div>
-    </div>
-
-    <div class="mockup-shell" style="margin-top:16px">
-      <div class="mockup-toolbar">
-        <div>
-          <h3>
-            <span class="lang-ja">インタラクティブ Mockup</span>
-            <span class="lang-vi">Mockup tương tác</span>
-          </h3>
-          <p>
-            <span class="lang-ja">下の画面内で「稼働分析セットアップを開始」を押して操作できます。</span>
-            <span class="lang-vi">Trong khung bên dưới, bấm “稼働分析セットアップを開始” để thao tác thử.</span>
-          </p>
-        </div>
-        <div class="mockup-actions">
-          <a class="btn btn-ghost" href="mockup-operation-setup-wizard.html" target="_blank" rel="noopener">
-            <span class="lang-ja">別タブで開く</span>
-            <span class="lang-vi">Mở tab mới</span>
-          </a>
-          <button type="button" class="btn btn-primary" onclick="reloadMockup()">
-            <span class="lang-ja">再読み込み</span>
-            <span class="lang-vi">Tải lại</span>
-          </button>
-        </div>
-      </div>
-      <div class="mockup-frame-wrap">
-        <iframe
-          id="mockup-iframe"
-          class="mockup-frame"
-          title="WDP Operation Setup Wizard Mockup"
-          src="mockup-operation-setup-wizard.html"
-          loading="lazy"
-        ></iframe>
-      </div>
-    </div>
-  </section>
-
-  <!-- 5. SUMMARY -->
+  <!-- SUMMARY -->
   <section id="summary">
     <div class="section-head">
-      <div class="section-kicker">05 · Summary</div>
+      <div class="section-kicker">04</div>
       <h2>
-        <span class="lang-ja">提案サマリー（一目で把握）</span>
-        <span class="lang-vi">Tóm tắt đề xuất (nhìn một phát là nắm)</span>
+        <span class="lang-ja">まとめ（困りごとと改善の対応）</span>
+        <span class="lang-vi">Tóm tắt (khó khăn và hướng cải thiện)</span>
       </h2>
     </div>
-
     <div style="overflow-x:auto;border-radius:14px">
       <table class="summary-table">
         <thead>
           <tr>
-            <th>
-              <span class="lang-ja">フェーズ</span>
-              <span class="lang-vi">Giai đoạn</span>
-            </th>
-            <th>
-              <span class="lang-ja">解決する主な課題</span>
-              <span class="lang-vi">Vấn đề giải quyết</span>
-            </th>
-            <th>
-              <span class="lang-ja">成果イメージ</span>
-              <span class="lang-vi">Kết quả kỳ vọng</span>
-            </th>
-            <th>
-              <span class="lang-ja">優先</span>
-              <span class="lang-vi">Ưu tiên</span>
-            </th>
+            <th><span class="lang-ja">困りごと</span><span class="lang-vi">Vấn đề</span></th>
+            <th><span class="lang-ja">改善の要点</span><span class="lang-vi">Điểm cải thiện chính</span></th>
+            <th><span class="lang-ja">画面例</span><span class="lang-vi">Ví dụ màn hình</span></th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>
-              <strong>
-                <span class="lang-ja">1. 入力最適化</span>
-                <span class="lang-vi">1. Tối ưu nhập liệu</span>
-              </strong>
-            </td>
-            <td>
-              <span class="lang-ja">手作業・エラー不明・画面分散</span>
-              <span class="lang-vi">Thủ công · lỗi mơ hồ · UI rời rạc</span>
-            </td>
-            <td>
-              <span class="lang-ja">セットアップ摩擦↓ → CVR改善の土台</span>
-              <span class="lang-vi">Giảm ma sát setup → nền tảng tăng CVR</span>
-            </td>
-            <td><span class="tag-pill now">NOW</span></td>
+            <td><strong><span class="lang-ja">入力が難しい・手作業が多い</span><span class="lang-vi">Nhập liệu khó · nhiều thao tác tay</span></strong></td>
+            <td><span class="lang-ja">一つの案内、失敗理由の表示、列の提案</span><span class="lang-vi">Một luồng hướng dẫn, hiện lý do lỗi, đề xuất gắn cột</span></td>
+            <td><span class="lang-ja">稼働分析 / 空間分析の案内画面</span><span class="lang-vi">Màn hình hướng dẫn phân tích hoạt động / không gian</span></td>
           </tr>
           <tr>
-            <td>
-              <strong>
-                <span class="lang-ja">2. Survey運用</span>
-                <span class="lang-vi">2. Vận hành Survey</span>
-              </strong>
-            </td>
-            <td>
-              <span class="lang-ja">CSV目視・手動リマインド</span>
-              <span class="lang-vi">Lọc CSV bằng mắt · nhắc tay</span>
-            </td>
-            <td>
-              <span class="lang-ja">Tenant Adminの運用工数↓</span>
-              <span class="lang-vi">Giảm công vận hành cho Tenant Admin</span>
-            </td>
-            <td><span class="tag-pill next">NEXT</span></td>
+            <td><strong><span class="lang-ja">調査の進捗確認が手作業</span><span class="lang-vi">Theo dõi khảo sát bằng tay</span></strong></td>
+            <td><span class="lang-ja">進捗一覧と案内の自動化</span><span class="lang-vi">Danh sách tiến độ và gửi hướng dẫn tự động</span></td>
+            <td><span class="lang-ja">調査の進捗管理画面</span><span class="lang-vi">Màn hình theo dõi khảo sát</span></td>
           </tr>
           <tr>
-            <td>
-              <strong>
-                <span class="lang-ja">3. AI分析</span>
-                <span class="lang-vi">3. Phân tích AI</span>
-              </strong>
-            </td>
-            <td>
-              <span class="lang-ja">可視化止まり・XD高負荷・USP不足</span>
-              <span class="lang-vi">Chỉ hiển thị · XD quá tải · thiếu USP</span>
-            </td>
-            <td>
-              <span class="lang-ja">Wow機能 / レポート自動化 / 競争力</span>
-              <span class="lang-vi">Tính năng Wow · tự động báo cáo · cạnh tranh</span>
-            </td>
-            <td><span class="tag-pill later">DISCUSS</span></td>
+            <td><strong><span class="lang-ja">結果の読み取りが人頼み</span><span class="lang-vi">Đọc hiểu kết quả phụ thuộc người</span></strong></td>
+            <td><span class="lang-ja">短いメモ / 月次まとめ / 質問応答</span><span class="lang-vi">Ghi chú ngắn / tổng hợp tháng / hỏi đáp</span></td>
+            <td><span class="lang-ja">3つの形から選択（要検討）</span><span class="lang-vi">Chọn 1 trong 3 dạng (cần thảo luận)</span></td>
           </tr>
         </tbody>
       </table>
-    </div>
-
-    <div class="roadmap" style="margin-top:22px">
-      <div class="roadmap-item">
-        <div class="rm-dot-col"><div class="rm-dot"></div></div>
-        <div class="rm-body">
-          <div class="tag">NOW</div>
-          <h3>
-            <span class="lang-ja">フェーズ1を先行実装（Mockup検証済みの方向）</span>
-            <span class="lang-vi">Ưu tiên Phase 1 (hướng đã có mockup)</span>
-          </h3>
-          <p>
-            <span class="lang-ja">ウィザード統合・エラーUI・カラム提案で「入れられない」摩擦を先に潰す。</span>
-            <span class="lang-vi">Wizard hợp nhất · Error UI · đề xuất cột — dẹp ma sát “không nhập được” trước.</span>
-          </p>
-        </div>
-      </div>
-      <div class="roadmap-item">
-        <div class="rm-dot-col"><div class="rm-dot" style="background:var(--amber);border-color:#fde68a"></div></div>
-        <div class="rm-body">
-          <div class="tag" style="color:var(--amber)">NEXT</div>
-          <h3>
-            <span class="lang-ja">Survey進捗の見える化とリマインド自動化</span>
-            <span class="lang-vi">Trực quan tiến độ Survey + nhắc tự động</span>
-          </h3>
-          <p>
-            <span class="lang-ja">運用コストを下げ、継続利用の体験を改善。</span>
-            <span class="lang-vi">Giảm chi phí vận hành, cải thiện trải nghiệm dùng lâu dài.</span>
-          </p>
-        </div>
-      </div>
-      <div class="roadmap-item">
-        <div class="rm-dot-col"><div class="rm-dot" style="background:#4338ca;border-color:#c7d2fe"></div></div>
-        <div class="rm-body">
-          <div class="tag" style="color:#4338ca">DISCUSS</div>
-          <h3>
-            <span class="lang-ja">AIレベル1〜3の投資判断</span>
-            <span class="lang-vi">Quyết định đầu tư AI Level 1–3</span>
-          </h3>
-          <p>
-            <span class="lang-ja">Insight Cardから始め、Brief / Chatへ段階拡張する案を推奨。</span>
-            <span class="lang-vi">Khuyến nghị bắt đầu từ Insight Card, mở rộng dần sang Brief / Chat.</span>
-          </p>
-        </div>
-      </div>
     </div>
   </section>
 
   <footer>
     <div>
-      <span class="lang-ja">WDP 改善・機能追加 提案書 · Confidential</span>
-      <span class="lang-vi">Đề xuất cải tiến / thêm tính năng WDP · Nội bộ</span>
+      <span class="lang-ja">WDP 改善と機能追加の提案 · 社内資料</span>
+      <span class="lang-vi">Đề xuất cải thiện và thêm chức năng WDP · Tài liệu nội bộ</span>
     </div>
     <div>Workplace Data Platform · Vis</div>
   </footer>
@@ -1266,23 +868,16 @@
   function setLang(lang) {
     document.documentElement.setAttribute('data-lang', lang);
     document.body.classList.toggle('lang-vi', lang === 'vi');
-    document.body.classList.toggle('lang-ja', lang === 'ja');
     localStorage.setItem('wdp-lang', lang);
     document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
     document.getElementById('btn-vi').classList.toggle('active', lang === 'vi');
     document.documentElement.lang = lang === 'vi' ? 'vi' : 'ja';
   }
-
-  function reloadMockup() {
-    const frame = document.getElementById('mockup-iframe');
-    frame.src = frame.src;
+  function reloadFrame(id) {
+    const frame = document.getElementById(id);
+    if (frame) frame.src = frame.src;
   }
-
-  // init
-  (function init() {
-    const saved = localStorage.getItem('wdp-lang') || 'ja';
-    setLang(saved);
-  })();
+  setLang(localStorage.getItem('wdp-lang') || 'ja');
 </script>
 </body>
 </html>
