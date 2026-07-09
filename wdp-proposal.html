@@ -471,7 +471,7 @@
       </a>
       <a href="#ai">
         <div class="n">05</div>
-        <div class="t"><span class="lang-ja">AI活用（3段階）</span><span class="lang-vi">Ứng dụng AI (3 mức)</span></div>
+        <div class="t"><span class="lang-ja">AI導入（3段階）</span><span class="lang-vi">Đưa AI vào (3 mức)</span></div>
       </a>
     </nav>
   </div>
@@ -865,11 +865,11 @@
       </div>
     </article>
 
-    <!-- PROBLEM 3: AI / OUTPUT -->
+    <!-- PROBLEM 3: AI INTRODUCTION -->
     <article class="problem" id="ai">
       <div class="problem-head">
         <div>
-          <div class="problem-no"><span class="lang-ja">困りごと 3 · AI活用</span><span class="lang-vi">Vấn đề 3 · Ứng dụng AI</span></div>
+          <div class="problem-no"><span class="lang-ja">困りごと 3 · AI導入</span><span class="lang-vi">Vấn đề 3 · Đưa AI vào</span></div>
           <h3>
             <span class="lang-ja">結果は見えるが、読み取りと提案が人頼み</span>
             <span class="lang-vi">Có kết quả nhưng việc đọc hiểu và đề xuất vẫn phụ thuộc người</span>
@@ -892,153 +892,167 @@
           <div class="to-be">
             <h4><span class="lang-ja">改善の方向</span><span class="lang-vi">Hướng cải thiện</span></h4>
             <p>
-              <span class="lang-ja">仕組みが「読む・つなぐ・答える」を助ける。深さの違う3つの段階から選べる（要検討）。</span>
-              <span class="lang-vi">Hệ thống hỗ trợ “đọc · nối dữ liệu · trả lời”. Có thể chọn một trong ba mức độ sâu khác nhau (cần thảo luận).</span>
+              <span class="lang-ja">AIの入れ方を3段階で示します。<strong>どの段階まで入れるかは、別途話し合いが必要です。</strong></span>
+              <span class="lang-vi">Trình bày 3 mức độ đưa AI vào.<strong> Mức nào phù hợp cần thảo luận riêng.</strong></span>
             </p>
           </div>
         </div>
 
-        <!-- Level 1 -->
+        <div style="background:var(--amber-dim);border:1px solid rgba(224,162,58,.35);border-radius:12px;padding:12px 14px;margin-bottom:18px;font-size:0.86rem;color:var(--text-soft);line-height:1.55">
+          <span class="lang-ja"><strong style="color:var(--amber)">要検討:</strong> 以下は適用の選択肢です。段階1〜3のどれを、どこまで入れるかは、効果・負荷・安全面を踏まえて決める必要があります。</span>
+          <span class="lang-vi"><strong style="color:var(--amber)">Cần thảo luận:</strong> Dưới đây là các lựa chọn áp dụng. Mức 1–3 đưa vào đến đâu cần quyết định dựa trên hiệu quả, tải hệ thống và an toàn dữ liệu.</span>
+        </div>
+
+        <!-- Level 1: AI Insight Card on 稼働分析 -->
         <div class="ai-block" style="margin-bottom:22px">
           <article class="ai-level l1" style="margin-bottom:12px">
-            <div class="lvl"><span class="lang-ja">段階 1 · 軽い</span><span class="lang-vi">Mức 1 · Nhẹ</span></div>
-            <h3><span class="lang-ja">短い読み取りメモ（各グラフの下）</span><span class="lang-vi">Ghi chú đọc hiểu ngắn (dưới mỗi biểu đồ)</span></h3>
+            <div class="lvl"><span class="lang-ja">段階 1 · AI Insight Card</span><span class="lang-vi">Mức 1 · AI Insight Card</span></div>
+            <h3>
+              <span class="lang-ja">稼働分析の各タブに、説明カードを足す</span>
+              <span class="lang-vi">Thêm thẻ giải thích trên các tab phân tích hoạt động</span>
+            </h3>
             <p>
-              <span class="lang-ja">いまの稼働分析・サーベイ結果の各グラフの下に、短い説明文と小さな補助グラフを自動で添える。見方はそのまま残し、「何が起きているか」の読み取りだけを助ける。</span>
-              <span class="lang-vi">Tự thêm đoạn giải thích ngắn và biểu đồ phụ nhỏ dưới mỗi biểu đồ của phân tích hoạt động / kết quả khảo sát. Cách xem hiện tại giữ nguyên — chỉ hỗ trợ đọc hiểu “đang xảy ra gì”.</span>
+              <span class="lang-ja"><strong>適用場所:</strong> 稼働分析の各タブ（出社率・滞在率・座席稼働率など）。いまあるグラフの下に、文章のカードと小さな補助グラフを1つ足します。利用者は従来のグラフをそのまま見つつ、AIの説明も読めます。</span>
+              <span class="lang-vi"><strong>Nơi áp dụng:</strong> các tab phân tích hoạt động (tỷ lệ đến công ty · tỷ lệ ở lại · tỷ lệ dùng ghế…). Dưới mỗi biểu đồ hiện có, thêm 1 thẻ chữ + biểu đồ nhỏ. Người dùng vẫn xem biểu đồ cũ, đồng thời có thêm phần AI giải thích.</span>
             </p>
             <div class="note">
-              <span class="lang-ja">既存画面に足しやすい · 相談担当の目視負担を少し減らす</span>
-              <span class="lang-vi">Dễ gắn vào màn hình sẵn có · giảm một phần gánh nặng nhìn biểu đồ của tư vấn</span>
+              <span class="lang-ja">既存の稼働分析画面に足す形 · 見方は変えない</span>
+              <span class="lang-vi">Gắn vào màn hình phân tích hoạt động sẵn có · không đổi cách xem hiện tại</span>
             </div>
           </article>
           <div class="evidence">
             <div class="evidence-toolbar">
               <div>
-                <h4><span class="lang-ja">いまの画面（段階1の置き場所）</span><span class="lang-vi">Màn hình hiện tại (chỗ gắn mức 1)</span></h4>
-                <p><span class="lang-ja">このグラフ群の下に、読み取りメモを足すイメージです。</span><span class="lang-vi">Hình dung gắn ghi chú đọc hiểu ngay dưới các biểu đồ này.</span></p>
+                <h4><span class="lang-ja">いまの画面（段階1の置き場所 = 稼働分析）</span><span class="lang-vi">Màn hình hiện tại (chỗ gắn mức 1 = phân tích hoạt động)</span></h4>
+                <p><span class="lang-ja">各グラフの直下に Insight Card（文章＋小さなグラフ）を置くイメージです。</span><span class="lang-vi">Hình dung đặt Insight Card (chữ + biểu đồ nhỏ) ngay dưới từng biểu đồ.</span></p>
               </div>
             </div>
             <div class="shot-grid two">
               <figure class="shot">
-                <span class="shot-tag" style="margin:10px 12px 0;display:inline-block"><span class="lang-ja">現状 · 稼働分析</span><span class="lang-vi">Hiện tại · Phân tích hoạt động</span></span>
+                <span class="shot-tag" style="margin:10px 12px 0;display:inline-block"><span class="lang-ja">現状 · 稼働分析タブ</span><span class="lang-vi">Hiện tại · Tab phân tích hoạt động</span></span>
                 <img src="assets/screenshots/operation-screen-1.png" alt="稼働分析画面" onclick="openShot(this)" />
                 <figcaption>
-                  <strong><span class="lang-ja">稼働分析（出社率など）</span><span class="lang-vi">Phân tích hoạt động (tỷ lệ đến công ty…)</span></strong>
-                  <span class="lang-ja">例: 推移グラフの下に「平均を下回る日が続く部署は…」などの短い文を自動表示。</span>
-                  <span class="lang-vi">Ví dụ: dưới biểu đồ xu hướng tự hiện câu ngắn như “bộ phận nào đang dưới mức trung bình nhiều ngày…”.</span>
+                  <strong><span class="lang-ja">稼働分析（出社率・推移など）</span><span class="lang-vi">Phân tích hoạt động (tỷ lệ đến · xu hướng…)</span></strong>
+                  <span class="lang-ja">例: 「出社率の推移」の下に、短い説明文と小さな補助グラフのカードを表示。</span>
+                  <span class="lang-vi">Ví dụ: dưới “xu hướng tỷ lệ đến công ty” hiện thẻ gồm đoạn giải thích ngắn + biểu đồ phụ nhỏ.</span>
                 </figcaption>
               </figure>
               <figure class="shot">
-                <span class="shot-tag" style="margin:10px 12px 0;display:inline-block"><span class="lang-ja">現状 · サーベイ結果</span><span class="lang-vi">Hiện tại · Kết quả khảo sát</span></span>
-                <img src="assets/screenshots/survey-result.png" alt="サーベイ結果画面" onclick="openShot(this)" />
+                <span class="shot-tag" style="margin:10px 12px 0;display:inline-block"><span class="lang-ja">現状 · 稼働分析（内訳）</span><span class="lang-vi">Hiện tại · Phân tích hoạt động (chi tiết)</span></span>
+                <img src="assets/screenshots/operation-screen-2.png" alt="稼働分析画面2" onclick="openShot(this)" />
                 <figcaption>
-                  <strong><span class="lang-ja">サーベイ結果（スコア・バランス）</span><span class="lang-vi">Kết quả khảo sát (điểm · cân bằng)</span></strong>
-                  <span class="lang-ja">例: レーダーやeNPSの下に、弱い領域と前回比の一言コメントを添える。</span>
-                  <span class="lang-vi">Ví dụ: dưới biểu đồ radar / eNPS thêm một câu về vùng yếu và so với lần trước.</span>
+                  <strong><span class="lang-ja">部署・役職などの内訳グラフ</span><span class="lang-vi">Biểu đồ chi tiết theo bộ phận · chức vụ…</span></strong>
+                  <span class="lang-ja">各内訳グラフの下にも同様に、AIの説明カードを足せます。</span>
+                  <span class="lang-vi">Dưới từng biểu đồ chi tiết cũng có thể thêm thẻ giải thích của AI tương tự.</span>
                 </figcaption>
               </figure>
             </div>
           </div>
         </div>
 
-        <!-- Level 2 -->
+        <!-- Level 2: Workplace Brief -->
         <div class="ai-block" style="margin-bottom:22px">
           <article class="ai-level l2" style="margin-bottom:12px">
-            <div class="lvl"><span class="lang-ja">段階 2 · 中くらい</span><span class="lang-vi">Mức 2 · Vừa</span></div>
-            <h3><span class="lang-ja">職場の月次まとめ（横断の一覧）</span><span class="lang-vi">Bản tổng hợp hàng tháng (danh sách xuyên suốt)</span></h3>
+            <div class="lvl"><span class="lang-ja">段階 2 · Workplace Brief（横断）</span><span class="lang-vi">Mức 2 · Workplace Brief (xuyên miền)</span></div>
+            <h3>
+              <span class="lang-ja">稼働 × 調査 × 空間をつなぐ「月次の職場通信」</span>
+              <span class="lang-vi">“Bản tin văn phòng hàng tháng” nối hoạt động × khảo sát × không gian</span>
+            </h3>
             <p>
-              <span class="lang-ja">稼働・調査・空間のデータをつなぎ、毎月「職場の健康度」「気づき」「次にやること」を一つの画面にまとめる。相談担当が手で報告書を組み立てる手間を減らす。</span>
-              <span class="lang-vi">Nối dữ liệu hoạt động · khảo sát · không gian; mỗi tháng gom “điểm sức khỏe nơi làm việc”, “nhận xét”, “việc cần làm tiếp” vào một màn hình. Giảm việc tư vấn tự ghép báo cáo bằng tay.</span>
+              <span class="lang-ja"><strong>内容:</strong> Operation（稼働）・Survey（調査）・Space（空間）をつなげた、1枚のダッシュボードを新設します。AIが毎月「職場の健康度（Health Score）」「横断の気づき」「次に取る行動」をまとめた通信を自動で作ります。</span>
+              <span class="lang-vi"><strong>Nội dung:</strong> Tạo 1 trang dashboard tổng hợp nối Operation (hoạt động) + Survey (khảo sát) + Space (không gian). AI tự tạo “bản tin văn phòng hàng tháng” gồm Health Score (điểm sức khỏe nơi làm việc), insight xuyên miền, và đề xuất hành động.</span>
             </p>
             <div class="note">
-              <span class="lang-ja">他社との差を出しやすい · 複数画面をまたぐ読み取りを自動化</span>
-              <span class="lang-vi">Dễ tạo điểm khác biệt · tự động hóa việc đọc hiểu xuyên nhiều màn hình</span>
+              <span class="lang-ja">画面をまたぐ読み取りを自動化 · 相談担当の報告書づくりを助ける</span>
+              <span class="lang-vi">Tự động hóa việc đọc hiểu xuyên màn hình · hỗ trợ tư vấn làm báo cáo</span>
             </div>
           </article>
           <div class="evidence">
             <div class="evidence-toolbar">
               <div>
-                <h4><span class="lang-ja">いまの画面（段階2がつなぐ元データ）</span><span class="lang-vi">Màn hình hiện tại (nguồn dữ liệu mức 2 sẽ nối)</span></h4>
-                <p><span class="lang-ja">いまは画面が分かれているため、横断の読み取りは人が行っています。</span><span class="lang-vi">Hiện các màn hình tách rời nên việc đọc hiểu xuyên suốt vẫn do người làm.</span></p>
+                <h4><span class="lang-ja">いまの画面（段階2がつなぐ3つの元データ）</span><span class="lang-vi">Màn hình hiện tại (3 nguồn dữ liệu mức 2 sẽ nối)</span></h4>
+                <p><span class="lang-ja">いまは分かれている画面を、1つの月次ダッシュボードにまとめます。</span><span class="lang-vi">Gom các màn hình đang tách rời thành 1 dashboard tháng.</span></p>
               </div>
             </div>
             <div class="shot-grid two">
               <figure class="shot">
-                <span class="shot-tag" style="margin:10px 12px 0;display:inline-block"><span class="lang-ja">現状 · トップ稼働</span><span class="lang-vi">Hiện tại · Top hoạt động</span></span>
+                <span class="shot-tag" style="margin:10px 12px 0;display:inline-block"><span class="lang-ja">元データ · Operation</span><span class="lang-vi">Nguồn · Operation</span></span>
                 <img src="assets/screenshots/top-operation.png" alt="TOPpage 稼働分析部分" onclick="openShot(this)" />
                 <figcaption>
-                  <strong><span class="lang-ja">稼働の要約（出社率・座席稼働など）</span><span class="lang-vi">Tóm tắt hoạt động (tỷ lệ đến · sử dụng ghế…)</span></strong>
-                  <span class="lang-ja">月次まとめでは、この数値を調査・空間と並べて「健康度」に換算する。</span>
-                  <span class="lang-vi">Bản tổng hợp tháng sẽ đặt các số này cạnh khảo sát · không gian để quy ra “điểm sức khỏe”.</span>
+                  <strong><span class="lang-ja">稼働（出社率・座席稼働など）</span><span class="lang-vi">Hoạt động (tỷ lệ đến · dùng ghế…)</span></strong>
+                  <span class="lang-ja">Health Score の材料のひとつ。調査・空間と並べて読む。</span>
+                  <span class="lang-vi">Một trong các thành phần của Health Score — đọc cùng khảo sát và không gian.</span>
                 </figcaption>
               </figure>
               <figure class="shot">
-                <span class="shot-tag" style="margin:10px 12px 0;display:inline-block"><span class="lang-ja">現状 · トップ空間</span><span class="lang-vi">Hiện tại · Top không gian</span></span>
+                <span class="shot-tag" style="margin:10px 12px 0;display:inline-block"><span class="lang-ja">元データ · Space</span><span class="lang-vi">Nguồn · Space</span></span>
                 <img src="assets/screenshots/top-space.png" alt="TOPpage 空間分析部分" onclick="openShot(this)" />
                 <figcaption>
-                  <strong><span class="lang-ja">空間の要約（面積構成・席数）</span><span class="lang-vi">Tóm tắt không gian (cơ cấu diện tích · số ghế)</span></strong>
-                  <span class="lang-ja">例: 稼働が低いのにWORK面積が大きい、などの食い違いを自動で指摘。</span>
-                  <span class="lang-vi">Ví dụ: tự chỉ ra chỗ lệch như “hoạt động thấp nhưng diện tích WORK lớn”.</span>
+                  <strong><span class="lang-ja">空間（面積構成・席数）</span><span class="lang-vi">Không gian (cơ cấu diện tích · số ghế)</span></strong>
+                  <span class="lang-ja">例: 稼働が低いのにWORK面積が大きい、などの食い違いを指摘。</span>
+                  <span class="lang-vi">Ví dụ: chỉ ra chỗ lệch như “hoạt động thấp nhưng diện tích WORK lớn”.</span>
                 </figcaption>
               </figure>
             </div>
             <div class="shot-grid" style="padding-top:0">
               <figure class="shot">
-                <span class="shot-tag" style="margin:10px 12px 0;display:inline-block"><span class="lang-ja">現状 · サーベイ結果</span><span class="lang-vi">Hiện tại · Kết quả khảo sát</span></span>
+                <span class="shot-tag" style="margin:10px 12px 0;display:inline-block"><span class="lang-ja">元データ · Survey</span><span class="lang-vi">Nguồn · Survey</span></span>
                 <img src="assets/screenshots/survey-result.png" alt="サーベイ結果画面" onclick="openShot(this)" />
                 <figcaption>
-                  <strong><span class="lang-ja">調査スコア（全体・eNPS・バランス）</span><span class="lang-vi">Điểm khảo sát (tổng · eNPS · cân bằng)</span></strong>
-                  <span class="lang-ja">月次まとめでは、スコアの変化と稼働・空間の変化を同じページで示す。</span>
-                  <span class="lang-vi">Bản tổng hợp tháng hiện biến động điểm cùng với thay đổi hoạt động · không gian trên cùng trang.</span>
+                  <strong><span class="lang-ja">調査（スコア・eNPS・バランス）</span><span class="lang-vi">Khảo sát (điểm · eNPS · cân bằng)</span></strong>
+                  <span class="lang-ja">月次通信では、スコア変化と稼働・空間の変化を同じページで示す。</span>
+                  <span class="lang-vi">Trong bản tin tháng, hiện biến động điểm cùng thay đổi hoạt động · không gian trên cùng trang.</span>
                 </figcaption>
               </figure>
             </div>
           </div>
         </div>
 
-        <!-- Level 3 -->
+        <!-- Level 3: AI Chat -->
         <div class="ai-block">
           <article class="ai-level l3" style="margin-bottom:12px">
-            <div class="lvl"><span class="lang-ja">段階 3 · 深い</span><span class="lang-vi">Mức 3 · Sâu</span></div>
-            <h3><span class="lang-ja">質問でデータを聞く（対話）</span><span class="lang-vi">Hỏi dữ liệu bằng câu hỏi (hội thoại)</span></h3>
+            <div class="lvl"><span class="lang-ja">段階 3 · AI Chat（質問応答）</span><span class="lang-vi">Mức 3 · AI Chat (hỏi đáp)</span></div>
+            <h3>
+              <span class="lang-ja">自然な言葉で聞き、答えと小さなグラフを返す</span>
+              <span class="lang-vi">Hỏi bằng lời tự nhiên, trả lời kèm biểu đồ nhỏ</span>
+            </h3>
             <p>
-              <span class="lang-ja">普段の言葉で質問すると、文章とグラフで返す。相談担当に頼らず、画面上で必要な切り口をすぐ確認できる。データの取り出しは安全な仕組みで行う。</span>
-              <span class="lang-vi">Hỏi bằng lời thường ngày, hệ thống trả lời bằng chữ và biểu đồ. Không cần nhờ tư vấn — kiểm tra góc nhìn cần thiết ngay trên màn hình. Việc lấy dữ liệu đi qua cơ chế an toàn.</span>
+              <span class="lang-ja"><strong>流れ:</strong> 利用者が普段の言葉で質問する → AIが内容を理解する → 必要なグラフの仕組みを呼び出す → 文章の答えと小さなグラフを返す。自分で分析を進められるため、相談担当に頼らなくてもよくなります。</span>
+              <span class="lang-vi"><strong>Luồng:</strong> Người dùng gõ câu hỏi tự nhiên → AI hiểu → gọi đúng cơ chế biểu đồ → trả lời bằng chữ kèm biểu đồ nhỏ. Phân tích tự phục vụ — không cần nhờ tư vấn.</span>
             </p>
             <div class="example">
-              <span class="lang-ja">例:「先月、出社が最も少なかった部署は？」／「座席稼働が低いフロアはどこ？」</span>
-              <span class="lang-vi">Ví dụ: “Tháng trước, bộ phận nào đến công ty ít nhất?” / “Tầng nào tỷ lệ dùng ghế thấp?”</span>
+              <span class="lang-ja">例:「先月、出社が最も少なかった部署は？」→ 答えの文章 ＋ 部署別の小さなグラフ</span>
+              <span class="lang-vi">Ví dụ: “Tháng trước, bộ phận nào đến công ty ít nhất?” → câu trả lời + biểu đồ nhỏ theo bộ phận</span>
             </div>
             <div class="note" style="margin-top:10px">
-              <span class="lang-ja">効果は大きいが、権限と安全設計が必要</span>
-              <span class="lang-vi">Hiệu quả lớn nhưng cần phân quyền và thiết kế an toàn dữ liệu</span>
+              <span class="lang-ja">自分で分析できる · 相談担当への依存を減らせる（権限・安全設計が前提）</span>
+              <span class="lang-vi">Tự phân tích được · giảm phụ thuộc tư vấn (cần phân quyền và thiết kế an toàn)</span>
             </div>
           </article>
           <div class="evidence">
             <div class="evidence-toolbar">
               <div>
-                <h4><span class="lang-ja">いまの画面（段階3が答える元データ）</span><span class="lang-vi">Màn hình hiện tại (nguồn dữ liệu mức 3 sẽ trả lời)</span></h4>
-                <p><span class="lang-ja">いまは人がグラフを見比べて答えを探しています。対話では同じデータを質問で取り出せます。</span><span class="lang-vi">Hiện người phải so sánh biểu đồ để tìm câu trả lời. Với hội thoại, cùng dữ liệu đó có thể lấy ra bằng câu hỏi.</span></p>
+                <h4><span class="lang-ja">いまの画面（段階3が返すグラフの元）</span><span class="lang-vi">Màn hình hiện tại (nguồn biểu đồ mức 3 sẽ trả về)</span></h4>
+                <p><span class="lang-ja">いまは人がグラフを探して答えを出しています。Chatでは同じグラフを質問から呼び出せます。</span><span class="lang-vi">Hiện người phải tự tìm biểu đồ để trả lời. Với Chat, cùng biểu đồ đó có thể gọi ra từ câu hỏi.</span></p>
               </div>
             </div>
             <div class="shot-grid two">
               <figure class="shot">
-                <span class="shot-tag" style="margin:10px 12px 0;display:inline-block"><span class="lang-ja">現状 · 属性別</span><span class="lang-vi">Hiện tại · Theo thuộc tính</span></span>
+                <span class="shot-tag" style="margin:10px 12px 0;display:inline-block"><span class="lang-ja">現状 · 属性別グラフ</span><span class="lang-vi">Hiện tại · Biểu đồ theo thuộc tính</span></span>
                 <img src="assets/screenshots/operation-screen-2.png" alt="稼働分析画面2" onclick="openShot(this)" />
                 <figcaption>
-                  <strong><span class="lang-ja">稼働分析（部署・役職・年齢など）</span><span class="lang-vi">Phân tích hoạt động (bộ phận · chức vụ · tuổi…)</span></strong>
-                  <span class="lang-ja">例の質問「出社が少ない部署は？」に対し、この内訳から答えと小さなグラフを返す。</span>
-                  <span class="lang-vi">Với câu hỏi “bộ phận nào đến ít?”, hệ thống lấy từ bảng chi tiết này để trả lời kèm biểu đồ nhỏ.</span>
+                  <strong><span class="lang-ja">部署・役職などの内訳</span><span class="lang-vi">Chi tiết theo bộ phận · chức vụ…</span></strong>
+                  <span class="lang-ja">質問に応じて、この種のグラフを小さな形でチャット内に返す。</span>
+                  <span class="lang-vi">Theo câu hỏi, trả về dạng nhỏ của biểu đồ kiểu này ngay trong khung chat.</span>
                 </figcaption>
               </figure>
               <figure class="shot">
                 <span class="shot-tag" style="margin:10px 12px 0;display:inline-block"><span class="lang-ja">現状 · 推移グラフ</span><span class="lang-vi">Hiện tại · Biểu đồ xu hướng</span></span>
                 <img src="assets/screenshots/operation-screen-1.png" alt="稼働分析画面" onclick="openShot(this)" />
                 <figcaption>
-                  <strong><span class="lang-ja">稼働分析（推移）</span><span class="lang-vi">Phân tích hoạt động (xu hướng)</span></strong>
-                  <span class="lang-ja">期間や指標を言葉で指定すると、該当する推移を切り出して返すイメージ。</span>
-                  <span class="lang-vi">Hình dung: chỉ định kỳ hạn / chỉ số bằng lời, hệ thống cắt đoạn xu hướng tương ứng để trả về.</span>
+                  <strong><span class="lang-ja">出社率などの推移</span><span class="lang-vi">Xu hướng tỷ lệ đến công ty…</span></strong>
+                  <span class="lang-ja">期間や指標を言葉で指定すると、該当する推移を切り出して返す。</span>
+                  <span class="lang-vi">Chỉ định kỳ hạn / chỉ số bằng lời → cắt đoạn xu hướng tương ứng để trả về.</span>
                 </figcaption>
               </figure>
             </div>
@@ -1046,8 +1060,8 @@
         </div>
 
         <p class="caption" style="margin-top:14px">
-          <span class="lang-ja">3段階は投資の大きさに応じて選べます。まずは段階1から始め、段階2・3へ広げる案を推奨します。</span>
-          <span class="lang-vi">Ba mức có thể chọn theo mức đầu tư. Khuyến nghị bắt đầu từ mức 1, rồi mở rộng sang mức 2 và 3.</span>
+          <span class="lang-ja">上記3段階は「適用の選択肢」です。どの段階まで入れるか、どの画面から始めるかは、関係者で話し合う前提です。</span>
+          <span class="lang-vi">Ba mức trên là “lựa chọn áp dụng”. Mức nào đưa vào, bắt đầu từ màn hình nào — cần thảo luận với các bên liên quan.</span>
         </p>
       </div>
     </article>
