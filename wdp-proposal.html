@@ -281,6 +281,52 @@
     .frame.tall { height: min(78vh, 820px); }
     .frame.mid { height: min(64vh, 680px); }
 
+    .shot-grid {
+      display: grid; gap: 12px; padding: 12px;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 860px) {
+      .shot-grid.two { grid-template-columns: 1fr 1fr; }
+    }
+    .shot {
+      background: #0a101c; border: 1px solid var(--line);
+      border-radius: 12px; overflow: hidden;
+    }
+    .shot figcaption {
+      padding: 10px 12px; font-size: 0.78rem; color: var(--text-soft);
+      border-top: 1px solid var(--line); background: #0e1829; line-height: 1.5;
+    }
+    .shot figcaption strong {
+      display: block; color: var(--text); font-size: 0.82rem; margin-bottom: 2px;
+    }
+    .shot img {
+      display: block; width: 100%; height: auto;
+      background: #fff; cursor: zoom-in;
+    }
+    .shot-tag {
+      display: inline-block; font-size: 0.68rem; font-weight: 700;
+      color: #f0a0a0; background: var(--rose-dim);
+      padding: 2px 8px; border-radius: 999px; margin-bottom: 6px;
+    }
+    .shot-tag.after {
+      color: #7dcea0; background: var(--green-dim);
+    }
+    .lightbox {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(0,0,0,.82); display: none;
+      align-items: center; justify-content: center; padding: 20px;
+    }
+    .lightbox.show { display: flex; }
+    .lightbox img {
+      max-width: min(1200px, 96vw); max-height: 90vh;
+      border-radius: 8px; box-shadow: var(--shadow);
+    }
+    .lightbox button {
+      position: absolute; top: 16px; right: 16px;
+      background: #fff; border: 0; border-radius: 999px;
+      width: 36px; height: 36px; font-size: 1.1rem; cursor: pointer;
+    }
+
     .caption {
       margin-top: 10px; font-size: 0.8rem; color: var(--muted);
       padding: 0 2px; line-height: 1.5;
@@ -596,24 +642,49 @@
           </div>
         </div>
 
-        <!-- Evidence: current UI -->
+        <!-- Evidence: real screenshots -->
         <div class="evidence">
           <div class="evidence-toolbar">
             <div>
-              <h4><span class="lang-ja">いまの画面の再現（稼働分析の設定）</span><span class="lang-vi">Mô tả màn hình hiện tại (thiết lập phân tích hoạt động)</span></h4>
-              <p><span class="lang-ja">手順が多く、画面が分かれ、失敗理由が出ない様子を示しています。</span><span class="lang-vi">Minh họa nhiều bước, màn hình tách rời, và không hiện lý do lỗi.</span></p>
-            </div>
-            <div class="evidence-actions">
-              <a class="btn btn-ghost" href="evidence-current-operation-settings.html" target="_blank" rel="noopener"><span class="lang-ja">別の窓で開く</span><span class="lang-vi">Mở cửa sổ mới</span></a>
+              <h4><span class="lang-ja">いまの実画面（稼働分析）</span><span class="lang-vi">Màn hình thật hiện tại (phân tích hoạt động)</span></h4>
+              <p><span class="lang-ja">トップの分析データが分かれており、設定や確認の入口が複数あります。</span><span class="lang-vi">Trên trang đầu, dữ liệu phân tích bị tách thành nhiều nút — nhiều lối vào để thiết lập/kiểm tra.</span></p>
             </div>
           </div>
-          <div class="frame-wrap">
-            <iframe class="frame mid" title="Current operation settings evidence" src="evidence-current-operation-settings.html" loading="lazy"></iframe>
+          <div class="shot-grid two">
+            <figure class="shot">
+              <span class="shot-tag" style="margin:10px 12px 0;display:inline-block"><span class="lang-ja">現状 · トップ</span><span class="lang-vi">Hiện tại · Trang đầu</span></span>
+              <img src="assets/screenshots/top-operation.png" alt="TOPpage 稼働分析部分" onclick="openShot(this)" />
+              <figcaption>
+                <strong><span class="lang-ja">トップページ · 稼働分析部分</span><span class="lang-vi">Trang đầu · phần phân tích hoạt động</span></strong>
+                <span class="lang-ja">「出社滞在情報」「従業員情報」「稼働分析情報」が別ボタン。設定の入口が分かれ、手順が長くなりやすい。</span>
+                <span class="lang-vi">Các nút “thông tin đến/ở lại”, “thông tin nhân viên”, “thông tin phân tích hoạt động” tách riêng — lối vào thiết lập bị chia nhỏ, dễ kéo dài thao tác.</span>
+              </figcaption>
+            </figure>
+            <figure class="shot">
+              <span class="shot-tag" style="margin:10px 12px 0;display:inline-block"><span class="lang-ja">現状 · 分析画面</span><span class="lang-vi">Hiện tại · Màn phân tích</span></span>
+              <img src="assets/screenshots/operation-screen-1.png" alt="稼働分析画面" onclick="openShot(this)" />
+              <figcaption>
+                <strong><span class="lang-ja">稼働分析画面（グラフ表示）</span><span class="lang-vi">Màn phân tích hoạt động (hiển thị biểu đồ)</span></strong>
+                <span class="lang-ja">数値と推移は見えるが、データの入れ方や直し方はこの画面からは分かりにくい。</span>
+                <span class="lang-vi">Có số liệu và xu hướng, nhưng cách đưa dữ liệu vào / sửa lỗi khó nắm từ màn hình này.</span>
+              </figcaption>
+            </figure>
+          </div>
+          <div class="shot-grid" style="padding-top:0">
+            <figure class="shot">
+              <span class="shot-tag" style="margin:10px 12px 0;display:inline-block"><span class="lang-ja">現状 · 詳細グラフ</span><span class="lang-vi">Hiện tại · Biểu đồ chi tiết</span></span>
+              <img src="assets/screenshots/operation-screen-2.png" alt="稼働分析画面2" onclick="openShot(this)" />
+              <figcaption>
+                <strong><span class="lang-ja">稼働分析画面（属性別の内訳）</span><span class="lang-vi">Màn phân tích hoạt động (chi tiết theo thuộc tính)</span></strong>
+                <span class="lang-ja">見たい情報は多い一方、準備作業（ファイル整形・列設定）は別画面のまま残っています。</span>
+                <span class="lang-vi">Thông tin xem được nhiều, nhưng phần chuẩn bị (chỉnh tệp · gắn cột) vẫn nằm ở màn hình khác.</span>
+              </figcaption>
+            </figure>
           </div>
         </div>
         <p class="caption">
-          <span class="lang-ja">上図は、現行の稼働分析設定で起きやすい困りごとを分かりやすく再現したものです（実画面に近い構成）。</span>
-          <span class="lang-vi">Hình trên tái hiện các khó khăn thường gặp trong thiết lập phân tích hoạt động hiện tại (bố cục gần với màn hình thật).</span>
+          <span class="lang-ja">上は現行サイトの実画面です。下の改善案（案内画面）と並べて比較できます。画像をクリックすると拡大表示します。</span>
+          <span class="lang-vi">Trên là màn hình thật của hệ thống hiện tại. Có thể so sánh với ví dụ cải thiện bên dưới. Bấm ảnh để phóng to.</span>
         </p>
 
         <!-- Mockup operation -->
@@ -640,25 +711,50 @@
           <div class="mh"><div class="n">4</div><strong><span class="lang-ja">条件を確認して保存</span><span class="lang-vi">Xác nhận điều kiện rồi lưu</span></strong><span><span class="lang-ja">1回の保存で完了</span><span class="lang-vi">Lưu một lần là xong</span></span></div>
         </div>
 
-        <!-- Mockup space -->
+        <!-- Evidence: space real screenshots -->
+        <div class="evidence" style="margin-top:18px">
+          <div class="evidence-toolbar">
+            <div>
+              <h4><span class="lang-ja">いまの実画面（空間分析）</span><span class="lang-vi">Màn hình thật hiện tại (phân tích không gian)</span></h4>
+              <p><span class="lang-ja">空間分析情報と図面色分けデータが別入口です。アップロードも分かれています。</span><span class="lang-vi">Thông tin phân tích không gian và dữ liệu tô màu bản vẽ là hai lối vào riêng. Việc đưa tệp lên cũng tách rời.</span></p>
+            </div>
+          </div>
+          <div class="shot-grid">
+            <figure class="shot">
+              <span class="shot-tag" style="margin:10px 12px 0;display:inline-block"><span class="lang-ja">現状 · トップ</span><span class="lang-vi">Hiện tại · Trang đầu</span></span>
+              <img src="assets/screenshots/top-space.png" alt="TOPpage 空間分析部分" onclick="openShot(this)" />
+              <figcaption>
+                <strong><span class="lang-ja">トップページ · 空間分析部分</span><span class="lang-vi">Trang đầu · phần phân tích không gian</span></strong>
+                <span class="lang-ja">「空間分析情報」「図面色分けデータ」が別ボタン。データと図面を別々に扱うため、手順が分断されます。</span>
+                <span class="lang-vi">Hai nút “thông tin phân tích không gian” và “dữ liệu tô màu bản vẽ” tách riêng — dữ liệu và bản vẽ xử lý riêng nên luồng bị đứt đoạn.</span>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+        <p class="caption">
+          <span class="lang-ja">下の改善案では、データ確認と図面アップロードを一つの案内にまとめます。</span>
+          <span class="lang-vi">Ví dụ cải thiện bên dưới gom kiểm tra dữ liệu và đưa bản vẽ lên vào cùng một hướng dẫn.</span>
+        </p>
+
+        <!-- Mockup space (official from repo) -->
         <div class="mockup-shell" style="margin-top:18px">
           <div class="mockup-toolbar">
             <div>
               <h3><span class="lang-ja">改善案の画面例 — 空間分析</span><span class="lang-vi">Ví dụ màn hình cải thiện — phân tích không gian</span></h3>
-              <p><span class="lang-ja">利用ログとフロア図面の取り込みを、同じ案内の流れにまとめます。</span><span class="lang-vi">Gộp việc đưa nhật ký sử dụng và sơ đồ tầng vào cùng một luồng hướng dẫn.</span></p>
+              <p><span class="lang-ja">データと図面を一つの案内にまとめ、バージョン／フロアを自動で用意します。</span><span class="lang-vi">Gộp dữ liệu và bản vẽ vào một hướng dẫn; tự chuẩn bị phiên bản / tầng.</span></p>
             </div>
             <div class="mockup-actions">
-              <a class="btn btn-ghost" href="mockup-space-analysis-wizard.html" target="_blank" rel="noopener"><span class="lang-ja">別の窓で開く</span><span class="lang-vi">Mở cửa sổ mới</span></a>
+              <a class="btn btn-ghost" href="space-setup-wizard-mockup.html" target="_blank" rel="noopener"><span class="lang-ja">別の窓で開く</span><span class="lang-vi">Mở cửa sổ mới</span></a>
               <button type="button" class="btn btn-primary" onclick="reloadFrame('frame-space')"><span class="lang-ja">再読み込み</span><span class="lang-vi">Tải lại</span></button>
             </div>
           </div>
           <div class="frame-wrap">
-            <iframe id="frame-space" class="frame tall" title="Space analysis setup mockup" src="mockup-space-analysis-wizard.html" loading="lazy"></iframe>
+            <iframe id="frame-space" class="frame tall" title="Space analysis setup mockup" src="space-setup-wizard-mockup.html" loading="lazy"></iframe>
           </div>
         </div>
         <p class="caption">
-          <span class="lang-ja">空間分析でも、稼働分析と同じ考え方（一つの流れ・失敗理由の表示・列の提案）を使います。</span>
-          <span class="lang-vi">Phân tích không gian cũng dùng cùng cách làm với phân tích hoạt động: một luồng, hiện lý do lỗi, đề xuất gắn cột.</span>
+          <span class="lang-ja">空間分析でも、稼働分析と同じ考え方（一つの流れ・失敗理由の表示・確認しながら進む）を使います。</span>
+          <span class="lang-vi">Phân tích không gian cũng dùng cùng cách làm với phân tích hoạt động: một luồng, hiện lý do lỗi, đi từng bước có xác nhận.</span>
         </p>
       </div>
     </article>
@@ -714,6 +810,31 @@
             </div>
           </div>
         </div>
+
+        <!-- Evidence: current survey -->
+        <div class="evidence" style="margin-top:16px">
+          <div class="evidence-toolbar">
+            <div>
+              <h4><span class="lang-ja">いまの実画面（サーベイ結果）</span><span class="lang-vi">Màn hình thật hiện tại (kết quả khảo sát)</span></h4>
+              <p><span class="lang-ja">回答状況の確認はCSV出力に寄っています。</span><span class="lang-vi">Việc kiểm tra tình trạng trả lời đang phụ thuộc vào xuất CSV.</span></p>
+            </div>
+          </div>
+          <div class="shot-grid">
+            <figure class="shot">
+              <span class="shot-tag" style="margin:10px 12px 0;display:inline-block"><span class="lang-ja">現状 · サーベイ結果</span><span class="lang-vi">Hiện tại · Kết quả khảo sát</span></span>
+              <img src="assets/screenshots/survey-result.png" alt="サーベイ結果画面" onclick="openShot(this)" />
+              <figcaption>
+                <strong><span class="lang-ja">サーベイ結果画面</span><span class="lang-vi">Màn hình kết quả khảo sát</span></strong>
+                <span class="lang-ja">「Csv出力(サーベイ結果)」「Csv出力(回答状況)」があり、未回答者の確認や催促は画面の外で行いがちです。</span>
+                <span class="lang-vi">Có nút xuất CSV kết quả / tình trạng trả lời — việc tìm người chưa trả lời và nhắc nhở thường phải làm ngoài màn hình.</span>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+        <p class="caption">
+          <span class="lang-ja">下の改善案では、進捗確認と案内を同じ画面で完結させます。</span>
+          <span class="lang-vi">Ví dụ cải thiện bên dưới giúp kiểm tra tiến độ và gửi hướng dẫn ngay trên cùng một màn hình.</span>
+        </p>
 
         <div class="mockup-shell" style="margin-top:16px">
           <div class="mockup-toolbar">
@@ -864,6 +985,11 @@
   </footer>
 </main>
 
+<div class="lightbox" id="lightbox" onclick="closeShot(event)">
+  <button type="button" aria-label="Close" onclick="closeShot(event)">✕</button>
+  <img id="lightbox-img" alt="" />
+</div>
+
 <script>
   function setLang(lang) {
     document.documentElement.setAttribute('data-lang', lang);
@@ -877,6 +1003,19 @@
     const frame = document.getElementById(id);
     if (frame) frame.src = frame.src;
   }
+  function openShot(img) {
+    const box = document.getElementById('lightbox');
+    document.getElementById('lightbox-img').src = img.src;
+    box.classList.add('show');
+  }
+  function closeShot(e) {
+    if (e.target.id === 'lightbox' || e.target.tagName === 'BUTTON') {
+      document.getElementById('lightbox').classList.remove('show');
+    }
+  }
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') document.getElementById('lightbox').classList.remove('show');
+  });
   setLang(localStorage.getItem('wdp-lang') || 'ja');
 </script>
 </body>

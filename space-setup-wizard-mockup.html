@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WDP Space Analysis Setup Wizard — Mockup</title>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <style>
+    :root {
+      --primary: #1e4d8c; --primary-light: #e8f0fa; --accent: #f5a623;
+      --success: #2d8a4e; --success-bg: #e8f5ec; --danger: #c0392b; --danger-bg: #fdecea;
+      --warn: #d97706; --warn-bg: #fffbeb; --bg: #f0f2f5; --card: #fff; --text: #1a2332;
+      --muted: #6b7c93; --border: #dde3ec; --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: "Hiragino Sans","Meiryo","Segoe UI",sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+    .landing { max-width: 980px; margin: 0 auto; padding: 32px 20px; }
+    .landing h1 { font-size: 1.4rem; margin-bottom: 8px; }
+    .landing p { color: var(--muted); font-size: 0.9rem; margin-bottom: 16px; line-height: 1.6; }
+    .flow-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+    @media(max-width:720px){ .flow-compare { grid-template-columns: 1fr; } }
+    .flow-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; font-size: 0.82rem; }
+    .flow-card h3 { font-size: 0.88rem; margin-bottom: 8px; }
+    .flow-card.old h3 { color: var(--danger); }
+    .flow-card.new h3 { color: var(--success); }
+    .flow-card ol { margin-left: 18px; color: var(--muted); line-height: 1.7; }
+    .open-wizard-btn { background: var(--primary); color: #fff; padding: 12px 28px; border-radius: 8px; border: none; font-size: 0.95rem; font-weight: 600; cursor: pointer; }
+
+    .overlay { position: fixed; inset: 0; background: rgba(15,23,42,.55); display: flex; align-items: center; justify-content: center; padding: 16px; z-index: 100; }
+    .overlay.hidden { display: none; }
+    .wizard { background: var(--card); border-radius: 16px; width: 100%; max-width: 780px; max-height: 92vh; display: flex; flex-direction: column; box-shadow: 0 24px 64px rgba(0,0,0,.2); overflow: hidden; }
+
+    .wizard-header { padding: 20px 24px 0; border-bottom: 1px solid var(--border); }
+    .wizard-header-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
+    .wizard-title { font-size: 1.15rem; font-weight: 700; }
+    .wizard-subtitle { font-size: 0.8rem; color: var(--muted); margin-top: 2px; }
+    .close-btn { background: none; border: none; font-size: 1.3rem; color: var(--muted); cursor: pointer; }
+
+    .progress-bar-wrap { margin-bottom: 16px; }
+    .progress-meta { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--muted); margin-bottom: 6px; }
+    .progress-track { height: 6px; background: var(--border); border-radius: 99px; overflow: hidden; }
+    .progress-fill { height: 100%; background: var(--primary); border-radius: 99px; transition: width .4s; }
+
+    .steps-nav { display: flex; gap: 4px; overflow-x: auto; padding-bottom: 12px; }
+    .step-dot { display: flex; align-items: center; gap: 6px; font-size: 0.72rem; color: var(--muted); white-space: nowrap; padding: 4px 8px; border-radius: 6px; }
+    .step-dot.active { color: var(--primary); font-weight: 600; background: var(--primary-light); }
+    .step-dot.done { color: var(--success); }
+    .step-dot .num { width: 20px; height: 20px; border-radius: 50%; background: var(--border); display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: 700; }
+    .step-dot.active .num { background: var(--primary); color: #fff; }
+    .step-dot.done .num { background: var(--success); color: #fff; }
+
+    .wizard-body { padding: 24px; overflow-y: auto; flex: 1; }
+    .step-panel { display: none; } .step-panel.active { display: block; }
+    .step-heading { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+    .step-desc { font-size: 0.85rem; color: var(--muted); margin-bottom: 20px; line-height: 1.6; }
+
+    .help-box { border-left: 3px solid var(--primary); background: var(--primary-light); border-radius: 0 8px 8px 0; padding: 12px 16px; font-size: 0.82rem; margin-bottom: 16px; line-height: 1.6; }
+    .help-box.success { border-left-color: var(--success); background: var(--success-bg); }
+    .help-box.warn { border-left-color: var(--warn); background: var(--warn-bg); }
+    .help-box .label { font-weight: 700; font-size: 0.75rem; margin-bottom: 4px; }
+
+    .compare-banner { background: var(--warn-bg); border: 1px solid #fcd34d; border-radius: 8px; padding: 10px 14px; font-size: 0.78rem; margin-bottom: 16px; }
+    .compare-banner .old { color: var(--danger); text-decoration: line-through; }
+    .compare-banner .new { color: var(--success); font-weight: 700; }
+
+    .upload-zone { border: 2px dashed var(--border); border-radius: var(--radius); padding: 28px 16px; text-align: center; cursor: pointer; display: block; margin-bottom: 12px; }
+    .upload-zone:hover, .upload-zone.has-file { border-color: var(--primary); background: var(--primary-light); border-style: solid; }
+    .upload-zone .icon { font-size: 2rem; margin-bottom: 8px; }
+    .upload-zone .title { font-size: 0.9rem; font-weight: 600; }
+    .upload-zone .sub { font-size: 0.78rem; color: var(--muted); margin-top: 4px; }
+    .upload-zone .file-name { font-size: 0.78rem; color: var(--success); font-weight: 600; margin-top: 8px; word-break: break-all; }
+    .upload-zone input { display: none; }
+    .sample-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+    .sample-link { font-size: 0.78rem; color: var(--primary); text-decoration: underline; cursor: pointer; padding: 6px 12px; background: #fff; border: 1px solid var(--border); border-radius: 6px; }
+
+    .mapping-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-bottom: 16px; }
+    .mapping-table th { text-align: left; padding: 8px 12px; background: var(--bg); font-size: 0.75rem; color: var(--muted); }
+    .mapping-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+    .status-ok { color: var(--success); font-weight: 600; font-size: 0.8rem; }
+    .status-warn { color: var(--warn); font-weight: 600; font-size: 0.8rem; }
+    .status-miss { color: var(--danger); font-weight: 600; font-size: 0.8rem; }
+
+    .summary-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+    .chip { font-size: 0.75rem; padding: 4px 10px; border-radius: 99px; background: var(--bg); border: 1px solid var(--border); }
+    .chip.primary { background: var(--primary-light); color: var(--primary); border-color: #bfdbfe; font-weight: 600; }
+
+    .map-checklist { display: grid; gap: 8px; margin-bottom: 16px; max-height: 220px; overflow-y: auto; }
+    .map-item { display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: center; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.82rem; cursor: pointer; transition: .15s; }
+    .map-item:hover { border-color: var(--primary); background: var(--primary-light); }
+    .map-item.active { border-color: var(--primary); background: var(--primary-light); box-shadow: 0 0 0 2px #bfdbfe; }
+    .map-item.done { border-color: #86efac; background: var(--success-bg); }
+    .map-item .meta { color: var(--muted); font-size: 0.75rem; margin-top: 2px; }
+    .map-item .badge { font-size: 0.7rem; font-weight: 700; padding: 3px 8px; border-radius: 99px; }
+    .badge.pending { background: var(--warn-bg); color: var(--warn); }
+    .badge.done { background: var(--success-bg); color: var(--success); }
+
+    .map-upload-panel { border: 2px dashed var(--border); border-radius: var(--radius); padding: 20px; text-align: center; }
+    .map-upload-panel .selectors { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; text-align: left; }
+    .map-upload-panel label { font-size: 0.75rem; color: var(--muted); display: block; margin-bottom: 4px; }
+    .map-upload-panel select { width: 100%; padding: 8px 10px; border: 1px solid var(--border); border-radius: 6px; font-size: 0.85rem; background: #f8fafc; }
+    .map-upload-panel select:disabled { opacity: .7; }
+
+    .kpi-preview { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 16px; }
+    @media(max-width:560px){ .kpi-preview { grid-template-columns: 1fr; } }
+    .kpi-card { background: var(--bg); border-radius: 8px; padding: 12px; text-align: center; }
+    .kpi-card .val { font-size: 1.2rem; font-weight: 700; color: var(--primary); }
+    .kpi-card .lbl { font-size: 0.72rem; color: var(--muted); margin-top: 2px; }
+
+    .bar-preview { height: 28px; border-radius: 6px; overflow: hidden; display: flex; margin: 12px 0; font-size: 0.65rem; color: #fff; font-weight: 600; }
+    .bar-preview span { display: flex; align-items: center; justify-content: center; min-width: 0; overflow: hidden; }
+
+    .review-grid { display: grid; gap: 12px; }
+    .review-item { background: var(--bg); border-radius: 8px; padding: 12px 16px; font-size: 0.85rem; }
+    .review-item .key { color: var(--muted); font-size: 0.75rem; margin-bottom: 2px; }
+    .review-item .val { font-weight: 600; word-break: break-word; }
+
+    .wizard-footer { padding: 16px 24px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; background: #fafbfc; }
+    .btn { padding: 10px 24px; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; }
+    .btn-ghost { background: none; color: var(--muted); border: 1px solid var(--border); }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:disabled { opacity: .45; cursor: not-allowed; }
+    .btn-skip { background: none; color: var(--muted); border: none; font-size: 0.8rem; text-decoration: underline; cursor: pointer; margin-left: 8px; }
+    .hidden { display: none !important; }
+    code { background: #f1f5f9; padding: 1px 5px; border-radius: 4px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+
+<div class="landing" id="landing">
+  <h1>WDP 空間分析セットアップ — Wizard Mockup</h1>
+  <p>現状は「データアップロード」と「図面アップロード」が<strong>別モーダル</strong>で、バージョン・フロアを手動選択する必要があります。Operationと同様に<strong>1つのウィザード</strong>に統合し、データファイルから自動でバージョン/フロアを読み取り、図面アップロードをガイドします。</p>
+
+  <div class="flow-compare">
+    <div class="flow-card old">
+      <h3>❌ 現状（分断）</h3>
+      <ol>
+        <li>モーダル①: 空間分析情報をアップロード</li>
+        <li>ダッシュボード表示（KPI計算）</li>
+        <li>モーダル②: 図面アップロード</li>
+        <li>バージョンを手動選択（ファイルと無関係）</li>
+        <li>フロアを手動選択</li>
+        <li>画像をアップロード → 保存</li>
+      </ol>
+    </div>
+    <div class="flow-card new">
+      <h3>✅ 提案（ウィザード）</h3>
+      <ol>
+        <li>Step 1: 空間分析情報をアップロード</li>
+        <li>Step 2: 列チェック（FE自動検証）</li>
+        <li>Step 3: 図面チェックリスト（データから自動生成）</li>
+        <li>バージョン/フロアは<strong>自動プリセット</strong>、1件ずつガイド</li>
+        <li>Step 4: 確認 → 一括保存</li>
+      </ol>
+    </div>
+  </div>
+
+  <button class="open-wizard-btn" onclick="openWizard()">▶ 空間分析セットアップを開始</button>
+  <p style="margin-top:16px;font-size:0.78rem;color:var(--muted)">サンプル: <code>docs/examples/space-samples/</code></p>
+</div>
+
+<div class="overlay hidden" id="overlay">
+  <div class="wizard">
+    <div class="wizard-header">
+      <div class="wizard-header-top">
+        <div>
+          <div class="wizard-title">空間分析セットアップ</div>
+          <div class="wizard-subtitle">Space Analysis Setup Wizard</div>
+        </div>
+        <button class="close-btn" onclick="closeWizard()">✕</button>
+      </div>
+      <div class="progress-bar-wrap">
+        <div class="progress-meta"><span id="progress-label">ステップ 1 / 4</span><span id="progress-pct">25%</span></div>
+        <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:25%"></div></div>
+      </div>
+      <div class="steps-nav" id="steps-nav"></div>
+    </div>
+
+    <div class="wizard-body">
+      <!-- Step 0: Data upload -->
+      <div class="step-panel active" id="step-0">
+        <div class="compare-banner">🔄 旧: <span class="old">データのみ別モーダル</span> → 新: <span class="new">ウィザードStep1・即時解析</span></div>
+        <div class="step-heading">空間分析情報をアップロード</div>
+        <div class="step-desc">KPI計算用のCSV/Excelです。アップロード後、FEが<strong>バージョン・フロア・列</strong>を自動読み取りします。</div>
+
+        <div class="sample-row">
+          <span class="sample-link" onclick="loadSample('no-version')">📥 サンプル（バージョンなし H9）</span>
+          <span class="sample-link" onclick="loadSample('with-version')">📥 サンプル（バージョンあり F2）</span>
+        </div>
+
+        <label class="upload-zone" id="zone-data" for="input-data">
+          <div class="icon">☁️</div>
+          <div class="title">ファイルをドラッグ＆ドロップ</div>
+          <div class="sub">CSV / Excel（空間分析情報）</div>
+          <div class="file-name" id="file-data"></div>
+          <input type="file" id="input-data" accept=".csv,.xlsx,.xls" onchange="handleDataFile(this.files[0])">
+        </label>
+
+        <div class="help-box success hidden" id="parse-result">
+          <div class="label">✅ FE読み取り結果</div>
+          <span id="parse-text"></span>
+        </div>
+      </div>
+
+      <!-- Step 1: Column validation -->
+      <div class="step-panel" id="step-1">
+        <div class="step-heading">列の確認</div>
+        <div class="step-desc">必須列が揃っているかFEが自動チェックします。旧UIの手動マッピングは不要です（列名は固定仕様）。</div>
+
+        <div class="help-box success" id="column-summary">—</div>
+
+        <table class="mapping-table">
+          <thead><tr><th>WDP項目</th><th>ファイルの列</th><th>状態</th></tr></thead>
+          <tbody id="column-tbody"></tbody>
+        </table>
+
+        <div class="help-box" id="version-detect-box">
+          <div class="label">📌 バージョン検出</div>
+          <span id="version-detect-text">—</span>
+        </div>
+
+        <div class="kpi-preview hidden" id="kpi-preview">
+          <div class="kpi-card"><div class="val" id="kpi-area">—</div><div class="lbl">総面積（㎡）</div></div>
+          <div class="kpi-card"><div class="val" id="kpi-seats">—</div><div class="lbl">タッチポイント</div></div>
+          <div class="kpi-card"><div class="val" id="kpi-floors">—</div><div class="lbl">フロア数</div></div>
+        </div>
+        <div class="bar-preview hidden" id="bar-preview"></div>
+      </div>
+
+      <!-- Step 2: Floor map upload -->
+      <div class="step-panel" id="step-2">
+        <div class="compare-banner">🔄 旧: <span class="old">バージョン/フロア手動選択</span> → 新: <span class="new">データから自動生成・チェックリスト</span></div>
+        <div class="step-heading">図面（フロアマップ）のアップロード</div>
+        <div class="step-desc">データファイルに含まれるバージョン×フロアごとに図面を登録します。選択は<strong>自動プリセット</strong>され、変更も可能です。</div>
+
+        <div class="summary-chips" id="map-summary-chips"></div>
+
+        <div class="map-checklist" id="map-checklist"></div>
+
+        <div class="map-upload-panel" id="map-upload-panel">
+          <div class="selectors">
+            <div id="version-select-wrap">
+              <label>バージョン</label>
+              <select id="map-version" onchange="onVersionChange()"></select>
+            </div>
+            <div>
+              <label>フロア</label>
+              <select id="map-floor" onchange="onFloorChange()"></select>
+            </div>
+          </div>
+          <label class="upload-zone" id="zone-map" for="input-map" style="margin:0">
+            <div class="icon">🗺️</div>
+            <div class="title">図面ファイルをドロップ</div>
+            <div class="sub">PNG / JPG / WEBP（<code>{tenant}_{version}_{floor}.webp</code>）</div>
+            <div class="file-name" id="file-map"></div>
+            <input type="file" id="input-map" accept="image/*" onchange="handleMapFile(this.files[0])">
+          </label>
+        </div>
+
+        <div class="help-box warn" style="margin-top:12px" id="map-version-help">
+          <div class="label">💡 バージョンありの場合</div>
+          <span id="map-version-help-text">バージョンを選ぶと、そのバージョンに含まれるフロアだけが表示されます。</span>
+        </div>
+        <div class="help-box warn hidden" style="margin-top:12px" id="map-no-version-help">
+          <div class="label">💡 バージョンなしの場合</div>
+          バージョンは「設定なし」固定。フロアのみ選択して図面をアップロードします。
+        </div>
+      </div>
+
+      <!-- Step 3: Review -->
+      <div class="step-panel" id="step-3">
+        <div class="step-heading">設定内容の確認</div>
+        <div class="step-desc">データ + 図面を一括保存します。未アップロードの図面はスキップ可能ですが、該当フロアの図面表示はできません。</div>
+        <div class="review-grid" id="review-grid"></div>
+      </div>
+    </div>
+
+    <div class="wizard-footer">
+      <button class="btn btn-ghost" id="btn-back" onclick="prevStep()" disabled>← 戻る</button>
+      <div>
+        <button class="btn-skip hidden" id="btn-skip-maps" onclick="skipMaps()">図面は後で登録</button>
+        <button class="btn btn-primary" id="btn-next" onclick="nextStep()">次へ →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const REQUIRED_COLS = [
+  { key: 'floor_level', label: '階層', patterns: [/階層/] },
+  { key: 'room_type', label: '空間タイプ', patterns: [/空間タイプ/] },
+  { key: 'area_name', label: 'エリア名称', patterns: [/エリア名称/] },
+  { key: 'seat_count', label: '座席数', patterns: [/座席数/] },
+  { key: 'square_measure', label: '単位面積（㎡）', patterns: [/単位面積/] },
+  { key: 'is_private_room', label: '個室', patterns: [/個室/] },
+];
+const OPTIONAL_COL = { key: 'version', label: 'バージョン', patterns: [/バージョン/] };
+const VALID_ROOM_TYPES = ['COMMUNITY','TEAM OPEN','TEAM CLOSE','WORK','CIRCULATION','SUPPORT'];
+const VERSION_RE = /^\d{4}\/\d{2}$/;
+const STEP_LABELS = ['データ', '列確認', '図面', '確認'];
+const SAMPLES = {
+  'no-version': { path: 'space-samples/kukan-bunseki-info-h9-no-version.csv', name: 'kukan-bunseki-info-h9-no-version.csv' },
+  'with-version': { path: 'space-samples/kukan-bunseki-info-f2-with-version.xlsx', name: 'kukan-bunseki-info-f2-with-version.xlsx' }
+};
+
+let currentStep = 0;
+let dataFile = null;
+let parsedData = null;
+let columnMap = {};
+let mapSlots = [];
+let activeSlotId = null;
+let uploadedMaps = {};
+
+function init() {
+  document.getElementById('steps-nav').innerHTML = STEP_LABELS.map((l, i) =>
+    `<div class="step-dot" data-step="${i}"><span class="num">${i + 1}</span>${l}</div>`).join('');
+  updateUI();
+}
+
+function esc(s) { return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;'); }
+
+function parseCSV(text) {
+  const lines = text.replace(/\r\n/g,'\n').replace(/\r/g,'\n').split('\n').filter(l => l.trim());
+  if (!lines.length) return { columns: [], rows: [] };
+  const delim = lines[0].includes('\t') ? '\t' : ',';
+  const parseLine = line => {
+    const res = []; let cur = ''; let q = false;
+    for (const ch of line) {
+      if (ch === '"') { q = !q; continue; }
+      if (ch === delim && !q) { res.push(cur.trim()); cur = ''; continue; }
+      cur += ch;
+    }
+    res.push(cur.trim());
+    return res.map(c => c.replace(/^"|"$/g, ''));
+  };
+  const columns = parseLine(lines[0]);
+  const rows = lines.slice(1).map(parseLine).filter(r => r.some(c => c));
+  return { columns, rows };
+}
+
+function parseExcel(file, cb) {
+  const reader = new FileReader();
+  reader.onload = e => {
+    const wb = XLSX.read(e.target.result, { type: 'array' });
+    const sheet = wb.Sheets[wb.SheetNames[0]];
+    const raw = XLSX.utils.sheet_to_json(sheet, { header: 1, defval: '' });
+    const nonEmpty = raw.filter(r => r.some(c => String(c).trim()));
+    if (!nonEmpty.length) { cb({ columns: [], rows: [] }); return; }
+    const headerRow = nonEmpty[0].map(c => String(c).trim());
+    const colIndexes = headerRow.map((h, i) => h ? { name: h, index: i } : null).filter(Boolean);
+    const columns = colIndexes.map(c => c.name);
+    const rows = nonEmpty.slice(1).map(row =>
+      colIndexes.map(c => (row[c.index] != null && row[c.index] !== '') ? String(row[c.index]) : '')
+    );
+    cb({ columns, rows });
+  };
+  reader.readAsArrayBuffer(file);
+}
+
+function matchColumn(columns, patterns) {
+  for (const col of columns) {
+    const name = String(col).trim();
+    if (patterns.some(p => p.test(name))) return col;
+  }
+  return '';
+}
+
+function buildColumnMap(columns) {
+  const map = {};
+  for (const col of REQUIRED_COLS) map[col.key] = matchColumn(columns, col.patterns);
+  map.version = matchColumn(columns, OPTIONAL_COL.patterns);
+  return map;
+}
+
+function analyzeData(columns, rows, columnMap) {
+  const idx = {};
+  for (const [k, col] of Object.entries(columnMap)) if (col) idx[k] = columns.indexOf(col);
+
+  const floors = new Set();
+  const versions = new Set();
+  const roomTypes = new Set();
+  let totalArea = 0;
+  let touchPoints = 0;
+
+  for (const row of rows) {
+    const floor = idx.floor_level != null ? row[idx.floor_level] : '';
+    const version = idx.version != null ? row[idx.version] : '';
+    const room = idx.room_type != null ? row[idx.room_type] : '';
+    const seats = idx.seat_count != null ? parseFloat(row[idx.seat_count]) || 0 : 0;
+    const area = idx.square_measure != null ? parseFloat(row[idx.square_measure]) || 0 : 0;
+
+    if (floor) floors.add(floor);
+    if (version && VERSION_RE.test(version)) versions.add(version);
+    if (room) roomTypes.add(room);
+    totalArea += area;
+    touchPoints += seats;
+  }
+
+  const hasVersion = !!columnMap.version && versions.size > 0;
+  const invalidVersions = rows.map(r => idx.version != null ? r[idx.version] : '').filter(v => v && !VERSION_RE.test(v));
+  const invalidRoomTypes = [...roomTypes].filter(r => !VALID_ROOM_TYPES.includes(r));
+
+  const areaByType = {};
+  for (const row of rows) {
+    const room = idx.room_type != null ? row[idx.room_type] : '';
+    const area = idx.square_measure != null ? parseFloat(row[idx.square_measure]) || 0 : 0;
+    if (room) areaByType[room] = (areaByType[room] || 0) + area;
+  }
+
+  return {
+    hasVersion,
+    floors: [...floors].sort(),
+    versions: [...versions].sort().reverse(),
+    roomTypes: [...roomTypes],
+    invalidVersions,
+    invalidRoomTypes,
+    totalArea: Math.round(totalArea),
+    touchPoints,
+    areaByType
+  };
+}
+
+function buildMapSlots(analysis) {
+  const slots = [];
+  if (analysis.hasVersion) {
+    for (const version of analysis.versions) {
+      const floors = new Set();
+      const idxV = parsedData.columns.indexOf(columnMap.version);
+      const idxF = parsedData.columns.indexOf(columnMap.floor_level);
+      for (const row of parsedData.rows) {
+        if (row[idxV] === version && row[idxF]) floors.add(row[idxF]);
+      }
+      for (const floor of [...floors].sort()) {
+        slots.push({ id: `${version}__${floor}`, version, floor, label: `バージョン ${version} / ${floor}` });
+      }
+    }
+  } else {
+    for (const floor of analysis.floors) {
+      slots.push({ id: `__${floor}`, version: null, floor, label: `バージョン設定なし / ${floor}` });
+    }
+  }
+  return slots;
+}
+
+function handleDataFile(file) {
+  if (!file) return;
+  dataFile = file;
+  const ext = file.name.split('.').pop().toLowerCase();
+  const done = parsed => {
+    parsedData = { ...parsed, name: file.name };
+    columnMap = buildColumnMap(parsed.columns);
+    const analysis = analyzeData(parsed.columns, parsed.rows, columnMap);
+    parsedData.analysis = analysis;
+    mapSlots = buildMapSlots(analysis);
+    uploadedMaps = {};
+    activeSlotId = mapSlots[0]?.id || null;
+
+    document.getElementById('zone-data').classList.add('has-file');
+    document.getElementById('file-data').textContent = `✅ ${file.name}（${parsed.rows.length}行）`;
+
+    const pr = document.getElementById('parse-result');
+    pr.classList.remove('hidden');
+    document.getElementById('parse-text').innerHTML =
+      `列: <strong>${parsed.columns.join(', ')}</strong><br>` +
+      `フロア: <strong>${analysis.floors.join(', ') || '—'}</strong>` +
+      (analysis.hasVersion ? `<br>バージョン: <strong>${analysis.versions.join(', ')}</strong>` : '<br>バージョン: <strong>なし（設定なし扱い）</strong>');
+
+    renderColumnStep();
+    renderMapStep();
+  };
+
+  if (ext === 'csv') {
+    const reader = new FileReader();
+    reader.onload = e => done(parseCSV(e.target.result));
+    reader.readAsText(file, 'UTF-8');
+  } else if (ext === 'xlsx' || ext === 'xls') {
+    parseExcel(file, done);
+  } else {
+    alert('未対応の形式です');
+  }
+}
+
+function loadSample(type) {
+  const s = SAMPLES[type];
+  fetch(s.path).then(r => r.blob()).then(blob => {
+    const file = new File([blob], s.name, { type: blob.type });
+    handleDataFile(file);
+    openWizard();
+  }).catch(() => alert('サンプルを読み込めませんでした'));
+}
+
+function renderColumnStep() {
+  if (!parsedData) return;
+  const a = parsedData.analysis;
+  const missing = REQUIRED_COLS.filter(c => !columnMap[c.key]);
+
+  document.getElementById('column-summary').innerHTML = missing.length
+    ? `⚠️ 必須列が不足: <strong>${missing.map(c => c.label).join(', ')}</strong>`
+    : `✅ 必須列 ${REQUIRED_COLS.length}件すべて検出しました`;
+
+  let rows = '';
+  for (const col of REQUIRED_COLS) {
+    const found = columnMap[col.key];
+    rows += `<tr>
+      <td><strong>${col.label}</strong></td>
+      <td>${found ? esc(found) : '—'}</td>
+      <td class="${found ? 'status-ok' : 'status-miss'}">${found ? '✓ OK' : '✗ 未検出'}</td>
+    </tr>`;
+  }
+  const vFound = columnMap.version;
+  rows += `<tr>
+    <td><strong>${OPTIONAL_COL.label}</strong> <span style="color:var(--muted);font-size:0.75rem">（任意）</span></td>
+    <td>${vFound ? esc(vFound) : '—'}</td>
+    <td class="${vFound ? 'status-ok' : 'status-warn'}">${vFound ? (a.hasVersion ? '✓ あり' : '列あり・値なし') : 'なし → 設定なし'}</td>
+  </tr>`;
+  document.getElementById('column-tbody').innerHTML = rows;
+
+  document.getElementById('version-detect-text').innerHTML = a.hasVersion
+    ? `バージョン列を検出: <strong>${a.versions.join(', ')}</strong>。図面アップロード時にこれらが自動選択されます。`
+    : `バージョン列なし（または値なし）。図面は <strong>「バージョン設定なし」</strong> + 各フロアで登録します。`;
+
+  if (a.invalidVersions.length) {
+    document.getElementById('version-detect-text').innerHTML += `<br><span class="status-miss">⚠️ 不正なバージョン形式: ${esc(a.invalidVersions.slice(0,3).join(', '))}</span>`;
+  }
+  if (a.invalidRoomTypes.length) {
+    document.getElementById('version-detect-text').innerHTML += `<br><span class="status-warn">⚠️ 未知の空間タイプ: ${esc(a.invalidRoomTypes.join(', '))}</span>`;
+  }
+
+  document.getElementById('kpi-preview').classList.remove('hidden');
+  document.getElementById('kpi-area').textContent = a.totalArea.toLocaleString();
+  document.getElementById('kpi-seats').textContent = a.touchPoints.toLocaleString();
+  document.getElementById('kpi-floors').textContent = a.floors.length;
+
+  const colors = { COMMUNITY:'#e74c3c', 'TEAM OPEN':'#f39c12', 'TEAM CLOSE':'#f1c40f', WORK:'#27ae60', CIRCULATION:'#bdc3c7', SUPPORT:'#3498db' };
+  const total = Object.values(a.areaByType).reduce((s,v) => s+v, 0) || 1;
+  const bar = document.getElementById('bar-preview');
+  bar.classList.remove('hidden');
+  bar.innerHTML = Object.entries(a.areaByType).map(([k,v]) => {
+    const pct = (v/total*100).toFixed(1);
+    return `<span style="width:${pct}%;background:${colors[k]||'#95a5a6'}" title="${k} ${pct}%">${pct > 8 ? pct+'%' : ''}</span>`;
+  }).join('');
+}
+
+function getVersionsFromSlots() {
+  return [...new Set(mapSlots.map(s => s.version).filter(Boolean))].sort().reverse();
+}
+
+function getFloorsForVersion(version) {
+  return mapSlots
+    .filter(s => s.version === version)
+    .map(s => s.floor)
+    .filter((f, i, arr) => arr.indexOf(f) === i)
+    .sort();
+}
+
+function findSlot(version, floor) {
+  return mapSlots.find(s =>
+    (version ? s.version === version : !s.version) && s.floor === floor
+  );
+}
+
+function renderMapStep() {
+  if (!parsedData) return;
+  renderMapSummary();
+  syncMapUploadPanel();
+  renderMapChecklist();
+}
+
+function renderMapSummary() {
+  const doneCount = Object.keys(uploadedMaps).length;
+  const a = parsedData.analysis;
+  let chips = `<span class="chip primary">図面 ${doneCount} / ${mapSlots.length} 件</span>`;
+
+  if (a.hasVersion) {
+    for (const v of getVersionsFromSlots()) {
+      const vf = getFloorsForVersion(v);
+      const vDone = mapSlots.filter(s => s.version === v && uploadedMaps[s.id]).length;
+      chips += `<span class="chip">Ver ${esc(v)}: ${vDone}/${vf.length}フロア (${vf.join(', ')})</span>`;
+    }
+  } else {
+    chips += `<span class="chip">バージョン設定なし</span>`;
+    chips += a.floors.map(f => `<span class="chip">${esc(f)}</span>`).join('');
+  }
+  document.getElementById('map-summary-chips').innerHTML = chips;
+}
+
+function renderMapChecklist() {
+  const versionSel = document.getElementById('map-version');
+  const filterVersion = parsedData.analysis.hasVersion ? (versionSel?.value || getVersionsFromSlots()[0]) : null;
+  const visibleSlots = filterVersion
+    ? mapSlots.filter(s => s.version === filterVersion)
+    : mapSlots;
+
+  document.getElementById('map-checklist').innerHTML = visibleSlots.map(slot => {
+    const done = !!uploadedMaps[slot.id];
+    return `<div class="map-item ${done ? 'done' : ''} ${slot.id === activeSlotId ? 'active' : ''}" onclick="selectMapSlot('${slot.id}')">
+      <div>
+        <strong>${esc(slot.label)}</strong>
+        <div class="meta">${done ? esc(uploadedMaps[slot.id].name) : '図面未登録 — クリックしてアップロード'}</div>
+      </div>
+      <span class="badge ${done ? 'done' : 'pending'}">${done ? '✓ 済' : '未'}</span>
+    </div>`;
+  }).join('');
+}
+
+function syncMapUploadPanel() {
+  const versionWrap = document.getElementById('version-select-wrap');
+  const versionSel = document.getElementById('map-version');
+  const floorSel = document.getElementById('map-floor');
+  const hasVersion = parsedData.analysis.hasVersion;
+
+  if (hasVersion) {
+    versionWrap.classList.remove('hidden');
+    const versions = getVersionsFromSlots();
+    const currentVersion = versions.includes(versionSel.value) ? versionSel.value : (activeSlotId ? mapSlots.find(s => s.id === activeSlotId)?.version : null) || versions[0];
+    versionSel.innerHTML = versions.map(v => `<option value="${esc(v)}">${esc(v)}</option>`).join('');
+    versionSel.value = currentVersion;
+
+    const floors = getFloorsForVersion(currentVersion);
+    const currentFloor = floors.includes(floorSel.value) ? floorSel.value : floors[0];
+    floorSel.innerHTML = floors.map(f => `<option value="${esc(f)}">${esc(f)}</option>`).join('');
+    floorSel.value = currentFloor;
+
+    const slot = findSlot(currentVersion, currentFloor);
+    if (slot) activeSlotId = slot.id;
+  } else {
+    versionWrap.classList.add('hidden');
+    versionSel.innerHTML = '<option value="">バージョン設定なし</option>';
+
+    const floors = mapSlots.map(s => s.floor);
+    const currentFloor = floors.includes(floorSel.value) ? floorSel.value : floors[0];
+    floorSel.innerHTML = floors.map(f => `<option value="${esc(f)}">${esc(f)}</option>`).join('');
+    floorSel.value = currentFloor;
+
+    const slot = findSlot(null, currentFloor);
+    if (slot) activeSlotId = slot.id;
+  }
+
+  const uploaded = activeSlotId ? uploadedMaps[activeSlotId] : null;
+  document.getElementById('file-map').textContent = uploaded ? `✅ ${uploaded.name}` : '';
+  document.getElementById('zone-map').classList.toggle('has-file', !!uploaded);
+
+  document.getElementById('map-version-help').classList.toggle('hidden', !hasVersion);
+  document.getElementById('map-no-version-help').classList.toggle('hidden', hasVersion);
+  if (hasVersion) {
+    const v = versionSel.value;
+    const floors = getFloorsForVersion(v);
+    document.getElementById('map-version-help-text').textContent =
+      `バージョン ${v} → フロア: ${floors.join(', ')}（このバージョンのデータに含まれるフロアのみ）`;
+  }
+}
+
+function onVersionChange() {
+  const version = document.getElementById('map-version').value;
+  const floors = getFloorsForVersion(version);
+  const floorSel = document.getElementById('map-floor');
+  floorSel.innerHTML = floors.map(f => `<option value="${esc(f)}">${esc(f)}</option>`).join('');
+  floorSel.value = floors[0] || '';
+
+  const slot = findSlot(version, floorSel.value);
+  if (slot) activeSlotId = slot.id;
+
+  renderMapSummary();
+  syncMapUploadPanel();
+  renderMapChecklist();
+}
+
+function onFloorChange() {
+  const hasVersion = parsedData.analysis.hasVersion;
+  const version = hasVersion ? document.getElementById('map-version').value : null;
+  const floor = document.getElementById('map-floor').value;
+  const slot = findSlot(version, floor);
+  if (slot) activeSlotId = slot.id;
+
+  syncMapUploadPanel();
+  renderMapChecklist();
+}
+
+function selectMapSlot(id) {
+  activeSlotId = id;
+  const slot = mapSlots.find(s => s.id === id);
+  if (!slot) return;
+
+  if (parsedData.analysis.hasVersion) {
+    document.getElementById('map-version').value = slot.version;
+    const floors = getFloorsForVersion(slot.version);
+    const floorSel = document.getElementById('map-floor');
+    floorSel.innerHTML = floors.map(f => `<option value="${esc(f)}">${esc(f)}</option>`).join('');
+    floorSel.value = slot.floor;
+  } else {
+    document.getElementById('map-floor').value = slot.floor;
+  }
+
+  renderMapSummary();
+  syncMapUploadPanel();
+  renderMapChecklist();
+}
+
+function handleMapFile(file) {
+  if (!file || !activeSlotId) return;
+  uploadedMaps[activeSlotId] = { name: file.name, file };
+  document.getElementById('zone-map').classList.add('has-file');
+  document.getElementById('file-map').textContent = `✅ ${file.name}`;
+
+  const idx = mapSlots.findIndex(s => s.id === activeSlotId);
+  const next = mapSlots.slice(idx + 1).find(s => !uploadedMaps[s.id]);
+  if (next) activeSlotId = next.id;
+
+  renderMapStep();
+}
+
+function buildReview() {
+  const a = parsedData?.analysis;
+  const items = [
+    ['空間分析情報', dataFile ? `✅ ${dataFile.name}` : '—'],
+    ['行数', parsedData ? `${parsedData.rows.length}行` : '—'],
+    ['バージョン', a?.hasVersion ? a.versions.join(', ') : '設定なし'],
+    ['フロア', a?.floors.join(', ') || '—'],
+    ['総面積', a ? `${a.totalArea.toLocaleString()} ㎡` : '—'],
+    ['タッチポイント', a ? `${a.touchPoints} 席` : '—'],
+    ['図面', `${Object.keys(uploadedMaps).length} / ${mapSlots.length} 件アップロード済`],
+  ];
+  if (Object.keys(uploadedMaps).length) {
+    items.push(['図面詳細', mapSlots.filter(s => uploadedMaps[s.id]).map(s => `${s.label} → ${uploadedMaps[s.id].name}`).join(' / ')]);
+  }
+  const pending = mapSlots.filter(s => !uploadedMaps[s.id]);
+  if (pending.length) items.push(['未登録図面', pending.map(s => s.label).join(', ')]);
+
+  document.getElementById('review-grid').innerHTML = items.map(([k,v]) =>
+    `<div class="review-item"><div class="key">${k}</div><div class="val">${esc(v)}</div></div>`).join('');
+}
+
+function openWizard() { document.getElementById('overlay').classList.remove('hidden'); document.getElementById('landing').style.display = 'none'; }
+function closeWizard() { document.getElementById('overlay').classList.add('hidden'); document.getElementById('landing').style.display = 'block'; }
+
+function updateUI() {
+  document.querySelectorAll('.step-panel').forEach((p, i) => p.classList.toggle('active', i === currentStep));
+  document.querySelectorAll('.step-dot').forEach((d, i) => {
+    d.classList.toggle('active', i === currentStep);
+    d.classList.toggle('done', i < currentStep);
+  });
+  const pct = Math.round((currentStep + 1) / 4 * 100);
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-label').textContent = `ステップ ${currentStep + 1} / 4`;
+  document.getElementById('progress-pct').textContent = pct + '%';
+  document.getElementById('btn-back').disabled = currentStep === 0;
+  document.getElementById('btn-next').textContent = currentStep === 3 ? '✓ 保存して分析開始' : '次へ →';
+  document.getElementById('btn-skip-maps').classList.toggle('hidden', currentStep !== 2);
+
+  if (currentStep === 1) renderColumnStep();
+  if (currentStep === 2) renderMapStep();
+  if (currentStep === 3) buildReview();
+}
+
+function skipMaps() { currentStep = 3; updateUI(); }
+
+function nextStep() {
+  if (currentStep === 0 && !parsedData) { alert('空間分析情報ファイルをアップロードしてください'); return; }
+  if (currentStep === 1) {
+    const missing = REQUIRED_COLS.filter(c => !columnMap[c.key]);
+    if (missing.length) { alert(`必須列が不足しています: ${missing.map(c => c.label).join(', ')}`); return; }
+    if (parsedData.analysis.invalidVersions.length) { alert('バージョン形式が不正です（YYYY/MM）'); return; }
+  }
+  if (currentStep < 3) { currentStep++; updateUI(); }
+  else {
+    alert('✅ セットアップ完了（モック）\n\n1. S3 raw-space-analysis-utilization-info/ にデータ保存\n2. Lambda → DynamoDB KPI更新\n3. 図面: GET /file-upload → PUT utilization-map/{tenant}_{version}_{floor}.webp');
+    closeWizard();
+  }
+}
+function prevStep() { if (currentStep > 0) { currentStep--; updateUI(); } }
+
+init();
+</script>
+</body>
+</html>
