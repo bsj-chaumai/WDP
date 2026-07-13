@@ -221,3 +221,5 @@ Thêm: WDP = Before→After 効果検証（gắn XD）
 
 *Brief này chỉ tóm『ヴィスの現状と今後について』.  
 Phân tích đề xuất phía bravesoft（P0/Must/松竹梅）xem `docs/01`–`04` — đó là lớp đúc kết của team, không phải nhãn có sẵn trong file Vis.*
+
+**Bản tiếng Nhật：** `docs/05-brief-team-vis-genjo-to-mokuhyo-ja.md`
