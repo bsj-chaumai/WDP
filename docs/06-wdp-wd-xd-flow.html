@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WDP × WD × XD × WDS — Sơ đồ luồng sử dụng</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --text: #4F4D4D;
+      --text-strong: #2f2d2d;
+      --muted: #7a7777;
+      --line: #e6e4e0;
+      --bg: #f6f5f2;
+      --paper: #fff;
+      --gold: #b28e00;
+      --gold-soft: #f7f1d6;
+      --wd: #2f6f6a;
+      --wd-soft: #e7f3f1;
+      --xd: #8b5a2b;
+      --xd-soft: #f5ebe0;
+      --wdp: #1f4e79;
+      --wdp-soft: #e8f0f8;
+      --gap: #9a3412;
+      --gap-soft: #fff1eb;
+      --max: 980px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      letter-spacing: 0.03em;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 28px 16px 72px; }
+    h1, h2, h3, strong, .chip, .step, .toc a { font-family: "Noto Sans JP", sans-serif; }
+    .hero {
+      background: var(--paper); border: 1px solid var(--line);
+      border-radius: 8px; padding: 26px 24px; margin-bottom: 16px;
+    }
+    .eyebrow { color: var(--gold); font-size: 12px; font-weight: 700; letter-spacing: 0.08em; margin-bottom: 8px; }
+    h1 { margin: 0 0 10px; font-size: 22px; font-weight: 700; color: var(--text-strong); line-height: 1.4; }
+    .lead { margin: 0; color: var(--muted); font-size: 14px; }
+    .links { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
+    .links a {
+      text-decoration: none; font-size: 12px; font-weight: 700; color: var(--wdp);
+      border: 1px solid var(--line); background: #fff; border-radius: 4px; padding: 7px 10px;
+    }
+    .toc { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 16px; }
+    @media (min-width: 760px) { .toc { grid-template-columns: repeat(4, 1fr); } }
+    .toc a {
+      text-decoration: none; color: inherit; background: var(--paper);
+      border: 1px solid var(--line); border-radius: 8px; padding: 12px;
+    }
+    .toc .n { display: block; color: var(--gold); font-size: 11px; font-weight: 700; margin-bottom: 4px; }
+    .toc .t { display: block; font-size: 13px; font-weight: 700; color: var(--text-strong); }
+    section.card {
+      background: var(--paper); border: 1px solid var(--line);
+      border-radius: 8px; padding: 22px 20px; margin-bottom: 14px;
+    }
+    section.card h2 {
+      margin: 0 0 14px; font-size: 18px; font-weight: 700; color: var(--text-strong);
+      padding-bottom: 10px; border-bottom: 2px solid var(--gold-soft);
+    }
+    section.card h3 { margin: 20px 0 10px; font-size: 15px; font-weight: 700; color: var(--text-strong); }
+    p { margin: 0 0 12px; }
+    .note { background: var(--gold-soft); border-radius: 6px; padding: 12px 14px; font-size: 13.5px; font-weight: 500; }
+    .legend { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 16px; }
+    .chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12px; font-weight: 700; border-radius: 999px; padding: 6px 10px;
+      border: 1px solid var(--line); background: #fff;
+    }
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot.wd { background: var(--wd); }
+    .dot.xd { background: var(--xd); }
+    .dot.wdp { background: var(--wdp); }
+    .map-top {
+      text-align: center; background: var(--gold-soft); border-radius: 8px;
+      padding: 14px; font-weight: 700; color: var(--text-strong); margin-bottom: 12px;
+    }
+    .map-cols { display: grid; gap: 12px; grid-template-columns: 1fr; }
+    @media (min-width: 800px) { .map-cols { grid-template-columns: 1fr 1fr; } }
+    .pane { border: 1px solid var(--line); border-radius: 8px; padding: 14px; background: #fff; }
+    .pane.wd { border-top: 4px solid var(--wd); }
+    .pane.xd { border-top: 4px solid var(--xd); }
+    .pane h3 { margin: 0 0 8px; font-size: 14px; }
+    .pane ul { margin: 0; padding-left: 1.1em; font-size: 13px; }
+    .pane li + li { margin-top: 4px; }
+    .bridge {
+      margin-top: 12px; text-align: center; border: 2px dashed var(--wdp);
+      background: var(--wdp-soft); border-radius: 8px; padding: 14px;
+    }
+    .bridge strong { color: var(--wdp); }
+    .flow { display: grid; gap: 8px; }
+    .step { display: grid; grid-template-columns: 72px 1fr; gap: 10px; }
+    .step .when {
+      background: #faf9f7; border: 1px solid var(--line); border-radius: 6px;
+      padding: 10px 8px; font-size: 11px; font-weight: 700; text-align: center;
+      color: var(--muted); display: flex; align-items: center; justify-content: center;
+    }
+    .step .body {
+      border: 1px solid var(--line); border-radius: 6px; padding: 12px 14px; background: #fff;
+    }
+    .tag {
+      display: inline-block; font-size: 11px; font-weight: 700;
+      padding: 2px 8px; border-radius: 4px; margin-bottom: 6px; margin-right: 4px;
+    }
+    .tag.wd { background: var(--wd-soft); color: var(--wd); }
+    .tag.xd { background: var(--xd-soft); color: var(--xd); }
+    .tag.wdp { background: var(--wdp-soft); color: var(--wdp); }
+    .tag.gap { background: var(--gap-soft); color: var(--gap); }
+    .title { font-weight: 700; color: var(--text-strong); margin-bottom: 4px; font-size: 14px; }
+    .desc { font-size: 13px; margin: 0; }
+    .arrow-down { text-align: center; color: var(--muted); font-size: 18px; font-weight: 700; padding-left: 72px; }
+    .compare { display: grid; gap: 12px; grid-template-columns: 1fr; }
+    @media (min-width: 800px) { .compare { grid-template-columns: 1fr 1fr; } }
+    .compare .col { border-radius: 8px; padding: 14px; border: 1px solid var(--line); }
+    .compare .now { background: var(--gap-soft); }
+    .compare .aim { background: var(--wd-soft); }
+    .compare h3 { margin: 0 0 8px; font-size: 14px; }
+    .compare ul { margin: 0; padding-left: 1.1em; font-size: 13px; }
+    .compare li + li { margin-top: 5px; }
+    .timeline { overflow-x: auto; }
+    .timeline-track { min-width: 720px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+    .tl-item { border: 1px solid var(--line); border-radius: 8px; padding: 12px; background: #fff; min-height: 150px; }
+    .phase { font-size: 11px; font-weight: 700; color: var(--gold); margin-bottom: 6px; }
+    .main { font-size: 13px; font-weight: 700; color: var(--text-strong); margin-bottom: 8px; }
+    .role { font-size: 12px; margin: 0 0 4px; }
+    footer { margin-top: 8px; color: var(--muted); font-size: 12.5px; line-height: 1.7; }
+    footer a { color: var(--wdp); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <div class="eyebrow">Brief cho team / Sơ đồ</div>
+      <h1>WDP × WD × XD × WDS<br>Luồng sử dụng nhìn một phát là hiểu</h1>
+      <p class="lead">
+        Tổng hợp từ trang dịch vụ Vis và『ヴィスの現状と今後について』.
+        Tách rõ: <strong>đang dùng thế nào</strong> vs <strong>hướng tới thế nào</strong>.
+      </p>
+      <div class="links">
+        <a href="https://vis-produce.com/service/data-solution/wdp" target="_blank" rel="noopener">WDP official</a>
+        <a href="https://vis-produce.com/lp/experience-design" target="_blank" rel="noopener">XD official</a>
+        <a href="./06-wdp-wd-xd-flow-ja.html">Bản tiếng Nhật</a>
+        <a href="./05-brief-team-vis-genjo-to-mokuhyo.html">Brief現状</a>
+      </div>
+    </header>
+
+    <nav class="toc">
+      <a href="#s1"><span class="n">1</span><span class="t">Quan hệ tổng thể</span></a>
+      <a href="#s2"><span class="n">2</span><span class="t">Cách dùng hiện tại</span></a>
+      <a href="#s3"><span class="n">3</span><span class="t">Cách dùng hướng tới</span></a>
+      <a href="#s4"><span class="n">4</span><span class="t">Timeline 1案件</span></a>
+    </nav>
+
+    <section class="card" id="s1">
+      <h2>1. Quan hệ tổng thể</h2>
+      <div class="legend">
+        <span class="chip"><span class="dot wd"></span>WD — làm không gian</span>
+        <span class="chip"><span class="dot xd"></span>XD — hỗ trợ trải nghiệm/vận hành</span>
+        <span class="chip"><span class="dot wdp"></span>WDP / WDS — công cụ đo</span>
+      </div>
+      <div class="map-top">ワークデザイン ＝ WD × XD</div>
+      <div class="map-cols">
+        <div class="pane wd">
+          <h3>WD：つく空間</h3>
+          <ul>
+            <li>Dự án 移転・改装</li>
+            <li>Programming → Design → Create → Update</li>
+            <li>Trung tâm doanh thu Vis hiện tại</li>
+            <li>請負・労働集約型</li>
+          </ul>
+        </div>
+        <div class="pane xd">
+          <h3>XD：支える体験・活用</h3>
+          <ul>
+            <li>ビジョン策定 → 計画 → 運用</li>
+            <li>3 góc: 運用・意識・活動</li>
+            <li>Tránh 形骸化 hiệu quả sau renew</li>
+            <li>Launch 2026/4（theo tài liệu）</li>
+          </ul>
+        </div>
+      </div>
+      <div class="bridge">
+        <div><strong>WDP（platform）</strong></div>
+        <div style="margin-top:6px;font-size:13px;">
+          Đo 人の気持ち / 人の動き / 空間<br>
+          Chức năng survey bên trong = <strong>WDS</strong>
+        </div>
+        <div style="margin-top:8px;font-size:13px;">
+          → Trong WD: làm <strong>căn cứ đề xuất / 受注</strong><br>
+          → Trong XD: làm <strong>Before / After 効果検証</strong>
+        </div>
+      </div>
+      <p class="note" style="margin-top:14px;">
+        Trang XD official cũng ghi: dùng WORK DESIGN PLATFORM ở phaseビジョン策定,
+        và đo trước–sau dự án để 効果検証.
+      </p>
+    </section>
+
+    <section class="card" id="s2">
+      <h2>2. Cách dùng hiện tại（WD trung tâm・ショット型）</h2>
+      <p>Hiện tại: WDP chủ yếu dùng survey để <strong>現状把握</strong>, tăng sức thuyết phục đề xuất → tăng 受注率（間接売上効果）.</p>
+      <div class="flow">
+        <div class="step">
+          <div class="when">Trước<br>đề xuất</div>
+          <div class="body">
+            <span class="tag wd">WD</span>
+            <div class="title">ナーチャリング / ヒアリング</div>
+            <p class="desc">Nuôi dưỡng KH. Nếu chạy WDS sớm hơn thì kịp vào đề xuất.</p>
+          </div>
+        </div>
+        <div class="arrow-down">↓</div>
+        <div class="step">
+          <div class="when">Sắp<br>đề xuất</div>
+          <div class="body">
+            <span class="tag wdp">WDP / WDS</span>
+            <div class="title">現状把握サーベイ（ショット型）</div>
+            <p class="desc">Cách dùng chính hiện nay. Đưa data vào đề xuất thay vì chỉ giả thuyết.</p>
+          </div>
+        </div>
+        <div class="arrow-down">↓</div>
+        <div class="step">
+          <div class="when">Đề xuất<br>/ コンペ</div>
+          <div class="body">
+            <span class="tag wd">WD</span>
+            <div class="title">Đề xuất bằng data → 受注</div>
+            <p class="desc">Đã có số: コンペ +22.9pt / 特命・ナーチャリング +25.4pt.</p>
+          </div>
+        </div>
+        <div class="arrow-down">↓</div>
+        <div class="step">
+          <div class="when">Thiết kế<br>〜 bàn giao</div>
+          <div class="body">
+            <span class="tag wd">WD</span>
+            <div class="title">Làm dự án không gian</div>
+            <p class="desc">Sân chính của Vis. Nhưng đo hiệu quả sau đó thường chưa chạy đủ.</p>
+          </div>
+        </div>
+        <div class="arrow-down">↓</div>
+        <div class="step">
+          <div class="when">Sau<br>chuyển VP</div>
+          <div class="body">
+            <span class="tag gap">GAP</span>
+            <div class="title">After còn yếu</div>
+            <p class="desc">ショット型 → khó 継続 → khó 有料. Đây là chỗ XD cần lấp.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="s3">
+      <h2>3. Cách dùng hướng tới（nối XD / Before→After）</h2>
+      <p>Hướng tài liệu: WDP không chỉ giúp 受注, mà còn giúp <strong>効果検証</strong>. XD MVP lấy before and after survey làm lõi.</p>
+      <div class="compare">
+        <div class="col now">
+          <h3>Hiện tại（課題）</h3>
+          <ul>
+            <li>WDS = nắm現状 trước đề xuất</li>
+            <li>Dùng 1 lần（ショット型）</li>
+            <li>有料 ~2件</li>
+            <li>Khó chứng minh効果 bằng số</li>
+          </ul>
+        </div>
+        <div class="col aim">
+          <h3>Hướng tới</h3>
+          <ul>
+            <li>So sánh Before（trước）và After（sau）</li>
+            <li>Nối KPI / đánh giá của XD</li>
+            <li>FY2026: Afterスポット trước</li>
+            <li>継続 → 有料 → SaaS dần</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Vị trí WDP/WDS trong XD</h3>
+      <div class="flow">
+        <div class="step">
+          <div class="when">ビジョン<br>策定</div>
+          <div class="body">
+            <span class="tag xd">XD</span><span class="tag wdp">WDP</span>
+            <div class="title">Before（WDS）+ interview + workshop</div>
+            <p class="desc">Nắm現状 bằng số, chốt trạng thái mong muốn.</p>
+          </div>
+        </div>
+        <div class="arrow-down">↓</div>
+        <div class="step">
+          <div class="when">計画</div>
+          <div class="body">
+            <span class="tag xd">XD</span>
+            <div class="title">Đổi mindset / thiết kế vận hành / giải thích</div>
+            <p class="desc">Không chỉ không gian — chỉnh cách dùng và ý thức.</p>
+          </div>
+        </div>
+        <div class="arrow-down">↓</div>
+        <div class="step">
+          <div class="when">運用</div>
+          <div class="body">
+            <span class="tag xd">XD</span>
+            <div class="title">Event + đồng hành + cải thiện</div>
+            <p class="desc">Tránh 形骸化, để hoạt động bám rễ.</p>
+          </div>
+        </div>
+        <div class="arrow-down">↓</div>
+        <div class="step">
+          <div class="when">評価</div>
+          <div class="body">
+            <span class="tag wdp">WDS</span>
+            <div class="title">After → so với Before（効果検証）</div>
+            <p class="desc">Lần đầu đánh giá hiệu quả đầu tư văn phòng bằng số.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="s4">
+      <h2>4. Timeline 1案件（ảnh lý tưởng）</h2>
+      <div class="timeline">
+        <div class="timeline-track">
+          <div class="tl-item">
+            <div class="phase">PHASE 0</div>
+            <div class="main">Nuôi dưỡng / trước đề xuất</div>
+            <p class="role"><strong>WD</strong>: quan hệ KH</p>
+            <p class="role"><strong>WDS</strong>: Before</p>
+            <p class="role"><strong>Giá trị</strong>: căn cứ đề xuất</p>
+          </div>
+          <div class="tl-item">
+            <div class="phase">PHASE 1</div>
+            <div class="main">受注 〜 thiết kế</div>
+            <p class="role"><strong>WD</strong>: thiết kế không gian</p>
+            <p class="role"><strong>XD</strong>:ビジョン/計画</p>
+            <p class="role"><strong>WDP</strong>: căn cứ yêu cầu</p>
+          </div>
+          <div class="tl-item">
+            <div class="phase">PHASE 2</div>
+            <div class="main">Bàn giao / chuyển VP</div>
+            <p class="role"><strong>WD</strong>: bàn giao</p>
+            <p class="role"><strong>XD</strong>: giải thích / ý thức</p>
+            <p class="role"><strong>WDS</strong>: set KPI</p>
+          </div>
+          <div class="tl-item">
+            <div class="phase">PHASE 3</div>
+            <div class="main">Vận hành（~6 tháng）</div>
+            <p class="role"><strong>XD</strong>: đồng hành hoạt động</p>
+            <p class="role"><strong>Event</strong>: tối thiểu 2（MVP）</p>
+            <p class="role"><strong>Cải thiện</strong>: lấy ý kiến thực</p>
+          </div>
+          <div class="tl-item">
+            <div class="phase">PHASE 4</div>
+            <div class="main">Đánh giá / tiếp tục</div>
+            <p class="role"><strong>WDS</strong>: After</p>
+            <p class="role"><strong>So sánh</strong>: vs Before</p>
+            <p class="role"><strong>Tiếp</strong>: 有料 / 自走 / SaaS</p>
+          </div>
+        </div>
+      </div>
+      <p class="note" style="margin-top:14px;">
+        FY2026 không nhảy SaaS ngay: tập trung <strong>Afterスポット</strong> + <strong>XD starter</strong>
+        để tạo được câu chuyện <strong>before→afterの訴求</strong>.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Bảng nhớ nhanh</h2>
+      <table style="width:100%;border-collapse:collapse;font-size:13.5px;">
+        <tr>
+          <th style="text-align:left;border:1px solid var(--line);padding:10px;background:#faf9f7;">Tên</th>
+          <th style="text-align:left;border:1px solid var(--line);padding:10px;background:#faf9f7;">Là gì</th>
+          <th style="text-align:left;border:1px solid var(--line);padding:10px;background:#faf9f7;">Vai trò</th>
+        </tr>
+        <tr>
+          <td style="border:1px solid var(--line);padding:10px;"><strong>WD</strong></td>
+          <td style="border:1px solid var(--line);padding:10px;">Dịch vụ（không gian）</td>
+          <td style="border:1px solid var(--line);padding:10px;">Làm office</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid var(--line);padding:10px;"><strong>XD</strong></td>
+          <td style="border:1px solid var(--line);padding:10px;">Dịch vụ（trải nghiệm/vận hành）</td>
+          <td style="border:1px solid var(--line);padding:10px;">Giúp dùng office đúng mục tiêu</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid var(--line);padding:10px;"><strong>WDP</strong></td>
+          <td style="border:1px solid var(--line);padding:10px;">Platform（tool）</td>
+          <td style="border:1px solid var(--line);padding:10px;">Số hóa気持ち・動き・空間</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid var(--line);padding:10px;"><strong>WDS</strong></td>
+          <td style="border:1px solid var(--line);padding:10px;">Survey trong WDP</td>
+          <td style="border:1px solid var(--line);padding:10px;">Đo Before/After</td>
+        </tr>
+      </table>
+    </section>
+
+    <footer>
+      <p>
+        Nguồn: Vis
+        <a href="https://vis-produce.com/service/data-solution/wdp" target="_blank" rel="noopener">WDP</a> /
+        <a href="https://vis-produce.com/lp/experience-design" target="_blank" rel="noopener">XD</a>
+        +『ヴィスの現状と今後について』（2025/12/26）.<br>
+        Font: Noto Sans JP（cùng trang WDP Vis）.
+      </p>
+    </footer>
+  </div>
+</body>
+</html>
