@@ -3,224 +3,255 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ヴィスの現状と今後について — Brief nhanh cho team</title>
+  <title>ヴィスの現状と今後について｜Brief cho team</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #f7f5f1;
+      --text: #4F4D4D;
+      --text-strong: #2f2d2d;
+      --muted: #7a7777;
+      --line: #e6e4e0;
+      --bg: #f6f5f2;
       --paper: #ffffff;
-      --text: #1c1917;
-      --muted: #57534e;
-      --line: #e7e5e4;
-      --accent: #0f766e;
-      --accent-soft: #ccfbf1;
-      --warn: #9a3412;
-      --warn-soft: #ffedd5;
-      --code-bg: #1c1917;
-      --code-text: #f5f5f4;
-      --max: 880px;
+      --gold: #b28e00;
+      --gold-soft: #f7f1d6;
+      --teal: #2f6f6a;
+      --warn-bg: #fff4e8;
+      --warn-text: #8a4b12;
+      --max: 900px;
     }
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: "Be Vietnam Pro", "Noto Sans", "Hiragino Sans", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
+      font-family: "Noto Sans JP", sans-serif;
+      font-weight: 400;
       font-size: 15px;
+      line-height: 1.75;
+      letter-spacing: 0.03em;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
     }
-    .wrap { max-width: var(--max); margin: 0 auto; padding: 28px 18px 64px; }
-    header.hero {
+    h1, h2, h3, h4, strong, th, .toc a, code, pre, .box {
+      font-family: "Noto Sans JP", sans-serif;
+    }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 28px 16px 72px; }
+    .hero {
       background: var(--paper);
       border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 24px 22px;
-      margin-bottom: 20px;
+      border-radius: 8px;
+      padding: 28px 24px 22px;
+      margin-bottom: 18px;
     }
-    header.hero h1 {
-      margin: 0 0 12px;
-      font-size: 1.35rem;
-      line-height: 1.4;
+    .hero-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 14px;
     }
-    .meta { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    .eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-strong);
+      line-height: 1.45;
+    }
+    .lang a {
+      display: inline-block;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 6px 10px;
+      background: #fff;
+    }
+    .lang a.active {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: #fff;
+    }
+    .meta { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 13.5px; }
     .meta th, .meta td {
       text-align: left; vertical-align: top;
-      padding: 8px 10px; border-top: 1px solid var(--line);
+      padding: 9px 0; border-top: 1px solid var(--line);
     }
-    .meta th { width: 8.5em; color: var(--muted); font-weight: 600; }
+    .meta th { width: 9em; color: var(--muted); font-weight: 500; }
     .note {
       margin-top: 14px; padding: 12px 14px;
-      background: var(--warn-soft); color: var(--warn);
-      border-radius: 10px; font-size: 0.9rem;
+      background: var(--warn-bg); color: var(--warn-text);
+      border-radius: 6px; font-size: 13px; font-weight: 500;
     }
-    nav.toc {
-      display: grid; gap: 8px;
-      grid-template-columns: repeat(2, 1fr);
-      margin-bottom: 22px;
+    .toc {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 8px; margin-bottom: 18px;
     }
-    @media (min-width: 700px) { nav.toc { grid-template-columns: repeat(5, 1fr); } }
-    nav.toc a {
+    @media (min-width: 720px) { .toc { grid-template-columns: repeat(5, 1fr); } }
+    .toc a {
       text-decoration: none; color: inherit;
       background: var(--paper); border: 1px solid var(--line);
-      border-radius: 12px; padding: 12px;
+      border-radius: 8px; padding: 12px;
     }
-    nav.toc a strong { display: block; color: var(--accent); font-size: 0.78rem; }
-    nav.toc a span { font-size: 0.86rem; font-weight: 600; }
-    section {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 22px 20px;
-      margin-bottom: 16px;
+    .toc a .n { display: block; font-size: 11px; font-weight: 700; color: var(--gold); margin-bottom: 4px; }
+    .toc a .t { display: block; font-size: 13px; font-weight: 700; color: var(--text-strong); line-height: 1.4; }
+    section.card {
+      background: var(--paper); border: 1px solid var(--line);
+      border-radius: 8px; padding: 24px 22px; margin-bottom: 14px;
     }
-    section h2 {
-      margin: 0 0 14px;
-      font-size: 1.15rem;
-      padding-bottom: 10px;
-      border-bottom: 2px solid var(--accent-soft);
+    section.card h2 {
+      margin: 0 0 16px; font-size: 18px; font-weight: 700;
+      color: var(--text-strong); padding-bottom: 10px;
+      border-bottom: 2px solid var(--gold-soft);
     }
-    section h3 { margin: 22px 0 10px; font-size: 1.02rem; }
-    section h4 { margin: 16px 0 8px; font-size: 0.95rem; color: var(--accent); }
+    section.card h3 { margin: 26px 0 12px; font-size: 16px; font-weight: 700; color: var(--text-strong); }
+    section.card h4 { margin: 18px 0 8px; font-size: 14px; font-weight: 700; color: var(--gold); }
     p { margin: 0 0 12px; }
-    .one-line {
-      background: var(--accent-soft);
-      border-radius: 10px;
-      padding: 12px 14px;
-      font-weight: 600;
+    ul, ol { margin: 8px 0 14px; padding-left: 1.3em; }
+    li + li { margin-top: 6px; }
+    .summary {
+      background: var(--gold-soft); border-radius: 6px;
+      padding: 14px 16px; font-weight: 700; color: var(--text-strong);
     }
     table.data {
       width: 100%; border-collapse: collapse;
-      font-size: 0.9rem; margin: 10px 0 14px;
+      margin: 10px 0 16px; font-size: 13.5px;
     }
     table.data th, table.data td {
-      border: 1px solid var(--line);
-      padding: 8px 10px;
-      vertical-align: top;
-      text-align: left;
+      border: 1px solid var(--line); padding: 10px 12px;
+      vertical-align: top; text-align: left;
     }
-    table.data th { background: #f5f5f4; font-weight: 600; }
-    table.data .num { font-variant-numeric: tabular-nums; white-space: nowrap; }
-    pre.box {
-      background: var(--code-bg);
-      color: var(--code-text);
-      border-radius: 12px;
-      padding: 14px 16px;
-      overflow-x: auto;
-      font-size: 0.84rem;
-      line-height: 1.55;
-      font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    table.data th { background: #faf9f7; font-weight: 700; color: var(--text-strong); }
+    .num { white-space: nowrap; font-weight: 500; }
+    .box {
+      background: #2f2d2d; color: #f5f5f4; border-radius: 8px;
+      padding: 16px 18px; overflow-x: auto; font-size: 13px;
+      line-height: 1.65; white-space: pre; margin: 0 0 14px;
+      font-weight: 500;
     }
-    ul, ol { margin: 8px 0 12px; padding-left: 1.2em; }
-    li + li { margin-top: 4px; }
-    footer {
-      margin-top: 8px; color: var(--muted); font-size: 0.86rem;
+    .badge {
+      display: inline-block; font-size: 11px; font-weight: 700;
+      padding: 3px 8px; border-radius: 4px;
+      background: #e7f3f1; color: var(--teal); margin-right: 6px;
     }
-    footer a { color: var(--accent); }
-    .lang-switch { float: right; font-size: 0.85rem; }
-    .lang-switch a {
-      color: var(--accent); text-decoration: none;
-      border: 1px solid var(--line); background: #fff;
-      padding: 4px 10px; border-radius: 999px; margin-left: 4px;
-    }
+    footer { margin-top: 10px; color: var(--muted); font-size: 12.5px; line-height: 1.7; }
+    footer a { color: var(--teal); }
   </style>
 </head>
 <body>
   <div class="wrap">
     <header class="hero">
-      <div class="lang-switch">
-        <a href="./05-brief-team-vis-genjo-to-mokuhyo.html"><strong>VI</strong></a>
-        <a href="./05-brief-team-vis-genjo-to-mokuhyo-ja.html">JA</a>
+      <div class="hero-top">
+        <div>
+          <div class="eyebrow">WDP XD事業計画 / Brief cho team</div>
+          <h1>『ヴィスの現状と今後について』<br>Tóm tắt nhanh</h1>
+        </div>
+        <div class="lang">
+          <a href="./05-brief-team-vis-genjo-to-mokuhyo-ja.html">JA</a>
+          <a class="active" href="./05-brief-team-vis-genjo-to-mokuhyo.html">VI</a>
+        </div>
       </div>
-      <h1>『ヴィスの現状と今後について』<br />Brief nhanh cho team</h1>
       <table class="meta">
-        <tr><th>Tài liệu gốc</th><td><code>ヴィスの現状と今後について XD WDP.docx</code></td></tr>
-        <tr><th>Tên trong file</th><td>WDP XD事業計画</td></tr>
-        <tr><th>Người viết / ngày</th><td>小川 慧 / <strong>2025/12/26</strong></td></tr>
-        <tr><th>Cách dùng</th><td>Đọc <strong>A → B → C</strong>. Mục <strong>D</strong> chỉ tra cứu nguồn số liệu.</td></tr>
+        <tr><th>Tài liệu gốc</th><td>ヴィスの現状と今後について XD WDP.docx</td></tr>
+        <tr><th>Tiêu đề</th><td>WDP XD事業計画</td></tr>
+        <tr><th>Người viết</th><td>小川 慧 / 2025-12-26</td></tr>
+        <tr><th>Cách đọc</th><td>A → B → C. Mục D dùng để tra nguồn số liệu.</td></tr>
       </table>
-      <div class="note">Số liệu là <strong>tại thời điểm tài liệu（2025/12）</strong>. Có thể đã đổi — xác nhận lại với Vis trước khi dùng chính thức.</div>
+      <div class="note">Số liệu theo thời điểm tài liệu（2025/12）. Trước khi dùng chính thức, hãy xác nhận lại với Vis.</div>
     </header>
 
     <nav class="toc">
-      <a href="#a"><strong>A</strong><span>60 giây toàn bộ</span></a>
-      <a href="#b"><strong>B</strong><span>Thuật ngữ</span></a>
-      <a href="#c"><strong>C</strong><span>現状・課題・目指す姿</span></a>
-      <a href="#d"><strong>D</strong><span>Nguồn số liệu</span></a>
-      <a href="#e"><strong>E</strong><span>Sơ đồ 1 trang</span></a>
+      <a href="#a"><span class="n">A</span><span class="t">60 giây</span></a>
+      <a href="#b"><span class="n">B</span><span class="t">Thuật ngữ</span></a>
+      <a href="#c"><span class="n">C</span><span class="t">現状・課題・目指す姿</span></a>
+      <a href="#d"><span class="n">D</span><span class="t">Nguồn số liệu</span></a>
+      <a href="#e"><span class="n">E</span><span class="t">1 trang</span></a>
     </nav>
 
-    <section id="a">
+    <section class="card" id="a">
       <h2>A. Nắm toàn bộ trong 60 giây</h2>
-      <pre class="box">Vis hôm nay
-  └─ Kiếm tiền chủ yếu từ ワークプレイスデザイン（移転・改装）
-  └─ Muốn thêm trụ 2: エクスペリエンスデザイン（XD）× WDP
+      <div class="box">Vis hiện tại
+  ・Doanh thu chủ yếu từ ワークプレイスデザイン（移転・改装）
+  ・Muốn phát triển trụ 2: エクスペリエンスデザイン（XD）× WDP
 
-WDP hôm nay
-  └─ Đã mạnh ở 営業支援（受注率↑ → 間接売上効果）
-  └─ Nhưng vẫn ショット型（現状把握）→ 有料ほぼなし
+WDP hiện tại
+  ・Mạnh ở 営業支援（受注率↑ → 間接売上効果）
+  ・Cách dùng vẫn ショット型（現状把握）→ 有料契約 còn ít
 
-Đích gần（FY2026 = 検証／MVP）
-  └─ XD starter + WDP Afterスポット
-  └─ Chưa phải năm SaaS hóa lớn</pre>
-      <p class="one-line">Một câu：WDP đã giúp <strong>thắng thầu</strong>, nhưng chưa giúp đủ <strong>chứng minh効果 / thu phí / gắn XD</strong>.</p>
+Đích gần（FY2026＝検証／MVP）
+  ・Kiểm chứng XDスターター
+  ・WDP dùng After中心のスポット利用
+  ・Chưa phải năm SaaS hóa lớn</div>
+      <p class="summary">Một câu: WDP đã giúp <strong>受注</strong>. Còn thiếu <strong>証明効果 / 有料化 / kết nối XD</strong>.</p>
     </section>
 
-    <section id="b">
-      <h2>B. Thuật ngữ cần nhớ（đúng wording tài liệu）</h2>
+    <section class="card" id="b">
+      <h2>B. Thuật ngữ（đúng wording tài liệu）</h2>
       <table class="data">
-        <tr><th>Từ trong tài liệu</th><th>Nghĩa ngắn</th></tr>
-        <tr><td><strong>ワークデザイン</strong></td><td><strong>ワークプレイスデザイン × エクスペリエンスデザイン</strong></td></tr>
-        <tr><td><strong>ワークプレイスデザイン（WD）</strong></td><td>Làm không gian văn phòng（請負・労働集約型）</td></tr>
-        <tr><td><strong>エクスペリエンスデザイン（XD）</strong></td><td>Hỗ trợ <strong>運用・意識・活動</strong> sau renew để効果 không 形骸化</td></tr>
-        <tr><td><strong>WDP</strong></td><td>WORK DESIGN PLATFORM（人の気持ち / 人の動き / 空間）</td></tr>
+        <tr><th>Thuật ngữ trong tài liệu</th><th>Giải thích ngắn</th></tr>
+        <tr><td><strong>ワークデザイン</strong></td><td>ワークプレイスデザイン × エクスペリエンスデザイン</td></tr>
+        <tr><td><strong>ワークプレイスデザイン（WD）</strong></td><td>Làm không gian văn phòng（請負契約・労働集約型）</td></tr>
+        <tr><td><strong>エクスペリエンスデザイン（XD）</strong></td><td>Hỗ trợ 運用・意識・活動 sau chuyển văn phòng, tránh 形骸化</td></tr>
+        <tr><td><strong>WDP</strong></td><td>WORK DESIGN PLATFORM（人の気持ち／人の動き／空間）</td></tr>
         <tr><td><strong>WDS</strong></td><td>ワークデザインサーベイ（survey trong WDP）</td></tr>
-        <tr><td><strong>ショット型</strong></td><td>Dùng 1 lần</td></tr>
-        <tr><td><strong>Before / After</strong></td><td>Đo trước–sau để <strong>効果検証</strong></td></tr>
-        <tr><td><strong>間接売上効果</strong></td><td>Doanh thu gián tiếp nhờ <strong>受注率</strong> tăng</td></tr>
-        <tr><td><strong>営業支援ツール / 営業・提案基盤</strong></td><td>Vai trò WDP đã chứng minh</td></tr>
-        <tr><td><strong>有料契約 / 有料化</strong></td><td>KH trả tiền dùng WDP</td></tr>
-        <tr><td><strong>検証（MVP）</strong></td><td>Năm kiểm chứng gói tối thiểu</td></tr>
+        <tr><td><strong>ショット型</strong></td><td>Dùng một lần</td></tr>
+        <tr><td><strong>Before / After</strong></td><td>So sánh trước–sau để 効果検証</td></tr>
+        <tr><td><strong>間接売上効果</strong></td><td>Doanh thu gián tiếp = phần nhờ 受注率 tăng</td></tr>
+        <tr><td><strong>営業支援ツール／営業・提案基盤</strong></td><td>Vai trò WDP đã chứng minh</td></tr>
+        <tr><td><strong>有料契約／有料化</strong></td><td>KH trả tiền để dùng WDP</td></tr>
+        <tr><td><strong>検証（MVP）</strong></td><td>Giai đoạn kiểm chứng gói tối thiểu</td></tr>
         <tr><td><strong>PMF</strong></td><td>Bán được lặp lại</td></tr>
-        <tr><td><strong>自走</strong></td><td>KH tự vận hành, bớt phụ thuộc consultant</td></tr>
-        <tr><td><strong>SaaS型</strong></td><td>Dùng liên tục dạng nền tảng trả phí</td></tr>
+        <tr><td><strong>自走</strong></td><td>KH tự vận hành, giảm phụ thuộc consultant</td></tr>
+        <tr><td><strong>SaaS型</strong></td><td>Nền tảng dùng liên tục, trả phí</td></tr>
       </table>
     </section>
 
-    <section id="c">
-      <h2>C. Nội dung chính（đọc theo thứ tự）</h2>
+    <section class="card" id="c">
+      <h2>C. Nội dung chính</h2>
 
-      <h3>C1. 現状 — đang ở đâu?</h3>
-
+      <h3>C1. 現状</h3>
       <h4>① Vis（kinh doanh）</h4>
       <table class="data">
-        <tr><th style="width:9em">Hạng mục</th><th>Nội dung</th></tr>
+        <tr><th style="width:9.5em">Hạng mục</th><th>Nội dung</th></tr>
         <tr><td>Mục tiêu dài</td><td><strong>2030年 売上高250億</strong></td></tr>
-        <tr><td>Tiền hôm nay（FY2025）</td><td>Phần lớn từ <strong>オフィスの移転・改装</strong></td></tr>
-        <tr><td>Mô hình</td><td><strong>請負契約</strong> + <strong>労働集約型</strong>；thị trường tốt,売上右肩上がり</td></tr>
-        <tr><td>Điểm yếu</td><td>Phải tăng người liên tục；khác biệt <strong>デザイン</strong> đang bị đối thủ bắt kịp</td></tr>
+        <tr><td>Doanh thu hiện tại（FY2025）</td><td>Chủ yếu từ <strong>オフィスの移転・改装</strong></td></tr>
+        <tr><td>Mô hình</td><td><strong>請負契約</strong>＋<strong>労働集約型</strong>. Thị trường tốt,売上右肩上がり</td></tr>
+        <tr><td>Điểm yếu</td><td>Phải tăng người liên tục. Khác biệt デザイン đang bị đối thủ bắt kịp</td></tr>
         <tr><td>Đổi định vị</td><td>2023: デザイナーズオフィス → <strong>ワークデザイン</strong></td></tr>
         <tr><td>Định nghĩa</td><td>2025半期総会: <strong>ワークデザイン＝WD × XD</strong></td></tr>
-        <tr><td>XD</td><td><strong>2026/4</strong> 正式ローンチ（trong tài liệu là 予定）</td></tr>
+        <tr><td>XD</td><td><strong>2026年4月</strong> 正式ローンチ（trong tài liệu là 予定）</td></tr>
       </table>
 
       <h4>② WDP（tool）</h4>
       <table class="data">
-        <tr><th style="width:9em">Hạng mục</th><th>Nội dung</th></tr>
-        <tr><td>Dùng chính</td><td><strong>サーベイ</strong></td></tr>
+        <tr><th style="width:9.5em">Hạng mục</th><th>Nội dung</th></tr>
+        <tr><td>Chức năng dùng chính</td><td><strong>サーベイ</strong></td></tr>
         <tr><td>Lượng dùng</td><td>khoảng <strong>年間100件ペース</strong></td></tr>
-        <tr><td>有料</td><td><strong>まだ２件程度</strong>（マネタイズには程遠い）</td></tr>
+        <tr><td>有料契約</td><td><strong>まだ2件程度</strong>（マネタイズには程遠い）</td></tr>
         <tr><td>Cách dùng</td><td><strong>現状把握</strong> → <strong>ショット型</strong>（chưa 継続利用）</td></tr>
-        <tr><td>Giá trị đã có</td><td><strong>営業支援</strong>：tăng 受注率 → <strong>間接売上効果</strong></td></tr>
+        <tr><td>Giá trị đã có</td><td><strong>営業支援</strong>: 受注率↑ → <strong>間接売上効果</strong></td></tr>
       </table>
 
-      <p><strong>受注率（2025/10時点・今期完工ベース）</strong></p>
+      <p><span class="badge">Có nguồn</span><strong>受注率（2025年10月時点・今期完工ベース）</strong></p>
       <table class="data">
         <tr><th>案件</th><th>通常</th><th>WDP活用時</th><th>差分</th></tr>
         <tr><td>コンペ</td><td class="num">30.9%</td><td class="num"><strong>53.8%</strong></td><td class="num"><strong>＋22.9pt</strong></td></tr>
         <tr><td>特命・ナーチャリング</td><td class="num">49.6%</td><td class="num"><strong>75.0%</strong></td><td class="num"><strong>＋25.4pt</strong></td></tr>
       </table>
-
-      <p><strong>間接売上効果</strong><br />
-      <code>WDP活用完工売上 × 受注率上昇分</code> = <strong>約146,612,083円</strong>（≈1.46億；đoạn tổng cũng nói ~1.4億）</p>
+      <p><strong>間接売上効果</strong>＝ WDPを活用した完工売上 × 受注率上昇分<br>
+      Tổng <strong>約146,612,083円</strong>（≈1.46億; đoạn tổng cũng ghi ~1.4億）</p>
 
       <h4>③ Tận dụng nội bộ Vis</h4>
       <table class="data">
@@ -228,153 +259,148 @@ WDP hôm nay
         <tr><td>オフィスリニューアル</td><td>khoảng <strong>年間500件</strong></td></tr>
         <tr><td>WDS</td><td><strong>月平均10件</strong></td></tr>
         <tr><td>ワークショップ</td><td><strong>年間5〜6件</strong></td></tr>
-        <tr><td>Thực tế</td><td>Chủ yếu người 意識高い；nhiều người chưa dùng lần nào</td></tr>
+        <tr><td>Thực tế</td><td>Lệch về người 意識高い. Nhiều người chưa dùng lần nào</td></tr>
       </table>
 
-      <h3>C2. 課題 — vì sao chưa ổn?</h3>
-      <pre class="box">1) WDP chưa ra tiền trực tiếp
-     有料 ~2 / ショット型 / thiếu Before→After
+      <h3>C2. 課題</h3>
+      <div class="box">1) Doanh thu trực tiếp của WDP còn yếu
+   ・有料契約 khoảng 2件
+   ・Vẫn ショット型
+   ・Thiếu Before→After
 
-2) Không lan trong máy bán
-     500案件 vs WDS 10件/月・WS 5–6件/年
-     Đề xuất chỉ 3〜4週間 → khó kịp chạy WDS
+2) Chưa lan trong hiện trường bán hàng
+   ・~500件/năm nhưng WDS ~10件/tháng, workshop 5〜6件/năm
+   ・Lead time đề xuất 3〜4週間 → khó kịp WDS
 
 3) Áp lực chiến lược
-     WD khác biệt mỏng → cần XD
-     Nhưng 開発サイクルが重い → WDP khó theo kịp XD</pre>
+   ・Khác biệt WD mỏng → cần XD
+   ・Nhưng 開発サイクル của WDP nặng → khó theo kịp XD</div>
 
       <table class="data">
-        <tr><th>課題</th><th>Nội dung cốt</th><th>Hệ quả</th></tr>
-        <tr><td><strong>ショット型現状把握</strong></td><td>Dùng để nắm現状 trước đề xuất</td><td>Không thành 継続利用</td></tr>
-        <tr><td><strong>マネタイズ弱い</strong></td><td>有料まだ２件程度</td><td>Chưa có 直接売上 đáng kể</td></tr>
-        <tr><td><strong>Before→After不足</strong></td><td>Muốn monetize phải mở before and after + gắn XD</td><td>Chưa chứng minh効果 được bằng tool</td></tr>
-        <tr><td><strong>社内活用が偏る</strong></td><td>10件/月・5–6件/年 trên 500件</td><td>Không scale</td></tr>
-        <tr><td><strong>提案リードタイム</strong></td><td>3〜4週間 khó kịp survey</td><td>Mất cơ hội 受注支援</td></tr>
-        <tr><td><strong>開発が重い</strong></td><td>Khó quick thêm chức năng cho XP/XD</td><td>XD đi trước, WDP tụt</td></tr>
+        <tr><th>課題</th><th>Nội dung</th><th>Ảnh hưởng</th></tr>
+        <tr><td><strong>ショット型の現状把握</strong></td><td>Chủ yếu nắm現状 trước đề xuất</td><td>Không thành 継続利用</td></tr>
+        <tr><td><strong>マネタイズが弱い</strong></td><td>有料契約まだ2件程度</td><td>ほぼ không có 直接売上</td></tr>
+        <tr><td><strong>Before→After不足</strong></td><td>Muốn monetize cần mở before and after + gắn XD</td><td>Khó chứng minh効果 bằng tool</td></tr>
+        <tr><td><strong>社内活用の偏り</strong></td><td>500件 vs 10件/tháng・5〜6件/năm</td><td>Không scale</td></tr>
+        <tr><td><strong>提案リードタイム</strong></td><td>3〜4週間 khó phản ánh survey</td><td>Mất cơ hội 受注支援</td></tr>
+        <tr><td><strong>開発が重い</strong></td><td>Khó thêm nhanh chức năng cho XD</td><td>XD đi trước, WDP chậm</td></tr>
       </table>
 
-      <h3>C3. 目指す姿 — đang hướng tới đâu?</h3>
+      <h3>C3. 目指す姿</h3>
       <h4>Hướng lớn</h4>
-      <pre class="box">Giữ:  WDP = 営業支援（受注一助）
-Thêm: WDP = Before→After 効果検証（gắn XD）
-Đích: ショット型 → 継続利用 → 有料化 → SaaS型（khi KH自走）</pre>
+      <div class="box">Giữ: WDP＝営業支援（受注の一助）
+Thêm: WDP＝Before→After 効果検証（nối với XD）
+Đích: ショット型 → 継続利用 → 有料化 → SaaS型
+　　　（lan rộng khi KH自走）</div>
 
-      <h4>XD MVP（FY2025–2026）gồm gì?</h4>
+      <h4>XD MVP（FY2025〜2026）</h4>
       <ul>
-        <li>Survey <strong>before and afterの効果検証</strong></li>
-        <li>Workshop（アブストラクションラダー）</li>
+        <li>サーベイの<strong>before and after効果検証</strong></li>
+        <li>ワークショップ（アブストラクションラダー）</li>
         <li>Event sau renew tối thiểu <strong>2</strong></li>
-        <li>Chọn mục tiêu survey + setスコア</li>
-        <li>Follow + 最終レポート</li>
+        <li>Set mục tiêu survey + score goal</li>
+        <li>Follow event + báo cáo cuối</li>
       </ul>
-      <p>→ Giá entry dự kiến khoảng <strong>100万円</strong>；nhúng vào đề xuất renew từ <strong>2026/4</strong></p>
+      <p>Giá entry khoảng <strong>100万円</strong>. Gắn vào đề xuất renew, bắt đầu từ <strong>2026年4月</strong>.</p>
 
-      <h4>Mục tiêu theo năm（売上計画）</h4>
+      <h4>Kế hoạch theo năm</h4>
       <table class="data">
-        <tr>
-          <th>Năm</th><th>XD</th><th>WDP</th><th>Tổng</th><th>Phase</th><th>Việc chính</th>
-        </tr>
+        <tr><th>Năm</th><th>XD</th><th>WDP</th><th>Tổng</th><th>Phase</th><th>Việc chính</th></tr>
         <tr>
           <td><strong>FY2026</strong></td>
-          <td class="num">0.55億</td>
-          <td class="num">0.2億</td>
-          <td class="num"><strong>0.7億</strong></td>
+          <td class="num">0.55億</td><td class="num">0.2億</td><td class="num"><strong>0.7億</strong></td>
           <td><strong>検証（MVP）</strong></td>
-          <td>Starter <strong>40件</strong>；年間契約 PoC tối đa 1社；WDP = <strong>After中心のスポット</strong></td>
+          <td>Starter <strong>40件</strong>. 年間契約 PoC tối đa 1社. WDP＝<strong>After中心のスポット利用</strong></td>
         </tr>
         <tr>
           <td>FY2027</td>
-          <td class="num">1.5億</td>
-          <td class="num">0.5億</td>
-          <td class="num">2.0億</td>
+          <td class="num">1.5億</td><td class="num">0.5億</td><td class="num">2.0億</td>
           <td><strong>PMF</strong></td>
-          <td>Starter→フルXD→年間；WDP bắt đầu <strong>自走</strong></td>
+          <td>Starter→フルXD→年間. WDP bắt đầu giá trị <strong>自走</strong></td>
         </tr>
         <tr>
           <td>FY2028</td>
-          <td class="num">3億</td>
-          <td class="num">1億</td>
-          <td class="num">4億</td>
+          <td class="num">3億</td><td class="num">1億</td><td class="num">4億</td>
           <td>スケール開始</td>
-          <td>XD年間主力；WDP <strong>SaaS商品化</strong>；開発<strong>完全内製化</strong></td>
+          <td>XD年間主力. WDP <strong>SaaS商品化</strong>. 開発完全内製化</td>
         </tr>
         <tr>
           <td>FY2029</td>
-          <td class="num">6.0億</td>
-          <td class="num">2億</td>
-          <td class="num">8.0億</td>
+          <td class="num">6.0億</td><td class="num">2億</td><td class="num">8.0億</td>
           <td>拡張</td>
-          <td>Stock tăng</td>
+          <td>Tỷ trọng stock tăng</td>
         </tr>
         <tr>
           <td>FY2030</td>
-          <td class="num">15.45億</td>
-          <td class="num">4億</td>
-          <td class="num"><strong>19.45億</strong></td>
+          <td class="num">15.45億</td><td class="num">4億</td><td class="num"><strong>19.45億</strong></td>
           <td>事業確立</td>
-          <td>Trụ 2 trong <strong>250億</strong>（mức tham chiếu trụ 2 ~<strong>25億</strong>）</td>
+          <td>Trụ 2 trong 250億（mức tham chiếu liên kết ~25億）</td>
         </tr>
       </table>
 
-      <h4>FY2026 cần nhớ 3 ý</h4>
+      <h4>FY2026 nhớ 3 điểm</h4>
       <ol>
-        <li><strong>XD</strong>: kiểm 「誰に・何が・なぜ刺さるか」（starter 40）</li>
-        <li><strong>WDP</strong>: <strong>After中心のスポット利用</strong> + 数値化文化</li>
-        <li><strong>有料化</strong>: nối <strong>beforeからafterの訴求</strong>（chưa phải SaaS full）</li>
+        <li><strong>XD</strong>: kiểm ai / cái gì / vì sao khớp（starter 40）</li>
+        <li><strong>WDP</strong>: After中心のスポット利用 ＋ 数値化文化</li>
+        <li><strong>有料化</strong>: nối beforeからafterの訴求（chưa phải SaaS full）</li>
       </ol>
 
-      <h3>C4. Câu hay hiểu nhầm</h3>
+      <h3>C4. Hay hiểu nhầm</h3>
       <table class="data">
         <tr><th>Dễ hiểu nhầm</th><th>Đúng theo tài liệu</th></tr>
-        <tr><td>有料2件 = 2 dự án làm office</td><td>= <strong>2 hợp đồng trả phí WDP（tool）</strong></td></tr>
-        <tr><td>1.46億 = doanh thu bán WDP</td><td>= <strong>間接売上効果</strong>（nhờ 受注率↑）</td></tr>
-        <tr><td>FY2026 phải SaaS</td><td>FY2026 = <strong>MVP / Afterスポット</strong>；SaaS rõ ở <strong>FY2028</strong></td></tr>
-        <tr><td>WDP bỏ vai trò trước thầu</td><td><strong>Giữ</strong> 受注支援，<strong>thêm</strong> After / XD / 有料</td></tr>
+        <tr><td>有料2件 = 2 dự án office</td><td><strong>WDP有料契約 khoảng 2件</strong></td></tr>
+        <tr><td>1.46億 = doanh thu bán WDP</td><td><strong>間接売上効果</strong>（phần 受注率 tăng）</td></tr>
+        <tr><td>FY2026 phải xong SaaS</td><td>FY2026 = <strong>検証（MVP）／Afterスポット</strong>. SaaS chủ yếu <strong>FY2028</strong></td></tr>
+        <tr><td>WDP bỏ hỗ trợ trước đề xuất</td><td><strong>Giữ</strong> 受注支援. <strong>Thêm</strong> After／XD／有料</td></tr>
       </table>
     </section>
 
-    <section id="d">
-      <h2>D. Tra cứu nguồn số liệu（khi cần dẫn chứng）</h2>
+    <section class="card" id="d">
+      <h2>D. Nguồn số liệu</h2>
       <table class="data">
         <tr><th>Số</th><th>Giá trị</th><th>Mục trong tài liệu</th></tr>
-        <tr><td>2030 Vis</td><td><strong>250億</strong></td><td>Đầu「ヴィスの現状と今後について」；lặp ở「売上計画」</td></tr>
-        <tr><td>WDP用</td><td><strong>~100件/年</strong></td><td>「WDPの実態とあるべき状態」</td></tr>
-        <tr><td>有料</td><td><strong>~2件</strong></td><td>Cùng mục</td></tr>
-        <tr><td>間接（nói tròn）</td><td><strong>~1.4億</strong></td><td>Cùng mục</td></tr>
-        <tr><td>受注率・間接 chi tiết</td><td>+22.9 / +25.4 / <strong>≈1.46億</strong></td><td>「WDPによる間接売上効果について」（<strong>2025/10</strong>完工）</td></tr>
-        <tr><td>500 / 10 / 5–6</td><td>Renew / WDS / WS</td><td>「構造改革」</td></tr>
+        <tr><td>Vis 2030</td><td><strong>250億</strong></td><td>Đầu「ヴィスの現状と今後について」／「売上計画」</td></tr>
+        <tr><td>WDP利用</td><td><strong>約100件/年</strong></td><td>「WDPの実態とあるべき状態」</td></tr>
+        <tr><td>有料契約</td><td><strong>約2件</strong></td><td>同上</td></tr>
+        <tr><td>間接（nói tròn）</td><td><strong>約1.4億</strong></td><td>同上</td></tr>
+        <tr><td>受注率・間接 chi tiết</td><td>＋22.9／＋25.4／<strong>約1.46億</strong></td><td>「WDPによる間接売上効果について」（2025/10完工）</td></tr>
+        <tr><td>500／10／5〜6</td><td>リニューアル／WDS／WS</td><td>「構造改革」</td></tr>
         <tr><td>0.7億・40件・Afterスポット</td><td>FY2026</td><td>「FY2025からFY2030までの売上計画」</td></tr>
         <tr><td>before and afterでマネタイズ</td><td>—</td><td>「WDPの実態とあるべき状態」</td></tr>
-        <tr><td>XD MVP = before/after効果検証</td><td>—</td><td>「XDのMVPとは何か」</td></tr>
-        <tr><td>有料化 = before→afterの訴求</td><td>—</td><td>「FY2026目標達成のためのKPI」</td></tr>
-        <tr><td>Lead time đề xuất <strong>3〜4週間</strong></td><td>—</td><td>Phần WDS実施タイミング（cuối khối KPI）</td></tr>
-        <tr><td>XD entry <strong>~100万円</strong></td><td>—</td><td>「構造改革」</td></tr>
+        <tr><td>XD MVP＝before/after効果検証</td><td>—</td><td>「FY2025年2026年に実施するXDのMVPとは何か」</td></tr>
+        <tr><td>有料化＝before→afterの訴求</td><td>—</td><td>「FY2026目標達成のためのKPI」</td></tr>
+        <tr><td>提案リードタイム 3〜4週間</td><td>—</td><td>WDS実施タイミング（cuối chương KPI）</td></tr>
+        <tr><td>XD入口 約100万円</td><td>—</td><td>「構造改革」</td></tr>
       </table>
-      <p><strong>Công thức gốc（cùng mục 間接売上効果）:</strong></p>
-      <pre class="box">間接売上効果 ＝ WDPを活用した完工売上 × 受注率上昇分</pre>
+      <p><strong>Công thức（mục 間接売上効果）</strong></p>
+      <div class="box">間接売上効果 ＝ WDPを活用した完工売上 × 受注率上昇分</div>
     </section>
 
-    <section id="e">
-      <h2>E. Sơ đồ 1 trang（in / gửi chat）</h2>
-      <pre class="box">【現状】WD chính（~500件）／WDP = surveyショット型（~100件, 有料~2）
-        nhưng 受注率↑ → 間接≈1.46億（営業支援は証明済み）
+    <section class="card" id="e">
+      <h2>E. Sơ đồ 1 trang</h2>
+      <div class="box">【現状】WD主力（約500件）／WDP＝サーベイショット型（約100件・有料約2）
+        nhưng 受注率↑ → 間接約1.46億（営業支援は証明済み）
 
-【課題】thiếu Before→After → khó 有料・khó gắn XD
-        dùng nội bộ lệch／đề xuất 3–4 tuần khó kịp survey
-        開発サイクル重い
+【課題】Before→After不足 → 有料化・XD接続が弱い
+        社内活用が偏る／提案3〜4週間ではサーベイが間に合いにくい
+        開発サイクルが重い
 
-【方針】Work Design = WD × XD
-        WDP: giữ 受注一助 ＋ thêm After効果検証 → 継続・有料・SaaS
+【方針】ワークデザイン＝WD × XD
+        WDP：受注の一助は維持 ＋ After効果検証を追加
+        → 継続利用・有料化・SaaSへ
 
-【年表】FY2026 MVP 0.7億（Afterスポット／starter 40）
-        FY2027 PMF → FY2028 SaaS・内製化 → FY2030 trụ 2</pre>
+【年表】FY2026 検証（MVP）0.7億（Afterスポット／スターター40）
+        FY2027 PMF → FY2028 SaaS・内製化 → FY2030 第2の柱</div>
     </section>
 
     <footer>
-      <p>Brief này chỉ tóm『ヴィスの現状と今後について』.<br />
-      Phân tích đề xuất phía bravesoft（P0/Must/松竹梅）xem <code>docs/01</code>–<code>04</code> — đó là lớp đúc kết của team, không phải nhãn có sẵn trong file Vis.</p>
-      <p>Markdown：<a href="./05-brief-team-vis-genjo-to-mokuhyo.md">05-brief-team-vis-genjo-to-mokuhyo.md</a> ／
-      日本語版：<a href="./05-brief-team-vis-genjo-to-mokuhyo-ja.html">05-brief-team-vis-genjo-to-mokuhyo-ja.html</a></p>
+      <p>Trang này tóm『ヴィスの現状と今後について』（2025/12/26）.<br>
+      Font dùng <strong>Noto Sans JP</strong> giống trang WDP chính thức của Vis.<br>
+      Phân tích đề xuất phía bravesoft（P0／Must／松竹梅）xem docs/01〜04.</p>
+      <p>
+        Markdown: <a href="./05-brief-team-vis-genjo-to-mokuhyo.md">.md</a> ／
+        日本語: <a href="./05-brief-team-vis-genjo-to-mokuhyo-ja.html">JA HTML</a>
+      </p>
     </footer>
   </div>
 </body>
