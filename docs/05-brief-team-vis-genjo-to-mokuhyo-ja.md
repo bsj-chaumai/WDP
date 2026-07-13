@@ -224,4 +224,5 @@ WDPは **受注（勝ち案件）には効いている**。
 *本サマリーは『ヴィスの現状と今後について』の整理です。  
 bravesoft側の提案分析（P0 / Must / 松竹梅など）は `docs/01`〜`04` を参照。これらはチーム側の整理であり、Vis資料内の見出しではありません。*
 
-**ベトナム語版：** `docs/05-brief-team-vis-genjo-to-mokuhyo.md`
+**HTML版：** `docs/05-brief-team-vis-genjo-to-mokuhyo-ja.html`  
+**ベトナム語版：** `docs/05-brief-team-vis-genjo-to-mokuhyo.html`（Markdown: `.md`）
