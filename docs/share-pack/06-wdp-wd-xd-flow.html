@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WDP × WD × XD × WDS — Sơ đồ luồng sử dụng (VI)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --text: #4F4D4D;
+      --text-strong: #2f2d2d;
+      --muted: #7a7777;
+      --line: #e6e4e0;
+      --bg: #f6f5f2;
+      --paper: #fff;
+      --gold: #b28e00;
+      --gold-soft: #f7f1d6;
+      --wd: #2f6f6a;
+      --wd-soft: #e7f3f1;
+      --xd: #8b5a2b;
+      --xd-soft: #f5ebe0;
+      --wdp: #1f4e79;
+      --wdp-soft: #e8f0f8;
+      --gap: #9a3412;
+      --gap-soft: #fff1eb;
+      --src: #5b6b7a;
+      --max: 980px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      letter-spacing: 0.02em;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 28px 16px 72px; }
+    .hero {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 26px 24px;
+      margin-bottom: 16px;
+    }
+    .eyebrow {
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      margin-bottom: 8px;
+    }
+    h1 {
+      margin: 0 0 10px;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-strong);
+      line-height: 1.4;
+    }
+    .lead { margin: 0; color: var(--muted); font-size: 14px; }
+    .howto {
+      margin-top: 14px;
+      padding: 12px 14px;
+      background: #fff4e8;
+      border: 1px solid #f0d2b0;
+      border-radius: 6px;
+      font-size: 13px;
+      color: #8a4b12;
+    }
+    .howto strong { color: #6b3a0f; }
+    .howto ol { margin: 8px 0 0; padding-left: 1.3em; }
+    .howto li + li { margin-top: 4px; }
+    .links { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
+    .links a {
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--wdp);
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 4px;
+      padding: 7px 10px;
+    }
+    .link-help {
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .link-help code {
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 12px;
+      background: #faf9f7;
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      padding: 1px 5px;
+    }
+    .toc {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    @media (min-width: 760px) { .toc { grid-template-columns: repeat(5, 1fr); } }
+    .toc a {
+      text-decoration: none;
+      color: inherit;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+    }
+    .toc .n { display: block; color: var(--gold); font-size: 11px; font-weight: 700; margin-bottom: 4px; }
+    .toc .t { display: block; font-size: 13px; font-weight: 700; color: var(--text-strong); }
+    section.card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 22px 20px;
+      margin-bottom: 14px;
+    }
+    section.card h2 {
+      margin: 0 0 14px;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-strong);
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--gold-soft);
+    }
+    section.card h3 {
+      margin: 20px 0 10px;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-strong);
+    }
+    p { margin: 0 0 12px; }
+    .note {
+      background: var(--gold-soft);
+      border-radius: 6px;
+      padding: 12px 14px;
+      font-size: 13.5px;
+      font-weight: 500;
+    }
+    .src {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--src);
+      background: #eef2f6;
+      border: 1px solid #d7dee6;
+      border-radius: 3px;
+      padding: 1px 6px;
+      margin-left: 4px;
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+    .legend { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 16px; }
+    .chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12px; font-weight: 700;
+      border-radius: 999px; padding: 6px 10px;
+      border: 1px solid var(--line); background: #fff;
+    }
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot.wd { background: var(--wd); }
+    .dot.xd { background: var(--xd); }
+    .dot.wdp { background: var(--wdp); }
+    .dot.gap { background: var(--gap); }
+    .map-top {
+      text-align: center;
+      background: var(--gold-soft);
+      border-radius: 8px;
+      padding: 14px;
+      font-weight: 700;
+      color: var(--text-strong);
+      margin-bottom: 12px;
+    }
+    .map-cols { display: grid; gap: 12px; grid-template-columns: 1fr; }
+    @media (min-width: 800px) { .map-cols { grid-template-columns: 1fr 1fr; } }
+    .pane { border: 1px solid var(--line); border-radius: 8px; padding: 14px; background: #fff; }
+    .pane.wd { border-top: 4px solid var(--wd); }
+    .pane.xd { border-top: 4px solid var(--xd); }
+    .pane h3 { margin: 0 0 8px; font-size: 14px; }
+    .pane ul { margin: 0; padding-left: 1.1em; font-size: 13px; }
+    .pane li + li { margin-top: 4px; }
+    .bridge {
+      margin-top: 12px;
+      text-align: center;
+      border: 2px dashed var(--wdp);
+      background: var(--wdp-soft);
+      border-radius: 8px;
+      padding: 14px;
+    }
+    .bridge strong { color: var(--wdp); }
+    .flow { display: grid; gap: 8px; }
+    .step { display: grid; grid-template-columns: 72px 1fr; gap: 10px; }
+    .step .when {
+      background: #faf9f7;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 10px 8px;
+      font-size: 11px;
+      font-weight: 700;
+      text-align: center;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .step .body {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 12px 14px;
+      background: #fff;
+    }
+    .tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-bottom: 6px;
+      margin-right: 4px;
+    }
+    .tag.wd { background: var(--wd-soft); color: var(--wd); }
+    .tag.xd { background: var(--xd-soft); color: var(--xd); }
+    .tag.wdp { background: var(--wdp-soft); color: var(--wdp); }
+    .tag.gap { background: var(--gap-soft); color: var(--gap); }
+    .title { font-weight: 700; color: var(--text-strong); margin-bottom: 4px; font-size: 14px; }
+    .desc { font-size: 13px; margin: 0; }
+    .arrow-down {
+      text-align: center;
+      color: var(--muted);
+      font-size: 18px;
+      font-weight: 700;
+      padding-left: 72px;
+    }
+    .compare { display: grid; gap: 12px; grid-template-columns: 1fr; }
+    @media (min-width: 800px) { .compare { grid-template-columns: 1fr 1fr; } }
+    .compare .col { border-radius: 8px; padding: 14px; border: 1px solid var(--line); }
+    .compare .now { background: var(--gap-soft); }
+    .compare .aim { background: var(--wd-soft); }
+    .compare h3 { margin: 0 0 8px; font-size: 14px; }
+    .compare ul { margin: 0; padding-left: 1.1em; font-size: 13px; }
+    .compare li + li { margin-top: 5px; }
+    .timeline { overflow-x: auto; }
+    .timeline-track {
+      min-width: 720px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+    }
+    .tl-item {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: #fff;
+      min-height: 150px;
+    }
+    .phase { font-size: 11px; font-weight: 700; color: var(--gold); margin-bottom: 6px; }
+    .main { font-size: 13px; font-weight: 700; color: var(--text-strong); margin-bottom: 8px; }
+    .role { font-size: 12px; margin: 0 0 4px; }
+    table.src-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    table.src-table th,
+    table.src-table td {
+      border: 1px solid var(--line);
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    table.src-table th { background: #faf9f7; }
+    table.src-table .num { font-weight: 700; white-space: nowrap; }
+    footer { margin-top: 8px; color: var(--muted); font-size: 12.5px; line-height: 1.7; }
+    footer a { color: var(--wdp); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <div class="eyebrow">Brief cho team / Sơ đồ luồng</div>
+      <h1>WDP × WD × XD × WDS<br>Luồng sử dụng nhìn một phát là hiểu</h1>
+      <p class="lead">
+        Tổng hợp chỉ từ <strong>trang dịch vụ chính thức Vis</strong> và
+        <strong>『ヴィスの現状と今後について』（WDP XD事業計画 / 2025/12/26）</strong>.
+        Tách rõ: <strong>đang dùng thế nào</strong> vs <strong>hướng tới thế nào</strong>.
+        Mọi số liệu và khẳng định quan trọng đều gắn nhãn nguồn.
+      </p>
+      <div class="links">
+        <a href="https://vis-produce.com/service/data-solution/wdp" target="_blank" rel="noopener">WDP chính thức</a>
+        <a href="https://vis-produce.com/lp/experience-design" target="_blank" rel="noopener">XD chính thức</a>
+        <a href="./06-wdp-wd-xd-flow-ja.html">Bản tiếng Nhật</a>
+        <a href="./05-brief-team-vis-genjo-to-mokuhyo.html">Brief現状 (VI)</a>
+      </div>
+    </header>
+
+    <nav class="toc">
+      <a href="#s1"><span class="n">1</span><span class="t">Quan hệ tổng thể</span></a>
+      <a href="#s2"><span class="n">2</span><span class="t">Cách dùng hiện tại</span></a>
+      <a href="#s3"><span class="n">3</span><span class="t">Cách dùng hướng tới</span></a>
+      <a href="#s4"><span class="n">4</span><span class="t">Chỗ dùng WDP trong WD và XD</span></a>
+      <a href="#s5"><span class="n">5</span><span class="t">Bảng nguồn số liệu</span></a>
+    </nav>
+
+    <!-- 1 -->
+    <section class="card" id="s1">
+      <h2>1. Quan hệ tổng thể</h2>
+      <div class="legend">
+        <span class="chip"><span class="dot wd"></span>WD — Workplace Design</span>
+        <span class="chip"><span class="dot xd"></span>XD — Experience Design</span>
+        <span class="chip"><span class="dot wdp"></span>WDP / WDS — nền tảng đo</span>
+      </div>
+
+      <div class="map-top">
+        Work Design ＝ Workplace Design（WD） × Experience Design（XD）
+        <span class="src">事業計画</span>
+      </div>
+
+      <div class="map-cols">
+        <div class="pane wd">
+          <h3>WD：xây dựng không gian làm việc</h3>
+          <ul>
+            <li>Dự án chuyển / cải tạo văn phòng <span class="src">事業計画</span></li>
+            <li>PROGRAMMING → DESIGN → CREATE → UPDATE <span class="src">公式WDP</span></li>
+            <li>Phần lớn doanh thu Vis hiện tại đến từ đây <span class="src">事業計画</span></li>
+            <li>Mô hình: hợp đồng nhận thầu（請負）+ thâm dụng lao động（労働集約） <span class="src">事業計画</span></li>
+          </ul>
+        </div>
+        <div class="pane xd">
+          <h3>XD：thiết kế trải nghiệm / vận hành</h3>
+          <ul>
+            <li>3 phase: ビジョン策定 → 計画 → 運用 <span class="src">公式XD</span></li>
+            <li>Giúp trải nghiệm tại workplace nuôi dưỡng quan hệ người–doanh nghiệp bền <span class="src">公式XD</span></li>
+            <li>Giảm hình thức hóa（形骸化）sau renew <span class="src">公式XD / 事業計画</span></li>
+            <li>Kế hoạch launch chính thức dịch vụ: 2026/4（tại thời điểm tài liệu 2025/12） <span class="src">事業計画</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="bridge">
+        <div><strong>WDP（WORK DESIGN PLATFORM）</strong> <span class="src">公式WDP / 公式XD</span></div>
+        <div style="margin-top:6px;font-size:13px;">
+          Số hóa / phân tích theo 3 góc:
+          <strong>ý thức con người（人の気持ち）</strong> /
+          <strong>hành vi（人の動き）</strong> /
+          <strong>không gian（空間）</strong>
+        </div>
+        <div style="margin-top:8px;font-size:13px;">
+          Trên trang chính thức, WDP nêu 3 điểm: survey hài lòng · phân tích稼働 không gian · mô phỏng chi phí
+          <span class="src">公式WDP</span><br>
+          Trong thực tế nội bộ theo事業計画: đang dùng chủ yếu <strong>サーベイ</strong>;
+          chức năng survey đó được gọi <strong>WDS</strong>
+          <span class="src">事業計画</span>
+        </div>
+        <div style="margin-top:8px;font-size:13px;">
+          → Với WD: làm căn cứ đề xuất / hỗ trợ nhận thầu <span class="src">事業計画</span><br>
+          → Với XD: đo trước–sau dự án để 効果検証 <span class="src">公式XD</span>
+        </div>
+      </div>
+
+      <p class="note" style="margin-top:14px;">
+        Trang XD chính thức ghi rõ: dùng『WORK DESIGN PLATFORM』ở phaseビジョン策定
+        （3 góc 気持ち / 動き / 空間）, và
+        <strong>đo–phân tích trước/sau dự án để 効果検証</strong>.
+        <span class="src">公式XD</span>
+      </p>
+    </section>
+
+    <!-- 2 -->
+    <section class="card" id="s2">
+      <h2>2. Cách dùng hiện tại（WD trung tâm · kiểu shot）</h2>
+      <p>
+        Theo事業計画: WDP hiện chủ yếu dùng survey để <strong> nắm現状（現状把握）</strong>,
+        tăng sức thuyết phục đề xuất → tăng tỷ lệ nhận thầu → tạo
+        <strong>hiệu ứng doanh thu gián tiếp（間接売上効果）</strong>.
+        <span class="src">事業計画</span>
+      </p>
+
+      <div class="flow">
+        <div class="step">
+          <div class="when">Trước<br>đề xuất</div>
+          <div class="body">
+            <span class="tag wd">WD</span>
+            <div class="title">Nuôi dưỡng / hearing（ナーチャリング）</div>
+            <p class="desc">
+              Dùng WDP ở giai đoạn đầu đề xuất hoặc nuôi dưỡng khách.
+              Nếu chạy WDS sớm hơn thì kịp đưa kết quả vào đề xuất
+              （lead time đề xuất thường ~3–4 tuần, khó kịp nếu bắt đầu muộn）.
+              <span class="src">事業計画</span>
+            </p>
+          </div>
+        </div>
+        <div class="arrow-down">↓</div>
+        <div class="step">
+          <div class="when">Sắp<br>đề xuất</div>
+          <div class="body">
+            <span class="tag wdp">WDP / WDS</span>
+            <div class="title">Survey nắm現状（ショット型）</div>
+            <p class="desc">
+              Cách dùng chính hiện nay: khoảng <strong>~100件/năm</strong>,
+              chủ yếu 現状把握, dùng 1 lần → khó chuyển sang dùng liên tục.
+              <span class="src">事業計画</span>
+            </p>
+          </div>
+        </div>
+        <div class="arrow-down">↓</div>
+        <div class="step">
+          <div class="when">Đề xuất<br>/ コンペ</div>
+          <div class="body">
+            <span class="tag wd">WD</span>
+            <div class="title">Đề xuất dựa trên data → nhận thầu</div>
+            <p class="desc">
+              Số liệu 2025/10（完工ベース）:
+              コンペ <strong>30.9% → 53.8%（＋22.9pt）</strong>;
+              特命・ナーチャリング <strong>49.6% → 75.0%（＋25.4pt）</strong>.
+              間接売上効果 tính được khoảng <strong>146,612,083円（~1.46億）</strong>.
+              <span class="src">事業計画</span>
+            </p>
+          </div>
+        </div>
+        <div class="arrow-down">↓</div>
+        <div class="step">
+          <div class="when">Thiết kế<br>〜 bàn giao</div>
+          <div class="body">
+            <span class="tag wd">WD</span>
+            <div class="title">Tiến hành dự án không gian</div>
+            <p class="desc">
+              Đây là sân chính doanh thu Vis（phần lớn từ 移転・改装）.
+              Trang WDP mô tả vòng PROGRAMMING→…→UPDATE, nhưng
+              việc đo hiệu quả sau bàn giao trong thực tế vận hành vẫn là gap.
+              <span class="src">公式WDP / 事業計画</span>
+            </p>
+          </div>
+        </div>
+        <div class="arrow-down">↓</div>
+        <div class="step">
+          <div class="when">Sau<br>chuyển VP</div>
+          <div class="body">
+            <span class="tag gap">GAP</span>
+            <div class="title">After còn yếu（課題 hiện trạng）</div>
+            <p class="desc">
+              Vì vẫnショット型 → khó 継続利用 → khó 有料化
+              （有料契約 còn khoảng <strong>2件</strong>, 「マネタイズには程遠い」）.
+              Muốn monetize cần mở rộng before–after và kết hợp XD.
+              <span class="src">事業計画</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 -->
+    <section class="card" id="s3">
+      <h2>3. Cách dùng hướng tới（nối XD / Before→After）</h2>
+      <p>
+        Hướng事業計画: giữ vai trò hỗ trợ nhận thầu, đồng thời biến WDP thành
+        <strong>一助 cho 効果検証</strong>. XD MVP lấy
+        <strong>before and after survey</strong> làm lõi.
+        <span class="src">事業計画</span>
+        Trang XD chính thức cũng khẳng định đo trước–sau để 効果検証.
+        <span class="src">公式XD</span>
+      </p>
+
+      <div class="compare">
+        <div class="col now">
+          <h3>Hiện tại（課題） <span class="src">事業計画</span></h3>
+          <ul>
+            <li>WDS chủ yếu nắm現状 trước đề xuất</li>
+            <li>Dùng 1 lần（ショット型）</li>
+            <li>有料契約 ~2件</li>
+            <li>Khó chứng minh hiệu quả đầu tư office bằng số sau bàn giao</li>
+          </ul>
+        </div>
+        <div class="col aim">
+          <h3>Hướng tới <span class="src">事業計画</span></h3>
+          <ul>
+            <li>So sánh Before（trước）và After（sau）</li>
+            <li>Nối KPI / đánh giá–cải thiện của XD</li>
+            <li>FY2026: WDP ưu tiên <strong>Afterスポット</strong> + XD starter <strong>40件</strong></li>
+            <li>継続利用 → 有料化; SaaS商品化 chủ yếu từ <strong>FY2028</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Vị trí WDP / WDS trong flow XD（theo trang chính thức）</h3>
+      <div class="flow">
+        <div class="step">
+          <div class="when">ビジョン<br>策定</div>
+          <div class="body">
+            <span class="tag xd">XD</span><span class="tag wdp">WDP</span>
+            <div class="title">Before（WDP/WDS）+ top interview + workshop</div>
+            <p class="desc">
+              Nắm現状 định lượng–định tính, chốt vision làm việc mong muốn;
+              dùng cho định nghĩa yêu cầu thiết kế WD.
+              <span class="src">公式XD</span>
+            </p>
+          </div>
+        </div>
+        <div class="arrow-down">↓</div>
+        <div class="step">
+          <div class="when">計画</div>
+          <div class="body">
+            <span class="tag xd">XD</span>
+            <div class="title">Đổi mindset / thiết kế vận hành / giải thích chuyển VP…</div>
+            <p class="desc">
+              Không chỉ không gian — chỉnh cách dùng, rule, ý thức theo vision mới.
+              <span class="src">公式XD</span>
+            </p>
+          </div>
+        </div>
+        <div class="arrow-down">↓</div>
+        <div class="step">
+          <div class="when">運用</div>
+          <div class="body">
+            <span class="tag xd">XD</span>
+            <div class="title">Đồng hành vận hành · event · cải thiện</div>
+            <p class="desc">
+              Entry plan trên trang XD: ~4 tháng triển khai chu kỳ văn hóa;
+              chương trình gồm workshop + <strong>nội dung/event tổng 2 lần</strong> + reporting.
+              <span class="src">公式XD</span>
+              MVP trong事業計画 cũng ghi event sau renew tối thiểu 2企画.
+              <span class="src">事業計画</span>
+            </p>
+          </div>
+        </div>
+        <div class="arrow-down">↓</div>
+        <div class="step">
+          <div class="when">Đánh giá</div>
+          <div class="body">
+            <span class="tag wdp">WDS</span>
+            <div class="title">After → so với Before（効果検証）</div>
+            <p class="desc">
+              Trang XD: đo–phân tích trước/sau dự án để 効果検証.
+              事業計画: chu kỳ đánh giá–cải thiện ~6 tháng; so WDS trước/sau.
+              <span class="src">公式XD / 事業計画</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 -->
+    <section class="card" id="s4">
+      <h2>4. Chỗ dùng WDP trong WD và XD</h2>
+      <p>
+        WDP không phải service đứng cạnh WD / XD, mà là
+        <strong>tool gắn vào 2 service</strong>.
+        Chỉ khác nhau ở <strong>thời điểm dùng</strong>.
+      </p>
+
+      <div class="compare">
+        <div class="col now">
+          <h3>WD（Workplace Design）</h3>
+          <p style="font-size:13px;margin:0 0 8px;">Service xây không gian làm việc</p>
+          <ul>
+            <li><strong>Khi nào dùng:</strong> trước đề xuất ~ đầu đề xuất（kể cả nuôi dưỡng KH）</li>
+            <li><strong>Làm gì:</strong> survey（WDS）để nắm現状</li>
+            <li><strong>Để làm gì:</strong> đề xuất bằng data → hỗ trợ nhận thầu（受注）</li>
+            <li><strong>Thực tế hiện tại:</strong> kiểu shot（1 lần）· tập trung Before <span class="src">事業計画</span></li>
+          </ul>
+        </div>
+        <div class="col aim">
+          <h3>XD（Experience Design）</h3>
+          <p style="font-size:13px;margin:0 0 8px;">Service hỗ trợ trải nghiệm / vận hành</p>
+          <ul>
+            <li><strong>Khi nào dùng:</strong>ビジョン策定（Before）và đánh giá sau dự án（After）</li>
+            <li><strong>Làm gì:</strong> số hóa 気持ち / 動き / 空間 rồi so trước–sau</li>
+            <li><strong>Để làm gì:</strong> hỗ trợ 効果検証</li>
+            <li><strong>Vị trí trên web chính thức:</strong> đo–phân tích trước/sau dự án <span class="src">公式XD</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="note" style="margin-top:14px;">
+        Một câu: cùng một WDP, nhưng<br>
+        <strong>trong WD dùng để “bán / đề xuất”</strong>,<br>
+        <strong>trong XD dùng để “đo / chứng minh hiệu quả”</strong>.
+      </p>
+    </section>
+
+    <!-- 5 -->
+    <section class="card" id="s5">
+      <h2>5. Bảng nguồn số liệu & khẳng định</h2>
+      <p>Chỉ dùng 2 nhóm nguồn. Không suy diễn số ngoài nguồn.</p>
+      <table class="src-table">
+        <tr>
+          <th>Nội dung</th>
+          <th>Giá trị / khẳng định</th>
+          <th>Nguồn</th>
+        </tr>
+        <tr>
+          <td>Work Design = WD × XD</td>
+          <td>Định nghĩa sau 2025半期総会</td>
+          <td>事業計画</td>
+        </tr>
+        <tr>
+          <td>4 phase WD</td>
+          <td>PROGRAMMING / DESIGN / CREATE / UPDATE</td>
+          <td>公式WDP</td>
+        </tr>
+        <tr>
+          <td>3 phase XD</td>
+          <td>ビジョン策定 / 計画 / 運用</td>
+          <td>公式XD</td>
+        </tr>
+        <tr>
+          <td>3 góc WDP</td>
+          <td>人の気持ち / 人の動き / 空間</td>
+          <td>公式WDP · 公式XD</td>
+        </tr>
+        <tr>
+          <td>WDP đo trước–sau</td>
+          <td>効果検証 được nêu trên trang XD</td>
+          <td>公式XD</td>
+        </tr>
+        <tr>
+          <td>WDP 3 pickup</td>
+          <td>Survey · phân tích稼働 · mô phỏng chi phí</td>
+          <td>公式WDP</td>
+        </tr>
+        <tr>
+          <td>Cách dùng nội bộ hiện tại</td>
+          <td>Chủ yếu サーベイ / 現状把握 / ショット型</td>
+          <td>事業計画「WDPの実態とあるべき状態」</td>
+        </tr>
+        <tr>
+          <td>Lượng dùng WDP</td>
+          <td class="num">~100件/năm</td>
+          <td>事業計画</td>
+        </tr>
+        <tr>
+          <td>有料契約</td>
+          <td class="num">~2件（マネタイズには程遠い）</td>
+          <td>事業計画</td>
+        </tr>
+        <tr>
+          <td>受注率 コンペ</td>
+          <td class="num">30.9% → 53.8%（＋22.9pt）</td>
+          <td>事業計画「間接売上効果」（2025/10完工）</td>
+        </tr>
+        <tr>
+          <td>受注率 特命・ナーチャリング</td>
+          <td class="num">49.6% → 75.0%（＋25.4pt）</td>
+          <td>同上</td>
+        </tr>
+        <tr>
+          <td>間接売上効果</td>
+          <td class="num">≈146,612,083円（~1.46億 / ~1.4億）</td>
+          <td>同上</td>
+        </tr>
+        <tr>
+          <td>Renew / WDS nội bộ / WS</td>
+          <td class="num">~500件/năm · ~10件/tháng · 5–6件/năm</td>
+          <td>事業計画「構造改革」</td>
+        </tr>
+        <tr>
+          <td>XD Entry plan（web）</td>
+          <td>4 tháng; nội dung/event <strong>tổng 2 lần</strong> + reporting</td>
+          <td>公式XD</td>
+        </tr>
+        <tr>
+          <td>XD MVP（nội bộ）</td>
+          <td>Before–After; event tối thiểu 2; entry ~100万円; rule từ 2026/4</td>
+          <td>事業計画</td>
+        </tr>
+        <tr>
+          <td>FY2026 kế hoạch</td>
+          <td class="num">0.7億; starter 40; Afterスポット; năm 検証（MVP）</td>
+          <td>事業計画「売上計画」</td>
+        </tr>
+        <tr>
+          <td>SaaS商品化（lộ trình nội bộ）</td>
+          <td>Chủ yếu FY2028</td>
+          <td>事業計画</td>
+        </tr>
+      </table>
+
+      <h3>Bảng nhớ thuật ngữ</h3>
+      <table class="src-table">
+        <tr>
+          <th>Tên</th>
+          <th>Là gì</th>
+          <th>Vai trò</th>
+        </tr>
+        <tr>
+          <td><strong>WD</strong></td>
+          <td>Dịch vụ（không gian）</td>
+          <td>Xây workplace theo 4 phase</td>
+        </tr>
+        <tr>
+          <td><strong>XD</strong></td>
+          <td>Dịch vụ（trải nghiệm / vận hành）</td>
+          <td>Giúp dùng office đúng mục tiêu, tránh 形骸化</td>
+        </tr>
+        <tr>
+          <td><strong>WDP</strong></td>
+          <td>Platform / tool</td>
+          <td>Số hóa 気持ち · 動き · 空間</td>
+        </tr>
+        <tr>
+          <td><strong>WDS</strong></td>
+          <td>Survey trong WDP（tên dùng nội bộ）</td>
+          <td>Đo Before / After, hỗ trợ đề xuất</td>
+        </tr>
+      </table>
+    </section>
+
+    <footer>
+      <p>
+        Nguồn duy nhất dùng trong tài liệu này:<br>
+        1) Vis chính thức
+        <a href="https://vis-produce.com/service/data-solution/wdp" target="_blank" rel="noopener">WDP</a> /
+        <a href="https://vis-produce.com/lp/experience-design" target="_blank" rel="noopener">XD</a><br>
+        2) 『ヴィスの現状と今後について』（WDP XD事業計画 / 小川 慧 / 2025/12/26）<br>
+        Font: Noto Sans JP（cùng họ font trang WDP Vis）. Số liệu nội bộ lấy tại thời điểm tài liệu; khi cập nhật sau 12/2025 cần đối chiếu lại.
+      </p>
+    </footer>
+  </div>
+</body>
+</html>
