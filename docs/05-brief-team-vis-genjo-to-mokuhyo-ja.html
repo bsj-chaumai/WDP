@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ヴィスの現状と今後について｜要点サマリー</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --text: #4F4D4D;
+      --text-strong: #2f2d2d;
+      --muted: #7a7777;
+      --line: #e6e4e0;
+      --bg: #f6f5f2;
+      --paper: #fff;
+      --gold: #b28e00;
+      --gold-soft: #f7f1d6;
+      --wd: #2f6f6a;
+      --wd-soft: #e7f3f1;
+      --xd: #8b5a2b;
+      --xd-soft: #f5ebe0;
+      --wdp: #1f4e79;
+      --wdp-soft: #e8f0f8;
+      --gap: #9a3412;
+      --gap-soft: #fff1eb;
+      --max: 920px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 15px;
+      line-height: 1.75;
+      letter-spacing: 0.03em;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 28px 16px 72px; }
+    .hero {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 26px 24px;
+      margin-bottom: 14px;
+    }
+    .eyebrow {
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+    h1 {
+      margin: 0 0 10px;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-strong);
+      line-height: 1.4;
+    }
+    .lead { margin: 0 0 12px; color: var(--muted); font-size: 14px; }
+    .meta {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin-top: 10px;
+    }
+    .meta th, .meta td {
+      border: 1px solid var(--line);
+      padding: 8px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    .meta th { width: 7.5em; background: #faf9f7; color: var(--muted); font-weight: 700; }
+    .links { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
+    .links a {
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--wdp);
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 4px;
+      padding: 7px 10px;
+    }
+    .toc {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    @media (min-width: 760px) { .toc { grid-template-columns: repeat(4, 1fr); } }
+    .toc a {
+      text-decoration: none;
+      color: inherit;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+    }
+    .toc .n { display: block; color: var(--gold); font-size: 11px; font-weight: 700; margin-bottom: 4px; }
+    .toc .t { display: block; font-size: 13px; font-weight: 700; color: var(--text-strong); }
+    section.card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 22px 20px;
+      margin-bottom: 14px;
+    }
+    section.card h2 {
+      margin: 0 0 14px;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-strong);
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--gold-soft);
+    }
+    section.card h3 {
+      margin: 18px 0 10px;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-strong);
+    }
+    p { margin: 0 0 12px; }
+    .note {
+      background: var(--gold-soft);
+      border-radius: 6px;
+      padding: 12px 14px;
+      font-size: 13.5px;
+      font-weight: 500;
+    }
+    .caution {
+      background: var(--gap-soft);
+      border-radius: 6px;
+      padding: 12px 14px;
+      font-size: 13px;
+      color: #7a3412;
+    }
+    table.data {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      margin: 0 0 12px;
+    }
+    table.data th, table.data td {
+      border: 1px solid var(--line);
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    table.data th { background: #faf9f7; }
+    table.data .num { font-weight: 700; white-space: nowrap; }
+    .pane-grid {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 800px) { .pane-grid { grid-template-columns: 1fr 1fr; } }
+    .pane {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      background: #fff;
+    }
+    .pane.wd { border-top: 4px solid var(--wd); background: var(--wd-soft); }
+    .pane.xd { border-top: 4px solid var(--xd); background: var(--xd-soft); }
+    .pane.wdp { border-top: 4px solid var(--wdp); background: var(--wdp-soft); }
+    .pane h3 { margin: 0 0 8px; font-size: 14px; }
+    .pane ul { margin: 0; padding-left: 1.15em; font-size: 13.5px; }
+    .pane li + li { margin-top: 5px; }
+    .src {
+      display: inline-block;
+      font-size: 10.5px;
+      font-weight: 700;
+      color: #5b6b7a;
+      background: #eef2f6;
+      border: 1px solid #d7dee6;
+      border-radius: 3px;
+      padding: 1px 6px;
+      margin-left: 4px;
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+    footer {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.7;
+    }
+    footer a { color: var(--wdp); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <div class="eyebrow">WDP XD事業計画 / チーム共有</div>
+      <h1>『ヴィスの現状と今後について』<br>要点サマリー</h1>
+      <p class="lead">
+        元資料とVis公式サイトのみを根拠に、4つの問いへ整理しました。
+        数字・断定は出典ラベル付きです。
+      </p>
+      <table class="meta">
+        <tr><th>元資料</th><td>ヴィスの現状と今後について XD WDP.docx（WDP XD事業計画）</td></tr>
+        <tr><th>作成</th><td>小川 慧 / 2025年12月26日</td></tr>
+        <tr><th>公式</th><td>
+          <a href="https://vis-produce.com/service/data-solution/wdp" target="_blank" rel="noopener">WDP</a> ／
+          <a href="https://vis-produce.com/lp/experience-design" target="_blank" rel="noopener">XD</a>
+        </td></tr>
+        <tr><th>注意</th><td>数字は資料時点（2025/12）。正式利用前にVisへ最新確認してください。</td></tr>
+      </table>
+      <div class="links">
+        <a href="./05-brief-team-vis-genjo-to-mokuhyo.html">ベトナム語版</a>
+        <a href="./06-wdp-wd-xd-flow-ja.html">利用フロー図解（JA）</a>
+      </div>
+    </header>
+
+    <nav class="toc">
+      <a href="#s1"><span class="n">1</span><span class="t">サービスと現状</span></a>
+      <a href="#s2"><span class="n">2</span><span class="t">WDPの役割・受注率・課題</span></a>
+      <a href="#s3"><span class="n">3</span><span class="t">Visの課題と改善したいこと</span></a>
+      <a href="#s4"><span class="n">4</span><span class="t">年次の目標</span></a>
+    </nav>
+
+    <!-- 1 -->
+    <section class="card" id="s1">
+      <h2>1. ヴィスのサービスと現状</h2>
+      <p>
+        ヴィスの価値提供は「デザイナーズオフィス」から
+        <strong>ワークデザイン</strong>へ切り替わっています。
+        定義は <strong>ワークデザイン ＝ ワークプレイスデザイン（WD）× エクスペリエンスデザイン（XD）</strong>。
+        <span class="src">事業計画</span>
+      </p>
+
+      <div class="pane-grid">
+        <div class="pane wd">
+          <h3>WD：ワークプレイスデザイン（いまの主力）</h3>
+          <ul>
+            <li>公式：プログラミング → デザイン → クリエイト → アップデート <span class="src">公式XD</span></li>
+            <li>現状：FY2025売上の多くは<strong>移転・改装</strong>プロジェクト <span class="src">事業計画</span></li>
+            <li>モデル：<strong>請負契約</strong>＋<strong>労働集約型</strong>。市場は良く売上は右肩上がり <span class="src">事業計画</span></li>
+            <li>規模感：オフィスリニューアルは<strong>年間約500件</strong> <span class="src">事業計画</span></li>
+          </ul>
+        </div>
+        <div class="pane xd">
+          <h3>XD：エクスペリエンスデザイン（成長の柱）</h3>
+          <ul>
+            <li>公式：ビジョン策定 → 計画 → 運用 <span class="src">公式XD</span></li>
+            <li>役割：空間だけでなく体験をデザインし、人と企業の関係を持続的に育む <span class="src">公式XD</span></li>
+            <li>現状：資料上、<strong>2026年4月</strong>に正式サービスローンチ予定 <span class="src">事業計画</span></li>
+            <li>狙い：リニューアル後の形骸化を防ぎ、オフィス投資の効果を最大化 <span class="src">公式XD / 事業計画</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pane wdp" style="margin-top:12px;">
+        <h3>WDP：WORK DESIGN PLATFORM（ツール）</h3>
+        <ul>
+          <li>公式：人の気持ち / 人の動き / 空間を可視化。サーベイ・空間稼働率分析・コストシミュレーション <span class="src">公式WDP</span></li>
+          <li>公式：移転・改装の前後で価値を数値化し、人的資本投資の効果検証ができる <span class="src">公式WDP</span></li>
+          <li>実態（資料）：主に<strong>サーベイ</strong>利用。年間約<strong>100件</strong>ペース。有料契約はまだ約<strong>2件</strong> <span class="src">事業計画</span></li>
+        </ul>
+      </div>
+
+      <p class="note" style="margin-top:14px;">
+        一言で現状：売上は<strong>WD中心</strong>。第2の柱として<strong>XD + WDP</strong>を育てる必要がある、というのが資料の立場です。
+        <span class="src">事業計画</span>
+      </p>
+    </section>
+
+    <!-- 2 -->
+    <section class="card" id="s2">
+      <h2>2. WDPの役割・現状・受注率・課題（サービス別）</h2>
+      <p class="caution">
+        受注率の数字は、資料上<strong>ワークプレイスデザイン事業（WD案件）</strong>での実績です。
+        XD単体の受注率は元資料に記載がありません。
+      </p>
+
+      <h3>WDにおけるWDP</h3>
+      <table class="data">
+        <tr>
+          <th style="width:7em">観点</th>
+          <th>内容</th>
+        </tr>
+        <tr>
+          <td>役割</td>
+          <td>
+            提案初期・ナーチャリングで使い、仮説ではなくデータに基づく提案にする。
+            <strong>営業・提案基盤</strong>／受注率向上による<strong>間接売上効果</strong>。
+            <span class="src">事業計画</span>
+          </td>
+        </tr>
+        <tr>
+          <td>現状</td>
+          <td>
+            主用途は<strong>現状把握</strong>。<strong>ショット型</strong>（1回）で継続利用につながりにくい。
+            社内WDSは月平均約<strong>10件</strong>（徐々に拡大）。
+            <span class="src">事業計画</span>
+          </td>
+        </tr>
+        <tr>
+          <td>受注率</td>
+          <td>
+            2025/10時点・今期完工ベース：
+            <br>コンペ：通常 <strong>30.9%</strong> → WDP活用時 <strong>53.8%</strong>（<strong>＋22.9pt</strong>）
+            <br>特命・ナーチャリング：通常 <strong>49.6%</strong> → WDP活用時 <strong>75.0%</strong>（<strong>＋25.4pt</strong>）
+            <span class="src">事業計画</span>
+          </td>
+        </tr>
+        <tr>
+          <td>間接効果</td>
+          <td>
+            算出：WDP活用完工売上 × 受注率上昇分。
+            合計約 <strong>146,612,083円</strong>（約1.46億。本文では約1.4億とも記載）。
+            <span class="src">事業計画</span>
+          </td>
+        </tr>
+        <tr>
+          <td>課題</td>
+          <td>
+            ・提案リードタイム約3〜4週の中でWDS結果を反映しにくい
+            <br>・ショット型のままでは有料化しにくい
+            <span class="src">事業計画</span>
+          </td>
+        </tr>
+      </table>
+
+      <h3>XDにおけるWDP</h3>
+      <table class="data">
+        <tr>
+          <th style="width:7em">観点</th>
+          <th>内容</th>
+        </tr>
+        <tr>
+          <td>役割</td>
+          <td>
+            公式：ビジョン策定でWDPを活用（気持ち／動き／空間）。
+            プロジェクト前後で測定・分析し<strong>効果検証</strong>する。
+            <span class="src">公式XD</span>
+            <br>事業計画：XDサービスをWDPを活用しながら提供。マネタイズには
+            <strong>before and after</strong>の拡大とXD掛け合わせが必要。
+            <span class="src">事業計画</span>
+          </td>
+        </tr>
+        <tr>
+          <td>現状</td>
+          <td>
+            XDは資料時点では正式ローンチ前（2026/4予定）。
+            MVPの中核はサーベイの before and after 効果検証。
+            <span class="src">事業計画</span>
+          </td>
+        </tr>
+        <tr>
+          <td>受注率</td>
+          <td>
+            <strong>記載なし</strong>（元資料にXD単体の受注率実績は無い）。
+          </td>
+        </tr>
+        <tr>
+          <td>課題</td>
+          <td>
+            ・市場認知がまだ少ない中で提案しても採用されにくい想定
+            <br>・だからMVPは約<strong>100万円</strong>程度の低ハードルで、2026/4提案から社内ルール化予定
+            <br>・事前にプロトタイプ提案を約<strong>3件</strong>
+            <span class="src">事業計画</span>
+          </td>
+        </tr>
+      </table>
+    </section>
+
+    <!-- 3 -->
+    <section class="card" id="s3">
+      <h2>3. ヴィスの課題と、改善したいこと</h2>
+
+      <h3>事業構造の課題（WD中心のままでは伸びにくい）</h3>
+      <table class="data">
+        <tr><th>課題</th><th>資料の内容</th></tr>
+        <tr>
+          <td>労働集約</td>
+          <td>コンサルタント／クリエイターの数を増やし続ける必要がある <span class="src">事業計画</span></td>
+        </tr>
+        <tr>
+          <td>差別化の縮小</td>
+          <td>高いデザイン性での差は類似企業に埋まりつつある <span class="src">事業計画</span></td>
+        </tr>
+        <tr>
+          <td>空間設計に留まる</td>
+          <td>出社率・コラボ等の課題解決を目指しても、単なる空間設計コンサルに留まりやすい <span class="src">事業計画</span></td>
+        </tr>
+        <tr>
+          <td>効果の形骸化</td>
+          <td>公式XDも、満足度低下・施策継続困難・席の固定化／形骸化を課題として提示 <span class="src">公式XD</span></td>
+        </tr>
+      </table>
+
+      <h3>WDP / 活用の課題</h3>
+      <table class="data">
+        <tr><th>課題</th><th>資料の内容</th></tr>
+        <tr>
+          <td>マネタイズ遠い</td>
+          <td>有料契約まだ約2件。ショット型の現状把握中心で継続利用にならない <span class="src">事業計画</span></td>
+        </tr>
+        <tr>
+          <td>Before→After不足</td>
+          <td>マネタイズには before and after 件数拡大とXD連携が必要 <span class="src">事業計画</span></td>
+        </tr>
+        <tr>
+          <td>社内浸透の偏り</td>
+          <td>WDS月約10件、WS年5〜6件。一方Renew約500件。意識の高い人に偏る <span class="src">事業計画</span></td>
+        </tr>
+        <tr>
+          <td>提案タイミング</td>
+          <td>3〜4週の提案期間内にWDS結果を反映しにくい <span class="src">事業計画</span></td>
+        </tr>
+      </table>
+
+      <h3>改善したいこと（資料が示す方向）</h3>
+      <ul>
+        <li><strong>構造改革：</strong>通常のリニューアル提案に WD部分 + XD部分を必ず盛り込む社内ルール化（2026/4〜） <span class="src">事業計画</span></li>
+        <li><strong>XD MVP：</strong>before/after効果検証 + ラダーWS + イベント最低2 + 目標スコア設定 + 最終レポート <span class="src">事業計画</span></li>
+        <li><strong>WDP：</strong>受注の一助は維持しつつ、After中心の利用・有料化・将来のSaaSへ <span class="src">事業計画</span></li>
+        <li><strong>タイミング改善：</strong>ナーチャリング／早期実施、URL形式などハードル下げ <span class="src">事業計画</span></li>
+      </ul>
+    </section>
+
+    <!-- 4 -->
+    <section class="card" id="s4">
+      <h2>4. 目指す目標（年次）</h2>
+      <p>
+        長期：Vis全体 <strong>2030年 売上高250億</strong>。
+        その中で第2の柱として XD+WDP 連結の目安は約<strong>25億</strong>（詳細計画の2030合計は<strong>19.45億</strong>）。
+        <span class="src">事業計画</span>
+      </p>
+
+      <table class="data">
+        <tr>
+          <th>年度</th>
+          <th>XD</th>
+          <th>WDP</th>
+          <th>合計</th>
+          <th>フェーズ</th>
+          <th>その年に起きること</th>
+        </tr>
+        <tr>
+          <td class="num">FY2026</td>
+          <td class="num">0.55億</td>
+          <td class="num">0.2億</td>
+          <td class="num">0.7億</td>
+          <td>検証（MVP）</td>
+          <td>スターター40件で検証。年間契約はPoC最大1社。WDPはAfter中心のスポット利用</td>
+        </tr>
+        <tr>
+          <td class="num">FY2027</td>
+          <td class="num">1.5億</td>
+          <td class="num">0.5億</td>
+          <td class="num">2.0億</td>
+          <td>PMF</td>
+          <td>スターター→フルXD→年間契約の導線。WDPは自走ツールとして年間利用が出始める</td>
+        </tr>
+        <tr>
+          <td class="num">FY2028</td>
+          <td class="num">3億</td>
+          <td class="num">1億</td>
+          <td class="num">4億</td>
+          <td>スケール開始</td>
+          <td>XDは年間契約主力。WDPは<strong>SaaS商品化</strong>。開発完全内製化</td>
+        </tr>
+        <tr>
+          <td class="num">FY2029</td>
+          <td class="num">6.0億</td>
+          <td class="num">2億</td>
+          <td class="num">8.0億</td>
+          <td>拡張</td>
+          <td>XDの属人性低減。WDP売上の過半がストック型へ</td>
+        </tr>
+        <tr>
+          <td class="num">FY2030</td>
+          <td class="num">15.45億</td>
+          <td class="num">4億</td>
+          <td class="num">19.45億</td>
+          <td>事業確立</td>
+          <td>XD＝高付加価値戦略コンサル。WDPは数百社規模。第2の柱へ</td>
+        </tr>
+      </table>
+      <p class="note">
+        出典：事業計画「FY2025からFY2030までの売上計画」。
+        FY2026はいきなりSaaS完成の年ではなく、<strong>検証（MVP）</strong>の年です。
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>出典メモ</h2>
+      <table class="data">
+        <tr><th>ラベル</th><th>対象</th></tr>
+        <tr><td><span class="src">事業計画</span></td><td>『ヴィスの現状と今後について』（2025/12/26 小川 慧）</td></tr>
+        <tr><td><span class="src">公式WDP</span></td><td><a href="https://vis-produce.com/service/data-solution/wdp" target="_blank" rel="noopener">vis-produce.com/service/data-solution/wdp</a></td></tr>
+        <tr><td><span class="src">公式XD</span></td><td><a href="https://vis-produce.com/lp/experience-design" target="_blank" rel="noopener">vis-produce.com/lp/experience-design</a></td></tr>
+      </table>
+    </section>
+
+    <footer>
+      <p>
+        本ページは上記3系統のみを根拠にしています。出典外の数値は使っていません。<br>
+        フォント：Noto Sans JP（公式WDPページと同系統）。
+      </p>
+    </footer>
+  </div>
+</body>
+</html>
