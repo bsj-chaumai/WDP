@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Survey運用ダッシュボード — 画面例</title>
+  <style>
+    :root {
+      --bg: #f0f2f5; --card: #fff; --text: #1a2332; --muted: #6b7c93;
+      --border: #dde3ec; --primary: #1e4d8c; --teal: #0d7a6f;
+      --success: #2d8a4e; --success-bg: #e8f5ec; --warn: #d97706; --warn-bg: #fffbeb;
+      --danger: #c0392b; --danger-bg: #fdecea;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: "Hiragino Sans","Meiryo","Segoe UI",sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+    .app { max-width: 1100px; margin: 0 auto; padding: 20px; }
+    .top {
+      display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px;
+      align-items: flex-end; margin-bottom: 18px;
+    }
+    .top h1 { font-size: 1.25rem; }
+    .top p { font-size: 0.85rem; color: var(--muted); margin-top: 4px; }
+    .actions { display: flex; gap: 8px; flex-wrap: wrap; }
+    .btn {
+      border: 1px solid var(--border); background: #fff; color: var(--text);
+      padding: 9px 14px; border-radius: 8px; font-size: 0.82rem; font-weight: 600; cursor: pointer;
+    }
+    .btn.primary { background: var(--teal); color: #fff; border-color: var(--teal); }
+    .btn.warn { background: var(--warn); color: #fff; border-color: var(--warn); }
+
+    .banner {
+      background: var(--warn-bg); border: 1px solid #fcd34d; border-radius: 10px;
+      padding: 10px 14px; font-size: 0.8rem; margin-bottom: 16px; line-height: 1.55;
+    }
+    .banner .old { color: var(--danger); text-decoration: line-through; }
+    .banner .new { color: var(--success); font-weight: 700; }
+
+    .kpis { display: grid; gap: 12px; grid-template-columns: repeat(2,1fr); margin-bottom: 16px; }
+    @media(min-width:800px){ .kpis { grid-template-columns: repeat(4,1fr); } }
+    .kpi {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px;
+    }
+    .kpi .label { font-size: 0.75rem; color: var(--muted); margin-bottom: 6px; }
+    .kpi .value { font-size: 1.55rem; font-weight: 700; line-height: 1; }
+    .kpi .sub { font-size: 0.75rem; color: var(--muted); margin-top: 6px; }
+    .kpi.good .value { color: var(--success); }
+    .kpi.warn .value { color: var(--warn); }
+
+    .grid { display: grid; gap: 14px; }
+    @media(min-width:900px){ .grid { grid-template-columns: 1.2fr 1fr; } }
+    .card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px;
+    }
+    .card h2 { font-size: 0.95rem; margin-bottom: 12px; }
+    .progress-big { height: 14px; background: #e8edf3; border-radius: 99px; overflow: hidden; margin-bottom: 10px; }
+    .progress-big span { display: block; height: 100%; width: 68%; background: linear-gradient(90deg, var(--teal), #2d8a4e); }
+    .legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 0.78rem; color: var(--muted); }
+    .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 5px; }
+    .dot.done { background: var(--success); }
+    .dot.open { background: #94a3b8; }
+
+    .bars { display: grid; gap: 10px; }
+    .bar-row { display: grid; grid-template-columns: 90px 1fr 40px; gap: 8px; align-items: center; font-size: 0.8rem; }
+    .bar-track { height: 10px; background: #e8edf3; border-radius: 99px; overflow: hidden; }
+    .bar-track i { display: block; height: 100%; background: var(--primary); border-radius: 99px; }
+
+    table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+    th { text-align: left; font-size: 0.72rem; color: var(--muted); padding: 8px 6px; border-bottom: 1px solid var(--border); }
+    td { padding: 10px 6px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+    tr:last-child td { border-bottom: 0; }
+    .status {
+      display: inline-block; font-size: 0.7rem; font-weight: 700; padding: 3px 8px; border-radius: 99px;
+    }
+    .status.done { background: var(--success-bg); color: var(--success); }
+    .status.open { background: #eef2f7; color: var(--muted); }
+    .status.reminded { background: var(--warn-bg); color: var(--warn); }
+    .mini-btn {
+      border: 1px solid var(--border); background: #fff; border-radius: 6px;
+      padding: 5px 8px; font-size: 0.72rem; cursor: pointer; font-weight: 600;
+    }
+    .queue {
+      margin-top: 14px; background: #f8fafc; border: 1px dashed var(--border);
+      border-radius: 10px; padding: 12px 14px; font-size: 0.8rem;
+    }
+    .queue strong { display: block; margin-bottom: 4px; }
+    .toast {
+      position: fixed; right: 16px; bottom: 16px; background: #0f2748; color: #fff;
+      padding: 12px 16px; border-radius: 10px; font-size: 0.82rem; display: none;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25); max-width: 320px; line-height: 1.5;
+    }
+    .toast.show { display: block; }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="top">
+      <div>
+        <h1>サーベイ進捗ダッシュボード</h1>
+        <p>2026年3月 職場環境アンケート · 対象 120名</p>
+      </div>
+      <div class="actions">
+        <button class="btn" onclick="showToast('未回答者一覧を画面上で確認できます。CSVの書き出しは不要です。')">未回答者を見る</button>
+        <button class="btn warn" onclick="remindAll()">未回答者へ一括で知らせる</button>
+        <button class="btn primary" onclick="showToast('毎週月曜 10:00 に、未回答者へ自動で案内メールを送る設定を保存しました。')">定期案内を設定</button>
+      </div>
+    </div>
+
+    <div class="banner">
+      いま: <span class="old">CSVを書き出してExcelで目視確認 → 個別に連絡</span>
+      → 改善後: <span class="new">画面で進捗を確認 → 未回答者へまとめて案内</span>
+    </div>
+
+    <div class="kpis">
+      <div class="kpi good">
+        <div class="label">回答率</div>
+        <div class="value">68%</div>
+        <div class="sub">82 / 120 名が回答済み</div>
+      </div>
+      <div class="kpi">
+        <div class="label">回答済み</div>
+        <div class="value">82</div>
+        <div class="sub">昨日から +6</div>
+      </div>
+      <div class="kpi warn">
+        <div class="label">未回答</div>
+        <div class="value">38</div>
+        <div class="sub">案内待ち 24名</div>
+      </div>
+      <div class="kpi">
+        <div class="label">次回の自動案内</div>
+        <div class="value" style="font-size:1.1rem;padding-top:6px">月曜 10:00</div>
+        <div class="sub">未回答者のみ</div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>全体の進み具合</h2>
+        <div class="progress-big"><span></span></div>
+        <div class="legend">
+          <span><i class="dot done"></i>回答済み 82</span>
+          <span><i class="dot open"></i>未回答 38</span>
+        </div>
+        <h2 style="margin-top:18px">部署別の回答率</h2>
+        <div class="bars">
+          <div class="bar-row"><span>営業</span><div class="bar-track"><i style="width:82%"></i></div><span>82%</span></div>
+          <div class="bar-row"><span>企画</span><div class="bar-track"><i style="width:74%"></i></div><span>74%</span></div>
+          <div class="bar-row"><span>開発</span><div class="bar-track"><i style="width:61%"></i></div><span>61%</span></div>
+          <div class="bar-row"><span>総務</span><div class="bar-track"><i style="width:55%"></i></div><span>55%</span></div>
+          <div class="bar-row"><span>その他</span><div class="bar-track"><i style="width:48%"></i></div><span>48%</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>未回答者（一部）</h2>
+        <table>
+          <thead>
+            <tr><th>氏名</th><th>部署</th><th>状態</th><th></th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>山田 太郎</td><td>開発</td>
+              <td><span class="status open">未回答</span></td>
+              <td><button class="mini-btn" onclick="showToast('山田 太郎さんへ案内メールを送りました。')">案内</button></td>
+            </tr>
+            <tr>
+              <td>佐藤 花子</td><td>総務</td>
+              <td><span class="status reminded">案内済み</span></td>
+              <td><button class="mini-btn" onclick="showToast('佐藤 花子さんへ再案内を送りました。')">再案内</button></td>
+            </tr>
+            <tr>
+              <td>鈴木 一郎</td><td>開発</td>
+              <td><span class="status open">未回答</span></td>
+              <td><button class="mini-btn" onclick="showToast('鈴木 一郎さんへ案内メールを送りました。')">案内</button></td>
+            </tr>
+            <tr>
+              <td>高橋 美咲</td><td>企画</td>
+              <td><span class="status open">未回答</span></td>
+              <td><button class="mini-btn" onclick="showToast('高橋 美咲さんへ案内メールを送りました。')">案内</button></td>
+            </tr>
+            <tr>
+              <td>伊藤 健</td><td>その他</td>
+              <td><span class="status reminded">案内済み</span></td>
+              <td><button class="mini-btn" onclick="showToast('伊藤 健さんへ再案内を送りました。')">再案内</button></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="queue">
+          <strong>自動案内の待ち行列</strong>
+          未回答 38名のうち、次回送信対象は 24名です。送信履歴もこの画面で確認できます。
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="toast" id="toast"></div>
+  <script>
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(() => t.classList.remove('show'), 2600);
+    }
+    function remindAll() {
+      showToast('未回答の38名へ案内メールを予約しました。送信結果はこの画面に表示されます。');
+    }
+  </script>
+</body>
+</html>
