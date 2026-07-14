@@ -82,7 +82,7 @@
       gap: 8px;
       margin-bottom: 16px;
     }
-    @media (min-width: 760px) { .toc { grid-template-columns: repeat(4, 1fr); } }
+    @media (min-width: 760px) { .toc { grid-template-columns: repeat(5, 1fr); } }
     .toc a {
       text-decoration: none;
       color: inherit;
@@ -327,6 +327,33 @@
       border-radius: 3px;
       padding: 1px 5px;
     }
+    .src {
+      display: inline-block;
+      font-size: 10.5px;
+      font-weight: 700;
+      color: #5b6b7a;
+      background: #eef2f6;
+      border: 1px solid #d7dee6;
+      border-radius: 3px;
+      padding: 1px 6px;
+      margin-left: 4px;
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+    table.src-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    table.src-table th,
+    table.src-table td {
+      border: 1px solid var(--line);
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    table.src-table th { background: #faf9f7; }
+    table.src-table .num { font-weight: 700; white-space: nowrap; }
   </style>
 </head>
 <body>
@@ -335,8 +362,9 @@
       <div class="eyebrow">チーム共有 / 図解</div>
       <h1>WDP × WD × XD × WDS<br>利用の流れをひと目で</h1>
       <p class="lead">
-        Visの公式サービス説明と『ヴィスの現状と今後について』をもとに整理。
+        Vis公式（WDP / XD）と『ヴィスの現状と今後について』（WDP XD事業計画 / 2025/12/26）のみを根拠に整理。
         「いまどう使っているか」と「これからどうつなぐか」を分けて見ます。
+        数値・断定には出典ラベルを付けています。
       </p>
       <div class="howto">
         <strong>開き方（白画面になるとき）</strong>
@@ -351,6 +379,7 @@
         <a href="https://vis-produce.com/service/data-solution/wdp" target="_blank" rel="noopener">WDP公式ページ</a>
         <a href="https://vis-produce.com/lp/experience-design" target="_blank" rel="noopener">XD公式ページ</a>
         <a href="./05-brief-team-vis-genjo-to-mokuhyo-ja.html">現状サマリー（JA）</a>
+        <a href="./06-wdp-wd-xd-flow.html">ベトナム語版</a>
       </div>
       <p class="link-help">
         ・上2つ（Vis公式）＝外部リンク。ネットがない／社内制限があると開けない・白画面になることがあります。<br>
@@ -366,6 +395,7 @@
       <a href="#s2"><span class="n">2</span><span class="t">いまの使い方（WD中心）</span></a>
       <a href="#s3"><span class="n">3</span><span class="t">目指す使い方（XD接続）</span></a>
       <a href="#s4"><span class="n">4</span><span class="t">1案件の時系列</span></a>
+      <a href="#s5"><span class="n">5</span><span class="t">出典一覧</span></a>
     </nav>
 
     <!-- 1 -->
@@ -380,52 +410,63 @@
       <div class="map">
         <div class="map-top">
           ワークデザイン ＝ ワークプレイスデザイン（WD） × エクスペリエンスデザイン（XD）
+          <span class="src">事業計画</span>
         </div>
 
         <div class="map-cols">
           <div class="pane wd">
             <h3>WD：空間をつくる</h3>
             <ul>
-              <li>移転・改装のプロジェクト</li>
-              <li>Programming → Design → Create → Update</li>
-              <li>いまのVis売上の中心</li>
-              <li>請負・労働集約型</li>
+              <li>移転・改装のプロジェクト <span class="src">事業計画</span></li>
+              <li>PROGRAMMING → DESIGN → CREATE → UPDATE <span class="src">公式WDP</span></li>
+              <li>売上の大部分はここ（FY2025時点の記述） <span class="src">事業計画</span></li>
+              <li>請負契約・労働集約型 <span class="src">事業計画</span></li>
             </ul>
           </div>
           <div class="pane xd">
             <h3>XD：体験・活用を支える</h3>
             <ul>
-              <li>ビジョン策定 → 計画 → 運用</li>
-              <li>運用・意識・活動の3視点</li>
-              <li>効果の形骸化を防ぐ</li>
-              <li>2026/4 正式ローンチ（資料上）</li>
+              <li>ビジョン策定 → 計画 → 運用 <span class="src">公式XD</span></li>
+              <li>人と企業の関係を持続的に育む体験をデザイン <span class="src">公式XD</span></li>
+              <li>形骸化・固定化を防ぐ文脈（課題認識） <span class="src">公式XD / 事業計画</span></li>
+              <li>2026/4 正式ローンチ予定（資料時点 2025/12） <span class="src">事業計画</span></li>
             </ul>
           </div>
         </div>
 
         <div class="bridge">
-          <div><strong>WDP（ツール）</strong></div>
+          <div><strong>WDP（WORK DESIGN PLATFORM）</strong> <span class="src">公式WDP / 公式XD</span></div>
           <div style="margin-top:6px;font-size:13px;">
-            人の気持ち / 人の動き / 空間 を数値化<br>
-            その中のサーベイ機能が <strong>WDS</strong>
+            「人の気持ち」「人の動き」「空間」の3視点で可視化・分析
           </div>
           <div style="margin-top:8px;font-size:13px;">
-            → WDでは「提案の根拠」に使う<br>
-            → XDでは「Before / Afterの効果検証」に使う
+            公式の3ポイント：社員満足度サーベイ / 空間稼働率分析 / コストシミュレーション
+            <span class="src">公式WDP</span><br>
+            事業計画上の実態：主に<strong>サーベイ</strong>利用。そのサーベイ機能が <strong>WDS</strong>
+            <span class="src">事業計画</span>
+          </div>
+          <div style="margin-top:8px;font-size:13px;">
+            → WDでは「提案の根拠／受注の一助」<span class="src">事業計画</span><br>
+            → XDでは「プロジェクト前後の測定・効果検証」<span class="src">公式XD</span>
           </div>
         </div>
       </div>
 
       <p class="note" style="margin-top:14px;">
-        公式でも：XDのビジョン策定で『WORK DESIGN PLATFORM』を活用し、
-        プロジェクト前後で測定・分析して効果検証できる、と説明されています。
+        公式XD：ビジョン策定で『WORK DESIGN PLATFORM』を活用し、
+        プロジェクト前後で測定・分析して<strong>効果検証</strong>できる、と明記。
+        <span class="src">公式XD</span>
       </p>
     </section>
 
     <!-- 2 -->
     <section class="card" id="s2">
       <h2>2. いまの使い方（WD中心・ショット型）</h2>
-      <p>資料上の現状：WDPは主にサーベイで<strong>現状把握</strong>。提案の説得力を上げ、受注率向上（間接売上効果）につながっている。</p>
+      <p>
+        事業計画上の現状：WDPは主にサーベイで<strong>現状把握</strong>。
+        提案の説得力を上げ、受注率向上（間接売上効果）につながっている。
+        <span class="src">事業計画</span>
+      </p>
 
       <div class="flow">
         <div class="step">
@@ -433,7 +474,11 @@
           <div class="body">
             <span class="tag wd">WD</span>
             <div class="title">ナーチャリング / ヒアリング</div>
-            <p class="desc">顧客との関係づくり。ここでWDSを早めに実施できると、提案に間に合いやすい。</p>
+            <p class="desc">
+              提案初期またはナーチャリングでWDPを使う想定。
+              提案リードタイムは約3〜4週のため、遅いとWDS結果を提案に間に合わせにくい。
+              <span class="src">事業計画</span>
+            </p>
           </div>
         </div>
         <div class="arrow-down">↓</div>
@@ -442,7 +487,11 @@
           <div class="body">
             <span class="tag wdp">WDP / WDS</span>
             <div class="title">現状把握サーベイ（ショット型）</div>
-            <p class="desc">いまの使い方の中心。仮説ではなくデータで提案する。</p>
+            <p class="desc">
+              いまの使い方の中心。およそ<strong>年間100件ペース</strong>。
+              現状把握中心で1回使い切りになり、継続利用につながりにくい。
+              <span class="src">事業計画</span>
+            </p>
           </div>
         </div>
         <div class="arrow-down">↓</div>
@@ -451,7 +500,13 @@
           <div class="body">
             <span class="tag wd">WD</span>
             <div class="title">データに基づく提案 → 受注</div>
-            <p class="desc">受注率アップの実績あり（コンペ＋22.9pt / 特命・ナーチャリング＋25.4pt）。</p>
+            <p class="desc">
+              2025/10時点・今期完工ベース：
+              コンペ <strong>30.9%→53.8%（＋22.9pt）</strong> /
+              特命・ナーチャリング <strong>49.6%→75.0%（＋25.4pt）</strong>。
+              間接売上効果は約<strong>146,612,083円（約1.46億）</strong>。
+              <span class="src">事業計画</span>
+            </p>
           </div>
         </div>
         <div class="arrow-down">↓</div>
@@ -460,7 +515,11 @@
           <div class="body">
             <span class="tag wd">WD</span>
             <div class="title">空間をつくるプロジェクト進行</div>
-            <p class="desc">ここがVisの主戦場。ただし資料上、このあとの効果測定までは回りにくい。</p>
+            <p class="desc">
+              売上の大部分は移転・改装。公式WDPはUPDATE までを継続と説明するが、
+              実態として竣工後の効果測定まで回りにくいのが課題。
+              <span class="src">公式WDP / 事業計画</span>
+            </p>
           </div>
         </div>
         <div class="arrow-down">↓</div>
@@ -469,7 +528,12 @@
           <div class="body">
             <span class="tag gap">ギャップ</span>
             <div class="title">Afterが弱い（現状の課題）</div>
-            <p class="desc">ショット型のため継続利用になりにくい → 有料化しにくい。XDが埋める領域。</p>
+            <p class="desc">
+              ショット型 → 継続利用になりにくい → 有料化しにくい
+              （有料契約はまだ<strong>約2件</strong>、「マネタイズには程遠い」）。
+              マネタイズには before and after の拡大とXD連携が必要。
+              <span class="src">事業計画</span>
+            </p>
           </div>
         </div>
       </div>
@@ -478,38 +542,47 @@
     <!-- 3 -->
     <section class="card" id="s3">
       <h2>3. 目指す使い方（XDとつなぐ / Before→After）</h2>
-      <p>資料の方向：WDPを「受注の一助」だけでなく、<strong>効果検証の一助</strong>にする。XD MVPでもサーベイの before and after 効果検証が中核。</p>
+      <p>
+        事業計画の方向：WDPを「受注の一助」だけでなく、<strong>効果検証の一助</strong>にする。
+        XD MVPでもサーベイの before and after 効果検証が中核。
+        <span class="src">事業計画</span>
+        公式XDもプロジェクト前後の測定による効果検証を明記。
+        <span class="src">公式XD</span>
+      </p>
 
       <div class="compare">
         <div class="col now">
-          <h3>いま（課題）</h3>
+          <h3>いま（課題） <span class="src">事業計画</span></h3>
           <ul>
             <li>WDS＝提案前の現状把握が中心</li>
             <li>1回使って終わり（ショット型）</li>
             <li>有料契約はまだ約2件</li>
-            <li>効果を数値で示しにくい</li>
+            <li>竣工後の効果を数値で示しにくい</li>
           </ul>
         </div>
         <div class="col aim">
-          <h3>目指す姿</h3>
+          <h3>目指す姿 <span class="src">事業計画</span></h3>
           <ul>
             <li>Before（移転前）と After（移転後）を比較</li>
             <li>XDのKPI設計・評価改善と連動</li>
-            <li>After中心のスポット利用から開始（FY2026）</li>
-            <li>継続利用 → 有料化 → 将来のSaaSへ</li>
+            <li>FY2026：After中心のスポット利用 ＋ XDスターター40件</li>
+            <li>継続利用 → 有料化。SaaS商品化は主にFY2028</li>
           </ul>
         </div>
       </div>
 
-      <h3>XD側でのWDP / WDSの位置</h3>
+      <h3>XD側でのWDP / WDSの位置（公式フロー準拠）</h3>
       <div class="flow">
         <div class="step">
           <div class="when">ビジョン<br>策定</div>
           <div class="body">
             <span class="tag xd">XD</span>
             <span class="tag wdp">WDP</span>
-            <div class="title">Before計測（WDS）＋インタビュー＋WS</div>
-            <p class="desc">現状を数値で把握し、ありたい姿を決める。公式でもWDP活用を明記。</p>
+            <div class="title">Before計測（WDP/WDS）＋トップインタビュー＋WS</div>
+            <p class="desc">
+              定量・定性で現状把握し、ありたい姿を策定。設計要件定義にも活用。
+              <span class="src">公式XD</span>
+            </p>
           </div>
         </div>
         <div class="arrow-down">↓</div>
@@ -517,8 +590,11 @@
           <div class="when">計画</div>
           <div class="body">
             <span class="tag xd">XD</span>
-            <div class="title">意識改革・運用設計・説明会など</div>
-            <p class="desc">空間だけでなく、使い方・マインドセットを整える。</p>
+            <div class="title">意識改革・運用設計・移転説明会など</div>
+            <p class="desc">
+              空間だけでなく、使い方・マインドセットを整える。
+              <span class="src">公式XD</span>
+            </p>
           </div>
         </div>
         <div class="arrow-down">↓</div>
@@ -527,7 +603,12 @@
           <div class="body">
             <span class="tag xd">XD</span>
             <div class="title">イベント実施・伴走・改善サイクル</div>
-            <p class="desc">形骸化を防ぎ、活動を定着させる。</p>
+            <p class="desc">
+              公式Entryプラン：約4か月。コンテンツ実施<strong>計2回</strong>＋レポーティング。
+              <span class="src">公式XD</span>
+              事業計画のMVPもリニューアル後イベント最低2企画。
+              <span class="src">事業計画</span>
+            </p>
           </div>
         </div>
         <div class="arrow-down">↓</div>
@@ -536,7 +617,11 @@
           <div class="body">
             <span class="tag wdp">WDS</span>
             <div class="title">After計測 → Beforeと比較（効果検証）</div>
-            <p class="desc">移転前と比べて何が改善したかを数値で評価。ここでオフィス投資の効果が見える。</p>
+            <p class="desc">
+              公式：プロジェクト前後で測定・分析して効果検証。
+              事業計画：評価・改善のサイクルは約6か月、WDS前後比較。
+              <span class="src">公式XD / 事業計画</span>
+            </p>
           </div>
         </div>
       </div>
@@ -545,7 +630,10 @@
     <!-- 4 -->
     <section class="card" id="s4">
       <h2>4. 1案件の時系列（理想イメージ）</h2>
-      <p>WD案件の流れに、XDとWDP/WDSを重ねるとこうなります。</p>
+      <p>
+        公式WDの4フェーズに、公式XDのビジョン／計画／運用と WDP/WDS を重ねた<strong>到達イメージ</strong>です。
+        現在すべての案件でこう動いている、という意味ではありません。
+      </p>
 
       <div class="timeline">
         <div class="timeline-track">
@@ -559,68 +647,163 @@
           <div class="tl-item">
             <div class="phase">PHASE 1</div>
             <div class="main">受注〜設計</div>
-            <p class="role"><strong>WD</strong>：空間設計</p>
-            <p class="role"><strong>XD</strong>：ビジョン/計画</p>
+            <p class="role"><strong>WD</strong>：PROGRAMMING / DESIGN</p>
+            <p class="role"><strong>XD</strong>：ビジョン / 計画</p>
             <p class="role"><strong>WDP</strong>：要件の根拠</p>
           </div>
           <div class="tl-item">
             <div class="phase">PHASE 2</div>
             <div class="main">竣工・移転</div>
-            <p class="role"><strong>WD</strong>：引き渡し</p>
-            <p class="role"><strong>XD</strong>：説明会/意識</p>
+            <p class="role"><strong>WD</strong>：CREATE → 引き渡し</p>
+            <p class="role"><strong>XD</strong>：説明会 / 意識</p>
             <p class="role"><strong>WDS</strong>：KPI設定</p>
           </div>
           <div class="tl-item">
             <div class="phase">PHASE 3</div>
-            <div class="main">運用（半年間など）</div>
+            <div class="main">運用（約4〜6か月）</div>
             <p class="role"><strong>XD</strong>：活動伴走</p>
-            <p class="role"><strong>イベント</strong>：最低2回（MVP）</p>
-            <p class="role"><strong>改善</strong>：現場の声</p>
+            <p class="role"><strong>イベント</strong>：計2回（Entry/MVP）</p>
+            <p class="role"><strong>WD</strong>：UPDATE</p>
           </div>
           <div class="tl-item">
             <div class="phase">PHASE 4</div>
             <div class="main">評価・継続</div>
             <p class="role"><strong>WDS</strong>：After実施</p>
             <p class="role"><strong>比較</strong>：Before差分</p>
-            <p class="role"><strong>先</strong>：有料/自走/SaaS</p>
+            <p class="role"><strong>先</strong>：有料 / 自走 / SaaS（計画）</p>
           </div>
         </div>
       </div>
 
       <p class="note" style="margin-top:14px;">
-        FY2026の意味：いきなりSaaS化ではなく、
-        <strong>After中心のスポット利用</strong>と<strong>XDスターター検証</strong>で
-        「beforeからafterの訴求」を作る年。
+        FY2026の意味（事業計画）：いきなりSaaS化ではなく、
+        <strong>検証（MVP）</strong>で合計<strong>0.7億</strong>（XD 0.55 + WDP 0.2）、
+        XDスターター<strong>40件</strong>、WDPは<strong>After中心のスポット利用</strong>。
+        SaaS商品化は主に<strong>FY2028</strong>。
+        <span class="src">事業計画</span>
+        なお公式XDはWDPを「ビジネス特許取得のSaaSツール」と紹介
+        （Web上の製品ポジション）。社内売上計画の商品化年次とは別レイヤー。
+        <span class="src">公式XD</span>
       </p>
     </section>
 
-    <section class="card">
-      <h2>用語の対応（迷ったらここ）</h2>
-      <table style="width:100%;border-collapse:collapse;font-size:13.5px;">
+    <section class="card" id="s5">
+      <h2>5. 出典一覧（数値・断定）</h2>
+      <p>本資料は次の2系統のみを根拠にしています。出典外の数値は使っていません。</p>
+      <table class="src-table">
         <tr>
-          <th style="text-align:left;border:1px solid var(--line);padding:10px;background:#faf9f7;">名前</th>
-          <th style="text-align:left;border:1px solid var(--line);padding:10px;background:#faf9f7;">何か</th>
-          <th style="text-align:left;border:1px solid var(--line);padding:10px;background:#faf9f7;">役割</th>
+          <th>内容</th>
+          <th>値 / 断定</th>
+          <th>出典</th>
         </tr>
         <tr>
-          <td style="border:1px solid var(--line);padding:10px;"><strong>WD</strong></td>
-          <td style="border:1px solid var(--line);padding:10px;">サービス（空間）</td>
-          <td style="border:1px solid var(--line);padding:10px;">オフィスをつくる</td>
+          <td>ワークデザイン定義</td>
+          <td>WD × XD</td>
+          <td>事業計画</td>
         </tr>
         <tr>
-          <td style="border:1px solid var(--line);padding:10px;"><strong>XD</strong></td>
-          <td style="border:1px solid var(--line);padding:10px;">サービス（体験・運用）</td>
-          <td style="border:1px solid var(--line);padding:10px;">つくったあとの活用を支える</td>
+          <td>WD 4フェーズ</td>
+          <td>PROGRAMMING / DESIGN / CREATE / UPDATE</td>
+          <td>公式WDP</td>
         </tr>
         <tr>
-          <td style="border:1px solid var(--line);padding:10px;"><strong>WDP</strong></td>
-          <td style="border:1px solid var(--line);padding:10px;">プラットフォーム（ツール）</td>
-          <td style="border:1px solid var(--line);padding:10px;">気持ち・動き・空間を数値化</td>
+          <td>XD 3フェーズ</td>
+          <td>ビジョン策定 / 計画 / 運用</td>
+          <td>公式XD</td>
         </tr>
         <tr>
-          <td style="border:1px solid var(--line);padding:10px;"><strong>WDS</strong></td>
-          <td style="border:1px solid var(--line);padding:10px;">WDP内のサーベイ機能</td>
-          <td style="border:1px solid var(--line);padding:10px;">Before/Afterの測定に使う</td>
+          <td>WDP 3視点</td>
+          <td>人の気持ち / 人の動き / 空間</td>
+          <td>公式WDP・公式XD</td>
+        </tr>
+        <tr>
+          <td>前後測定</td>
+          <td>プロジェクト前後で効果検証</td>
+          <td>公式XD</td>
+        </tr>
+        <tr>
+          <td>実態の使い方</td>
+          <td>主にサーベイ／現状把握／ショット型</td>
+          <td>事業計画「WDPの実態とあるべき状態」</td>
+        </tr>
+        <tr>
+          <td>利用量</td>
+          <td class="num">約100件/年</td>
+          <td>事業計画</td>
+        </tr>
+        <tr>
+          <td>有料契約</td>
+          <td class="num">まだ約2件</td>
+          <td>事業計画</td>
+        </tr>
+        <tr>
+          <td>受注率（コンペ）</td>
+          <td class="num">30.9%→53.8%（＋22.9pt）</td>
+          <td>事業計画「間接売上効果」（2025/10完工）</td>
+        </tr>
+        <tr>
+          <td>受注率（特命・ナーチャリング）</td>
+          <td class="num">49.6%→75.0%（＋25.4pt）</td>
+          <td>同上</td>
+        </tr>
+        <tr>
+          <td>間接売上効果</td>
+          <td class="num">約146,612,083円（約1.46億）</td>
+          <td>同上</td>
+        </tr>
+        <tr>
+          <td>社内活用</td>
+          <td class="num">Renew約500件/年・WDS月約10件・WS年5〜6件</td>
+          <td>事業計画「構造改革」</td>
+        </tr>
+        <tr>
+          <td>XD Entry（公式）</td>
+          <td>約4か月・コンテンツ実施計2回＋レポーティング</td>
+          <td>公式XD</td>
+        </tr>
+        <tr>
+          <td>XD MVP（社内）</td>
+          <td>Before–After／イベント最低2／entry約100万円／2026/4</td>
+          <td>事業計画</td>
+        </tr>
+        <tr>
+          <td>FY2026計画</td>
+          <td class="num">0.7億・スターター40・Afterスポット・検証（MVP）</td>
+          <td>事業計画「売上計画」</td>
+        </tr>
+        <tr>
+          <td>SaaS商品化（計画）</td>
+          <td>主にFY2028</td>
+          <td>事業計画</td>
+        </tr>
+      </table>
+
+      <h3>用語の対応</h3>
+      <table class="src-table">
+        <tr>
+          <th>名前</th>
+          <th>何か</th>
+          <th>役割</th>
+        </tr>
+        <tr>
+          <td><strong>WD</strong></td>
+          <td>サービス（空間）</td>
+          <td>オフィスをつくる（4フェーズ）</td>
+        </tr>
+        <tr>
+          <td><strong>XD</strong></td>
+          <td>サービス（体験・運用）</td>
+          <td>つくったあとの活用を支える</td>
+        </tr>
+        <tr>
+          <td><strong>WDP</strong></td>
+          <td>プラットフォーム（ツール）</td>
+          <td>気持ち・動き・空間を数値化</td>
+        </tr>
+        <tr>
+          <td><strong>WDS</strong></td>
+          <td>WDP内のサーベイ機能（社内呼称）</td>
+          <td>Before/Afterの測定・提案支援</td>
         </tr>
       </table>
     </section>
@@ -630,7 +813,8 @@
         出典：Vis公式
         <a href="https://vis-produce.com/service/data-solution/wdp" target="_blank" rel="noopener">WDP</a> /
         <a href="https://vis-produce.com/lp/experience-design" target="_blank" rel="noopener">XD</a>
-        および社内資料『ヴィスの現状と今後について』（2025/12/26）。<br>
+        および『ヴィスの現状と今後について』（WDP XD事業計画 / 小川 慧 / 2025/12/26）。<br>
+        社内数値は資料時点。2025/12以降の更新がある場合は再突合が必要です。<br>
         フォントは公式WDPページと同様に Noto Sans JP を使用。
       </p>
     </footer>
