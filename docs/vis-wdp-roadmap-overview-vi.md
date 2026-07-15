@@ -26,6 +26,41 @@ Chuyển từ 「thiết kế văn phòng（chỉ làm không gian đẹp）」s
 
 ---
 
+## Số liệu chính hiện tại（từ事業計画）
+
+Nguồn：『ヴィスの現状と今後について』（2025/12/26）. 受注率 theo thời điểm 2025/10・今期完工ベース.
+
+### ① Hiện trạng WDP（tool）
+
+| Hạng mục | Nội dung |
+|----------|----------|
+| Chức năng dùng chính | **サーベイ** |
+| Lượng sử dụng | khoảng **100件/năm** |
+| Hợp đồng trả phí | còn khoảng **2件**（マネタイズには程遠い） |
+| Cách dùng | chủ yếu **現状把握** → kiểu **ショット**（chưa 継続利用） |
+| Giá trị đã có | **Hỗ trợ bán hàng**：tăng 受注率 → **間接売上効果** |
+
+### ② 受注率（hiệu quả khi dùng WDP）
+
+| Loại案件 | 受注率 thường | Khi dùng WDP | Mức tăng |
+|----------|---------------|--------------|----------|
+| コンペ | 30.9% | **53.8%** | **＋22.9pt** |
+| 特命・ナーチャリング | 49.6% | **75.0%** | **＋25.4pt** |
+
+**間接売上効果** ＝ 売上完工 dùng WDP × phần tăng 受注率  
+Tổng **≈146,612,083円**（khoảng 1.46億. Bản văn cũng ghi khoảng 1.4億）
+
+### ③ Tận dụng nội bộ tại Vis
+
+| Hạng mục | Số / thực trạng |
+|----------|-----------------|
+| Office renew | khoảng **500件/năm** |
+| WDS（survey） | **~10件/tháng** |
+| Workshop | **5–6件/năm** |
+| Thực tế | Lệch về người ý thức cao. Nhiều người chưa từng dùng |
+
+---
+
 ## II. Các vấn đề cốt lõi（課題）của Vis và hệ thống WDP hiện tại
 
 ### A. Vấn đề vĩ mô phía Vis

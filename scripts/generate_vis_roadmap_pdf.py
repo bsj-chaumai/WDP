@@ -81,6 +81,36 @@ CSS = """
     font-size: 9.5pt;
     color: #7a7777;
   }
+  table.data {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9.8pt;
+    margin: 6px 0 12px;
+  }
+  table.data th, table.data td {
+    border: 1px solid #e6e4e0;
+    padding: 7px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  table.data th {
+    background: #faf9f7;
+    color: #2f2d2d;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  table.data td.num {
+    font-weight: 700;
+    white-space: nowrap;
+    color: #1f4e79;
+  }
+  .calc {
+    background: #f6f5f2;
+    border-radius: 4px;
+    padding: 8px 10px;
+    margin: 4px 0 12px;
+    font-size: 9.8pt;
+  }
 """
 
 HTML_JA = f"""<!DOCTYPE html>
@@ -115,6 +145,54 @@ HTML_JA = f"""<!DOCTYPE html>
 
   <h3>新しい考え方の公式</h3>
   <div class="formula">ワークデザイン ＝ ワークプレイスデザイン × エクスペリエンスデザイン（XD）</div>
+
+  <h2>現状の主要数値（事業計画より）</h2>
+  <p class="meta">出典：『ヴィスの現状と今後について』（2025/12/26）。受注率は2025/10時点・今期完工ベース。</p>
+
+  <h3>① WDP（ツール）の現状</h3>
+  <table class="data">
+    <tr><th>項目</th><th>内容</th></tr>
+    <tr><td>主に使っている機能</td><td><strong>サーベイ</strong></td></tr>
+    <tr><td>利用量</td><td>およそ<strong>年間100件ペース</strong></td></tr>
+    <tr><td>有料契約</td><td><strong>まだ2件程度</strong>（マネタイズには程遠い）</td></tr>
+    <tr><td>使い方</td><td><strong>現状把握</strong>が中心 → <strong>ショット型</strong>（継続利用になっていない）</td></tr>
+    <tr><td>すでに出ている価値</td><td><strong>営業支援</strong>：受注率アップ → <strong>間接売上効果</strong></td></tr>
+  </table>
+
+  <h3>② 受注率（WDP活用の効果）</h3>
+  <table class="data">
+    <tr>
+      <th>案件タイプ</th>
+      <th>通常受注率</th>
+      <th>WDP活用時</th>
+      <th>上昇幅</th>
+    </tr>
+    <tr>
+      <td>コンペ</td>
+      <td class="num">30.9%</td>
+      <td class="num">53.8%</td>
+      <td class="num">＋22.9pt</td>
+    </tr>
+    <tr>
+      <td>特命・ナーチャリング</td>
+      <td class="num">49.6%</td>
+      <td class="num">75.0%</td>
+      <td class="num">＋25.4pt</td>
+    </tr>
+  </table>
+  <div class="calc">
+    <strong>間接売上効果</strong> ＝ WDPを活用した完工売上 × 受注率上昇分<br/>
+    合計 <strong>約146,612,083円</strong>（約1.46億。本文では約1.4億とも記載）
+  </div>
+
+  <h3>③ Vis社内の活用</h3>
+  <table class="data">
+    <tr><th>項目</th><th>数値 / 実態</th></tr>
+    <tr><td>オフィスリニューアル</td><td>およそ<strong>年間500件</strong></td></tr>
+    <tr><td>WDS（サーベイ）</td><td><strong>月平均10件</strong></td></tr>
+    <tr><td>ワークショップ</td><td><strong>年間5〜6件</strong></td></tr>
+    <tr><td>実態</td><td>意識の高い人に偏る。未利用の人も多い</td></tr>
+  </table>
 
   <h2>II. Vis社と今のWDPが抱える「課題」</h2>
   <h3>A. Vis社全体の課題</h3>
@@ -271,6 +349,54 @@ HTML_VI = f"""<!DOCTYPE html>
 
   <h3>Công thức cốt lõi mới</h3>
   <div class="formula">Work Design ＝ Workplace Design × Experience Design（XD）</div>
+
+  <h2>Số liệu chính hiện tại（từ事業計画）</h2>
+  <p class="meta">Nguồn：『ヴィスの現状と今後について』（2025/12/26）. 受注率 theo thời điểm 2025/10・今期完工ベース.</p>
+
+  <h3>① Hiện trạng WDP（tool）</h3>
+  <table class="data">
+    <tr><th>Hạng mục</th><th>Nội dung</th></tr>
+    <tr><td>Chức năng dùng chính</td><td><strong>サーベイ</strong></td></tr>
+    <tr><td>Lượng sử dụng</td><td>khoảng <strong>100件/năm</strong></td></tr>
+    <tr><td>Hợp đồng trả phí</td><td>còn khoảng <strong>2件</strong>（マネタイズには程遠い）</td></tr>
+    <tr><td>Cách dùng</td><td>chủ yếu <strong>現状把握</strong> → kiểu <strong>ショット</strong>（chưa 継続利用）</td></tr>
+    <tr><td>Giá trị đã có</td><td><strong>Hỗ trợ bán hàng</strong>：tăng 受注率 → <strong>間接売上効果</strong></td></tr>
+  </table>
+
+  <h3>② 受注率（hiệu quả khi dùng WDP）</h3>
+  <table class="data">
+    <tr>
+      <th>Loại案件</th>
+      <th>受注率 thường</th>
+      <th>Khi dùng WDP</th>
+      <th>Mức tăng</th>
+    </tr>
+    <tr>
+      <td>コンペ</td>
+      <td class="num">30.9%</td>
+      <td class="num">53.8%</td>
+      <td class="num">＋22.9pt</td>
+    </tr>
+    <tr>
+      <td>特命・ナーチャリング</td>
+      <td class="num">49.6%</td>
+      <td class="num">75.0%</td>
+      <td class="num">＋25.4pt</td>
+    </tr>
+  </table>
+  <div class="calc">
+    <strong>間接売上効果</strong> ＝ 売上完工 dùng WDP × phần tăng 受注率<br/>
+    Tổng <strong>≈146,612,083円</strong>（khoảng 1.46億. Bản văn cũng ghi khoảng 1.4億）
+  </div>
+
+  <h3>③ Tận dụng nội bộ tại Vis</h3>
+  <table class="data">
+    <tr><th>Hạng mục</th><th>Số / thực trạng</th></tr>
+    <tr><td>Office renew</td><td>khoảng <strong>500件/năm</strong></td></tr>
+    <tr><td>WDS（survey）</td><td><strong>~10件/tháng</strong></td></tr>
+    <tr><td>Workshop</td><td><strong>5–6件/năm</strong></td></tr>
+    <tr><td>Thực tế</td><td>Lệch về người ý thức cao. Nhiều người chưa từng dùng</td></tr>
+  </table>
 
   <h2>II. Các vấn đề cốt lõi（課題）của Vis và hệ thống WDP hiện tại</h2>
   <h3>A. Vấn đề vĩ mô phía Vis</h3>
