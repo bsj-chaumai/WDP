@@ -1,20 +1,13 @@
 #!/usr/bin/env python3
-"""Generate Japanese Vis roadmap overview PDF for WDP team sharing."""
+"""Generate Vis roadmap overview PDFs (JA / VI) for WDP team sharing."""
 
 from pathlib import Path
 
 from weasyprint import HTML
 
 OUT_DIR = Path(__file__).resolve().parents[1] / "docs"
-OUT_PDF = OUT_DIR / "vis-wdp-roadmap-overview-ja.pdf"
-MD_SRC = OUT_DIR / "vis-wdp-roadmap-overview-ja.md"
 
-
-HTML_DOC = """<!DOCTYPE html>
-<html lang="ja">
-<head>
-<meta charset="UTF-8" />
-<style>
+CSS = """
   @page {
     size: A4;
     margin: 18mm 16mm 18mm 16mm;
@@ -88,7 +81,13 @@ HTML_DOC = """<!DOCTYPE html>
     font-size: 9.5pt;
     color: #7a7777;
   }
-</style>
+"""
+
+HTML_JA = f"""<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<style>{CSS}</style>
 </head>
 <body>
   <div class="eyebrow">WDP開発チーム向け / 共有資料</div>
@@ -240,13 +239,175 @@ HTML_DOC = """<!DOCTYPE html>
 </html>
 """
 
+HTML_VI = f"""<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<style>{CSS}</style>
+</head>
+<body>
+  <div class="eyebrow">Tài liệu cho đội WDP / Dùng để share nội bộ</div>
+  <h1>Bức tranh tổng thể về chiến lược, 課題 và định hướng của Vis</h1>
+  <p class="meta">
+    Tài liệu chuẩn hóa dành cho PM, BrSE và toàn bộ thành viên.<br/>
+    Nguồn：『ヴィスの現状と今後について』（WDP XD事業計画 / 2025/12/26）và website chính thức Vis（WDP / XD）.
+  </p>
+  <div class="note">
+    Số liệu lấy tại thời điểm tài liệu（2025/12）. Trước khi dùng chính thức, hãy xác nhận lại với Vis.
+  </div>
+
+  <h2>I. Mục tiêu lớn và sự dịch chuyển của Vis</h2>
+  <h3>Mục tiêu doanh thu năm 2030</h3>
+  <p>Toàn công ty Vis hướng tới <strong>250億 Yên</strong>.</p>
+  <ul>
+    <li>Mảng mới（XD＋WDP）hướng tới khoảng <strong>25億 Yên</strong> vào năm thứ 5（2030）（trong bảng kế hoạch chi tiết, mục tiêu FY2030 là <strong>19.45億 Yên</strong>）.</li>
+  </ul>
+
+  <h3>Sự dịch chuyển định vị（Rebranding）</h3>
+  <p>
+    Chuyển từ 「thiết kế văn phòng（chỉ làm không gian đẹp）」sang cung cấp
+    <strong>Work Design</strong> — thiết kế toàn diện trải nghiệm làm việc.
+  </p>
+
+  <h3>Công thức cốt lõi mới</h3>
+  <div class="formula">Work Design ＝ Workplace Design × Experience Design（XD）</div>
+
+  <h2>II. Các vấn đề cốt lõi（課題）của Vis và hệ thống WDP hiện tại</h2>
+  <h3>A. Vấn đề vĩ mô phía Vis</h3>
+
+  <h4>1. Khoảng cách giữa 「văn phòng mới」và 「hiệu quả thực tế」</h4>
+  <p>
+    Khách hàng bỏ nhiều tiền để làm mới văn phòng, nhưng sau đó thường không dùng được đúng kỳ vọng
+    （quy tắc mới bị hình thức hóa, chỗ ngồi lại cố định）.
+    Cách làm cũ 「làm xong không gian là hết」chưa giải quyết được bài toán 「sau khi làm xong thì vận hành thế nào」.
+  </p>
+
+  <h4>2. Phụ thuộc sức người và giới hạn mở rộng quy mô（Scalability）</h4>
+  <ul>
+    <li>Mảng chủ lực hiện tại là <strong>Workplace Design</strong> đang ở trạng thái thâm dụng lao động（労働集約型）: muốn tăng doanh thu thì phải tăng thêm Consultant / Creator.</li>
+    <li>Mảng XD mới nếu chỉ dựa vào năng lực của chuyên viên tư vấn（XP）cũng sẽ rất khó scale.</li>
+  </ul>
+  <p>
+    <strong>【Hướng giải quyết】</strong>
+    Cần có hệ thống（WDP）giúp khách hàng tự vận hành văn phòng（自走）, giảm phụ thuộc vào tư vấn viên.
+  </p>
+
+  <h3>B. 3 rào cản kỹ thuật &amp; vận hành trên hệ thống WDP</h3>
+  <p>（Các vấn đề sản phẩm mà đội phát triển cần xử lý）</p>
+
+  <h4>1. Rào cản công nghệ: chu kỳ phát triển chậm, hệ thống nặng</h4>
+  <p>
+    <strong>【Thực trạng】</strong>
+    WDP hiện tại nặng, khó thêm tính năng mới hoặc chỉnh sửa nhỏ một cách nhanh（lightweight &amp; quick）.
+  </p>
+  <p>
+    <strong>【Định hướng của Vis】</strong>
+    Phát triển song song một ứng dụng độc lập ngoài WDP, dùng trước như công cụ nội bộ cho XP;
+    khi tính năng ổn định sẽ tích hợp / thay thế ngược vào WDP.
+  </p>
+  <div class="note">※Lưu ý: Vis chưa chỉ định bên nào làm app này và chưa có timeline chi tiết.</div>
+
+  <h4>2. Rào cản thương mại hóa: khách hàng chỉ 「dùng 1 lần」（Shot-type）</h4>
+  <p>
+    <strong>【Thực trạng】</strong>
+    Survey dùng khoảng <strong>100案件/năm</strong>, hỗ trợ bán hàng cho mảng thiết kế với hiệu ứng gián tiếp khoảng
+    <strong>1.4億 Yên</strong>, nhưng hợp đồng trả phí trực tiếp mới khoảng <strong>2件</strong>.
+    Lý do: chủ yếu dùng để nắm現状 rồi dừng（spot 1 lần）.
+  </p>
+  <p>
+    <strong>【Định hướng của Vis】</strong>
+    Mở rộng mô hình survey <strong>Before &amp; After</strong>（trước và sau chuyển VP）, kết hợp với dịch vụ XD để chuyển sang dùng liên tục（継続利用）.
+    Khoảng <strong>6 tháng</strong> sau chuyển VP sẽ chạy lại WDS để so điểm trước–sau.
+  </p>
+
+  <h4>3. Rào cản vận hành: lead time triển khai survey quá dài</h4>
+  <p>
+    <strong>【Thực trạng】</strong>
+    Từ lúc khách gửi yêu cầu đề xuất đến buổi đề xuất / コンペ thường chỉ còn <strong>3–4 tuần</strong>.
+    Trong thời gian ngắn này, việc thu thập email toàn bộ nhân viên rồi chạy survey và đưa kết quả vào đề xuất thường không kịp.
+    Ngoài ra, trước khi ký HĐ khách cũng ngại cung cấp email sớm.
+  </p>
+  <p>
+    <strong>【Định hướng của Vis】</strong>
+    Chuyển sang phát survey bằng <strong>URL dùng chung</strong>（không bắt buộc đăng ký email）để rút ngắn chuẩn bị.
+    Đồng thời thúc đẩy chạy survey sớm từ giai đoạn nuôi dưỡng KH（ナーチャリング）hoặc hearing ban đầu.
+  </p>
+
+  <h2>III. Lộ trình dịch chuyển chiến lược của Vis</h2>
+  <p>Sự phát triển dịch vụ XD và hệ thống WDP（phần đội mình tham gia）sẽ tiến hóa cùng nhau như sau.</p>
+
+  <h3>FY2025 - FY2026（Thử nghiệm / MVP）</h3>
+  <h4>Về dịch vụ</h4>
+  <p>
+    Vis kiểm chứng giá trị bằng gói dùng thử 「XD MVP」（giá khoảng <strong>100万 Yên</strong>）,
+    gắn kèm vào đề xuất renew văn phòng thông thường.
+  </p>
+  <p>Nội dung MVP tối thiểu:</p>
+  <ul>
+    <li>Survey Before &amp; After</li>
+    <li>Workshop Abstraction Ladder</li>
+    <li>Event sau renew tối thiểu <strong>2企画</strong></li>
+    <li>Thiết lập KPI（điểm mục tiêu WDS）</li>
+    <li>Follow event và báo cáo cuối</li>
+  </ul>
+  <h4>Về sản phẩm WDP</h4>
+  <p>
+    FY2026 ưu tiên dùng WDP theo hướng <strong>After-spot</strong>（đo sau chuyển VP）để tạo thói quen đo lường dữ liệu cho khách.
+    ※Bản thân gói dịch vụ MVP vẫn gồm Before &amp; After. After-spot là ưu tiên cách dùng WDP trong năm này.
+  </p>
+  <h4>Về công cụ hỗ trợ</h4>
+  <p>
+    Định hướng phát triển / dùng song song một ứng dụng độc lập ngoài WDP để XP dùng nội bộ
+    （giai đoạn này khách chưa nhất thiết phải tự thao tác app）.
+  </p>
+
+  <h3>FY2027（PMF）</h3>
+  <p>
+    Thiết lập được đường trải nghiệm dịch vụ theo bậc: <strong>Starter → Full XD → hợp đồng năm</strong>.
+    Phía WDP cũng kiểm chứng giá trị hỗ trợ 「自走」của khách và giá trị gắn với hợp đồng năm.
+  </p>
+
+  <h3>FY2028（Thương mại hóa SaaS）</h3>
+  <p>
+    Khoảng năm 2028, khi đối thủ bắt đầu sao chép dịch vụ kiểu XD,
+    Vis tạo khác biệt bằng công nghệ giá thấp, tiếp cận được tệp khách rộng.
+  </p>
+  <p>
+    Các tính năng đã chạy ổn trên ứng dụng song song sẽ được tích hợp / thay thế hoàn toàn vào WDP chính（<strong>新生WDP</strong>）,
+    và chính thức chạy mô hình <strong>SaaS</strong>（thu phí định kỳ）.
+  </p>
+
+  <h3>FY2030（Quy mô lớn / trở thành trụ cột thứ 2）</h3>
+  <p>
+    Khách hàng giảm phụ thuộc consultant（XP）, dùng 「WDP（SaaS）」để tự đo dữ liệu,
+    tự chạy hoạt động nội bộ và tự vận hành văn phòng（自走）.
+  </p>
+  <p>
+    Vis thoát dần mô hình phụ thuộc sức người, đưa mảng 「XD × WDP」đạt quy mô khoảng
+    <strong>25億 Yên</strong>（theo bảng chi tiết FY2030 là <strong>19.45億 Yên</strong>）,
+    trở thành trụ cột vững chắc thứ 2 bên cạnh Workplace Design.
+  </p>
+
+  <h2>Nguồn</h2>
+  <ul class="src">
+    <li>『ヴィスの現状と今後について』（WDP XD事業計画 / 小川 慧 / 2025/12/26）</li>
+    <li>https://vis-produce.com/service/data-solution/wdp</li>
+    <li>https://vis-produce.com/lp/experience-design</li>
+  </ul>
+</body>
+</html>
+"""
+
+
+def write_pdf(html: str, out_path: Path) -> None:
+    HTML(string=html, base_url=str(OUT_DIR)).write_pdf(str(out_path))
+    print(f"Wrote {out_path}")
+
 
 def build() -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    if not MD_SRC.exists():
-        raise SystemExit(f"Missing markdown source: {MD_SRC}")
-    HTML(string=HTML_DOC, base_url=str(OUT_DIR)).write_pdf(str(OUT_PDF))
-    print(f"Wrote {OUT_PDF}")
+    write_pdf(HTML_JA, OUT_DIR / "vis-wdp-roadmap-overview-ja.pdf")
+    write_pdf(HTML_VI, OUT_DIR / "vis-wdp-roadmap-overview-vi.pdf")
 
 
 if __name__ == "__main__":
