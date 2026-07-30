@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="ja">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>WDP Internal Report — PRO Misoperation (2026-07-22)</title>
+  <title>WDP チーム内報告書：本番環境への誤操作（2026-07-22）</title>
   <style>
     :root {
       --ink: #1c2430;
@@ -26,8 +26,8 @@
         radial-gradient(ellipse at top left, #e8eef8 0%, transparent 45%),
         radial-gradient(ellipse at bottom right, #ece8e2 0%, transparent 40%),
         var(--bg);
-      font-family: "IBM Plex Sans", "Noto Sans JP", "Hiragino Sans", sans-serif;
-      line-height: 1.65;
+      font-family: "Hiragino Sans", "Noto Sans JP", "Yu Gothic", sans-serif;
+      line-height: 1.7;
       font-size: 15px;
     }
     .page {
@@ -41,7 +41,7 @@
     h1 {
       margin: 0 0 8px;
       font-size: 1.55rem;
-      letter-spacing: 0.01em;
+      letter-spacing: 0.02em;
       border-bottom: 3px solid var(--accent);
       padding-bottom: 14px;
     }
@@ -210,11 +210,11 @@
     <h1>WDP チーム内報告書：本番環境への誤操作</h1>
 
     <div class="meta">
-      <span>報告種別</span><strong>チーム内共有（Internal）</strong>
+      <span>報告種別</span><strong>チーム内共有</strong>
       <span>発生日時</span><strong>2026/7/22（水）16:55:05</strong>
       <span>対象クライアント</span><strong>ヴィス東京</strong>
       <span>影響箇所</span><strong>TOPページ_稼働分析エリア_更新日</strong>
-      <span>Ticket</span>
+      <span>チケット</span>
       <strong>
         <a href="https://workdesign.backlog.com/view/DEV_WDT-1151#comment-785356460" target="_blank" rel="noopener">
           DEV_WDT-1151
@@ -226,16 +226,16 @@
 
     <p class="lead">
       本資料は、WDP本番環境への誤アップロード事象について、チーム内で共有・振り返りを行うための報告書です。<br />
-      顧客向け報告書の内容をベースに、原因・影響確認・再発防止（UI色分け / Browser Extension / 運用）を整理しています。
+      顧客向け報告書の内容をベースに、原因・影響確認・再発防止策を整理しています。
     </p>
 
     <h2>1. 事象概要</h2>
     <p>
-      自動テスト用スクリプト作成のため、検証メンバーが <strong>STG</strong> と <strong>PRO</strong> の2タブを並行して開き、両環境の値を比較していた。
-      タブが近接していたこと、および両環境の画面外見が酷似していたことから、環境を取り違え、<strong>本番環境（PRO）へデータを投稿</strong>してしまった。
+      自動テスト用スクリプト作成のため、検証メンバーが <strong>STG</strong> と <strong>PRO</strong> の2タブを並行して開き、両環境の値を比較しておりました。
+      操作中、タブが近接していたこと、および両環境の画面外見が酷似していたことから、環境を取り違え、<strong>本番環境（PRO）へデータを投稿</strong>してしまいました。
     </p>
     <p>
-      当日、別件で検証チーム内のテスト内容報告を行っていた際に、本問題が発覚した。
+      本日別件で検証チーム内でテスト内容の報告を行っていた際に、上記の問題が発覚しました。
     </p>
 
     <h2>2. 影響範囲と確認結果</h2>
@@ -249,7 +249,7 @@
         <td>TOPページ ／ 稼働分析エリア ／ <strong>更新日</strong></td>
       </tr>
       <tr>
-        <th>誤uploadファイル</th>
+        <th>誤ってアップロードしたファイル</th>
         <td>
           手入力のExcelデータ形式<br />
           ・従業員情報<br />
@@ -260,45 +260,44 @@
 
     <h3>確認結果</h3>
     <ul>
-      <li>稼働分析設定は計算方式 <strong>Meraki</strong> のため、uploadファイル形式差異により <strong>新規データ更新はエラーで完了しなかった</strong>。</li>
-      <li>現時点まで、<strong>プロダクトデータ本体への差異・影響は確認されていない</strong>。</li>
-      <li>確実を期すため、S3上のヴィス東京向け現行適用データ（従業員情報・出社滞在情報）を取得し、再uploadを実施。</li>
-      <li>以下の表示データにも差異・誤りは確認されず。
+      <li>稼働分析設定は計算方式として <strong>Meraki</strong> が設定されていたため、アップロードされたファイル形式との差異により、<strong>新規データの更新はエラーとなり完了しませんでした。</strong></li>
+      <li>そのため、現時点まで <strong>プロダクトデータへの差異・影響は確認されておりません。</strong></li>
+      <li>さらに確実を期すため、S3上に保管されているヴィス東京向けの現行適用データ（従業員情報・出社滞在情報）を取得し、再アップロードを実施しました。</li>
+      <li>その結果、以下の範囲においても表示データの差異・誤りは確認されませんでした。
         <ul>
           <li>トップ_稼働分析の表示データ</li>
           <li>現状把握_稼働分析の表示データ</li>
         </ul>
       </li>
-      <li>唯一、TOP画面・稼働分析エリアの <strong>「更新日」が当日日付に変更</strong> されたことを確認。</li>
+      <li>唯一、TOP画面の稼働分析エリアにおける <strong>「更新日」が本日日付に変更された</strong> ことを確認しております。</li>
     </ul>
 
     <h2>3. 原因</h2>
     <p>
-      現在、システムへの自動テスト導入に向け、検証工数削減のためのスクリプト作成を進めている。
-      その過程で、計算値・表示値の正確性を担保するため、STGとPROの値を照らし合わせる必要があり、検証メンバーが両環境のタブを並行して操作していた。
+      現在、システムへの自動テスト導入に向け、検証工数削減のためのスクリプト作成を進めております。
+      その過程で、計算値・表示値の正確性を担保するため、STGとPROの値を照らし合わせる必要があり、検証メンバーが両環境のタブを並行して操作しておりました。
     </p>
     <p>
       本番環境とSTG環境は画面外見が非常に似ており、ドメイン以外での判別が難しい状態であったことに加え、
-      2つのタブを近接して操作していたことから、検証メンバーが環境を取り違え、本番環境へデータを投稿してしまった。
+      2つのタブを近接して操作していたことから、検証メンバーが環境を取り違え、本番環境へデータを投稿してしまいました。
     </p>
     <p>
       <span class="tag tag-risk">補足（チーム内）</span>
-      DEV/QC振り返りでは、「PROD上の既存データでlocator確認を急いだ」「時間短縮のためにPRODへuploadした」
-      「Productionデータ保護を最優先にする意識が不足していた」点も共有されている。
-      本件は本番誤操作として <strong>2回目</strong> であり、運用・UI・個人意識の三層で対策が必要。
+      本件は本番環境への誤操作として <strong>2回目</strong> の発生です。
+      チーム内の振り返りでは、本番環境での操作に対する慎重さ・報告意識が十分でなかった点も共有されています。
     </p>
 
-    <h2>4. 再発防止策（人的ミスのRisk低減）</h2>
+    <h2>4. 再発防止策（人為的ミスのリスク低減）</h2>
 
-    <h3>4.1 UIによる環境色分け（対応済み Evidence）</h3>
+    <h3>4.1 UIによる環境色分け（対応済み）</h3>
     <p>
-      STG / DEV 環境のヘッダー色を変更し、本番環境と視覚的に明確に区別できるようにした。
-      環境判定フラグにより非本番のみ配色を適用し、<strong>本番UIには影響させない</strong>。
+      STG／DEV環境のヘッダー色を変更し、本番環境と視覚的に明確に区別できるようにしました。
+      環境判定用フラグにより非本番環境のみ配色を適用し、<strong>本番環境のUIには影響させません。</strong>
     </p>
 
     <div class="evidence-grid">
       <figure class="evidence-card">
-        <div class="mock" aria-label="STG/DEV green header evidence">
+        <div class="mock" aria-label="非本番環境（緑ヘッダー）の証跡">
           <div class="mock-header green">
             <span>WORK DESIGN PLATFORM</span>
             <span class="client">ヴィス東京 ▾</span>
@@ -313,22 +312,21 @@
               <div>データソリューション</div>
             </div>
             <div class="mock-main">
-              <div class="mock-panel"><strong>Work Design Survey</strong>Score / Chart area</div>
-              <div class="mock-panel"><strong>Work Design Survey (Pulse)</strong>Score / Chart area</div>
+              <div class="mock-panel"><strong>Work Design Survey</strong>スコア／グラフ表示エリア</div>
+              <div class="mock-panel"><strong>Work Design Survey (Pulse)</strong>スコア／グラフ表示エリア</div>
               <div class="mock-panel"><strong>空間分析</strong>総面積などの表示</div>
-              <div class="mock-panel"><strong>コストシミュレーション</strong>月額コスト/人</div>
+              <div class="mock-panel"><strong>コストシミュレーション</strong>月額コスト／人</div>
             </div>
           </div>
         </div>
-        <span class="badge green">Evidence A — Green header（非本番）</span>
+        <span class="badge green">証跡A：緑ヘッダー（非本番）</span>
         <figcaption>
-          ヘッダーを緑系に変更した環境の画面イメージ。タブ並行操作時でも、一目で非本番と判別可能。
-          （実スクショでも緑ヘッダー＋「ヴィス東京」選択状態を確認済み）
+          ヘッダーを緑系に変更した環境の画面イメージです。タブを並行操作している場合でも、一目で非本番環境と判別できます。
         </figcaption>
       </figure>
 
       <figure class="evidence-card">
-        <div class="mock" aria-label="STG/DEV yellow header evidence">
+        <div class="mock" aria-label="非本番環境（黄ヘッダー）の証跡">
           <div class="mock-header yellow">
             <span>WORK DESIGN PLATFORM</span>
             <span class="client">ヴィス東京 ▾</span>
@@ -343,93 +341,79 @@
               <div>データソリューション</div>
             </div>
             <div class="mock-main">
-              <div class="mock-panel"><strong>Work Design Survey</strong>Score / Chart area</div>
-              <div class="mock-panel"><strong>Work Design Survey (Pulse)</strong>Score / Chart area</div>
+              <div class="mock-panel"><strong>Work Design Survey</strong>スコア／グラフ表示エリア</div>
+              <div class="mock-panel"><strong>Work Design Survey (Pulse)</strong>スコア／グラフ表示エリア</div>
               <div class="mock-panel"><strong>空間分析</strong>総面積などの表示</div>
-              <div class="mock-panel"><strong>コストシミュレーション</strong>月額コスト/人</div>
+              <div class="mock-panel"><strong>コストシミュレーション</strong>月額コスト／人</div>
             </div>
           </div>
         </div>
-        <span class="badge yellow">Evidence B — Yellow header（非本番）</span>
+        <span class="badge yellow">証跡B：黄ヘッダー（非本番）</span>
         <figcaption>
-          ヘッダーを黄系に変更した環境の画面イメージ。環境ごとの配色差分により取り違えを防止する。
-          （実スクショでも黄ヘッダー＋「ヴィス東京」選択状態を確認済み）
+          ヘッダーを黄系に変更した環境の画面イメージです。環境ごとの配色差分により、取り違えを防止します。
         </figcaption>
       </figure>
     </div>
 
+    <h3>4.2 ブラウザ拡張機能の導入（メンバー端末）</h3>
     <p>
-      実ファイル（参考）:
-      <code>docs/incident-reports/evidence/env-header-green.png</code> /
-      <code>docs/incident-reports/evidence/env-header-yellow.png</code>
-    </p>
-
-    <h3>4.2 Browser Extension（メンバー端末への導入）</h3>
-    <p>
-      チームメンバーのローカル端末に Browser Extension を導入し、
-      <strong>Productionドメインへアクセス／操作していることを即座に警告表示</strong>する。
+      チームメンバーのローカル端末にブラウザ拡張機能を導入し、
+      <strong>本番環境（PRO）へアクセスしていることを即座に警告表示</strong>します。
     </p>
     <ul>
-      <li>目的：UI色分けと併用し、「今いる環境がPRODである」ことを個人端末側でも強制的に意識させる</li>
-      <li>対象：検証・開発メンバー全員の作業ブラウザ</li>
-      <li>期待効果：STG/PRO並行操作時の取り違えを、画面内＋ブラウザ側の二重警告で抑止</li>
+      <li>目的：UI色分けと併用し、「現在操作している環境が本番である」ことを端末側でも明確に意識させる</li>
+      <li>対象：検証・開発メンバー全員の作業用ブラウザ</li>
+      <li>期待効果：STGとPROを並行操作する際の取り違えを、画面内表示とブラウザ側警告の二重で抑止する</li>
     </ul>
 
     <h3>4.3 運用ルールの徹底</h3>
     <ul class="actions">
       <li>
-        <strong>PRODでデータ変更し得る操作は事前承認必須</strong><br />
-        upload / setting変更 / 再設定など、PRODデータを変え得る操作は、実施前にLeaderへ報告し、承認後のみ実行する。
+        <strong>本番環境（PRO）での操作は事前承認必須</strong><br />
+        本番環境での操作を行う場合は、実施前にリーダーへ報告し、承認を得たうえで実施します。
+        アップロード、設定変更、再設定など、データ変更を伴う操作に限らず、本番環境への操作全般を対象とします。
       </li>
       <li>
-        <strong>環境比較作業も承認プロセス対象</strong><br />
-        STGとPROの値比較が必要な場合も、勝手にPRODへ書き込み操作を行わない。
-      </li>
-      <li>
-        <strong>STGへ定期的に比較用データを用意（Dev対応）</strong><br />
-        TesterがPRODへ上がって比較しなくても検証できるよう、Dev側で定期的にSTGへデータを用意する運用を進める。
+        <strong>環境比較作業も承認プロセスの対象とする</strong><br />
+        STGとPROの値比較が必要な場合も、事前に報告・承認を行い、承認なく本番環境へ操作を行いません。
       </li>
       <li>
         <strong>教育・共通認識の継続</strong><br />
-        「Productionデータ保護を最優先」をチーム共通ルールとして明文化し、定期的に周知する。
+        「本番データの保護を最優先とする」ことをチーム共通ルールとして明文化し、定期的に周知します。
       </li>
     </ul>
 
-    <h2>5. チーム内 Action Checklist</h2>
+    <h2>5. チーム内アクション一覧</h2>
     <ul class="checklist">
       <li>
-        <strong>1. UI環境色分け</strong>
-        STG/DEVヘッダー色分けを適用済み。Evidence確認済み。本番配色は変更しない。
+        <strong>1. UIによる環境色分け</strong>
+        STG／DEVのヘッダー色分けを適用済み。証跡確認済み。本番環境の配色は変更しない。
       </li>
       <li>
-        <strong>2. Browser Extension導入</strong>
-        メンバー端末へPROD警告Extensionを作成・配布・インストールする。
+        <strong>2. ブラウザ拡張機能の導入</strong>
+        メンバー端末へ、本番環境アクセス時に警告する拡張機能を作成・配布・インストールする。
       </li>
       <li>
-        <strong>3. 事前承認ルール</strong>
-        PROD変更系操作はLeader承認後のみ。チャット/チケットで証跡を残す。
+        <strong>3. 本番環境操作の事前承認</strong>
+        本番環境での操作は、リーダー承認後にのみ実施する。チャットまたはチケットで証跡を残す。
       </li>
       <li>
-        <strong>4. STGデータ整備</strong>
-        Devが定期取得/同期し、TesterのPROD比較依存を減らす。
-      </li>
-      <li>
-        <strong>5. Ticket管理</strong>
+        <strong>4. チケット管理</strong>
         進捗・判断は
         <a href="https://workdesign.backlog.com/view/DEV_WDT-1151#comment-785356460" target="_blank" rel="noopener">DEV_WDT-1151</a>
-        で継続管理。
+        で継続管理する。
       </li>
     </ul>
 
     <h2>6. まとめ</h2>
     <p>
-      今回はデータ本体への影響は確認されなかったものの、更新日変更が発生し、顧客信頼に関わるインシデントとなった。
-      再発防止として、<strong>UI色分け（対応済み）</strong>、<strong>Browser ExtensionによるPROD警告</strong>、
-      <strong>事前承認運用</strong>、<strong>STGデータ整備</strong>を並行して実施する。
+      今回はデータ本体への影響は確認されなかったものの、更新日の変更が発生し、顧客信頼に関わる事案となりました。
+      再発防止として、<strong>UI色分け（対応済み）</strong>、<strong>ブラウザ拡張機能による本番環境警告</strong>、
+      <strong>本番環境操作の事前承認</strong>を徹底してまいります。
     </p>
 
     <div class="footer">
-      Ticket:
+      チケット：
       <a href="https://workdesign.backlog.com/view/DEV_WDT-1151#comment-785356460" target="_blank" rel="noopener">
         https://workdesign.backlog.com/view/DEV_WDT-1151#comment-785356460
       </a><br />
