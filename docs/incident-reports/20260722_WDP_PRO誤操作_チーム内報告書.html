@@ -105,66 +105,18 @@
       background: #fafbfc;
       padding: 12px;
     }
+    .evidence-card img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid #cfd6e2;
+      background: #fff;
+    }
     .evidence-card figcaption {
       margin-top: 10px;
       color: var(--muted);
       font-size: 0.9rem;
     }
-    .mock {
-      border: 1px solid #cfd6e2;
-      background: #f4f5f7;
-      overflow: hidden;
-    }
-    .mock-header {
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 14px;
-      color: #fff;
-      font-weight: 700;
-      font-size: 0.92rem;
-    }
-    .mock-header.green { background: var(--stg-green); }
-    .mock-header.yellow { background: var(--stg-yellow); }
-    .mock-header .client {
-      background: rgba(255,255,255,0.18);
-      border: 1px solid rgba(255,255,255,0.55);
-      padding: 4px 10px;
-      font-weight: 500;
-      font-size: 0.85rem;
-    }
-    .mock-body { display: flex; min-height: 220px; }
-    .mock-side {
-      width: 150px;
-      background: var(--sidebar);
-      color: #b8c4d9;
-      padding: 12px 10px;
-      font-size: 0.78rem;
-    }
-    .mock-side .active {
-      background: var(--menu-active);
-      color: #fff;
-      padding: 6px 8px;
-      margin-bottom: 8px;
-    }
-    .mock-side div { padding: 6px 8px; margin-bottom: 4px; }
-    .mock-main {
-      flex: 1;
-      padding: 14px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-    .mock-panel {
-      background: #fff;
-      border: 1px solid #d9dee7;
-      min-height: 84px;
-      padding: 10px;
-      font-size: 0.8rem;
-      color: #444;
-    }
-    .mock-panel strong { display: block; margin-bottom: 6px; color: #222; }
     .badge {
       display: inline-block;
       margin: 8px 0 0;
@@ -175,6 +127,7 @@
     }
     .badge.green { background: var(--stg-green); }
     .badge.yellow { background: var(--stg-yellow); }
+    .badge.prod { background: #4a5568; }
     .actions li { margin-bottom: 12px; }
     .footer {
       margin-top: 36px;
@@ -291,66 +244,50 @@
 
     <h3>4.1 UIによる環境色分け（対応済み）</h3>
     <p>
-      STG／DEV環境のヘッダー色を変更し、本番環境と視覚的に明確に区別できるようにしました。
+      開発／STG環境のヘッダー色を変更し、本番環境と視覚的に明確に区別できるようにしました。
       環境判定用フラグにより非本番環境のみ配色を適用し、<strong>本番環境のUIには影響させません。</strong>
     </p>
+    <table>
+      <tr>
+        <th>環境</th>
+        <td>識別ポイント</td>
+      </tr>
+      <tr>
+        <th>開発環境</th>
+        <td>ヘッダーを<strong>緑</strong>に変更</td>
+      </tr>
+      <tr>
+        <th>STG環境</th>
+        <td>ヘッダーを<strong>黄</strong>に変更</td>
+      </tr>
+      <tr>
+        <th>本番環境</th>
+        <td>従来どおりの配色（色分け変更なし）</td>
+      </tr>
+    </table>
 
     <div class="evidence-grid">
       <figure class="evidence-card">
-        <div class="mock" aria-label="非本番環境（緑ヘッダー）の証跡">
-          <div class="mock-header green">
-            <span>WORK DESIGN PLATFORM</span>
-            <span class="client">ヴィス東京 ▾</span>
-          </div>
-          <div class="mock-body">
-            <div class="mock-side">
-              <div class="active">トップページ</div>
-              <div>管理</div>
-              <div>現状把握</div>
-              <div>シミュレーション</div>
-              <div>定性的調査</div>
-              <div>データソリューション</div>
-            </div>
-            <div class="mock-main">
-              <div class="mock-panel"><strong>Work Design Survey</strong>スコア／グラフ表示エリア</div>
-              <div class="mock-panel"><strong>Work Design Survey (Pulse)</strong>スコア／グラフ表示エリア</div>
-              <div class="mock-panel"><strong>空間分析</strong>総面積などの表示</div>
-              <div class="mock-panel"><strong>コストシミュレーション</strong>月額コスト／人</div>
-            </div>
-          </div>
-        </div>
-        <span class="badge green">証跡A：緑ヘッダー（非本番）</span>
+        <img src="evidence/開発環境.png" alt="開発環境の画面（緑ヘッダー）" />
+        <span class="badge green">証跡A：開発環境（緑ヘッダー）</span>
         <figcaption>
-          ヘッダーを緑系に変更した環境の画面イメージです。タブを並行操作している場合でも、一目で非本番環境と判別できます。
+          開発環境ではヘッダーを緑系に変更しています。タブを並行操作している場合でも、一目で開発環境と判別できます。
         </figcaption>
       </figure>
 
       <figure class="evidence-card">
-        <div class="mock" aria-label="非本番環境（黄ヘッダー）の証跡">
-          <div class="mock-header yellow">
-            <span>WORK DESIGN PLATFORM</span>
-            <span class="client">ヴィス東京 ▾</span>
-          </div>
-          <div class="mock-body">
-            <div class="mock-side">
-              <div class="active">トップページ</div>
-              <div>管理</div>
-              <div>現状把握</div>
-              <div>シミュレーション</div>
-              <div>定性的調査</div>
-              <div>データソリューション</div>
-            </div>
-            <div class="mock-main">
-              <div class="mock-panel"><strong>Work Design Survey</strong>スコア／グラフ表示エリア</div>
-              <div class="mock-panel"><strong>Work Design Survey (Pulse)</strong>スコア／グラフ表示エリア</div>
-              <div class="mock-panel"><strong>空間分析</strong>総面積などの表示</div>
-              <div class="mock-panel"><strong>コストシミュレーション</strong>月額コスト／人</div>
-            </div>
-          </div>
-        </div>
-        <span class="badge yellow">証跡B：黄ヘッダー（非本番）</span>
+        <img src="evidence/STG環境.png" alt="STG環境の画面（黄ヘッダー）" />
+        <span class="badge yellow">証跡B：STG環境（黄ヘッダー）</span>
         <figcaption>
-          ヘッダーを黄系に変更した環境の画面イメージです。環境ごとの配色差分により、取り違えを防止します。
+          STG環境ではヘッダーを黄系に変更しています。本番環境との取り違えを視覚的に防止します。
+        </figcaption>
+      </figure>
+
+      <figure class="evidence-card">
+        <img src="evidence/本番環境.png" alt="本番環境の画面（従来配色）" />
+        <span class="badge prod">証跡C：本番環境（従来配色）</span>
+        <figcaption>
+          本番環境は従来どおりの配色のままです。非本番環境のみ色分けを適用し、本番利用への影響を避けています。
         </figcaption>
       </figure>
     </div>
