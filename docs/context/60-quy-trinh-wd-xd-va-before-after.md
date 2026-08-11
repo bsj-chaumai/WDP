@@ -408,6 +408,202 @@ Lưu ý về lead time doanh thu:
 
 ---
 
+# PHẦN 9 — KPI FY2026 chi tiết (trích từ biểu đồ nhúng trong docx)
+
+Các đoạn `[326]-[330]`（XD / WDP）trong docx hiện ra rỗng khi đọc text, vì nội dung nằm trong **biểu đồ EMF nhúng**. Đã trích xuất được toàn bộ.
+
+## 9.1 Menu và bảng giá XD — FY2026
+
+| Menu | Đơn giá | Số case | Số tiền |
+|---|---|---|---|
+| プログラミング | 600万 | 2 | 12,000,000 |
+| ワークショップ | 200万 | 4 | 8,000,000 |
+| レポート | 20万 | 6 | 1,200,000 |
+| チェンマネ（チェンジマネジメント）| 350万 | 2 | 7,000,000 |
+| **スタータープラン** | **130万** | **21** | **27,300,000** |
+| **月件数 合計** | | **35** | **55,500,000** |
+
+Kiểm chứng: `12,000,000 + 8,000,000 + 1,200,000 + 7,000,000 + 27,300,000 = 55,500,000` ✔
+Số case: `2 + 4 + 6 + 2 + 21 = 35` ✔
+Khớp **XD売上 FY2026 = 0.55億** trong bảng kế hoạch ✔
+
+**Ghi chú:** スタータープラン ở mức **130万/件**, gần với con số 「100万円程度が目安」 trong văn bản.
+
+## 9.2 Menu và bảng giá WDS (WDP có phí) — FY2026
+
+Giá **phân bậc theo số nhân viên của khách**:
+
+| Bậc quy mô | Đơn giá | Số case | Số tiền |
+|---|---|---|---|
+| ～50人 | — | 0 | 0 |
+| 51～100人 | **62万** | 6 | 3,720,000 |
+| 101人～300人 | **106万** | 10 | 10,600,000 |
+| 301～500人 | **150万** | 3 | 4,500,000 |
+| 501～1,000人 | **210万** | 1 | 2,100,000 |
+| 1,001名以上 | — | 0 | 0 |
+| **月件数 合計** | | **20** | **20,920,000** |
+
+Kiểm chứng: `3,720,000 + 10,600,000 + 4,500,000 + 2,100,000 = 20,920,000` ✔
+Khớp **WDP売上 FY2026 = 0.2億** trong bảng kế hoạch ✔
+
+## 9.3 Ý nghĩa — con số quan trọng nhất cho bài toán 有料化
+
+| | Số liệu |
+|---|---|
+| 有料契約 hiện tại | **2 件** |
+| Mục tiêu FY2026 | **20 件** |
+| Khoảng cách | **×10** |
+| WDS Before/năm hiện tại | ~100–120 件 |
+| Tỷ lệ chuyển đổi có phí cần đạt | ~**17–20%** |
+
+**Ba điều rút ra:**
+
+1. **FY2026 là mô hình spot, không phải subscription** — giá tính **theo từng case theo quy mô khách**. Xác nhận lại「WDPはAfter中心のスポット利用に留め」bằng bảng giá cụ thể.
+2. Mục tiêu không phải "vô hạn" mà rất cụ thể: **20 case có phí**. Trong đó bậc 101～300人 chiếm nửa（10 件）→ **phân khúc trọng tâm là công ty 101–300 người**.
+3. Đây là con số để đo hiệu quả của 提案: mọi giải pháp BS đưa ra nên trả lời được **"cái này giúp đi từ 2 lên 20 như thế nào"**.
+
+## 9.4 Điểm chưa khớp cần xác nhận với Vis
+
+| Nguồn | Số liệu Starter |
+|---|---|
+| Bảng kế hoạch doanh thu (text) | 「スタータープラン**40件**を通じて…検証」 |
+| Bảng KPI FY2026 (biểu đồ) | スタータープラン **21件** |
+
+Hai số lệch nhau. Giả thuyết: 40 có thể là tổng XD starter 21 + WDS 20 = 41, hoặc là mục tiêu định tính. **Cần hỏi Vis để làm rõ** vì nó ảnh hưởng tới cách hiểu quy mô 検証 FY2026.
+
+---
+
+# PHẦN 10 — Cơ sở thống kê của +22.9pt / +25.4pt
+
+Biểu đồ tính 間接売上効果 cho chi tiết mà phần text không có.
+
+## コンペ案件（PS無料・提案前実施）
+
+| | 件数 | 受注件数 | 受注率 | 受注額 |
+|---|---|---|---|---|
+| Toàn bộ 2025年度完工ベース | 418 | 129 | 30.90% | 8,012,451,000 |
+| **Có dùng WDP trước 提案** | **13** | 7（完工）| 53.80% | 415,200,000 |
+
+→ 上昇受注率 **23.00%** → 貢献額予測 **95,433,346円**
+
+## ナーチャリング・特命案件
+
+| | 件数 | 受注件数 | 受注率 | 受注額 |
+|---|---|---|---|---|
+| Toàn bộ（WEB/GR除く、特命含む）| 669 | 332 | 49.60% | 12,597,144,000 |
+| **Có dùng WDS lúc nurturing**（2025/1-9）| **8**（PS化）| 6 | 75.00% | 201,700,000 |
+
+→ 上昇受注率 **25.40%** → 貢献額予測 **51,178,737円**
+
+Công thức ghi trong biểu đồ:
+> WDSを提案前に実施した際の受注総額に、WDSにて実質貢献できた上昇受注率を掛けた貢献売上合計
+> 上昇受注率 = WDSなしで受注した受注率 − WDSを提案前に実施した受注率の差分
+
+## Nhận xét quan trọng
+
+Con số **+22.9pt / +25.4pt** — nền tảng của toàn bộ **1.466億 間接効果** — dựa trên mẫu **n = 13** và **n = 8**.
+
+Văn bản viết 「受注率が統計的に有意に改善している」, nhưng với cỡ mẫu này kết luận còn mỏng（VD: コンペ 13 件 chỉ 7 件 hoàn công）.
+
+**Điều này không làm yếu đề xuất mà mạnh thêm:**
+
+- Tăng số case dùng WDP vừa **tăng doanh thu gián tiếp**, vừa **làm dày bằng chứng** cho chính lập luận giá trị của WDP
+- Comment nội bộ của 小西（PHẦN 11）cũng chỉ ra rằng lợi thế hiện tại là 「足元の事実」nhưng đối thủ có thể bắt chước → cần liên tục nâng độ phân giải của lợi thế
+- Đây là lý lẽ tốt để đề xuất **đo và theo dõi funnel** một cách hệ thống（trùng với 「after提案件数と率、after実施数と率」mà Vis đã tự liệt kê）
+
+---
+
+# PHẦN 11 — Comment nội bộ trong docx（小西 芳樹 / 2025-12-24）
+
+Docx chứa 4 comment review chưa xuất hiện trong phần text.
+
+## Comment 1 — về 間接効果
+
+> 間接効果で実績を出している点は、新規事業の最大の壁である「投資対効果の不透明さ」を払拭する強力な材料なのでGood
+
+## Comment 2 — về 差別化（quan trọng nhất cho hướng đề xuất）
+
+> この優位性は足元の事実ではあるものの、**競合も模倣可能**なので、継続的に競合優位性の解像度を高めていきたいですね。例えば、「価格が安いから選ばれる」という戦略は、結局**価格競争に巻き込まれます**。
+> visの本当の強みは「**デザイン（空間）**」と「**コンサル（データ）**」が**分断されずにシームレスにつながる体験**にあるはずで、他社はここが分業になりがちかもしれません。
+> そうすると、差別化要因は「**空間デザインへの即時反映力**」と定義し直すことがよいかもしれません。
+> 「**サーベイ結果がこうだったから、来週のレイアウト変更案はこう変わります**」というスピード感こそが、ヴィスにしかできない付加価値の一つになると思います。
+
+**Ý nghĩa cho 提案:**
+
+Đây gần như là **định nghĩa của hướng Survey-to-Proposal**, được nêu bởi chính người review nội bộ của Vis.
+
+| Nội dung comment | Tương ứng trong đề xuất |
+|---|---|
+| 「空間デザインへの即時反映力」 | Hướng 2 — Survey-to-Proposal |
+| 「サーベイ結果がこう→来週のレイアウト案はこう」 | Nối kết quả survey vào phương án layout |
+| データとデザインが分断されない体験 | Giải Q1「未接続」 |
+| 価格競争に巻き込まれる危険 | Không lấy giá thấp làm điểm bán chính |
+
+→ Khi trình bày 提案, có thể dùng chính câu này làm điểm tựa: BS đang **hiện thực hóa 「即時反映力」** mà nội bộ Vis đã xác định là lợi thế cạnh tranh thật.
+
+## Comment 3 — về FY2028 và mô hình giá
+
+> 2028年売上1億円とした場合、**MRR10万円として80-100社の有料契約**が必要になります。そうした場合、「リーチしており」というより「**リーチし始める**」というのが正しい状態だと思います。
+> また、「低価格だから幅広い顧客層にリーチ」できるわけではなく、セールス・マーケティングを含めて**効率よく中堅企業・中小企業にリーチでき、利益を残せるモデル**が必要です。
+> つまり、「**なぜ低価格にできるのか**」という点が大事であり、そこが競争優位性になります。
+
+**Ý nghĩa:** câu hỏi 「なぜ低価格にできるのか」 chính là câu hỏi về **cấu trúc chi phí vận hành**. Nếu mỗi case vẫn cần consultant làm tay thì không thể hạ giá. → Đây là lý lẽ mạnh cho việc **chuẩn hóa việc của consultant vào hệ thống**（Core 5 / Hướng 5）.
+
+## Comment 4 — về 人員計画
+
+> 売上計画・人員計画は整合性を高めることが必要です。
+> ・WDP/コンサルの売上に対する顧客数と、そこから逆算した営業・カスタマーサクセス・マーケティング人員の算出。**CSは2026年時点で少なくとも1人置く**か、セールスが兼務する必要はあると思います。
+> ・XDのような無形商材は、高い専門知識がないと顧客の課題に刺さりにくいため、営業同席も考えると、**XDの人数が足りているかは精査必要**
+> ・売上を創出するうえで必要な**商談数の試算**と、そこから逆算したマーケティング費用
+
+**Ý nghĩa:** khớp với Core 5（XD bị giới hạn bởi số consultant）và với 「商談プロセスの構築が命題」. Vấn đề nhân lực đã được nêu từ nội bộ.
+
+---
+
+# PHẦN 12 — Kế hoạch 2030 theo từng事業（bảng 2025年6月時点）
+
+Ảnh nhúng trong docx chứa bảng kế hoạch toàn công ty.
+
+**Tổng:** 売上計画 **265.25億円** / 人員計画 **556人** / 粗利益 **72.45億** / ひとりあたり売上高 **0.476億**
+
+| 事業 | 売上 | 人員 | 粗利益 | 粗利率 | Chi tiết |
+|---|---|---|---|---|---|
+| **ブランディング事業** | 207億 | 460 | 72.45億 | | |
+| └ ワークプレイスデザイン | 207億 | 460 | 72.45億 | 35% | **1,100件 × 単価20,000千円**、社員460名（47,000千円/人）|
+| **プレイスソリューション事業** | 31億 | 36 | | | |
+| └ The Place | 3億 | 6 | 2.4 | 80% | 6拠点（年1件）5,000千円×12ヶ月 |
+| └ バリューアップ | 20億 | 10 | 6.6 | 33% | 80,000千円×12ヶ月、東急・住友商事・ダイワハウス・ラサール |
+| └ 不動産 | 8億 | 20 | 7.2 | 90% | 情報提供料？ |
+| **データソリューション事業** | 7.25億 | 20 | | | |
+| └ **WDP/ココエル** | **1.8億** | 10 | 1.8 | **100%** | **300社 × 600千円/年** |
+| └ WDTコンサル | 5.45億 | 10 | 3.27 | 60% | 80,000千円/人 |
+| **ヒューマンエクイティ（仮）** | 20億 | 40 | | | |
+| └ （HR事業）| 10億 | 20 | 10 | 100% | 50,000千円/月 |
+| └ HE事業 | 10億 | 20 | 2 | 20% | 50,000千円/月 |
+
+## Mô hình WDP ở trạng thái cuối
+
+```text
+300社 × 600千円/年 = 1.8億円
+→ 60万円/năm/công ty ≈ 5万円/tháng
+→ 粗利率 100%
+→ 10 người vận hành
+```
+
+Đối chiếu ba nguồn về quy mô cần đạt:
+
+| Nguồn | Mô hình |
+|---|---|
+| Bảng 2025/6 (FY2030) | **300社 × 5万円/月** |
+| Comment 小西 (FY2028) | **80–100社 × MRR 10万円** |
+| Bảng XD計画 Dec 2025 (FY2030) | WDP **4億円**（cao hơn bảng 6月 1.8億）|
+
+Đơn giá khác nhau giữa các bản, nhưng cùng chỉ ra: cần **hàng chục đến hàng trăm công ty trả phí định kỳ**, so với **2 công ty hiện tại**.
+
+**Lưu ý:** bảng XD計画 (Dec 2025) đặt WDP FY2030 = 4億, cao hơn bảng 6月 (1.8億). Có thể là điều chỉnh tăng, hoặc phạm vi tính khác nhau（WDP/ココエル vs toàn bộ WDP）. Nếu cần dùng số trong 提案 thì nên xác nhận với Vis dùng bản nào.
+
+---
+
 # Tổng kết — điều thay đổi cho 提案
 
 | Trước khi đọc kỹ 事業計画 | Sau khi đọc |
@@ -421,7 +617,54 @@ Lưu ý về lead time doanh thu:
 | 有料化 cần thêm tính năng | Vis nói nút thắt là **商談プロセスの構築** |
 | 別アプリ là app cho client | Là **tool nội bộ cho XP**, sau đó mới thay WDP |
 | Hướng "encode consultant work" là ý mới | **Đã nằm trong kế hoạch** — đúng track |
+| Mục tiêu 有料化 chung chung | **20 件 có phí trong FY2026**（hiện 2 件）, bảng giá theo bậc quy mô |
+| Bằng chứng +22.9pt là vững | Dựa trên **n = 13 / n = 8** — cần làm dày thêm |
+| Chưa biết Vis tự định nghĩa 差別化 thế nào | Comment nội bộ: 「**空間デザインへの即時反映力**」= đúng Survey-to-Proposal |
 
 **Trục 提案 sau khi hiệu chỉnh:**
 
-> Rút ngắn đường từ **Before → 提案 → After** bằng cách (1) bỏ nút thắt 申込・規約 và 結果落とし込み trong cửa sổ 3–4 tuần, (2) số hóa 座談会 để có dữ liệu 個社最適化, (3) chuẩn hóa việc tay của XP trong 10 bước XD — nhằm tăng **after提案率 và after実施率** trong FY2026, đồng thời dựng sẵn kiến trúc cho 自走 ở FY2027–2028.
+> Rút ngắn đường từ **Before → 提案 → After** bằng cách (1) bỏ nút thắt 申込・規約 và 結果落とし込み trong cửa sổ 3–4 tuần, (2) số hóa 座談会 để có dữ liệu 個社最適化, (3) chuẩn hóa việc tay của XP trong 10 bước XD — nhằm đưa 有料契約 từ **2 件 lên 20 件 trong FY2026**, đồng thời dựng sẵn kiến trúc cho 自走 ở FY2027–2028.
+
+**Câu hỏi kiểm tra mọi đề xuất:**
+
+> Cái này giúp đi từ **2 件 lên 20 件** như thế nào? Và giúp trả lời câu 「**なぜ低価格にできるのか**」 như thế nào?
+
+---
+
+# Phụ lục — Cách trích xuất nội dung ẩn trong docx
+
+Ba loại nội dung **không hiện ra** khi đọc text thường:
+
+| Loại | Vị trí trong file | Nội dung |
+|---|---|---|
+| Comment review | `word/comments.xml` | 4 comment của 小西 芳樹 |
+| Biểu đồ EMF | `word/media/image1,3,4.emf` | 間接効果計算、XDメニュー、WDSメニュー |
+| Ảnh bảng | `word/media/image2,5.png` | Bảng FY2026–2030、Bảng kế hoạch 2030 toàn công ty |
+
+Lệnh trích xuất:
+
+```bash
+# comments
+python3 -c "
+import zipfile
+from xml.etree import ElementTree as ET
+z = zipfile.ZipFile('ヴィスの現状と今後について XD WDP.docx')
+ns = {'w': 'http://schemas.openxmlformats.org/wordprocessingml/2006/main'}
+root = ET.fromstring(z.read('word/comments.xml'))
+for c in root.findall('w:comment', ns):
+    author = c.get('{%s}author' % ns['w'])
+    text = ''.join(t.text or '' for t in c.iter('{%s}t' % ns['w']))
+    print(author, ':', text)
+"
+
+# media
+python3 -c "
+import zipfile
+z = zipfile.ZipFile('ヴィスの現状と今後について XD WDP.docx')
+for n in z.namelist():
+    if n.startswith('word/media/'):
+        open('/tmp/' + n.split('/')[-1], 'wb').write(z.read(n))
+"
+```
+
+EMF chứa text ở record `EMR_EXTTEXTOUTW` (type 84). Đọc `offString` từ offset `header(8) + Bounds(16) + 12` rồi decode UTF-16LE. Sắp xếp theo toạ độ `(y, x)` để dựng lại bảng.
