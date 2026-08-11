@@ -30,7 +30,8 @@ Sau đó mở thư mục repo bằng Cursor ở máy. Khi chat mới, tham chi�
 | `20-agreed-direction.md` | Các điểm đã thống nhất nội bộ: 問題・方向性・提案の軸・次のアクション |
 | `30-dev-survey-brief.md` | 要点 khảo sát cho dev (有料化 & survey) |
 | `40-proposal-framework.md` | Khung 提案: 背景→課題→方針→絞込→提案(松竹梅)→効果 |
-| `50-phan-tich-de-xuat-huong-di.md` | **Tài liệu tổng hợp**: Q&A Vis + nội dung 2 bộ survey (52/19 câu) + phân tích từng luận điểm + 4 vấn đề cốt lõi + hướng đề xuất |
+| `50-phan-tich-de-xuat-huong-di.md` | **Tài liệu tổng hợp**: Q&A Vis + nội dung 2 bộ survey (52/19 câu) + phân tích từng luận điểm + 5 vấn đề cốt lõi + hướng đề xuất |
+| `60-quy-trinh-wd-xd-va-before-after.md` | **Quy trình thực tế đọc từ 事業計画**: 10 bước XD, timeline 6 tuần vs cửa sổ 3–4 tuần, luồng Before/After, bảng kế hoạch FY2026–2030, và **5 điểm hiệu chỉnh** cho file 50 |
 
 ## Tài liệu đã có từ trước (không nằm trong pack này)
 
@@ -43,4 +44,7 @@ Sau đó mở thư mục repo bằng Cursor ở máy. Khi chat mới, tham chi�
 
 1. Trục 提案 lần này = **有料化** + **survey (gắn 有料化)** + **các yêu cầu KH đã nêu**.
 2. **AIレポート ngoài scope BS** — Vis tự làm bằng AI nội bộ, chỉ dùng như ví dụ về tốc độ.
-3. Luôn phân biệt **提案用（1 lần, 付加価値）** vs **継続用（定点, nguồn 有料）**.
+3. Luôn phân biệt **提案用（1 lần, 付加価値）** vs **継続用（定点, nguồn 有料）** — hai lớp này tương ứng với hai service **WD** và **XD**.
+4. FY2026 theo kế hoạch Vis là **検証（MVP）**, WDP vẫn là **After spot**. 自走 bắt đầu FY2027, SaaS hóa FY2028.
+   → Không đề xuất subscription/self-service như điểm bán ngắn hạn, nhưng nên dựng sẵn kiến trúc.
+5. Nút thắt 有料化 theo chính Vis là **商談プロセスの構築**, không phải thiếu tính năng.

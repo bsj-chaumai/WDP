@@ -1,5 +1,15 @@
 # Phân tích tổng hợp — Từ câu trả lời của Vis đến hướng đề xuất
 
+> **QUAN TRỌNG — đọc kèm `60-quy-trinh-wd-xd-va-before-after.md`.**
+> Sau khi đọc toàn văn 事業計画, có **5 điểm trong tài liệu này cần hiệu chỉnh**:
+> 1. Q8「申込・規約」**không phải backlog** — nó chiếm 2/6 tuần trên critical path
+> 2. URL配信 chỉ giải một phần lead time（còn 申込 2w + 結果 2w）
+> 3. **座談会 đã tồn tại** như kênh worker voice（thủ công, 10 người）→ nên nói "số hóa", không nói "thêm mới"
+> 4. Chu kỳ đo After **đã được định nghĩa: nửa năm**
+> 5. KPI là **3 mục**（XD đầy đủ）/ 2 mục（MVP）
+>
+> Ngoài ra: FY2026 WDP theo kế hoạch vẫn là **After spot**, subscription là FY2027–2028.
+
 Tài liệu gộp toàn bộ dữ liệu và lập luận, để làm cơ sở cho 提案.
 
 **Nguồn dữ liệu:**
@@ -244,6 +254,87 @@ Tài liệu gộp toàn bộ dữ liệu và lập luận, để làm cơ sở c
 
 Mỗi luận điểm trình bày theo: **Dữ kiện → Suy luận → Kết luận**.
 
+## Luận điểm 0 — Hai service của Vis quyết định cách đọc toàn bộ dữ liệu
+
+Đây là luận điểm nền, cần đọc trước các luận điểm còn lại.
+
+**Dữ kiện — hai service Vis đang cung cấp**
+
+| | WORKPLACE DESIGN (WD) | EXPERIENCE DESIGN (XD) |
+|---|---|---|
+| Nội dung | 空間プログラミング / デザイン / クリエイト・アップデート | ビジョン策定 / 企画 / 運営 |
+| Survey dùng để làm gì | **根拠 cho 提案** | **効果検証 Before→After** |
+| Thời điểm | Trước khi chốt dự án (cửa sổ 3〜4週間) | Sau renewal, lặp lại |
+| Tính chất doanh thu | **Gián tiếp** — tăng 受注率 | **Trực tiếp** — có phí, 継続 |
+| Hiện ai vận hành | Consultant / コンペ担当 | **Consultant phụ trách** |
+| Đích tương lai | Vẫn cần người | **WDP thay consultant → 自走・商用化** |
+
+Trong 事業計画 Vis cũng viết đúng cấu trúc này:
+
+> ヴィスは**労働集約型**のワークプレイスデザインと**持続型**のエクスペリエンスデザインの2本柱で
+
+**Suy luận**
+
+Các pain trong bảng câu hỏi thuộc **hai service khác nhau**, không phải cùng một vấn đề:
+
+| Câu trả lời | Thuộc service | Bản chất |
+|---|---|---|
+| Q1（サーベイ結果と提案が未接続）| **WD** | Survey → 提案 |
+| Q10（3-4週間で時間が足りない）| **WD** | Tốc độ trong cửa sổ đề xuất |
+| Q3（有料は after + 数値化で獲得）| **XD** | Mô hình bán có phí |
+| Q4（end-client ưu tiên Before→After）| **XD** | Giá trị khách cần |
+| Q5（before 83 / after 5）| **XD** | Năng lực vận hành |
+
+**Kết luận**
+
+1. **Không thể giải cả hai bằng một giải pháp.** WD cần *nhanh và nối được vào提案*. XD cần *bán được và vận hành lặp lại*.
+2. Đây chính là nội dung ghi chú nội bộ ở Q8 — tách **ヴィスの提案の付加価値（WD）** và **定点的にお客様が継続利用するもの（XD）**. Hai lớp đó đã có tên thật là WD và XD.
+3. Trong 提案, nên gắn nhãn rõ mỗi giải pháp thuộc **WD** hay **XD**, để không lẫn giữa "giúp thắng đề xuất" và "tạo doanh thu継続".
+
+## Luận điểm 0b — Vì sao 5/83 gắn với việc XD phụ thuộc consultant
+
+**Dữ kiện**
+
+- After thuộc **XD**
+- XD là service **mới ra mắt**, hiện **do consultant phụ trách**
+- WD chạy khoảng **500 dự án/năm** (事業計画), WDS đang khoảng **10 件/月**
+- Vis kỳ vọng tương lai: WDP thương mại hóa để doanh nghiệp **自走**, không cần consultant
+
+**Suy luận**
+
+- Survey Before phục vụ WD → gắn vào luồng 提案 vốn đã có khối lượng lớn → dễ nhân rộng
+- After phục vụ XD → phụ thuộc **số consultant và năng lực từng người** → bị giới hạn bởi **con người**, không phải bởi tính năng
+
+**Kết luận**
+
+Muốn After tăng, **không đủ** nếu chỉ làm chức năng After dễ dùng hơn. Phải **giảm phần việc buộc phải có consultant**.
+
+Đây là cách phát biểu lại mục tiêu 自走 của Vis dưới dạng bài toán kỹ thuật:
+
+> Consultant đang làm gì bằng tay trong XD, và phần nào có thể encode vào WDP?
+
+## Luận điểm 0c — Căng thẳng giữa 自走 và nhu cầu hiện tại
+
+**Dữ kiện**
+
+| Nguồn | Nội dung |
+|---|---|
+| Kỳ vọng của Vis | WDP thương mại hóa để doanh nghiệp **自走**, không cần consultant |
+| Q4 | End-client ưu tiên **B. Before→After**, **không** phải A. 自走 |
+| 事業計画 | FY2026 = **検証（MVP）** phase |
+
+**Suy luận**
+
+Đây không phải mâu thuẫn để bác bỏ, mà là **vấn đề thứ tự**:
+
+- **Ngắn hạn:** bán **効果検証** — đó là thứ khách đang thực sự trả tiền (Q3)
+- **Dài hạn:** 自走 / SaaS là cấu trúc để scale mà không phải tăng số consultant
+
+**Kết luận**
+
+- **Rủi ro nếu làm sai thứ tự:** đề xuất một WDP self-service ngay bây giờ → khách chưa cần 自走, Vis chưa có case 継続 để chứng minh → không bán được.
+- **Cách trình bày an toàn trong 提案:** 自走 **không** phải tính năng bán cho khách, mà là **kết quả** của việc chuẩn hóa công việc consultant vào WDP.
+
 ## Luận điểm 1 — Con số 83/5 nói lên điều gì
 
 **Dữ kiện**
@@ -382,28 +473,72 @@ Khi điểm After thay đổi, khó khẳng định "nhờ dự án office".
 **Kết luận**
 
 Đây là **rủi ro cho chính lời chào bán có phí**. Khi bán gói 効果検証 cần:
-- Chọn **KPI mục tiêu gắn với office** (giống cách XD MVP chọn 2 mục tiêu)
+- Chọn **KPI mục tiêu gắn với office**
 - Tách rõ chỉ số nào office ảnh hưởng trực tiếp, chỉ số nào là bối cảnh
+
+**Điểm tựa quan trọng:** Vis **đã tự nghĩ tới điều này**. XD MVP trong 事業計画 ghi:
+
+> 目標設定のターゲットとする**サーベイの項目を2個選択**し、スコアのゴール設定も行います
+
+Nghĩa là XD chỉ chọn **2 mục** làm KPI, không đo cả 6 trục.
+
+→ Đề xuất của BS về việc chọn KPI gắn office **không phải ý tưởng mới lạ**, mà là **hệ thống hóa đúng thứ Vis đã định làm bằng tay**. Đây là cách trình bày dễ được chấp nhận nhất.
 
 ---
 
-# PHẦN 4 — Bốn vấn đề cốt lõi
+# PHẦN 3b — Việc của consultant trong XD: phần nào encode được vào WDP
 
-## Core 1 — 有料化 chưa thành quy trình lặp lại được
+Đây là phần cụ thể hóa Luận điểm 0b. Nếu đích của Vis là "WDP thay consultant trong XD", thì phải bóc tách từng việc consultant đang làm.
+
+**XD MVP trong 事業計画 gồm:**
+
+1. Before/After 効果検証
+2. アブストラクションラダー workshop
+3. Chốt tối thiểu **2 kế hoạch event** sau renewal
+4. Chọn **2 mục tiêu survey** + đặt goal điểm số
+5. Event follow + báo cáo cuối
+
+**Đánh giá khả năng encode:**
+
+| Việc của consultant | Encode vào WDP? | Ghi chú |
+|---|---|---|
+| Chọn 2 mục tiêu survey + set goal | **Được** — gợi ý theo điểm thấp và loại dự án | Đồng thời giải rủi ro nhân quả (Luận điểm 6) |
+| Đọc điểm số → xác định vấn đề | **Được** — nhưng cần Worker Voice làm dữ liệu đầu vào | Đây chính là Survey-to-Proposal |
+| Đề xuất event / hành động cải thiện | **Một phần** — thư viện phương án theo loại vấn đề | Không thay thế hoàn toàn |
+| Điều phối workshop | **Khó** — cần người | Giữ cho consultant |
+| Làm báo cáo | Vis đang tự làm AIレポート | **Ngoài scope BS**（Q6, Q7）|
+| Theo dõi và đo lại định kỳ | **Được** — pulse + nhắc lịch + so sánh | Đây là chỗ gắn 継続課金 |
+
+**Nguyên tắc phân chia:**
+
+- **BS nhận:** phần việc **lặp lại và có quy tắc**
+- **Giữ cho consultant:** phần **workshop và tư vấn sâu**
+
+→ Cách này vừa tiến tới mục tiêu 自走 của Vis, vừa không đòi hỏi thay thế consultant ngay lập tức.
+
+---
+
+# PHẦN 4 — Năm vấn đề cốt lõi
+
+Mỗi vấn đề được gắn nhãn thuộc **WD** hay **XD** theo Luận điểm 0.
+
+## Core 1 — 有料化 chưa thành quy trình lặp lại được 〔XD〕
 
 **Cơ sở:** Q9①（ưu tiên số 1）+ Q3（đã có case thắng）+ Q5（5/83）
 
 **Câu hỏi trung tâm:**
 > Làm sao biến 効果検証 từ "option bán được trong vài case" thành **gói tiêu chuẩn** bán và vận hành lặp lại?
 
-## Core 2 — Survey đo "mức độ" nhưng chưa đủ để tạo đề xuất
+## Core 2 — Survey đo "mức độ" nhưng chưa đủ để tạo đề xuất 〔WD + XD〕
 
 **Cơ sở:** Q1（未接続）+ cấu trúc JSON（49/52 câu là thang điểm, 0 câu tự do）
 
 **Câu hỏi trung tâm:**
 > Làm sao chuyển từ **điểm số** sang **insight** rồi sang **phương án office / XD cụ thể**?
 
-## Core 3 — Quy trình survey không vừa cửa sổ 3–4 tuần
+Vấn đề này xuất hiện ở **cả hai** service: WD cần insight để viết 提案, XD cần insight để đề xuất hành động cải thiện.
+
+## Core 3 — Quy trình survey không vừa cửa sổ 3–4 tuần 〔WD〕
 
 **Cơ sở:** Q10
 
@@ -415,7 +550,7 @@ Khi điểm After thay đổi, khó khẳng định "nhờ dự án office".
 → Thu hồi → Phân tích → Tạo insight → Đưa vào 提案書
 ```
 
-## Core 4 — Before/After chưa tạo vòng cải tiến liên tục
+## Core 4 — Before/After chưa tạo vòng cải tiến liên tục 〔XD〕
 
 **Cơ sở:** Q5（After 5件）+ pulse đã tồn tại nhưng chưa gắn 有料
 
@@ -433,13 +568,24 @@ Baseline survey → Đề xuất → Cải thiện → Pulse định kỳ
 **Câu hỏi trung tâm:**
 > Sau khi có kết quả After, khách có **lý do gì** để tiếp tục trả tiền cho lần đo tiếp theo?
 
+## Core 5 — XD bị giới hạn bởi số consultant 〔XD〕
+
+**Cơ sở:** XD hiện do consultant phụ trách + Vis kỳ vọng WDP thay consultant（自走・商用化）+ Q5（5/83）
+
+**Câu hỏi trung tâm:**
+> Trong công việc XD của consultant, phần nào **lặp lại và có quy tắc** để encode vào WDP, phần nào **bắt buộc cần người**?
+
+Chi tiết phân tích: xem PHẦN 3b.
+
+**Lưu ý về thứ tự（Luận điểm 0c）:** 自走 là **đích cấu trúc**, không phải điểm bán ngắn hạn. Ngắn hạn vẫn bán **効果検証**.
+
 ---
 
 # PHẦN 5 — Hướng đề xuất
 
-## Hướng 1 — Worker Voice: bổ sung "vì sao / ở đâu"
+## Hướng 1 — Worker Voice: bổ sung "vì sao / ở đâu" 〔WD + XD〕
 
-**Giải:** Core 2, Core 3（gián tiếp）
+**Giải:** Core 2, Core 3（gián tiếp）, Core 5（cung cấp dữ liệu để encode phán đoán của consultant）
 
 **Nguyên tắc:** không làm 52 câu chi tiết hơn cho tất cả mọi người — sẽ làm survey dài và giảm response rate.
 
@@ -454,9 +600,9 @@ Baseline survey → Đề xuất → Cải thiện → Pulse định kỳ
 
 **Lợi ích:** thu được dữ liệu cụ thể mà **không** làm dài survey cho người không có vấn đề.
 
-## Hướng 2 — Survey-to-Proposal: nối kết quả với đề xuất
+## Hướng 2 — Survey-to-Proposal: nối kết quả với đề xuất 〔WD chính, XD phụ〕
 
-**Giải:** Core 2（trực tiếp giải Q1「未接続」）
+**Giải:** Core 2（trực tiếp giải Q1「未接続」）, Core 5
 
 **Luồng:**
 ```text
@@ -472,7 +618,7 @@ Baseline survey → Đề xuất → Cải thiện → Pulse định kỳ
 → Đề xuất: số lượng booth / zoning / chính sách đặt chỗ
 ```
 
-## Hướng 3 — Chuẩn hóa quy trình trong 3–4 tuần
+## Hướng 3 — Chuẩn hóa quy trình trong 3–4 tuần 〔WD〕
 
 **Giải:** Core 3
 
@@ -484,7 +630,7 @@ Baseline survey → Đề xuất → Cải thiện → Pulse định kỳ
 - Export block nội dung sang 提案書
 - Chuẩn hóa SLA từng bước
 
-## Hướng 4 — Gói có phí: Before + After + Pulse
+## Hướng 4 — Gói có phí: Before + After + Pulse 〔XD〕
 
 **Giải:** Core 1, Core 4
 
@@ -498,7 +644,21 @@ Baseline survey → Đề xuất → Cải thiện → Pulse định kỳ
 
 **Điểm mấu chốt:** giá trị có phí không phải "được dùng survey", mà là **継続的な効果検証と改善提案**.
 
-**Lưu ý từ Luận điểm 6:** khi bán gói này, phải chọn **KPI gắn office** để hiệu quả quy được về dự án.
+**Lưu ý từ Luận điểm 6:** khi bán gói này, phải chọn **KPI gắn office** để hiệu quả quy được về dự án. Cách này khớp với XD MVP（サーベイ項目2個選択）.
+
+## Hướng 5 — Chuẩn hóa công việc XD của consultant 〔XD〕
+
+**Giải:** Core 5 — đây là con đường tiến tới mục tiêu 自走 của Vis mà không phủ nhận vai trò consultant.
+
+Theo bảng ở PHẦN 3b, ưu tiên encode các phần sau vào WDP:
+
+1. **Gợi ý chọn 2 KPI mục tiêu** theo loại dự án và điểm thấp
+2. **Chu trình theo dõi định kỳ**: nhắc lịch pulse, so sánh với baseline, phát hiện lệch mục tiêu
+3. **Thư viện phương án hành động** ứng với từng loại vấn đề (nền tảng cho việc đề xuất event)
+
+Không đưa vào scope: **workshop điều phối**（cần người）và **AIレポート**（Vis tự làm）.
+
+**Cách trình bày trong 提案:** không nói "thay thế consultant", mà nói **"consultantの判断を仕組みに落とす"** — giúp XD scale mà không phải tăng số người.
 
 ---
 
