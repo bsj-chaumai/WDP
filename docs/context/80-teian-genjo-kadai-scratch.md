@@ -155,89 +155,83 @@ Lý do chọn cặp này:
 
 ## 2-1. ご提案の要旨
 
-現在のWDPを部分的に改修し続けるのではなく、
-**新しい基盤でWDPを作り直し、段階的に移行する**ご提案です。
+**現在のWDPに対して、3つの課題を解決する機能を開発していくご提案です。**
 
-事業計画に記載されている **「新生WDP」** に至るための、具体的な進め方としてご提案します。
+既製のツールを導入するのではなく、貴社の提案プロセスとXDの進め方に合わせて
+**スクラッチで開発**します。個社ごとの提案に踏み込む内容であるため、
+汎用ツールでは求められる形にならないと考えています。
 
-**前提として、これまでの資産は引き継ぎます。**
-サーベイの設問、これまでの回答データ、URL配信の仕組みは移行対象です。
-ゼロから作り直して積み上げてきたものを捨てる、という提案ではありません。
+**現在の資産はそのまま活かします。**
+サーベイの設問、これまでの回答データ、URL配信の仕組みは
+作り直さず、その上に必要な機能を追加していきます。
 
-## 2-2. なぜ改修ではなく作り直しなのか
+## 2-2. 課題ごとの改善内容
 
-### 理由1：3つの課題は、いずれも同じ前提から生じています
+### 課題1：サーベイ結果が、提案の言葉に変わらない
 
-現在のWDPは **「現状把握のために1回測る」** という前提で設計されています。
+現在は「スコアが出るところ」で止まっています。
+その前後に、次の2つを足します。
 
-先に挙げた3つの課題は、いずれもこの前提の外側にあります。
+| 追加する部分 | 内容 |
+|---|---|
+| **理由を聞く層**（設問側）| 満足度が低い回答に対してのみ、追加の設問を表示します。<br>どの場所か、どんな点か、仕事にどう影響しているかを取得します。<br>自由記述も加え、レイアウト上で場所を指定できるようにします |
+| **提案に変換する層**（結果側）| 「どこ・なぜ・影響」を集約した分析ビューを追加します。<br>提案書に貼れる形での出力を追加します |
 
-| 課題 | 必要になること | 現在の前提との関係 |
-|---|---|---|
-| 結果が提案の言葉に変わらない | 理由を集め、提案の形で出力する | 単発の測定では扱わない領域 |
-| 時間枠に収まらない | お申込みから提案反映までを一続きにする | 測定の前後の工程が対象外 |
-| Afterが実行されない | 同じ対象を繰り返し測り、比較する | 1回測る前提と最も相反する |
+**現在の設問には手を入れません。**
+既存の設問はそのまま残し、**その後ろに追加設問を足す**形にします。
+これまでのスコアとの比較ができなくなることを避けるためです。
 
-つまり、機能を1つずつ追加していく形では解決できず、
-**「繰り返し測り、理由を集め、次の行動に繋げる」という前提そのものを
-土台に置き換える**必要があります。
+### 課題2：提案準備の時間枠に収まらない
 
-### 理由2：改修を積み重ねる形では、必要な速度が出ません
+時間を要している2つの工程に、それぞれ対応します。
 
-開発を担当させていただいている立場からの実感として、
-現在の基盤では小さな追加であっても影響範囲が広く、確認の手間がかかります。
+| 工程 | 改善内容 |
+|---|---|
+| **お申込み・規約のご確認** | WDP内で完結できるようにします。<br>書面のやり取りを画面上の手続きに置き換え、確認状況が見える状態にします |
+| **結果の分析と提案書への反映** | 結果から提案ブロックを生成します。<br>手作業だった「読み解いて書き起こす」部分を短縮します |
 
+あわせて、ナーチャリングなど**早い段階で気軽に実施できる状態**を整えます。
+
+### 課題3：Afterが実行されず、有料化の入口が開かない
+
+「放っておくと実行されない」状態を、仕組みで変えます。
+
+| 追加する機能 | 内容 |
+|---|---|
+| **評価時期の通知** | Before実施案件にAfterの予定を紐づけ、評価時期に担当者へ通知します |
+| **Afterの作成支援** | Beforeの設定を引き継いでAfterを作成できるようにします。設定のやり直しを不要にします |
+| **KPIの管理** | 目標とするサーベイ項目と目標スコアを設定し、追跡できるようにします |
+| **定点実行** | 実施のスケジュールを設定し、繰り返し実施できるようにします |
+| **Before/After比較レポート** | 対象項目のスコア推移と差分を、1つのレポートにまとめます |
+| **実施状況の一覧** | どの案件がAfterご提案済み・実施済みかを一覧で確認できるようにします |
+
+## 2-3. 既存機能への影響を抑える進め方
+
+現在のWDPは稼働中であり、改善を進める間も案件は止まりません。
+そのため、次の方針で進めます。
+
+| 方針 | 内容 |
+|---|---|
+| **追加を基本とする** | 既存の画面と設問はできる限り残し、追加する形で実装します |
+| **影響範囲を切り分ける** | 新しい機能は既存処理と分離し、既存の動作に影響しない構成にします |
+| **小さく出す** | 機能単位でリリースし、実案件で確認しながら次に進みます |
+| **既存データを壊さない** | これまでの回答データはそのまま参照できる状態を保ちます |
+
+**「小さく出す」を方針に置く理由：**
 FY2026はXD MVPの検証を進める段階と伺っております。
 「誰に・何が・なぜ刺さるか」を確かめながら内容を調整していく時期であり、
-必要なのは機能の網羅性よりも**反映の速さ**です。
+まとめて作るよりも、**出して確かめながら進める**方が合っていると考えます。
 
-現在の改修サイクルのままでは、検証の速度に追いつかない可能性があります。
+## 2-4. 開発の順序
 
-### 理由3：将来の内製化を見据えると、整理された基盤の方が引き継ぎやすい
-
-事業計画では、将来的に開発体制を内製化していく方針と伺っております。
-
-その際、これまでの経緯が積み重なった基盤をそのまま引き継ぐよりも、
-**整理された状態でお渡しできる方が現実的**だと考えます。
-
-作り直しは、その準備も兼ねたご提案です。
-
-## 2-3. 引き継ぐもの / 作り直すもの
-
-| 対象 | 扱い | 補足 |
+| 段階 | 内容 | 狙い |
 |---|---|---|
-| サーベイ設問（ワークデザインサーベイ・パルス）| **引き継ぐ** | 現在の定義形式のまま移行可能です |
-| これまでの回答データ | **移行する** | Before/Afterの比較に必要なため、移行は必須要件とします |
-| URL配信の仕組み | **引き継ぐ** | 導入ハードルの解消として既に効果が出ている部分です |
-| サーベイの配信・回収 | **引き継ぐ** | 作り直しの対象ではありません |
-| データの持ち方（単発前提）| **作り直す** | 同じ対象を時系列で比較できる構造にします |
-| 設問の管理 | **作り直す** | クライアントごとの設定と、条件による追加設問に対応します |
-| 分析・出力 | **新規** | 結果から提案の形に変換する部分です |
-| After運用 | **新規** | 評価タイミングの通知、担当、KPIの追跡です |
+| **第1段階** | Afterの運用（評価時期の通知・作成支援・KPI管理） | 有料化の入口を開く |
+| **第2段階** | 理由を聞く層（追加設問・自由記述）と比較レポート | 有料で使い続ける中身を用意する |
+| **第3段階** | お申込み・規約の完結、提案ブロックの出力 | 提案の時間枠に収める |
+| **第4段階** | 人員計画からのレイアウト構成、クライアント別カスタム | 個社最適化された提案にする |
 
-**この整理の意図：**
-作り直すのは**土台と、その上に載る新しい役割**です。
-すでに機能している部分（設問・配信・蓄積データ）は資産として引き継ぎます。
-
-## 2-4. 段階的な移行
-
-| Phase | 時期の目安 | 内容 | 旧WDP |
-|---|---|---|---|
-| **Phase 1** | FY2026 前半 | 新基盤の構築。設問と回答データの移行。Afterの運用とワーカーボイスを新基盤に載せる | 並行稼働 |
-| **Phase 2** | FY2026 後半 | 提案支援を新基盤に（お申込み・規約のオンライン完結、結果から提案ブロックの出力）| 並行稼働 |
-| **Phase 3** | FY2027 | 既存機能の移行を完了。定点サーベイと効果検証レポートをクライアントに開放 | 移行完了後に停止 |
-| **Phase 4** | FY2028 | 新WDPに一本化。内製化に向けた引き継ぎ | 停止 |
-
-**並行稼働を置く理由：**
-現在ご利用中の案件を止めないためです。
-新基盤に移した機能から順に切り替え、確認できた範囲で旧環境を縮小していきます。
-
-**事業計画との関係：**
-事業計画では「別アプリケーションを並行開発し、後にWDPへ置換する」という道筋が
-描かれています。
-本提案は、その到達点である「新生WDP」に向けて、
-**WDP本体を新基盤で作り直す**進め方をご提案するものです。
-XP向けの検証や社内AIツールで先行して進められている領域とは、棲み分けが可能と考えます。
+順序の考え方は 2-10 に記載します。
 
 ## 2-5. ユーザーストーリー
 
@@ -404,22 +398,21 @@ XP向けの検証や社内AIツールで先行して進められている領域�
 |---|---|
 | AIレポート / AIアドバイス | 貴社社内のAIツールで進行中と伺っております |
 
-## 2-9. 移行にあたって想定されるリスクと対応
+## 2-9. 開発を進めるうえでの前提と確認事項
 
-作り直しは、進め方を誤ると現在動いている業務に影響します。
-あらかじめ想定される点と対応方針を整理しました。
+改善を進めるにあたり、事前に確認させていただきたい点を整理しました。
 
-| 想定されるリスク | 対応方針 |
+| 確認したいこと | なぜ必要か |
 |---|---|
-| 進行中の案件が止まる | Phase 1〜2は**並行稼働**とし、移行できた機能から順に切り替えます |
-| 過去の回答データが分断され、Before/Afterが比較できない | データ移行を**必須要件**として最初に扱います。ここが担保できないと有料機能が成立しません |
-| 移行期間中に同じ情報を二重に入力する | 情報ごとに入力箇所を一方に定め、両方に入れる状態を作りません |
-| 現在のご利用者に操作の負担が生じる | 既存の操作の流れを大きく変えず、変更点は事前に整理してお渡しします |
-| 切り替えの判断が曖昧になり、移行が長引く | 機能単位で**切り替えの判断基準**を事前に決めます |
+| これまでの回答データを、Before/Afterで比較できる形で参照できるか | 比較レポートが成立する前提となります |
+| 現在のお申込み・規約確認の流れ（どこで何日かかっているか）| どこまで画面上に置き換えられるかの判断に必要です |
+| Afterを担当する方をどなたに置くか | 通知を受け取り、実行に移す方が必要になります |
+| クライアントごとの設問カスタムをどこまで許容するか | 比較可能性を保つため、変更してよい範囲を決める必要があります |
+| 既存の設問に手を入れてよいか、追加のみとするか | 過去スコアとの比較を維持するため、追加のみを推奨しています |
 
-**切り替えの判断基準について：**
-「新しい方で同じことができる」だけでなく、
-**「実際の案件で一度回せた」**ことを基準にしたいと考えています。
+**設問の扱いについて：**
+既存の設問を変更すると、これまで蓄積したスコアとの比較ができなくなります。
+そのため**既存設問は変更せず、追加設問として足す**方針をご提案しています。
 
 ## 2-10. ご提案が効く順番
 
@@ -442,35 +435,41 @@ Before側の利用を増やす効果は、Afterの流れが整った後に効き
 
 ### 【VI】Ghi chú cho phần 2
 
-## Vị trí của BS và ý nghĩa của スクラッチ開発
+## Phạm vi của đề xuất — điểm dễ lẫn
 
-**BS là bên phát triển WDP.** Nên đề xuất này là: **làm lại WDP trên nền tảng mới**, không phải xây một app riêng chạy song song mãi mãi.
+**Đây là đề xuất cải tiến trên WDP hiện tại**, không phải làm lại nền tảng và không phải xây app riêng.
 
-Cần phân biệt rõ hai thứ dễ lẫn:
+Ba thứ rất dễ lẫn, cần phân biệt khi trình bày:
 
 | | Là gì | Ai làm |
 |---|---|---|
+| **Đề xuất này** | **Thêm tính năng vào WDP hiện tại**, phát triển custom (scratch) theo quy trình của Vis | BS |
 | **別アプリ trong 事業計画** | Công cụ nội bộ cho XP, khách không dùng, sau đó nhập vào WDP | Track Vis đang tự làm（AIレポート）|
-| **スクラッチ開発 trong đề xuất này** | Làm lại **chính WDP** trên nền tảng mới, di chuyển dần | BS |
+| **新生WDP trong 事業計画** | Đích dài hạn ở FY2028, sau khi hợp nhất | Chưa thuộc phạm vi đề xuất lần này |
 
-Cả hai đều hướng tới cùng một đích mà 事業計画 gọi là **「新生WDP」**. Nên trong mục 2-4 có ghi rõ 「棲み分けが可能」 để không tạo cảm giác BS lấn sang phần Vis đang làm.
+**Ý nghĩa của スクラッチ開発 ở đây:** phát triển **custom** thay vì mua/áp dụng tool có sẵn — vì nội dung đi sâu vào quy trình đề xuất riêng của Vis, tool phổ thông không đáp ứng được. Không mang nghĩa "xóa đi làm lại".
 
-## Ba lý do làm lại — thứ tự có chủ ý
+## Cấu trúc phần 2 và lý do
 
-1. **3 課題 đều sinh ra từ cùng một tiền đề** (đo một lần) → đây là lý do **về bản chất**, không phải về công nghệ. Đặt đầu tiên vì nó nối trực tiếp với phần 1.
-2. **Cải tiến chồng lên nhau không đủ nhanh** → nói từ vị trí bên đang phát triển, nên là **thực tế trải nghiệm**, không phải phỏng đoán.
-3. **Nội bộ hóa sau này dễ hơn** → dùng chính kế hoạch của Vis làm lợi ích cho họ.
+| Mục | Vai trò |
+|---|---|
+| 2-1 | Nói rõ phạm vi: thêm vào WDP hiện tại, giữ nguyên tài sản |
+| **2-2** | **Ruột của đề xuất** — với từng 課題, cải tiến cụ thể cái gì trên WDP |
+| 2-3 | Trả lời trước lo ngại "sửa WDP có làm ảnh hưởng vận hành không" |
+| 2-4 | Thứ tự phát triển |
+| 2-5 → 2-8 | User story, danh sách tính năng, lý giải 有料, 織り込み yêu cầu |
+| 2-9 | Điều kiện và câu hỏi cần xác nhận |
+| 2-10 | Lý do của thứ tự |
 
-## Mục 2-3 là mục quan trọng nhất về mặt tâm lý
+**Mục 2-2 là chỗ quan trọng nhất.** Nó trả lời trực tiếp câu "khắc phục những gì ở WDP": mỗi 課題 được gắn với một bảng cải tiến cụ thể, thay vì chỉ nói định hướng.
 
-Bảng **引き継ぐ / 作り直す** tồn tại để trả lời trước một lo ngại chắc chắn xuất hiện: *"vậy khoản đã đầu tư vào WDP thành vô nghĩa?"*
+## Hai nguyên tắc kỹ thuật đã đưa vào đề xuất
 
-Điểm cần nhấn khi trình bày:
+**1. Không sửa setting survey hiện có, chỉ thêm câu hỏi bổ sung.**
+Nếu sửa 52 câu hiện tại thì mất khả năng so sánh với dữ liệu đã tích lũy — mà so sánh Before/After chính là thứ bán được tiền. Nguyên tắc này xuất hiện ở cả 2-2 và 2-9.
 
-- Setting survey（52 câu và pulse）**giữ nguyên** — định dạng hiện tại cho phép di chuyển
-- Dữ liệu trả lời cũ **bắt buộc phải di chuyển**, vì thiếu nó thì không so sánh Before/After được, tức là không bán được
-- URL配信 **giữ** — đây là thứ đã có hiệu quả rõ
-- Chỉ làm lại **土台** và **những vai trò mới** đặt lên đó
+**2. Tách biệt xử lý mới khỏi xử lý cũ.**
+Đây là cách xử lý thực tế cho vấn đề "phạm vi ảnh hưởng rộng" của WDP hiện tại — thay vì đề xuất làm lại nền tảng, ta giảm rủi ro bằng cách cô lập phần mới.
 
 ## Cách phân biệt 提案用 vs 有料
 
@@ -504,10 +503,11 @@ Mỗi cái trả lời **"vì sao khách trả tiền lặp lại"**, không ph�
 
 1. **Đừng gọi F7 là "pulse survey mới"** — Vis đã tự tạo bộ pulse rút gọn. Nói là "vận hành định kỳ", "chọn nội dung", "so sánh theo thời gian".
 2. **Đừng gọi F2 là "thêm Worker Voice"** — 座談会 đã có trong quy trình XD. Nói là "số hóa và mở rộng".
-3. **Đừng đề xuất self-service/SaaS ngay** — theo kế hoạch là giai đoạn sau. Đặt ở Phase 3–4.
+3. **Đừng đề xuất self-service/SaaS ngay** — theo kế hoạch là giai đoạn sau (FY2027–2028).
 4. **F1 cần được thấy là nặng, không phải phụ** — nhưng nói bằng lập luận（「日数が読みにくい工程」）thay vì trưng bảng 6 tuần.
-5. **Đừng để nghe thành "bỏ WDP làm lại"** — luôn đi kèm mục 2-3（引き継ぐもの）. Từ khoá an toàn: 「土台を置き換える」, không dùng 「捨てて作り直す」.
-6. **Đừng lấn vào phần Vis đang tự làm** — AIレポート và phần XP nội bộ để riêng, dùng chữ 「棲み分け」.
+5. **Đừng để chữ "scratch" nghe thành "bỏ WDP làm lại"** — luôn kèm câu 「現在の資産はそのまま活かします」ở 2-1. Nghĩa đúng là **phát triển custom**, không phải xóa đi làm lại.
+6. **Đừng lấn vào phần Vis đang tự làm** — AIレポート và phần XP nội bộ để riêng.
+7. **Nhấn nguyên tắc "既存設問は変更せず追加のみ"** — đây là điểm khiến khách yên tâm nhất, vì nó bảo vệ dữ liệu đã tích lũy.
 
 ## Vì sao thêm 2-10「効く順番」
 
@@ -522,20 +522,20 @@ Phần này thay cho bảng đối chiếu KPI bằng số. Nó cho thấy BS hi
 
 | # | Nội dung | Ảnh hưởng |
 |---|---|---|
-| 1 | **Vis có đồng ý hướng làm lại nền tảng** hay muốn cải tiến dần | Quyết định toàn bộ phần 2 |
-| 2 | Dữ liệu trả lời cũ **xuất ra và di chuyển được không** | **Điều kiện tiên quyết** — thiếu thì không có Before/After |
-| 3 | Chi tiết luồng お申込み・リーガルチェック hiện tại | Biết cắt được bao nhiêu → F1 |
-| 4 | Định nghĩa **勝率**（chưa được trả lời）| Cách viết phần 効果 |
-| 5 | Ai sẽ là owner của After ở phía Vis | F9 có nhắc nhưng cần người nhận |
-| 6 | Quan hệ với phần Vis đang tự làm（AIレポート・XP用）| Tránh trùng lặp phạm vi |
+| 1 | Dữ liệu trả lời cũ có **truy vấn được theo cùng một đối tượng qua thời gian** không | Điều kiện cho báo cáo so sánh Before/After（F6）|
+| 2 | Chi tiết luồng お申込み・リーガルチェック hiện tại — đang tốn mấy ngày ở bước nào | Biết cắt được bao nhiêu → F1 |
+| 3 | Có được phép **thêm câu hỏi vào bộ hiện tại** không, và cấu trúc cho phép tới đâu | Điều kiện cho F2 |
+| 4 | Ai sẽ là owner của After ở phía Vis | F9 gửi thông báo nhưng cần người nhận |
+| 5 | Cho phép custom setting tới mức nào | Cân bằng giữa F8 và khả năng so sánh |
+| 6 | Định nghĩa **勝率**（chưa được trả lời）| Cách viết phần 効果 |
 
-Mục 2 và 3 phải đưa vào ブリーフ khảo sát của dev（`30-dev-survey-brief.md`）**trước khi** báo effort. Riêng mục 2 là điều kiện chặn: nếu dữ liệu cũ không di chuyển được thì toàn bộ nhóm tính năng có phí mất cơ sở.
+Mục 1, 2, 3 phải đưa vào ブリーフ khảo sát của dev（`30-dev-survey-brief.md`）**trước khi** báo effort.
 
 ## Việc cần làm tiếp cho phần 2
 
 | Việc | Vì sao |
 |---|---|
-| Khảo sát khối lượng và cấu trúc dữ liệu hiện tại | Ước lượng công di chuyển — phần khó dự đoán nhất của một lần làm lại |
-| Lập danh sách tính năng WDP đang được dùng thực tế | Biết cái gì phải di chuyển, cái gì có thể bỏ |
-| Xác định tiêu chí切り替え cho từng tính năng | Tránh Phase 3–4 trôi vô hạn |
-| Ước lượng effort theo Phase | Để Vis phán đoán được đầu tư |
+| Khảo sát cấu trúc dữ liệu survey hiện tại | Biết Before/After có nối được không — điều kiện của nhóm tính năng có phí |
+| Khảo sát cách setting survey đang được quản lý | Biết thêm câu hỏi phân nhánh có khả thi không |
+| Đo thời gian thực tế từng bước của お申込み・規約 | Biết F1 cắt được bao nhiêu, để nói con số có căn cứ |
+| Ước lượng effort theo từng 段階 | Để Vis phán đoán được mức đầu tư |

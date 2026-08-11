@@ -119,103 +119,95 @@ và chính **tốc độ phản ánh này** trở thành điểm khác biệt.
 
 ---
 
-# 2. Đề xuất: Xây lại WDP trên nền tảng mới (スクラッチ開発)
+# 2. Đề xuất: Cải tiến WDP (スクラッチ開発)
 
 > **Lưu ý về cách gọi:** tiêu đề gốc tiếng Nhật là 「ご提案：スクラッチ開発」.
-> Ở tiếng Việt tránh dịch thành "làm lại từ đầu" vì dễ hiểu thành *bỏ hết đi làm lại*.
-> Nội dung thực tế là **thay thế nền tảng, kế thừa tài sản đã có** (xem mục 2-3).
+> Ở đây スクラッチ開発 nghĩa là **phát triển custom** — tự xây tính năng theo quy trình
+> riêng của Vis, thay vì mua hoặc áp dụng tool có sẵn.
+> **Không** mang nghĩa "xóa WDP đi làm lại".
 
 ## 2-1. Tóm lược đề xuất
 
-Thay vì tiếp tục cải tiến từng phần trên WDP hiện tại,
-đây là đề xuất **làm lại WDP trên nền tảng mới và di chuyển theo từng giai đoạn**.
+**Đây là đề xuất phát triển các tính năng nhằm giải quyết ba vấn đề đã nêu,
+trên chính WDP hiện tại.**
 
-Đề xuất này là cách triển khai cụ thể để đi tới **「新生WDP」** (WDP tái sinh)
-đã được nêu trong kế hoạch kinh doanh.
+Không phải đưa vào một tool có sẵn, mà **phát triển custom (scratch)**
+theo đúng quy trình đề xuất của Vis và cách triển khai XD.
+Vì nội dung đi sâu vào phần đề xuất riêng cho từng khách hàng,
+chúng tôi cho rằng tool phổ thông sẽ không cho ra được hình thức mà Vis cần.
 
-**Tiền đề: những gì đã tích lũy được sẽ được kế thừa.**
-Bộ câu hỏi survey, dữ liệu trả lời đã có, và cơ chế phát hành qua URL đều là
-đối tượng di chuyển. Đây không phải đề xuất bỏ đi những gì đã xây dựng để làm lại từ số không.
+**Những tài sản hiện có được giữ nguyên và tận dụng.**
+Bộ câu hỏi survey, dữ liệu trả lời đã có, cơ chế phát hành qua URL
+đều không bị làm lại — các tính năng cần thiết sẽ được thêm lên trên đó.
 
-## 2-2. Vì sao là làm lại, không phải cải tiến
+## 2-2. Nội dung cải tiến theo từng vấn đề
 
-### Lý do 1: Cả ba vấn đề đều sinh ra từ cùng một tiền đề
+### Vấn đề 1: Kết quả survey không chuyển thành ngôn ngữ của đề xuất
 
-WDP hiện nay được thiết kế trên tiền đề **"đo một lần để nắm bắt hiện trạng"**.
+Hiện nay quy trình dừng ở chỗ "ra được điểm số".
+Chúng tôi bổ sung hai phần vào trước và sau điểm đó.
 
-Ba vấn đề đã nêu ở trên đều nằm ngoài tiền đề đó.
+| Phần bổ sung | Nội dung |
+|---|---|
+| **Lớp hỏi lý do** (phía câu hỏi) | Chỉ hiển thị câu hỏi bổ sung với những câu trả lời có mức độ hài lòng thấp.<br>Thu thập: khu vực nào, điểm gì, ảnh hưởng tới công việc thế nào.<br>Thêm phần trả lời tự do, và cho phép chỉ vị trí trên bản layout |
+| **Lớp chuyển thành đề xuất** (phía kết quả) | Thêm màn hình phân tích tổng hợp "ở đâu, vì sao, ảnh hưởng gì".<br>Thêm chức năng xuất ra dưới dạng dán được vào tài liệu đề xuất |
 
-| Vấn đề | Điều cần có | Quan hệ với tiền đề hiện tại |
-|---|---|---|
-| Kết quả không chuyển thành ngôn ngữ đề xuất | Thu thập lý do và xuất ra dưới dạng đề xuất | Là vùng mà việc đo một lần không xử lý |
-| Không vừa khung thời gian | Nối liền từ thủ tục đăng ký đến phản ánh vào đề xuất | Các công đoạn trước và sau việc đo đều nằm ngoài phạm vi |
-| After không được thực hiện | Đo lặp lại cùng một đối tượng và so sánh | Trái ngược nhất với tiền đề đo một lần |
+**Không can thiệp vào bộ câu hỏi hiện tại.**
+Các câu hỏi đang có được giữ nguyên, và **câu hỏi bổ sung được thêm vào phía sau**.
+Mục đích là tránh làm mất khả năng so sánh với những điểm số đã tích lũy.
 
-Nói cách khác, không thể giải quyết bằng cách thêm từng tính năng một,
-mà cần **thay thế chính nền tảng bằng tiền đề mới: "đo lặp lại, thu thập lý do,
-và dẫn tới hành động tiếp theo"**.
+### Vấn đề 2: Không vừa với khung thời gian chuẩn bị đề xuất
 
-### Lý do 2: Nếu chồng các bản cải tiến lên nhau thì không đạt được tốc độ cần thiết
+Xử lý riêng hai công đoạn đang tốn thời gian.
 
-Từ vị trí đang phụ trách phát triển, chúng tôi cảm nhận rằng
-với nền tảng hiện tại, dù chỉ thêm một phần nhỏ thì phạm vi ảnh hưởng cũng rộng
-và mất công kiểm tra.
+| Công đoạn | Nội dung cải tiến |
+|---|---|
+| **Thủ tục đăng ký và xác nhận điều khoản** | Cho phép hoàn tất bên trong WDP.<br>Chuyển việc trao đổi văn bản thành thao tác trên màn hình, và làm cho trạng thái xác nhận nhìn thấy được |
+| **Phân tích kết quả và phản ánh vào đề xuất** | Sinh ra các block nội dung đề xuất từ kết quả.<br>Rút ngắn phần "đọc hiểu rồi viết ra" vốn đang làm thủ công |
 
+Song song đó, chuẩn bị trạng thái **có thể triển khai nhẹ nhàng từ giai đoạn sớm**
+như giai đoạn nurturing.
+
+### Vấn đề 3: After không được thực hiện, nên cửa vào hợp đồng có phí không mở ra
+
+Thay đổi trạng thái "nếu để tự nhiên thì không được thực hiện" bằng cơ chế.
+
+| Tính năng bổ sung | Nội dung |
+|---|---|
+| **Thông báo thời điểm đánh giá** | Gắn kế hoạch After vào các dự án đã làm Before, và thông báo cho người phụ trách khi đến thời điểm đánh giá |
+| **Hỗ trợ tạo After** | Cho phép tạo After bằng cách kế thừa thiết lập của Before, không phải thiết lập lại từ đầu |
+| **Quản lý KPI** | Thiết lập và theo dõi các mục survey mục tiêu cùng điểm mục tiêu |
+| **Chạy định kỳ** | Thiết lập lịch triển khai để có thể thực hiện lặp lại |
+| **Báo cáo so sánh Before/After** | Tổng hợp diễn biến điểm và mức chênh lệch của các mục mục tiêu vào một báo cáo |
+| **Danh sách trạng thái thực hiện** | Xem được dự án nào đã đề xuất After và dự án nào đã thực hiện |
+
+## 2-3. Cách triển khai để hạn chế ảnh hưởng tới tính năng hiện có
+
+WDP đang hoạt động, và trong lúc cải tiến thì các dự án vẫn tiếp tục.
+Vì vậy chúng tôi triển khai theo các nguyên tắc sau.
+
+| Nguyên tắc | Nội dung |
+|---|---|
+| **Lấy việc thêm mới làm nền** | Giữ lại tối đa các màn hình và câu hỏi hiện có, triển khai theo hướng bổ sung |
+| **Cô lập phạm vi ảnh hưởng** | Tính năng mới được tách khỏi xử lý hiện có, cấu trúc sao cho không ảnh hưởng tới hoạt động hiện tại |
+| **Phát hành nhỏ** | Phát hành theo từng tính năng, kiểm chứng trong dự án thực tế rồi mới đi tiếp |
+| **Không làm hỏng dữ liệu hiện có** | Giữ trạng thái dữ liệu trả lời đã có vẫn tham chiếu được như trước |
+
+**Vì sao đặt nguyên tắc "phát hành nhỏ":**
 Chúng tôi hiểu rằng FY2026 là giai đoạn kiểm chứng XD MVP —
 thời kỳ vừa xác nhận "ai cần, cái gì hiệu quả, vì sao" vừa điều chỉnh nội dung.
-Ở giai đoạn đó, điều cần thiết không phải độ đầy đủ của tính năng mà là **tốc độ phản ánh**.
+Ở giai đoạn đó, **vừa đưa ra vừa kiểm chứng** sẽ phù hợp hơn là làm gộp một lần.
 
-Nếu giữ nguyên vòng cải tiến hiện nay, có khả năng không theo kịp tốc độ kiểm chứng.
+## 2-4. Thứ tự phát triển
 
-### Lý do 3: Xét tới việc nội bộ hóa phát triển trong tương lai, một nền tảng được sắp xếp gọn sẽ dễ tiếp nhận hơn
-
-Chúng tôi được biết trong kế hoạch kinh doanh có định hướng
-dần nội bộ hóa việc phát triển trong tương lai.
-
-Khi đó, **việc chuyển giao ở trạng thái đã được sắp xếp gọn sẽ thực tế hơn**
-so với việc tiếp nhận nguyên một nền tảng đã tích tụ nhiều lớp qua thời gian.
-
-Việc làm lại cũng là bước chuẩn bị cho điều đó.
-
-## 2-3. Kế thừa cái gì / Làm lại cái gì
-
-| Đối tượng | Xử lý | Ghi chú |
+| Giai đoạn | Nội dung | Mục tiêu |
 |---|---|---|
-| Bộ câu hỏi survey (Work Design Survey và bản pulse) | **Kế thừa** | Có thể di chuyển nguyên theo định dạng hiện tại |
-| Dữ liệu trả lời đã có | **Di chuyển** | Cần thiết cho việc so sánh Before/After, nên đặt là yêu cầu bắt buộc |
-| Cơ chế phát hành qua URL | **Kế thừa** | Là phần đã cho thấy hiệu quả trong việc giảm rào cản triển khai |
-| Việc phát hành và thu hồi survey | **Kế thừa** | Không thuộc đối tượng làm lại |
-| Cách lưu giữ dữ liệu (tiền đề đo một lần) | **Làm lại** | Chuyển thành cấu trúc so sánh được cùng một đối tượng theo thời gian |
-| Việc quản lý câu hỏi | **Làm lại** | Hỗ trợ thiết lập theo từng khách hàng và câu hỏi bổ sung theo điều kiện |
-| Phân tích và xuất kết quả | **Mới** | Phần chuyển từ kết quả sang hình thức đề xuất |
-| Vận hành After | **Mới** | Thông báo thời điểm đánh giá, người phụ trách, theo dõi KPI |
+| **Giai đoạn 1** | Vận hành After (thông báo thời điểm, hỗ trợ tạo, quản lý KPI) | Mở cửa vào việc thu phí |
+| **Giai đoạn 2** | Lớp hỏi lý do (câu hỏi bổ sung, trả lời tự do) và báo cáo so sánh | Chuẩn bị phần nội dung để khách dùng tiếp có phí |
+| **Giai đoạn 3** | Hoàn tất đăng ký và điều khoản, xuất block nội dung đề xuất | Đưa vào khung thời gian chuẩn bị đề xuất |
+| **Giai đoạn 4** | Layout từ kế hoạch nhân sự, tùy biến theo khách hàng | Làm cho đề xuất tối ưu theo từng khách hàng |
 
-**Ý đồ của cách phân chia này:**
-Phần được làm lại là **nền tảng và những vai trò mới đặt lên nền tảng đó**.
-Những phần đang hoạt động tốt (câu hỏi, phát hành, dữ liệu đã tích lũy)
-được kế thừa như tài sản.
-
-## 2-4. Di chuyển theo từng giai đoạn
-
-| Phase | Thời điểm dự kiến | Nội dung | WDP hiện tại |
-|---|---|---|---|
-| **Phase 1** | Nửa đầu FY2026 | Xây nền tảng mới. Di chuyển câu hỏi và dữ liệu trả lời. Đưa việc vận hành After và tiếng nói worker lên nền tảng mới | Chạy song song |
-| **Phase 2** | Nửa sau FY2026 | Đưa phần hỗ trợ đề xuất lên nền tảng mới (hoàn tất đăng ký và điều khoản trực tuyến, xuất block nội dung từ kết quả) | Chạy song song |
-| **Phase 3** | FY2027 | Hoàn tất di chuyển các tính năng hiện có. Mở survey định kỳ và báo cáo kiểm chứng hiệu quả cho khách hàng | Dừng sau khi di chuyển xong |
-| **Phase 4** | FY2028 | Hợp nhất về WDP mới. Chuẩn bị chuyển giao cho việc nội bộ hóa | Dừng |
-
-**Vì sao đặt giai đoạn chạy song song:**
-Để không làm dừng các dự án đang triển khai.
-Chuyển đổi lần lượt theo từng tính năng đã đưa sang nền tảng mới,
-và thu hẹp môi trường cũ trong phạm vi đã xác nhận được.
-
-**Quan hệ với kế hoạch kinh doanh:**
-Trong kế hoạch có vạch ra con đường "phát triển song song một ứng dụng riêng,
-sau đó thay thế vào WDP".
-Đề xuất này là cách triển khai **làm lại chính WDP trên nền tảng mới**
-để đi tới đích đến đó, tức là 「新生WDP」.
-Chúng tôi cho rằng có thể phân định rõ ranh giới với những phần đang được
-triển khai trước ở phía XP hoặc bằng công cụ AI nội bộ.
+Cách suy nghĩ về thứ tự được ghi ở mục 2-10.
 
 ## 2-5. User story
 
@@ -386,22 +378,22 @@ có thể phản ánh ngay vào phương án thay đổi layout.
 |---|---|
 | AI report / AI advice | Được biết đang triển khai bằng công cụ AI nội bộ của Vis |
 
-## 2-9. Rủi ro dự kiến khi di chuyển và cách xử lý
+## 2-9. Tiền đề và các điểm cần xác nhận khi triển khai
 
-Việc làm lại, nếu triển khai sai cách, sẽ ảnh hưởng tới công việc đang chạy.
-Dưới đây là các điểm dự kiến và định hướng xử lý.
+Dưới đây là những điểm chúng tôi muốn xác nhận trước khi bắt tay vào cải tiến.
 
-| Rủi ro dự kiến | Định hướng xử lý |
+| Điều muốn xác nhận | Vì sao cần |
 |---|---|
-| Các dự án đang triển khai bị dừng | Phase 1–2 **chạy song song**, chuyển đổi lần lượt theo từng tính năng đã di chuyển được |
-| Dữ liệu trả lời cũ bị chia cắt, không so sánh được Before/After | Đặt việc di chuyển dữ liệu là **yêu cầu bắt buộc** và xử lý ngay từ đầu. Nếu không đảm bảo được điểm này thì các tính năng có phí không thành lập |
-| Phải nhập cùng một thông tin ở hai nơi trong thời gian chuyển đổi | Với từng loại thông tin, quy định rõ nơi nhập là một phía, không tạo tình trạng nhập cả hai |
-| Người đang sử dụng phải chịu thêm gánh nặng thao tác | Không thay đổi lớn luồng thao tác hiện tại; các điểm thay đổi sẽ được tổng hợp và gửi trước |
-| Tiêu chí chuyển đổi không rõ ràng, khiến việc di chuyển kéo dài | Quyết định trước **tiêu chí chuyển đổi** cho từng tính năng |
+| Dữ liệu trả lời đã có có tham chiếu được theo dạng so sánh Before/After không | Là tiền đề để báo cáo so sánh thành lập |
+| Luồng đăng ký và xác nhận điều khoản hiện tại (đang mất mấy ngày ở bước nào) | Cần cho việc phán đoán chuyển được bao nhiêu lên màn hình |
+| Sẽ đặt ai làm người phụ trách After | Cần người nhận thông báo và chuyển sang thực hiện |
+| Cho phép tùy biến câu hỏi theo khách hàng tới mức nào | Cần xác định phạm vi được phép thay đổi, để giữ khả năng so sánh |
+| Có được phép can thiệp vào câu hỏi hiện có, hay chỉ thêm mới | Để giữ khả năng so sánh với điểm số cũ, chúng tôi khuyến nghị chỉ thêm mới |
 
-**Về tiêu chí chuyển đổi:**
-Chúng tôi muốn lấy tiêu chí không chỉ là "bên mới làm được điều tương tự",
-mà là **"đã chạy trọn một lần trong dự án thực tế"**.
+**Về cách xử lý bộ câu hỏi:**
+Nếu thay đổi các câu hỏi hiện có thì sẽ không so sánh được với điểm số đã tích lũy.
+Vì vậy chúng tôi đề xuất phương án **không thay đổi câu hỏi hiện có,
+chỉ thêm câu hỏi bổ sung**.
 
 ## 2-10. Thứ tự phát huy hiệu quả của đề xuất
 
@@ -424,42 +416,49 @@ Nếu làm ngược thứ tự, Before tăng nhưng vẫn không dẫn được 
 
 # Phụ lục — Lưu ý khi trình bày
 
-## Vị trí của bravesoft và ý nghĩa của "scratch development"
+## Phạm vi của đề xuất — điểm dễ lẫn
 
-**bravesoft là bên phát triển WDP.** Nên đề xuất này là **làm lại chính WDP**
-trên nền tảng mới, không phải xây một app riêng chạy song song mãi mãi.
+**Đây là đề xuất cải tiến trên WDP hiện tại** — không phải làm lại nền tảng,
+và không phải xây app riêng.
 
-Cần phân biệt rõ hai thứ dễ lẫn:
+Ba thứ rất dễ lẫn, cần phân biệt khi trình bày:
 
 | | Là gì | Ai làm |
 |---|---|---|
+| **Đề xuất này** | **Thêm tính năng vào WDP hiện tại**, phát triển custom theo quy trình của Vis | bravesoft |
 | **別アプリ trong kế hoạch kinh doanh** | Công cụ nội bộ cho XP, khách không dùng, sau đó nhập vào WDP | Track Vis đang tự làm (AI report) |
-| **Scratch development trong đề xuất này** | Làm lại chính WDP trên nền tảng mới, di chuyển dần | bravesoft |
+| **新生WDP trong kế hoạch** | Đích dài hạn ở FY2028, sau khi hợp nhất | Chưa thuộc phạm vi đề xuất lần này |
 
-Cả hai đều hướng tới cùng một đích mà kế hoạch gọi là **「新生WDP」**.
-Vì vậy mục 2-4 có ghi rõ "có thể phân định ranh giới", để không tạo cảm giác
-bravesoft lấn sang phần Vis đang tự làm.
+**Ý nghĩa của スクラッチ開発 ở đây:** phát triển **custom** thay vì mua hoặc áp dụng
+tool có sẵn — vì nội dung đi sâu vào quy trình đề xuất riêng của Vis,
+tool phổ thông không đáp ứng được. Không mang nghĩa "xóa đi làm lại".
 
-## Ba lý do làm lại — thứ tự có chủ ý
+## Cấu trúc phần 2 và vai trò từng mục
 
-1. **Ba vấn đề đều sinh ra từ cùng một tiền đề** (đo một lần) → đây là lý do
-   **về bản chất**, không phải về công nghệ. Đặt đầu tiên vì nối trực tiếp với phần 1.
-2. **Cải tiến chồng lên nhau không đủ nhanh** → nói từ vị trí bên đang phát triển,
-   nên là **trải nghiệm thực tế**, không phải phỏng đoán.
-3. **Nội bộ hóa sau này dễ hơn** → dùng chính kế hoạch của Vis làm lợi ích cho họ.
+| Mục | Vai trò |
+|---|---|
+| 2-1 | Nói rõ phạm vi: thêm vào WDP hiện tại, giữ nguyên tài sản |
+| **2-2** | **Ruột của đề xuất** — với từng vấn đề, cải tiến cụ thể cái gì trên WDP |
+| 2-3 | Trả lời trước lo ngại "sửa WDP có ảnh hưởng vận hành không" |
+| 2-4 | Thứ tự phát triển |
+| 2-5 → 2-8 | User story, danh sách tính năng, lý giải tính năng có phí, lồng ghép yêu cầu |
+| 2-9 | Tiền đề và câu hỏi cần xác nhận |
+| 2-10 | Lý do của thứ tự |
 
-## Mục 2-3 là mục quan trọng nhất về mặt tâm lý
+**Mục 2-2 là chỗ quan trọng nhất.** Nó trả lời trực tiếp câu hỏi
+"khắc phục những gì ở WDP": mỗi vấn đề được gắn với một bảng cải tiến cụ thể,
+thay vì chỉ nói định hướng chung.
 
-Bảng **kế thừa / làm lại** tồn tại để trả lời trước một lo ngại chắc chắn xuất hiện:
-*"vậy khoản đã đầu tư vào WDP thành vô nghĩa?"*
+## Hai nguyên tắc kỹ thuật đã đưa vào đề xuất
 
-Điểm cần nhấn khi trình bày:
+**1. Không sửa bộ câu hỏi hiện có, chỉ thêm câu hỏi bổ sung.**
+Nếu sửa 52 câu hiện tại thì mất khả năng so sánh với dữ liệu đã tích lũy —
+mà so sánh Before/After chính là thứ bán được tiền.
+Nguyên tắc này xuất hiện ở cả mục 2-2 và 2-9.
 
-- Bộ câu hỏi survey (52 câu và pulse) **giữ nguyên** — định dạng hiện tại cho phép di chuyển
-- Dữ liệu trả lời cũ **bắt buộc phải di chuyển**, vì thiếu nó thì không so sánh
-  Before/After được, tức là không bán được
-- Cơ chế URL **giữ** — đây là thứ đã có hiệu quả rõ
-- Chỉ làm lại **nền tảng** và **những vai trò mới** đặt lên đó
+**2. Tách biệt xử lý mới khỏi xử lý cũ.**
+Đây là cách xử lý thực tế cho vấn đề "phạm vi ảnh hưởng rộng" của WDP hiện tại —
+thay vì đề xuất làm lại nền tảng, ta giảm rủi ro bằng cách cô lập phần mới.
 
 ## Cách phân biệt "dùng cho đề xuất" và "có phí"
 
@@ -492,21 +491,22 @@ không phải "vì sao tính năng này hay":
 | F8 | **Điều kiện tiên quyết** để việc đo định kỳ có ý nghĩa |
 | F4 bản cập nhật | Hiện thực hóa "tốc độ phản ánh vào thiết kế không gian" |
 
-## Sáu điểm cần cẩn thận
+## Bảy điểm cần cẩn thận
 
 1. **Đừng gọi F7 là "survey pulse mới"** — Vis đã tự tạo bộ survey rút gọn.
    Nên nói là "vận hành định kỳ", "chọn nội dung", "so sánh theo thời gian".
 2. **Đừng gọi F2 là "thêm mới tiếng nói worker"** — buổi 座談会 đã có trong quy trình XD.
    Nên nói là "số hóa và mở rộng".
-3. **Đừng đề xuất self-service hay SaaS ngay** — theo kế hoạch là giai đoạn sau.
-   Đặt ở Phase 3–4.
+3. **Đừng đề xuất self-service hay SaaS ngay** — theo kế hoạch là giai đoạn sau
+   (FY2027–2028).
 4. **F1 cần được thấy là nặng, không phải phụ** — nhưng diễn đạt bằng lập luận
    ("công đoạn khó dự đoán số ngày") thay vì trưng bảng số liệu.
-5. **Đừng để nghe thành "bỏ WDP làm lại"** — luôn đi kèm mục 2-3 (phần kế thừa).
-   Từ khoá an toàn: 「土台を置き換える」 (thay thế nền tảng),
-   không dùng 「捨てて作り直す」 (bỏ đi và làm lại).
-6. **Đừng lấn vào phần Vis đang tự làm** — AI report và phần XP nội bộ để riêng,
-   dùng chữ 「棲み分け」 (phân định ranh giới).
+5. **Đừng để chữ "scratch" nghe thành "bỏ WDP làm lại"** — luôn kèm câu
+   "những tài sản hiện có được giữ nguyên" ở mục 2-1.
+   Nghĩa đúng là **phát triển custom**, không phải xóa đi làm lại.
+6. **Đừng lấn vào phần Vis đang tự làm** — AI report và phần XP nội bộ để riêng.
+7. **Nhấn nguyên tắc "không sửa câu hỏi hiện có, chỉ thêm mới"** —
+   đây là điểm khiến khách yên tâm nhất, vì nó bảo vệ dữ liệu đã tích lũy.
 
 ## Vì sao thêm mục 2-10 "thứ tự phát huy hiệu quả"
 
@@ -524,22 +524,21 @@ thứ tự này chính là việc xây quy trình đó.
 
 | # | Nội dung | Ảnh hưởng |
 |---|---|---|
-| 1 | **Vis có đồng ý hướng làm lại nền tảng** hay muốn cải tiến dần | Quyết định toàn bộ phần 2 |
-| 2 | Dữ liệu trả lời cũ **xuất ra và di chuyển được không** | **Điều kiện tiên quyết** — thiếu thì không có Before/After |
-| 3 | Chi tiết luồng đăng ký và kiểm tra pháp lý hiện tại | Biết cắt được bao nhiêu → F1 |
-| 4 | Định nghĩa của 勝率 (tỷ lệ thắng) — chưa được trả lời | Cách viết phần hiệu quả |
-| 5 | Ai sẽ là người chịu trách nhiệm về After phía Vis | F9 có nhắc nhưng cần người nhận |
-| 6 | Quan hệ với phần Vis đang tự làm (AI report, công cụ cho XP) | Tránh trùng lặp phạm vi |
+| 1 | Dữ liệu trả lời cũ có **truy vấn được theo cùng một đối tượng qua thời gian** không | Điều kiện cho báo cáo so sánh Before/After (F6) |
+| 2 | Chi tiết luồng đăng ký và kiểm tra pháp lý — đang mất mấy ngày ở bước nào | Biết cắt được bao nhiêu → F1 |
+| 3 | Có được phép **thêm câu hỏi vào bộ hiện tại** không, và cấu trúc cho phép tới đâu | Điều kiện cho F2 |
+| 4 | Ai sẽ là người chịu trách nhiệm về After phía Vis | F9 gửi thông báo nhưng cần người nhận |
+| 5 | Cho phép tùy biến setting tới mức nào | Cân bằng giữa F8 và khả năng so sánh |
+| 6 | Định nghĩa của 勝率 (tỷ lệ thắng) — chưa được trả lời | Cách viết phần hiệu quả |
 
-Mục 2 và 3 phải đưa vào brief khảo sát của dev (`30-dev-survey-brief.md`)
-**trước khi** báo effort. Riêng mục 2 là điều kiện chặn: nếu dữ liệu cũ không
-di chuyển được thì toàn bộ nhóm tính năng có phí mất cơ sở.
+Mục 1, 2, 3 phải đưa vào brief khảo sát của dev (`30-dev-survey-brief.md`)
+**trước khi** báo effort.
 
 ## Việc cần làm tiếp cho phần 2
 
 | Việc | Vì sao |
 |---|---|
-| Khảo sát khối lượng và cấu trúc dữ liệu hiện tại | Ước lượng công di chuyển — phần khó dự đoán nhất của một lần làm lại |
-| Lập danh sách tính năng WDP đang được dùng thực tế | Biết cái gì phải di chuyển, cái gì có thể bỏ |
-| Xác định tiêu chí chuyển đổi cho từng tính năng | Tránh Phase 3–4 kéo dài vô hạn |
-| Ước lượng effort theo từng Phase | Để Vis phán đoán được mức đầu tư |
+| Khảo sát cấu trúc dữ liệu survey hiện tại | Biết Before/After có nối được không — điều kiện của nhóm tính năng có phí |
+| Khảo sát cách setting survey đang được quản lý | Biết thêm câu hỏi phân nhánh có khả thi không |
+| Đo thời gian thực tế từng bước của đăng ký và điều khoản | Biết F1 cắt được bao nhiêu, để nói con số có căn cứ |
+| Ước lượng effort theo từng giai đoạn | Để Vis phán đoán được mức đầu tư |
