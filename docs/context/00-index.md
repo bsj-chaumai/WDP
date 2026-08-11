@@ -30,6 +30,7 @@ Sau đó mở thư mục repo bằng Cursor ở máy. Khi chat mới, tham chi�
 | `20-agreed-direction.md` | Các điểm đã thống nhất nội bộ: 問題・方向性・提案の軸・次のアクション |
 | `30-dev-survey-brief.md` | 要点 khảo sát cho dev (有料化 & survey) |
 | `40-proposal-framework.md` | Khung 提案: 背景→課題→方針→絞込→提案(松竹梅)→効果 |
+| `50-phan-tich-de-xuat-huong-di.md` | **Tài liệu tổng hợp**: Q&A Vis + nội dung 2 bộ survey (52/19 câu) + phân tích từng luận điểm + 4 vấn đề cốt lõi + hướng đề xuất |
 
 ## Tài liệu đã có từ trước (không nằm trong pack này)
 
