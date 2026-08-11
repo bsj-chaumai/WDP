@@ -33,7 +33,8 @@ Sau đó mở thư mục repo bằng Cursor ở máy. Khi chat mới, tham chi�
 | `50-phan-tich-de-xuat-huong-di.md` | **Tài liệu tổng hợp**: Q&A Vis + nội dung 2 bộ survey (52/19 câu) + phân tích từng luận điểm + 5 vấn đề cốt lõi + hướng đề xuất |
 | `60-quy-trinh-wd-xd-va-before-after.md` | **Quy trình thực tế đọc từ 事業計画**: 10 bước XD, timeline 6 tuần vs cửa sổ 3–4 tuần, luồng Before/After, bảng giá + KPI FY2026, comment nội bộ, bảng kế hoạch FY2026–2030 |
 | `70-kadai-for-proposal.md` | **Danh sách 課題 chốt để viết 提案** — 4 課題 trục chính, 3 課題 nền, 3 tiền đề/rủi ro, map sang trục đề xuất, và đối chiếu memo PM |
-| `80-teian-genjo-kadai-scratch.md` | **Nội dung 提案 (JA)** cho 2 đề mục『現状の課題と目指したいこと』『ご提案：スクラッチ開発』— kèm **chính sách dùng số liệu**, user story, 10 tính năng phân 有料/提案用, lý giải từng 有料機能, và織り込み yêu cầu của Vis |
+| `80-teian-genjo-kadai-scratch.md` | **Nội dung 提案 (JA — bản chính thức gửi khách)** cho 2 đề mục『現状の課題と目指したいこと』『ご提案：スクラッチ開発』— kèm **chính sách dùng số liệu**, user story, 10 tính năng phân 有料/提案用, lý giải từng 有料機能, và織り込み yêu cầu của Vis |
+| `81-teian-vi.md` | **Bản tiếng Việt của nội dung 提案** — để chia sẻ và rà soát nội bộ |
 
 ## Tài liệu đã có từ trước (không nằm trong pack này)
 
