@@ -33,7 +33,7 @@ Sau đó mở thư mục repo bằng Cursor ở máy. Khi chat mới, tham chi�
 | `50-phan-tich-de-xuat-huong-di.md` | **Tài liệu tổng hợp**: Q&A Vis + nội dung 2 bộ survey (52/19 câu) + phân tích từng luận điểm + 5 vấn đề cốt lõi + hướng đề xuất |
 | `60-quy-trinh-wd-xd-va-before-after.md` | **Quy trình thực tế đọc từ 事業計画**: 10 bước XD, timeline 6 tuần vs cửa sổ 3–4 tuần, luồng Before/After, bảng giá + KPI FY2026, comment nội bộ, bảng kế hoạch FY2026–2030 |
 | `70-kadai-for-proposal.md` | **Danh sách 課題 chốt để viết 提案** — 4 課題 trục chính, 3 課題 nền, 3 tiền đề/rủi ro, map sang trục đề xuất, và đối chiếu memo PM |
-| `80-teian-genjo-kadai-scratch.md` | **Nội dung 提案 (JA)** cho 2 đề mục『現状の課題と目指したいこと』『ご提案：スクラッチ開発』— kèm user story, 10 tính năng phân 有料/提案用, lý giải từng 有料機能, và織り込み yêu cầu của Vis |
+| `80-teian-genjo-kadai-scratch.md` | **Nội dung 提案 (JA)** cho 2 đề mục『現状の課題と目指したいこと』『ご提案：スクラッチ開発』— kèm **chính sách dùng số liệu**, user story, 10 tính năng phân 有料/提案用, lý giải từng 有料機能, và織り込み yêu cầu của Vis |
 
 ## Tài liệu đã có từ trước (không nằm trong pack này)
 
@@ -50,3 +50,7 @@ Sau đó mở thư mục repo bằng Cursor ở máy. Khi chat mới, tham chi�
 4. FY2026 theo kế hoạch Vis là **検証（MVP）**, WDP vẫn là **After spot**. 自走 bắt đầu FY2027, SaaS hóa FY2028.
    → Không đề xuất subscription/self-service như điểm bán ngắn hạn, nhưng nên dựng sẵn kiến trúc.
 5. Nút thắt 有料化 theo chính Vis là **商談プロセスの構築**, không phải thiếu tính năng.
+6. **Số liệu trong 事業計画 là để báo cáo nội bộ Vis.** Trong 提案 chỉ nêu số khi thật cần —
+   ưu tiên logic và lập luận. Nhiều số sẽ gây khó hiểu và làm 提案 giống bản báo cáo lại
+   tình hình của chính khách. Chi tiết chính sách: xem đầu file `80-...md`.
+   → Số liệu đầy đủ giữ trong `60-...md` / `70-...md` để BS dùng nội bộ khi thiết kế và báo effort.
