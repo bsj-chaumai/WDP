@@ -31,7 +31,8 @@ Sau đó mở thư mục repo bằng Cursor ở máy. Khi chat mới, tham chi�
 | `30-dev-survey-brief.md` | 要点 khảo sát cho dev (有料化 & survey) |
 | `40-proposal-framework.md` | Khung 提案: 背景→課題→方針→絞込→提案(松竹梅)→効果 |
 | `50-phan-tich-de-xuat-huong-di.md` | **Tài liệu tổng hợp**: Q&A Vis + nội dung 2 bộ survey (52/19 câu) + phân tích từng luận điểm + 5 vấn đề cốt lõi + hướng đề xuất |
-| `60-quy-trinh-wd-xd-va-before-after.md` | **Quy trình thực tế đọc từ 事業計画**: 10 bước XD, timeline 6 tuần vs cửa sổ 3–4 tuần, luồng Before/After, bảng kế hoạch FY2026–2030, và **5 điểm hiệu chỉnh** cho file 50 |
+| `60-quy-trinh-wd-xd-va-before-after.md` | **Quy trình thực tế đọc từ 事業計画**: 10 bước XD, timeline 6 tuần vs cửa sổ 3–4 tuần, luồng Before/After, bảng giá + KPI FY2026, comment nội bộ, bảng kế hoạch FY2026–2030 |
+| `70-kadai-for-proposal.md` | **Danh sách 課題 chốt để viết 提案** — 4 課題 trục chính, 3 課題 nền, 3 tiền đề/rủi ro, map sang trục đề xuất, và đối chiếu memo PM |
 
 ## Tài liệu đã có từ trước (không nằm trong pack này)
 
