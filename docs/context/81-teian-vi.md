@@ -119,7 +119,11 @@ và chính **tốc độ phản ánh này** trở thành điểm khác biệt.
 
 ---
 
-# 2. Đề xuất: Làm lại từ đầu (scratch development)
+# 2. Đề xuất: Xây lại WDP trên nền tảng mới (スクラッチ開発)
+
+> **Lưu ý về cách gọi:** tiêu đề gốc tiếng Nhật là 「ご提案：スクラッチ開発」.
+> Ở tiếng Việt tránh dịch thành "làm lại từ đầu" vì dễ hiểu thành *bỏ hết đi làm lại*.
+> Nội dung thực tế là **thay thế nền tảng, kế thừa tài sản đã có** (xem mục 2-3).
 
 ## 2-1. Tóm lược đề xuất
 
