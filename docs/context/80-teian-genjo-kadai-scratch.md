@@ -82,20 +82,22 @@ WDPはすでに提案の場で成果を出しています。
 URL配信により、メールアドレスを収集する工程は短縮されました。
 しかし上記2つは残っており、時間枠に収まらない状態が続いています。
 
-## 1-4. 課題3：Afterが実行されず、有料化の入口が開かない
+## 1-4. 課題3：Afterが回らず、効果検証が積み上がらない
 
 **Before 83件に対し、After 5件。**
 
-有料契約はAfter経由を対象とされているため、
-Afterが実行されないことが、そのまま有料化の制約になっています。
+Afterは現時点では無償でご提供いただいており、
+対象者への自動配信の仕組みも備わっていると伺っております。
+それにもかかわらず結果が積み上がっていない状況です。
 
-実行されない理由は、意欲の問題ではなく**構造**だと考えています。
+背景として、**移転後にサーベイを実施する動機が弱くなること**があると考えています。
 
-- 評価のタイミングは移転後半年。その時点でプロジェクトは完了しており、担当が離れている
-- Afterの準備は、Beforeと同じ工程をもう一度繰り返す必要がある
-- 「もう一度回答してください」と社員に依頼する負担が、クライアント側にも発生する
+- リニューアルの日を迎えることに注力するため、その後の検証まで手が回りにくい
+- 新しいオフィスができた直後は、一見して満足度が高く見える
+- 移転だけでは半年で動きにくい項目もあり、測っても変化が見えづらい
+- 回答した内容がどう活かされたかが伝わらないと、次回の回答意欲が下がる
 
-つまり、**放っておくと実行されない構造**になっています。
+つまり、**放っておくと関心が薄れていく構造**になっています。
 
 ## 1-5. 目指したいこと
 
@@ -239,63 +241,81 @@ Lý do chọn cặp này:
 
 あわせて、ナーチャリングなど**早い段階で気軽に実施できる状態**を整えます。
 
-### 課題3：Afterが実行されず、有料化の入口が開かない
+### 課題3：Afterが回らず、効果検証が積み上がらない
 
 #### 現状の確認
 
 - 評価のタイミングは移転後半年
-- 設定日から6ヶ月後にサーベイが**自動配信される仕組みはすでに備わっている**
-- 担当者による手動の設定は不要
+- 対象者へサーベイを**自動で再配信する仕組みはすでに備わっている**
+- 手動での設定は不要
+- Afterは**現時点では無償**でご提供
 
-つまり、**配信の仕組み自体は課題ではありません。**
+つまり、**配信の仕組みも、費用の負担も、課題ではありません。**
 
-#### では、どこで止まっているのか
+#### 考えられる原因：移転後の関心の変化
 
-自動で配信されているにもかかわらず実施が5件に留まっているということは、
-**配信の前提、または配信された後のどこかで止まっている**ことになります。
+配信の仕組みが動いているにもかかわらず結果が積み上がらない背景として、
+**移転後にサーベイを実施する動機が弱くなること**があると考えています。
 
-考えられる箇所を分けると、次のようになります。
+これは事業計画に記載されている内容と重なります。
 
-| 箇所 | 想定される状態 | 確認方法 |
+> 何千万、何億と予算を掛けてリニューアルプロジェクトが進行するのですが、
+> どの企業も…**リニューアルの日を迎える事に精一杯**になる実態があります
+
+> オフィスリニューアル自体が誰に対してもわかりやすい大きな変化となるため、
+> **その手前で掲げられていた期待に対してシビアに向き合う企業や人が少ない**
+
+> しかし、オフィスではその先が**おざなり**になっています。
+> **いいオフィスができてみんな喜んでいる。と一見は映るからです。**
+
+さらに、同じ箇所には次の記載もあります。
+
+> 実際に当社で取得したサーベイでは**6項目の内、すべてが移転というタイミングだけでは
+> 向上させるのが難しい**というケースもでてきています
+
+#### 2つの状態を分けて考える必要があります
+
+「結果が積み上がらない」には、次の2つの状態が考えられ、
+それぞれ必要な対応が異なります。
+
+| | 状態 | 考えられる原因 |
 |---|---|---|
-| **配信の起点日** | 設定日起点のため、移転前に配信されている可能性 | 起点日の設定を確認 |
-| **配信の実行** | 対象案件で実際に配信が動いているか | 配信件数の集計 |
-| **回答の回収** | 配信されても、回答を促す動きがなく集まっていない可能性 | 配信件数と回答率の比較 |
-| **有料のご契約** | Afterは有料を前提とするため、ご提案・ご契約に至っていない可能性 | ご提案件数とご契約件数 |
-| **レポートの作成** | 回答が集まっても、比較レポートまで至っていない可能性 | レポート作成件数 |
+| **A** | 配信されても**回答が集まらない** | もう一度答える理由がない。前回answeredした内容が活かされたと感じられていない |
+| **B** | 回答はあるが**スコアがほとんど変わらない** | 移転だけでは半年で動かない項目を測っている |
 
-現時点では、**どの箇所で止まっているかを数値で確認できる状態にありません。**
+Bの場合、通知や督促を増やしても状況は変わりません。
+**測る対象そのものを見直す**必要があります。
+
+現時点では、AとBのどちらが起きているかを数値で確認できる状態にありません。
 
 #### 改善内容
 
-そのため、まず**止まっている箇所が見える状態にすること**から始めます。
+移転後も実施する動機が生まれる状態を作ることを目的とします。
 
-| 順 | 改善内容 | 内容 |
-|---|---|---|
-| **1** | **実行状況の可視化** | 対象案件 → 配信 → 回答 → ご提案 → ご契約 → レポート の各段階を件数で表示します。どこで止まっているかが判断できる状態にします |
-| **2** | **有料Afterのご提案・お見積の導線** | Beforeの結果画面から、そのままAfterのご提案とお見積を出せるようにします。ご提案の記録も残します |
-| **3** | **配信後の実行支援** | 回答状況を確認できるようにし、回答率が低い場合の督促を行えるようにします |
-| **4** | **Before/After比較レポート** | 対象項目のスコア推移と差分を、1つのレポートにまとめます |
-| **5** | **KPIの管理** | 目標とするサーベイ項目と目標スコアを設定し、追跡できるようにします |
-| **6** | **起点日の見直し**（確認のうえ） | 評価の基準は「移転から半年後」です。設定日起点となっている場合、移転完了日を起点にできるよう調整します |
+| 順 | 改善内容 | 内容 | 効く状態 |
+|---|---|---|---|
+| **1** | **Beforeの時点で目標を設定する** | 目標とする項目と目標スコアをBeforeの流れの中で設定し、プロジェクト期間中も表示します。Afterでは「設定した目標」と「実際」を並べて表示します | A・B |
+| **2** | **Afterの設問内容を移転後の関心に合わせる** | 比較のための項目は残しつつ、移転後の運用に関する設問を加えます（新しいルールが機能しているか、使われていないエリアはないか、席の固定化が起きていないか など）| **B** |
+| **3** | **回答者へのフィードバック** | 「挙げられた内容に対してこう対応した」を回答者に返せるようにします。Afterの配信前または同時にお渡しします | **A** |
+| **4** | **稼働データとの組み合わせ** | 出社率・空間稼働率などのデータを効果検証レポートに含めます。回答に依存しない指標を確保します | A・B |
+| **5** | **レポートの見せ方** | 達成・未達の判定ではなく、「何が動いたか」「次に何をするか」を中心に構成します | A |
+| **6** | **実施状況の可視化** | 対象案件 → 配信 → 回答 → レポート の各段階を件数で表示します。AとBのどちらが起きているかを判断できる状態にします | 判断のため |
 
-**配信の仕組みは既存のものをそのまま活かします。**
-1〜3は配信の前後を補う内容であり、配信そのものには手を入れません。
+**配信の仕組みには手を入れません。**
+1〜5はいずれも配信の前後、または測る内容に関する改善です。
 
-#### なぜ「可視化」を最初に置くのか
+#### なぜ「目標の設定」を最初に置くのか
 
-原因が特定できていない状態で機能を追加すると、
-効かない箇所に手を入れてしまう可能性があります。
+Afterに動機が生まれるのは、**確かめるべきことがある場合**です。
 
-各段階の件数が見えるようになれば、
-「ご提案が行われていないのか」「回答が集まっていないのか」
-「レポートまで至っていないのか」が切り分けられます。
+移転前に目標が設定されていれば、Afterは「設定した目標を確かめる場」になります。
+目標がなければ、Afterは「もう一度測るだけ」となり、後回しになりやすくなります。
 
-そのうえで、実際に止まっている箇所に対して2〜6を進める形が
-確実だと考えています。
+目標設定はXDのプロセスに含まれている内容ですが、
+ワークショップを伴う進め方のため、実施できている案件は限られていると伺っております。
 
-これは、貴社が挙げられている
-`after提案件数と率、after実施数と率` の把握にも対応する内容です。
+そこで、**ワークショップを前提とせず、Beforeの流れの中で目標を設定できる形**を
+ご提案します。XDが入らない案件でも目標を残せる状態を目指します。
 
 #### 実施率の測り方について
 
@@ -307,7 +327,10 @@ Beforeは提案段階、Afterは移転から半年後に実施されるため、
 
 実施率を正しく把握するには、
 **「移転から半年が経過した案件」を母数とした集計**が必要と考えます。
-上記の「実行状況の可視化」は、この集計を可能にするためのものです。
+上記の「実施状況の可視化」は、この集計を可能にするためのものです。
+
+これは、貴社が挙げられている
+`after提案件数と率、after実施数と率` の把握にも対応する内容です。
 
 ## 2-3. 既存機能への影響を抑える進め方
 
@@ -330,21 +353,21 @@ FY2026はXD MVPの検証を進める段階と伺っております。
 
 | 段階 | 内容 | 狙い |
 |---|---|---|
-| **第1段階** | Afterの実行状況の可視化 | どこで止まっているかを確定させる |
-| **第2段階** | 有料Afterのご提案・お見積の導線、配信後の実行支援、起点日の調整 | 止まっている箇所に手を入れる |
-| **第3段階** | 理由を聞く層（追加設問・自由記述）、KPIの管理、Before/After比較レポート | 有料で使い続ける中身を用意する |
-| **第4段階** | 分析画面（優先度・場所・理由）と出力、お申込み・規約の完結 | 提案の時間枠に収める |
-| **第5段階** | 分析画面の拡張（対象・影響・施策候補）、人員計画からのレイアウト構成、クライアント別カスタム | 個社最適化された提案にする |
+| **第1段階** | Beforeでの目標設定、実施状況の可視化 | Afterに確かめる理由を持たせ、現状を把握する |
+| **第2段階** | Afterの設問内容の見直し、回答者へのフィードバック | 回答が集まる状態、動きが見える状態にする |
+| **第3段階** | Before/After比較レポート（稼働データを含む）、レポートの見せ方 | 効果検証として使える形にする |
+| **第4段階** | 理由を聞く層（追加設問・自由記述）、分析画面（優先度・場所・理由）と出力 | 提案の言葉に変わる状態にする |
+| **第5段階** | お申込み・規約の完結、分析画面の拡張、人員計画からのレイアウト構成、クライアント別カスタム | 提案の時間枠に収め、個社最適化する |
 
-**第1段階を可視化から始める理由：**
-配信の仕組みはすでに動いているため、原因は配信の前後にあると考えられます。
-ただし現時点では、どの箇所で止まっているかを数値で確認できません。
+**第1段階に2つを置く理由：**
 
-そのため、まず各段階の件数が見える状態を作り、
-**確認できた事実に基づいて第2段階の内容を決める**進め方をご提案します。
+**目標設定**は、Afterに動機を生むための前提です。
+比較する目標がなければ、Afterは「もう一度測るだけ」になります。
+またBeforeの流れの中に組み込むため、既存の動作に影響しにくい範囲で実装できます。
 
-可視化は既存の仕組みに手を入れずに実現できる範囲であり、
-早い段階で着手できると考えています。
+**可視化**は、現在起きている状態を切り分けるためです。
+「回答が集まっていない」のか「回答はあるがスコアが動いていない」のかによって、
+第2段階以降の重点が変わります。
 
 順序の考え方は 2-10 に記載します。
 
@@ -394,11 +417,13 @@ FY2026はXD MVPの検証を進める段階と伺っております。
 
 ### Vis営業・カスタマーサクセス
 
-> **Beforeの結果画面から、そのままAfterのご提案とお見積を出したい。**
-> なぜなら、有料契約はAfter経由であり、ご提案しなければ商談が発生しないから。
+> **移転前に設定した目標を、Afterの結果と並べて見せたい。**
+> なぜなら、目標に対してどうだったかを示せなければ、
+> 効果検証としてご評価いただけないから。
 
-> **どの案件がAfterご提案済み・実施済みかを一覧で見たい。**
-> なぜなら、案件数と転換率のどちらが課題なのか、判断できないから。
+> **どの案件でAfterが実施され、どこで止まっているかを一覧で見たい。**
+> なぜなら、回答が集まっていないのか、そもそも実施されていないのかが
+> 判断できないから。
 
 ## 2-6. 機能一覧
 
@@ -408,53 +433,104 @@ FY2026はXD MVPの検証を進める段階と伺っております。
 | # | 機能 | 主な利用者 | 区分 | 対応する課題 | 現状 |
 |---|---|---|---|---|---|
 | **F1** | お申込み・規約確認のオンライン完結 | コンペご担当者 / クライアント | 提案用 | 課題2 | 新規 |
-| **F2** | ワーカーボイス（条件分岐の追加設問＋自由記述＋レイアウト上での位置指定）| ワーカー / XP | **有料** | 課題1 | 新規 |
+| **F2** | ワーカーボイス（条件分岐の追加設問＋自由記述＋レイアウト上での位置指定）| ワーカー / XP | 将来的に有料 | 課題1 | 新規 |
 | **F3** | 分析画面と、採用内容の出力 | コンサルタント | 提案用 | 課題1・2 | 新規 |
-| **F4** | 人員計画からのレイアウト構成案 | コンサルタント | 提案用（更新は有料）| 課題1・2 | 新規 |
-| **F5** | KPI設定支援（設問から数項目の候補提示＋目標スコア）| XP | **有料** | 課題3 | 新規 |
-| **F6** | Before/After 効果検証レポート | クライアント / XP | **有料** | 課題3 | 新規 |
-| **F7** | 定点サーベイの内容選択 | クライアント | **有料** | 課題3 | **配信の仕組みは既存**。内容の選択を追加 |
-| **F8** | クライアントごとのサーベイカスタム | クライアント / XP | **有料** | 課題3 | 新規 |
-| **F9** | 有料Afterのご提案・お見積の導線 | 営業 / CS / XP | 提案用 → 有料の入口 | 課題3 | 新規 |
-| **F10** | **Afterの実行状況の可視化**（対象案件・配信・回答・ご提案・ご契約・レポート）| 営業 / CS / XP | 提案用（社内）| 課題3 | 新規 |
-| **F11** | 配信後の実行支援（回答状況の確認と督促）| XP / クライアント | 提案用 → 有料 | 課題3 | 新規 |
+| **F4** | 人員計画からのレイアウト構成案 | コンサルタント | 提案用 | 課題1・2 | 新規 |
+| **F5** | **Beforeでの目標設定**（項目と目標スコア、プロジェクト期間中の表示）| コンサルタント / XP | 提案用 | 課題3 | 新規 |
+| **F6** | **Before/After 効果検証レポート**（稼働データを含む）| クライアント / XP | 将来的に有料 | 課題3 | 新規 |
+| **F7** | **Afterの設問内容**（比較項目＋移転後の運用に関する設問）| クライアント / XP | 提案用 | 課題3 | **配信の仕組みは既存**。設問内容を追加 |
+| **F8** | クライアントごとのサーベイカスタム | クライアント / XP | 将来的に有料 | 課題3 | 新規 |
+| **F9** | **回答者へのフィードバック**（挙げられた内容への対応を返す）| クライアント / ワーカー | 提案用 | 課題3 | 新規 |
+| **F10** | **実施状況の可視化**（対象案件・配信・回答・レポート）| 営業 / CS / XP | 提案用（社内）| 課題3 | 新規 |
+| **F11** | 回答状況の確認と督促 | XP / クライアント | 提案用 | 課題3 | 新規 |
+
+**「区分」について：**
+Afterは現時点では無償でご提供いただいていると伺っております。
+そのため本提案では、まず**実施が積み上がる状態を作ること**を目的とし、
+有償化はその後の段階として整理しています。
 
 **すでに備わっている機能について：**
-Afterサーベイの**自動配信の仕組みは既存**であり、本提案では手を入れません。
-F7・F9・F10・F11は、いずれも**配信の前後**を補う内容です。
+サーベイの**自動再配信の仕組みは既存**であり、本提案では手を入れません。
+F7・F9・F10・F11は、いずれも**配信の前後、または測る内容**に関する改善です。
 
-起点日の設定については、確認のうえ必要であれば調整のご提案をいたします（2-9 参照）。
+## 2-7. 各機能について ―「なぜこの機能が良いのか」
 
-## 2-7. 有料機能について ―「なぜこの機能が良いのか」
+Afterは現時点では無償でご提供いただいていると伺っております。
+そのため本提案では、まず**実施が積み上がる状態を作ること**を目的とし、
+将来の有償化に繋がる機能はその位置づけを併記しています。
+
+### F5：Beforeでの目標設定
+
+**Afterに「確かめるべきこと」を持たせます。**
+
+Afterに動機が生まれるのは、移転前に目標が設定されている場合です。
+目標があれば、Afterは「設定した目標を確かめる場」になります。
+なければ「もう一度測るだけ」となり、後回しになりやすくなります。
+
+目標設定はXDのプロセス（KPI設計）に含まれている内容ですが、
+ワークショップを伴うため実施できている案件は限られていると伺っております。
+
+この機能は、**ワークショップを前提とせずBeforeの流れの中で目標を設定できる形**に
+することで、XDが入らない案件でも目標が残る状態を目指すものです。
+
+将来的に効果検証を有償のメニューとされる際も、
+「目標に対してどうだったか」を示せることが前提になると考えています。
 
 ### F6：Before/After 効果検証レポート
 
-**有料が成立する理由は、すでに実証されている点です。**
+**投資に対して説明ができる状態を作ります。**
 
-有料契約を獲得された際は、最初から有料のAfterサーベイの金額も含めて
-効果検証を訴求されたと伺っております。
-そしてクライアントが価値を感じられたのは、
-「**オフィスプロジェクトの効果を数値化する**」という考え方そのものでした。
+有料契約を獲得された際、クライアントが価値を感じられたのは
+「**オフィスプロジェクトの効果を数値化する**」という考え方そのものだったと
+伺っております。
 
-つまりクライアントが対価を払っているのは、ツールの利用権ではなく、
-**投資に対して説明ができる状態**です。
+つまり価値の中心は、ツールの機能ではなく
+**経営層に対して説明ができる状態**にあります。
 
 機能としては、目標に設定した項目のスコア推移、Before/Afterの差分、
-実施した施策との対応関係を、1つのレポートにまとめます。
+実施した施策との対応関係を1つのレポートにまとめます。
 
-### F7：定点サーベイ
+**稼働データを含める点が重要です。**
+出社率や空間稼働率は回答に依存しないため、
+回答が十分に集まらない場合でも変化を示すことができます。
+また「実際に使われているか」という、移転後に最も関心が向く点にも答えられます。
 
-**継続して払う理由が「悪化を早期に見つけられること」にあります。**
+**レポートの見せ方について：**
+達成・未達の判定として構成すると、結果を確認することが
+負担になりやすい面があります。
+事業計画にも「6項目のすべてを移転だけで向上させるのは難しい」との記載があるため、
+**「何が動いたか」「次に何をするか」**を中心とした構成をご提案します。
 
-移転直後は満足度が上がりやすい一方、時間の経過とともに
-ルールが形骸化し、席が固定化していきます。
+### F7：Afterの設問内容
 
-この変化は、半年に一度の評価だけでは検知が遅れます。
-定点で測ることで「**戻り始めている**」ことを早期に把握でき、
-次の施策を打つ判断ができます。
+**移転後に関心が向いている内容を測れるようにします。**
 
-単発の測定では得られない価値であり、
-継続利用の理由が機能そのものに含まれています。
+移転から半年後にクライアントが知りたいことは、
+文化やキャリアといった項目よりも、
+運用に関する具体的な内容であると考えています。
+
+- 新しいルールが機能しているか
+- 使われていないエリアが出ていないか
+- 席の固定化が起きていないか
+- 会議室や集中スペースは足りるようになったか
+
+これらは**関心が向いている内容**であり、かつ
+**半年で変化しうる内容**でもあります。
+
+一方、比較のためには同じ項目を測る必要があります。
+そこで、**目標に設定した項目は残したうえで、運用に関する設問を加える**構成とします。
+
+なお、既存の設問自体には手を入れません（2-9 参照）。
+
+### F9：回答者へのフィードバック
+
+**回答者が「答えた意味があった」と感じられる状態を作ります。**
+
+Beforeで回答した内容に対して何が変わったのかが伝わらない場合、
+次回の回答意欲は下がります。回答率に直接影響する部分と考えています。
+
+「挙げられた内容 → 対応した内容」を回答者にお返しできるようにし、
+Afterの配信前または同時にお渡しする想定です。
 
 ### F2：ワーカーボイス
 
@@ -473,21 +549,24 @@ F7・F9・F10・F11は、いずれも**配信の前後**を補う内容です。
 現在AIに渡せるのはスコアのみですが、理由・場所・影響の情報が加わることで、
 出力の具体性が変わります。この機能は、その入力データを作る役割も持ちます。
 
-### F5：KPI設定支援
-
-**「オフィス投資の効果」として説明しやすい状態を作ります。**
+### 目標項目の絞り込みについて（F5 の補足）
 
 サーベイは文化・キャリア・人間関係・健康など、
 オフィス以外の要因も測っています。
 すべてを追うと、オフィス投資の効果として説明しにくくなります。
 
-数項目に絞ることで、因果の説明がしやすくなります。
-これはXDのプロセスで既に行われている判断であり、
+また、事業計画にも記載されているとおり、
+移転だけで6項目すべてが動くわけではありません。
+
+そのため目標は**数項目に絞る**形とします。
+これはXDのKPI設計で既に行われている判断であり、
 それを**候補提示という形で仕組みに載せる**ものです。
+
+絞り込むことで、Before/Afterの差分も読み取りやすくなります。
 
 ### F8：クライアントごとのサーベイカスタム
 
-**定点で測る前提に立つと、カスタムは継続利用の前提条件になります。**
+**繰り返し測る前提に立つと、カスタムは継続利用の前提条件になります。**
 
 自社にとって意味のある項目でなければ、繰り返し測る動機が続きません。
 業種・職種構成・働き方によって、測りたい項目は異なります。
@@ -495,14 +574,14 @@ F7・F9・F10・F11は、いずれも**配信の前後**を補う内容です。
 コンペご担当者・コンサルタントの皆様からも、
 ご要望として挙げていただいている機能です。
 
-### F4（更新機能）：レイアウト構成案の更新
+比較可能性を保つため、**変更してよい範囲は事前に決めさせていただきたい**と
+考えています（2-9 参照）。
+
+### F4：レイアウト構成案
 
 **「サーベイ結果 → 翌週のレイアウト変更案」という反映スピードを実現します。**
 
-提案時のレイアウト作成は提案付加価値として提供し、
-**運用開始後の更新**を有料機能として設計します。
-
-定点サーベイで課題が見つかった際に、
+提案時のレイアウト作成に加え、運用開始後に課題が見つかった際、
 そのままレイアウト変更案に反映できる状態を目指します。
 
 ## 2-8. ご要望いただいている機能の織り込み
@@ -530,11 +609,13 @@ F7・F9・F10・F11は、いずれも**配信の前後**を補う内容です。
 
 | 確認したいこと | なぜ必要か |
 |---|---|
-| **AIレポートの想定範囲** — 提案内容の生成まで含まれるか、入力として何を使う想定か | 分析画面と出力の設計範囲が変わります。重複を避けるため、最初に確認させていただきたい点です |
-| **自動配信の実行状況** — 対象案件でどの程度配信されているか、回答は集まっているか | 止まっている箇所の特定に必要です。第1段階の可視化で明らかにしたい内容でもあります |
+| **配信件数と回答率の実績** — 対象案件でどの程度配信され、どの程度回答が集まっているか | 「回答が集まっていない」のか「回答はあるがスコアが動いていない」のかを切り分けるために必要です |
+| **これまでのAfter結果におけるスコアの変化幅** | 変化が小さい場合、測る対象の見直しが必要になります |
+| **AIレポートの想定範囲** — 提案内容の生成まで含まれるか、入力として何を使う想定か | 分析画面と出力の設計範囲が変わります。重複を避けるため、早めに確認させていただきたい点です |
+| **移転後に運用面でよくいただくご相談の内容** | Afterの設問に何を加えるべきかの判断材料になります |
+| **稼働分析のデータをレポートに含められるか** | 回答に依存しない指標を確保するために必要です |
 | **自動配信の起点日** — 設定日起点か、他の日付を指定できるか | 移転から半年後という基準に合っているかの確認になります |
 | **移転完了日をWDP上で保持しているか** | 起点日を移転基準にする場合に必要です。保持していない場合は入力できる形にします |
-| **Afterのご提案とご契約の流れ** — 現在どのように行われているか | ご提案の導線を設計するうえで前提になります |
 | これまでの回答データを、Before/Afterで比較できる形で参照できるか | 比較レポートが成立する前提となります |
 | 現在のお申込み・規約確認の流れ（どこで何日かかっているか）| どこまで画面上に置き換えられるかの判断に必要です |
 | Afterを担当する方をどなたに置くか | 実行に移す方が必要になります |
@@ -554,26 +635,31 @@ F7・F9・F10・F11は、いずれも**配信の前後**を補う内容です。
 
 | 順番 | 内容 | 効果 |
 |---|---|---|
-| **1** | 止まっている箇所を確定させる（F10）| 手を入れる場所が事実に基づいて決まる |
-| **2** | 確定した箇所に手を入れる（F9・F11・起点日）| Afterが実行される状態になる |
-| **3** | 有料で使い続ける中身を用意する（F2・F5・F6・F7・F8）| 1回で終わらなくなる |
-| **4** | 提案の時間枠に収める（F1・F3）| Before側の利用が増え、2の母数が増える |
-| **5** | 提案の質を上げる（F4・F3の拡張）| 個社最適化された提案になる |
+| **1** | Afterに確かめる理由を持たせる（F5）＋ 現状を切り分ける（F10）| 実施する動機ができ、次に何を直すべきかが分かる |
+| **2** | 回答が集まる状態にする（F7・F9・F11）| 移転後も関心が向く内容になり、回答が返ってくる |
+| **3** | 効果検証として使える形にする（F6）| 経営層に説明できる状態になる |
+| **4** | 提案の言葉に変わる状態にする（F2・F3）| サーベイ結果が提案に接続する |
+| **5** | 提案の時間枠に収め、個社最適化する（F1・F4・F8）| 提案準備が枠内に収まり、内容が個社に合う |
 
 **1を先に置く理由：**
-配信の仕組みはすでに動いており、原因は配信の前後にあると考えられます。
-ただし現時点では、どの箇所で止まっているかを数値で確認できません。
 
-先に可視化を行うことで、**効かない箇所に手を入れることを避けられます。**
-また、可視化そのものが `after提案件数と率、after実施数と率` の把握になります。
+Afterに動機が生まれるのは、**確かめるべきことがある場合**です。
+移転前に目標が設定されていなければ、Afterは「もう一度測るだけ」になります。
+そのため目標設定を最初に置きます。
 
-**2をAfterに置く理由：**
-有料契約はAfter経由が入口となるため、
-まずそこが開かないと、他の改善が売上に繋がりません。
+あわせて、現在起きている状態を切り分けます。
+「回答が集まっていない」のか「回答はあるがスコアが動いていない」のかによって、
+2以降の重点が変わるためです。
 
-**4が2の後になる理由：**
-Before側の利用を増やす効果は、Afterの流れが整った後に効きます。
-順序を逆にすると、Beforeが増えてもAfterに繋がらない状態が続きます。
+**3が2の後になる理由：**
+効果検証レポートは、回答が集まって初めて意味を持ちます。
+先にレポートを整えても、元になる回答がなければ効果が出ません。
+
+**有償化との関係：**
+Afterは現時点では無償でご提供いただいていると伺っております。
+本提案では、まず1〜3で**実施が積み上がる状態**を作ることを目的としています。
+有償化を検討される段階では、
+「目標に対してどうだったかを示せること」（F5・F6）が前提になると考えています。
 
 ---
 
@@ -615,55 +701,97 @@ Nếu sửa 52 câu hiện tại thì mất khả năng so sánh với dữ li�
 **2. Tách biệt xử lý mới khỏi xử lý cũ.**
 Đây là cách xử lý thực tế cho vấn đề "phạm vi ảnh hưởng rộng" của WDP hiện tại — thay vì đề xuất làm lại nền tảng, ta giảm rủi ro bằng cách cô lập phần mới.
 
-## Hai điều chỉnh lớn sau khi rà lại hiện trạng
+## 課題3 — ba giả thuyết đã bị loại, và hướng hiện tại
 
-### A. 課題3 — cơ chế gửi đã tự động, nên trọng tâm chuyển sang "đo trước, sửa sau"
+### Những gì đã được xác nhận là SAI
 
-Hai giả thuyết ban đầu **đều sai** và đã bị loại:
-
-| Giả thuyết đã loại | Vì sao sai |
+| Giả thuyết đã loại | Sự thật |
 |---|---|
-| ~~Thiếu chức năng nhắc mốc đánh giá~~ | Cơ chế tự động gửi sau 6 tháng đã có |
-| ~~Cần người thiết lập thủ công~~ | Tự động chạy, không cần thiết lập |
+| ~~Thiếu chức năng nhắc mốc đánh giá~~ | Cơ chế tự động gửi lại sau 6 tháng **đã có** |
+| ~~Cần người thiết lập thủ công~~ | **Tự động chạy**, không cần thiết lập |
+| ~~Hợp đồng có phí chặn việc thực hiện~~ | **After hiện miễn phí** — không có rào cản thương mại |
 
-**Kết luận:** việc **gửi** không phải vấn đề. Vấn đề nằm ở **trước hoặc sau khi gửi**.
+Ba lần sai đều cùng một dạng: **suy diễn khi chưa xác thực**. Đây là lỗi cần tránh cho phần còn lại của đề xuất.
 
-Các điểm còn lại có thể tắc:
+### Hướng hiện tại: động cơ, không phải cơ chế
 
-| Điểm | Trạng thái có thể đang xảy ra |
-|---|---|
-| **Hợp đồng có phí** | After là hàng có phí. Nếu bước đề xuất/báo giá/ký không diễn ra thì survey gửi ra cũng không thành "đã thực hiện" |
-| **Thu hồi câu trả lời** | Gửi rồi nhưng không ai thúc đẩy nên không có phản hồi |
-| **Báo cáo** | Có phản hồi nhưng không ai làm báo cáo so sánh |
-| **Mốc tính** | Từ ngày thiết lập → có thể gửi trước khi khách chuyển văn phòng |
+Cơ chế gửi đã tự động và miễn phí — nghĩa là **không có rào cản kỹ thuật hay chi phí**. Nhưng kết quả vẫn không tích lũy. Vậy vấn đề nằm ở **động cơ thực hiện sau khi cải tạo**.
 
-**Điểm nghi ngờ lớn nhất là hợp đồng có phí**, vì 事業計画 tự viết 「有料契約は**アフター経由**を対象にしており、コンスタントな受注には至っていない」 và 「**商談プロセスの構築が命題**」. Tức là cơ chế kỹ thuật gửi được, nhưng **bước thương mại chưa thành quy trình**.
+Giả thuyết này **được chính 事業計画 xác nhận**, và đây là điểm tựa mạnh nhất:
 
-### Vì sao đổi sang "đo trước, sửa sau"
+> どの企業も…**リニューアルの日を迎える事に精一杯**になる実態があります
+>
+> **その手前で掲げられていた期待に対してシビアに向き合う企業や人が少ない**
+>
+> オフィスではその先が**おざなり**になっています。
+> **いいオフィスができてみんな喜んでいる。と一見は映るからです。**
 
-Đã hai lần đoán sai nguyên nhân. Nên đề xuất **không tiếp tục đoán** — thay vào đó đặt việc đầu tiên là **F10: làm cho từng bước hiện ra bằng số** (đối tượng → gửi → phản hồi → đề xuất → ký → báo cáo).
+Nghĩa là: đây **chính là bài toán mà XD được sinh ra để giải**. Đề xuất của BS là đưa nó vào hệ thống.
 
-Ba lợi ích:
+### Hai trạng thái cần phân biệt
 
-1. Tránh làm tính năng ở chỗ không phải nguyên nhân
-2. Không đụng vào cơ chế đang chạy → rủi ro thấp, làm được sớm
-3. Bản thân việc này **chính là** chỉ số Vis đã tự liệt kê `after提案件数と率、after実施数と率`
+「Kết quả không tích lũy」có hai nghĩa, và cách giải khác nhau:
 
-**Cách trình bày:** đây là điểm mạnh chứ không phải điểm yếu của đề xuất. Nó cho thấy BS **không áp giải pháp sẵn** mà xác nhận thực tế trước — phù hợp với tinh thần giai đoạn 検証 của FY2026.
+| | Trạng thái | Nguyên nhân | Giải bằng |
+|---|---|---|---|
+| **A** | Gửi rồi nhưng **ít người trả lời** | Không có lý do trả lời lại; không thấy ý kiến lần trước được dùng | F5 (mục tiêu), F9 (vòng phản hồi), F11 (nhắc thúc) |
+| **B** | Có trả lời nhưng **điểm gần như không đổi** | Đang đo thứ không thể thay đổi trong 6 tháng bằng việc chuyển văn phòng | **F7 (đổi nội dung After)**, F6 (thêm dữ liệu vận hành) |
+
+**事業計画 gợi ý mạnh cho trường hợp B:**
+
+> 実際に当社で取得したサーベイでは**6項目の内、すべてが移転というタイミングだけでは
+> 向上させるのが難しい**というケースもでてきています
+
+Nếu là B thì thêm bao nhiêu nhắc nhở cũng vô nghĩa — phải đổi thứ được đo.
+
+**Chưa biết A hay B đang xảy ra** → đây là lý do F10 (làm hiện ra bằng số) vẫn nằm ở giai đoạn 1.
+
+### Cơ chế mạnh nhất: có lời hứa trước thì mới có việc phải kiểm sau
+
+Đây là logic trung tâm của 課題3 trong bản hiện tại.
+
+Nếu ở Before đã đặt mục tiêu, After trở thành **"kiểm tra lời hứa"** — có lý do tồn tại. Nếu không, After chỉ là "đo lại cho biết" và dễ bị bỏ.
+
+Việc đặt mục tiêu **đã có trong XD (bước ⑥ KPI設計)** — nhưng workshop XD chỉ chạy 5–6 dự án/năm trên 500 dự án renewal. Nghĩa là **hầu hết dự án không có mục tiêu nào được đặt**.
+
+→ Nên F5 được thiết kế là **đặt mục tiêu không cần workshop**, nằm trong luồng Before bình thường. Cách nói an toàn: 「XDのKPI設計を、ワークショップを前提とせず仕組みに載せる」.
+
+### Về nội dung After (F7) — điểm mới quan trọng
+
+Sáu tháng sau khi chuyển, câu hỏi thật của 総務 không phải văn hóa hay career, mà là:
+
+- Quy tắc mới còn được tuân thủ không
+- Khu vực nào đang bị bỏ trống
+- Chỗ ngồi đã bị cố định lại chưa
+- Phòng họp, chỗ tập trung đã đủ chưa
+
+Những thứ này vừa là **điều họ đang quan tâm**, vừa **có thể thay đổi trong 6 tháng**.
+
+Nên After = **mục tiêu (để so sánh) + câu hỏi vận hành (mới)**. Giữ được tính so sánh mà nội dung vẫn đáng quan tâm.
+
+### Về dữ liệu 稼働分析 (F6)
+
+WDP đã có phân tích 稼働. Dữ liệu này **không cần ai trả lời**, nên là cách phòng rủi ro cho tỷ lệ phản hồi thấp. Và nó trả lời đúng câu hỏi họ quan tâm nhất — *"có ai dùng không"*.
+
+### Về cách trình bày báo cáo
+
+Nếu After bị coi là **chấm điểm dự án** thì có động cơ tránh, vì điểm xấu là rủi ro cho người phụ trách. Mà 事業計画 đã nói 6 mục khó cùng tăng — nên rủi ro đó là thật.
+
+→ Báo cáo đóng khung là **"điều gì đã chuyển, điều gì nên làm tiếp"**, không phải đạt/không đạt.
 
 ### Còn về con số 83 và 5
 
-Before ở giai đoạn đề xuất; After ở 6 tháng sau chuyển. Cộng chuỗi đề xuất → thắng → thi công → chuyển → +6 tháng, dễ tới 1,5–2 năm. 事業計画 cũng ghi 「WDPの利用から売上計上までは4か月〜1年程度のリードタイム」.
+Before ở giai đoạn đề xuất; After ở 6 tháng sau chuyển. Cộng chuỗi lại dễ tới 1,5–2 năm. 事業計画 cũng ghi 「WDPの利用から売上計上までは4か月〜1年程度のリードタイム」.
 
-→ Nên 83 Before của FY2025 phần lớn sinh After ở FY2026–2027. Cách đo đúng phải lấy mẫu số là **dự án đã chuyển trên 6 tháng**.
+→ Cách đo đúng phải lấy mẫu số là **dự án đã chuyển trên 6 tháng**.
 
-**Lưu ý khi trình bày:** không nói "con số 83/5 của Vis sai". Nói theo hướng *"để đo đúng thì cần mẫu số là dự án đã qua 6 tháng"* — tức là ta giúp họ đo, không phê bình.
+**Lưu ý khi trình bày:** không nói "con số của Vis sai". Nói theo hướng *"để đo đúng thì cần mẫu số là dự án đã qua 6 tháng"*.
 
-### Bài học cho cả đề xuất
+### Về việc có phí
 
-Hai lần sai đều cùng một dạng: **giả định WDP thiếu tính năng mà chưa xác nhận**. Trước khi đưa bất kỳ tính năng nào vào đề xuất, cần hỏi dev: *"cái này đã có chưa?"*
+**After hiện miễn phí.** Nên đề xuất **không lấy有料化 làm mục tiêu trực tiếp** của 課題3 nữa — mục tiêu là **làm cho việc thực hiện tích lũy được**.
 
-Vì vậy trong 2-6 đã thêm cột **現状**, và trong 2-9 đã thêm câu 「その他にも同様の機能がある場合は、事前にお知らせいただけますと」.
+有償化 chỉ được nhắc như bước sau, với điều kiện tiên quyết là "示せる状態" (F5 + F6). Cách này an toàn hơn: không áp đặt mô hình kinh doanh, mà chuẩn bị điều kiện cho nó.
 
 ### B. Ranh giới với AIレポート — dùng phân vai, không cạnh tranh
 
@@ -697,83 +825,95 @@ Ba lựa chọn thiết kế đáng chú ý:
 
 Bản tối thiểu: **1, 2, 3, 8** — biết sửa gì, ở đâu, vì sao, và giao được ra.
 
-## Cách phân biệt 提案用 vs 有料
+## Cách phân biệt 提案用 vs 将来的に有料
 
-## Cách phân biệt 提案用 vs 有料
+**Quan trọng:** After **hiện miễn phí**. Nên không còn phân đôi thành "có phí ngay" và "dùng cho đề xuất" như bản trước.
 
-Theo đúng ghi chú nội bộ của Vis trong bảng câu hỏi:
+Cách phân loại hiện tại:
+
+| 区分 | Nghĩa | Ví dụ |
+|---|---|---|
+| **提案用** | Phục vụ việc Vis đi đề xuất và vận hành, không thu riêng | F1, F3, F5, F7, F9, F10, F11 |
+| **将来的に有料** | Có thể thành hạng mục thu phí khi Vis quyết định có料化 | F2, F6, F8 |
+
+Vẫn theo tinh thần ghi chú nội bộ của Vis trong bảng câu hỏi:
 
 > ヴィスの提案の付加価値として利用するものと、定点的にお客様が継続利用するものの内容を分けたほうが良い
 
-| 区分 | Ai dùng | Ai trả tiền | Cơ chế thu hồi |
-|---|---|---|---|
-| **提案用** | Vis（コンペ担当・コンサル・XP）| Không thu riêng | Qua 受注率 → hiệu quả gián tiếp |
-| **有料** | End-client dùng lặp lại | End-client | Trực tiếp |
+Nhưng **không áp mô hình kinh doanh lên khách**. Đề xuất chỉ nói: nếu sau này có料化 thì điều kiện tiên quyết là **"示せる状態"** — tức là có mục tiêu (F5) và có báo cáo đối chiếu được (F6).
 
-Đây là lý do F1（申込・規約）xếp vào 提案用: nó giúp Vis **thắng dự án nhanh hơn**, không phải thứ end-client trả phí.
+## Logic của từng tính năng — trả lời "vì sao cái này tốt"
 
-## Logic của từng 有料機能
-
-Mỗi cái trả lời **"vì sao khách trả tiền lặp lại"**, không phải "vì sao tính năng hay":
-
-| 機能 | Lý do khách trả tiền |
+| 機能 | Lý do |
 |---|---|
-| F6 | **Đã chứng minh** — chính cách bán này đã thắng hợp đồng có phí |
-| F7 | Phát hiện **suy thoái sớm**（形骸化・席固定化）— thứ đo một lần không có |
-| F2 | Biết **sửa ở đâu**, thay vì chỉ biết điểm thấp |
-| F5 | **Giải thích được nhân quả** với office, không lẫn yếu tố ngoài |
-| F8 | **Tiền đề** để đo định kỳ có ý nghĩa |
-| F4更新 | Hiện thực hóa 「即時反映力」 |
+| **F5** | **Cơ chế trung tâm** — có mục tiêu trước thì After mới có việc phải kiểm |
+| **F7** | Đo thứ khách đang quan tâm và **có thể thay đổi trong 6 tháng** — giải trường hợp gap nhỏ |
+| **F9** | Người trả lời thấy ý kiến được dùng → chịu trả lời lần sau |
+| **F6** | Nói được với ban lãnh đạo. Thêm dữ liệu 稼働 để không phụ thuộc tỷ lệ trả lời |
+| **F2** | Biết **sửa ở đâu**, thay vì chỉ biết điểm thấp |
+| **F8** | Tiền đề để đo lặp lại có ý nghĩa |
+| **F10** | Phân biệt được A (ít trả lời) và B (gap nhỏ) |
+| **F4** | Hiện thực hóa 「即時反映力」 |
 
-## Sáu điểm cần cẩn thận khi trình bày
+## Chín điểm cần cẩn thận khi trình bày
 
-1. **Đừng gọi F7 là "pulse survey mới"** — Vis đã tự tạo bộ pulse rút gọn. Nói là "vận hành định kỳ", "chọn nội dung", "so sánh theo thời gian".
-2. **Đừng gọi F2 là "thêm Worker Voice"** — 座談会 đã có trong quy trình XD. Nói là "số hóa và mở rộng".
-3. **Đừng đề xuất self-service/SaaS ngay** — theo kế hoạch là giai đoạn sau (FY2027–2028).
-4. **F1 cần được thấy là nặng, không phải phụ** — nhưng nói bằng lập luận（「日数が読みにくい工程」）thay vì trưng bảng 6 tuần.
-5. **Đừng để chữ "scratch" nghe thành "bỏ WDP làm lại"** — luôn kèm câu 「現在の資産はそのまま活かします」ở 2-1. Nghĩa đúng là **phát triển custom**, không phải xóa đi làm lại.
-6. **Đừng lấn vào phần Vis đang tự làm** — AIレポート và phần XP nội bộ để riêng.
-7. **Nhấn nguyên tắc "既存設問は変更せず追加のみ"** — đây là điểm khiến khách yên tâm nhất, vì nó bảo vệ dữ liệu đã tích lũy.
+1. **Đừng nói After là hàng có phí** — hiện miễn phí. 有償化 chỉ nhắc như bước sau, có điều kiện.
+2. **Đừng nói thiếu chức năng nhắc/gửi tự động** — đã có. Chỉ nói phần trước và sau việc gửi.
+3. **Đừng gọi F7 là "pulse survey mới"** — Vis đã tự tạo bộ pulse rút gọn. Nói là "thêm câu hỏi về vận hành sau chuyển".
+4. **Đừng gọi F2 là "thêm Worker Voice"** — 座談会 đã có trong quy trình XD. Nói là "số hóa và mở rộng".
+5. **Đừng gọi F5 là "thêm KPI"** — KPI設計 đã có trong XD bước ⑥. Nói là 「ワークショップを前提とせず仕組みに載せる」.
+6. **Đừng đề xuất self-service/SaaS ngay** — theo kế hoạch là giai đoạn sau (FY2027–2028).
+7. **F1 cần được thấy là nặng, không phải phụ** — nhưng nói bằng lập luận（「日数が読みにくい工程」）thay vì trưng bảng 6 tuần.
+8. **Đừng để chữ "scratch" nghe thành "bỏ WDP làm lại"** — luôn kèm câu 「現在の資産はそのまま活かします」ở 2-1.
+9. **Nhấn nguyên tắc "既存設問は変更せず追加のみ"** — điểm khiến khách yên tâm nhất, vì nó bảo vệ dữ liệu đã tích lũy.
+
+**Quy tắc chung rút ra sau ba lần sai:** trước khi viết bất kỳ tính năng nào vào đề xuất, hỏi *"cái này đã có chưa, và ai đang chịu chi phí?"*
 
 ## Vì sao thêm 2-10「効く順番」
 
 Phần này thay cho bảng đối chiếu KPI bằng số. Nó cho thấy BS hiểu **thứ tự nhân quả**, không chỉ liệt kê tính năng:
 
-- After mở trước → mới có cửa cho doanh thu có phí
-- Rồi mới tăng Before → nếu ngược lại, Before tăng mà After vẫn tắc
-
-Đây cũng là chỗ trả lời ngầm cho việc Vis tự phân tích 「商談プロセスの構築が命題」— thứ tự này chính là xây quy trình bán.
+- Có mục tiêu trước → After mới có việc phải kiểm
+- Có lý do trả lời → mới có dữ liệu
+- Có dữ liệu → báo cáo mới có nghĩa
+- Rồi mới tăng Before; nếu ngược lại, Before tăng mà After vẫn tắc
 
 ## Điểm cần xác nhận trước khi chốt
 
 | # | Nội dung | Ảnh hưởng | Ai xác nhận |
 |---|---|---|---|
-| 1 | **Số liệu tự động gửi thực tế** — đã gửi bao nhiêu, có bao nhiêu phản hồi | Xác định chỗ tắc. Là cơ sở của toàn bộ 課題3 | Dev |
-| 2 | **Luồng đề xuất/ký hợp đồng After hiện tại** — ai làm, ở đâu, ghi nhận thế nào | Điều kiện thiết kế F9 | Vis |
+| 1 | **Số phát hành thực tế và tỷ lệ phản hồi** | Phân biệt A (ít trả lời) và B (gap nhỏ). Cơ sở của toàn bộ 課題3 | Dev |
+| 2 | **Biên độ thay đổi điểm ở các After đã làm** | Nếu nhỏ thì phải đổi nội dung đo (F7), không phải thêm nhắc nhở | Dev / Vis |
 | 3 | **Phạm vi AIレポート** — có sinh nội dung đề xuất không, đầu vào là gì | Phạm vi thiết kế màn hình phân tích và phần xuất | Vis |
-| 4 | **Gốc tính mốc tự động gửi** — từ ngày thiết lập hay chỉ định được ngày khác | Xác nhận có khớp chuẩn "6 tháng sau chuyển" không | Dev |
-| 5 | WDP có **lưu ngày chuyển văn phòng** không | Điều kiện nếu cần đổi gốc tính | Dev |
-| 6 | Dữ liệu trả lời cũ có **truy vấn được theo cùng đối tượng qua thời gian** không | Điều kiện cho báo cáo so sánh（F6）| Dev |
-| 7 | Có được phép **thêm câu hỏi vào bộ hiện tại** không, cấu trúc cho phép tới đâu | Điều kiện cho F2 | Vis + Dev |
-| 8 | Luồng お申込み・リーガルチェック — tốn mấy ngày ở bước nào | Biết F1 cắt được bao nhiêu | Vis |
-| 9 | Ai là owner của After ở phía Vis | Cần người chuyển sang thực hiện | Vis |
-| 10 | Cho phép custom setting tới mức nào | Cân bằng F8 và khả năng so sánh | Vis |
-| 11 | Định nghĩa **勝率**（chưa được trả lời）| Cách viết phần 効果 | Vis |
+| 4 | **Những vấn đề vận hành hay được hỏi sau khi chuyển** | Quyết định nội dung câu hỏi thêm vào After (F7) | Vis |
+| 5 | **Dữ liệu 稼働分析 có đưa vào báo cáo được không** | Điều kiện để không phụ thuộc tỷ lệ trả lời (F6) | Dev |
+| 6 | **Gốc tính mốc tự động gửi** — từ ngày thiết lập hay chỉ định được ngày khác | Xác nhận có khớp chuẩn "6 tháng sau chuyển" không | Dev |
+| 7 | WDP có **lưu ngày chuyển văn phòng** không | Điều kiện nếu cần đổi gốc tính | Dev |
+| 8 | Dữ liệu trả lời cũ có **truy vấn được theo cùng đối tượng qua thời gian** không | Điều kiện cho báo cáo so sánh（F6）| Dev |
+| 9 | Có được phép **thêm câu hỏi vào bộ hiện tại** không, cấu trúc cho phép tới đâu | Điều kiện cho F2 và F7 | Vis + Dev |
+| 10 | Luồng お申込み・リーガルチェック — tốn mấy ngày ở bước nào | Biết F1 cắt được bao nhiêu | Vis |
+| 11 | Ai là owner của After ở phía Vis | Cần người chuyển sang thực hiện | Vis |
+| 12 | Cho phép custom setting tới mức nào | Cân bằng F8 và khả năng so sánh | Vis |
+| 13 | Định nghĩa **勝率**（chưa được trả lời）| Cách viết phần 効果 | Vis |
 
-**Mục 1 quan trọng nhất** — nó quyết định nội dung 段階2. Nếu số liệu cho thấy gửi ít thì vấn đề ở gốc tính; nếu gửi nhiều mà phản hồi ít thì vấn đề ở thu hồi; nếu phản hồi có mà không thành hợp đồng thì vấn đề ở bước thương mại.
+**Mục 1 và 2 quan trọng nhất.** Chúng quyết định trọng tâm của 課題3:
 
-**Mục 3 nên hỏi Vis sớm** — dễ trùng lặp nhất.
+| Kết quả kiểm tra | Trọng tâm |
+|---|---|
+| Gửi nhiều, phản hồi ít | Vòng phản hồi (F9), nhắc thúc (F11), mục tiêu (F5) |
+| Có phản hồi, điểm không đổi | **Đổi nội dung đo (F7)** + dữ liệu 稼働 (F6) |
+| Cả hai | Làm F5 trước, rồi F7 và F9 song song |
 
 ## Việc cần làm tiếp cho phần 2
 
 | Việc | Vì sao |
 |---|---|
-| **Lấy số liệu tự động gửi và tỷ lệ phản hồi từ DB** | Xác định chỗ tắc thật, thay cho phỏng đoán |
-| **Rà soát toàn bộ tính năng WDP đang có, đối chiếu với F1–F11** | Đã hai lần đề xuất thứ đã tồn tại — cần loại trừ trước |
+| **Lấy số phát hành, tỷ lệ phản hồi, và biên độ thay đổi điểm từ DB** | Phân biệt A và B — quyết định trọng tâm |
+| **Rà soát toàn bộ tính năng WDP đang có, đối chiếu với F1–F11** | Đã ba lần suy diễn sai về hiện trạng — cần loại trừ trước |
+| Hỏi Vis: sau khi chuyển, khách hay hỏi/phàn nàn về điều gì | Là nội dung cần thêm vào After (F7) |
+| Kiểm tra dữ liệu 稼働分析 có ghép vào báo cáo được không | Cách phòng rủi ro cho tỷ lệ trả lời thấp |
 | Xác nhận gốc tính mốc 6 tháng trong code | Xem có khớp chuẩn "6 tháng sau chuyển" không |
-| Kiểm tra WDP có lưu ngày chuyển văn phòng không | Điều kiện nếu cần đổi gốc tính |
 | Khảo sát cấu trúc dữ liệu survey | Biết Before/After nối được không |
-| Khảo sát cách setting survey được quản lý | Biết thêm câu hỏi phân nhánh có khả thi không |
-| Hỏi Vis về phạm vi AIレポート và luồng ký After | Tránh trùng lặp, và thiết kế đúng F9 |
-| Thống kê dự án đã chuyển trên 6 tháng | Có mẫu số thật để nói về tỷ lệ thực hiện After |
+| Khảo sát cách setting survey được quản lý | Biết thêm câu hỏi có khả thi không |
+| Hỏi Vis về phạm vi AIレポート | Tránh trùng lặp phần xuất |
 | Ước lượng effort theo từng 段階 | Để Vis phán đoán được mức đầu tư |
