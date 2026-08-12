@@ -55,77 +55,62 @@ Nguồn: vis-produce.com（WDPページ）
 
 ---
 
-# PHẦN 2 — Bên trong khung 3〜4 tuần（phần đang tập trung）
+# PHẦN 2 — Chuỗi survey trong khung 3〜4 tuần（phần đang tập trung）
 
-Tài liệu mô tả **hai mạch chạy trong cùng khoảng thời gian**, nhưng mức chi tiết rất khác nhau.
+> **Phạm vi:** chỉ chuỗi liên quan tới survey.
+> Các bước của bản 提案 tự thân（ヒアリング・コンセプト・レイアウト・デザイン・予算）
+> không thuộc phạm vi lần này — xem PHẦN 1 nếu cần đối chiếu.
 
-## Mạch A — bản thân 提案書
+## Câu gốc từ Vis
 
-**Chỉ có thành phần, không có thời lượng.**
+> どちらかというとオフィス提案準備の3-4週間の中で
+> **サーベイの提案、実施、提案書への落とし込み**までを行う時間が足りない
 
-> どの類似企業も一般的には**ヒアリング内容に基づいて、コンセプトを設定し、
-> レイアウト案、デザイン案、予算**という形で提案を行います
+Nguồn: Q10
 
-Nguồn: [49][50]
+Vis nêu **ba việc**. Bảng timeline trong 事業計画 lại chia thành **bốn công đoạn khác**.
+Ghép hai nguồn lại được chuỗi 6 bước sau.
 
-Lưu ý cách viết: câu này mô tả 「どの類似企業も一般的には」 — chuẩn chung của ngành, Vis nằm trong đó.
+## Chuỗi 6 bước
 
-Và [48]: 「オフィスリニューアルとしての提案は**型化**されています」
-
-**Không có bước nào kèm số ngày.**
-
-## Mạch B — chuỗi WDS
-
-**Có timeline, nhưng là con số tham chiếu.**
-
-| 工程 | 期間 |
-|---|---|
-| 実施意思決定 | 1w |
-| 申込（リーガルチェック含）| 2w |
-| 実施 | 1w |
-| 結果 | 2w |
-| **合計** | **6w** |
-
-Nguồn: [403]–[406]
-
-**Quan trọng:** phần này nằm dưới tiêu đề 「**実行シミュレーション / タイムライン参考**」[401][402]
-→ đây là **số tham chiếu, không phải số đo thực tế**. Không nên trình bày như thực trạng đã đo.
-
-## Q10 bổ sung hai bước không có trong timeline
-
-Vis trả lời:
-
-> 3-4週間の中で**サーベイの提案、実施、提案書への落とし込み**までを行う時間が足りない
-
-Đối chiếu:
-
-| Bước Vis nêu ở Q10 | Có trong timeline? | Ghi chú |
-|---|---|---|
-| **サーベイの提案** | **Không** | Đứng trước 実施意思決定 |
-| 実施 | Có（1w）| |
-| **提案書への落とし込み** | **Không** | Đứng sau 結果 |
-
-→ **Timeline 6 tuần chỉ bao phủ phần giữa.**
-Hai đầu — thuyết phục khách đồng ý làm survey, và đưa kết quả vào 提案書 — không có số.
-
-## Ghép lại
+| # | Bước | Thời lượng | Nguồn | Đã có lời giải chưa |
+|---|---|---|---|---|
+| ① | **サーベイの提案** | *không có số* | Q10 | Rào cản ghi ở [392]–[395]; giải pháp trong kế hoạch là **cách nói**, không phải hệ thống |
+| ② | **実施意思決定** | 1w | [403] | Giải pháp: thực hiện sớm từ ナーチャリング段階 [390][398] |
+| ③ | **申込（リーガルチェック含）** | **2w** | [404] | **Chưa có** |
+| ④ | **実施** | 1w | [405] | URL形式 rút ngắn phần thu danh sách email [388][389] |
+| ⑤ | **結果** | **2w** | [406] | **Chưa có** |
+| ⑥ | **提案書への落とし込み** | *không có số* | Q10 · Q1 | **Chưa có** |
 
 ```
-提案依頼を受ける
-   │
-   ├─ [提案] ヒアリング → コンセプト設定 → レイアウト案 → デザイン案 → 予算
-   │         構成の記載あり／所要期間の記載なし
-   │
-   └─ [WDS] サーベイの提案 → 実施意思決定 → 申込 → 実施 → 結果 → 提案書への落とし込み
-             記載なし        1w         2w    1w    2w      記載なし
-                             └────── 合計 6w（記載分のみ）──────┘
-   │
-提案本番
+① サーベイの提案 → ② 実施意思決定 → ③ 申込 → ④ 実施 → ⑤ 結果 → ⑥ 提案書への落とし込み
+   記載なし          1w             2w        1w       2w        記載なし
+                    └──────── 合計 6w（記載分のみ）────────┘
 
 枠：3〜4週間
 ```
 
-**Số học:** khung 3–4 tuần · phần WDS có ghi số đã là **6 tuần** · còn hai bước chưa có số.
+## Ba điều đáng chú ý
+
+**1. Vis nêu ① và ⑥, nhưng timeline không có.**
+Q10 liệt kê 「サーベイの**提案**、実施、**提案書への落とし込み**」.
+Bảng timeline chỉ đi từ ② tới ⑤.
+→ **Hai bước Vis nhắc đầu tiên và cuối cùng đều không được đo.**
+
+**2. Hai khối 2 tuần nằm ở ③ và ⑤** — chiếm 4 trong 6 tuần có số.
+② và ④ mỗi cái chỉ 1 tuần, nên dư địa lớn nằm ở ③ và ⑤.
+
+**3. Timeline là 参考値.**
+Nằm dưới tiêu đề 「実行シミュレーション / タイムライン参考」[401][402],
+**không phải số đo thực tế**.
+
+## Số học
+
+| | |
+|---|---|
+| Khung | **3–4 tuần**（[382] · Q1 · Q10）|
+| Phần chuỗi survey có ghi số | **6 tuần**（[403]–[406]，参考値）|
+| Bước chưa có số | **2**（① và ⑥）|
 
 Đây chính là câu:
 
@@ -139,9 +124,41 @@ Ngay sau bảng timeline:
 
 > セイルが提案３週間前実施だとした場合、セイル時にサーベイ結果を揃える為に必要なリードタイムは
 
-Nguồn: [407] — **câu kết thúc giữa chừng**, không có phần trả lời trong tài liệu.
+Nguồn: [407] — **câu kết thúc giữa chừng**, không có phần trả lời.
 
----
+## Câu hỏi sắc nhất cần hỏi Vis
+
+### ⑤ 結果 2 tuần gồm những gì?
+
+WDP tự tính điểm và hiển thị kết quả — màn hình `サーベイ結果` đã có biểu đồ,
+điểm 6 trục, phân tích thuộc tính.
+
+Vậy 2 tuần đó là:
+
+| Khả năng | Nếu đúng thì cải tiến khác nhau thế nào |
+|---|---|
+| Thời gian **chờ nhân viên trả lời** | Phải tác động vào tỷ lệ phản hồi（nhắc, rút gọn, cách thông báo）|
+| Thời gian **xử lý tay sau khi có kết quả** | Phải tự động hóa（tổng hợp, xuất nội dung）|
+
+Hai khả năng này dẫn tới hai hướng hoàn toàn khác. **Cần xác định trước khi thiết kế.**
+
+### ④ và ⑤ ranh giới ở đâu
+
+④ 実施 1w và ⑤ 結果 2w — cái nào là thời gian survey mở, cái nào là xử lý?
+
+### URL形式 đã rút ngắn bước nào
+
+Memo ghi 「サーベイ実施 đã được giải quyết bằng 共通ID」.
+Nhưng 事業計画 viết cụ thể hơn:
+
+> **メールアドレス一覧の回収におけるリードタイム**の短縮 ⇒ 配信形式をURL形式にする
+
+Nguồn: [388][389]
+
+Việc thu danh sách email có thể nằm ở **③申込**（chuẩn bị đối tượng）chứ không hẳn ở ④実施.
+
+→ Cần xác nhận **URL đã cắt vào bước nào, và con số hiện tại của bước đó là bao nhiêu.**
+Nếu nó cắt vào ③ thì con số 2 tuần đã khác rồi.
 
 # PHẦN 3 — Cách 事業計画 tự phân tích khúc này
 
@@ -208,35 +225,39 @@ Nguồn: [306]
 
 ---
 
-# PHẦN 6 — Điều tài liệu KHÔNG nói
+# PHẦN 6 — Điều tài liệu KHÔNG nói（chuỗi survey）
 
-| # | Chưa rõ | Ảnh hưởng tới việc gì |
-|---|---|---|
-| 1 | **Hai mạch A và B chạy song song hay nối tiếp** | Nếu nối tiếp thì càng không kịp. Ảnh hưởng cách tính hiệu quả cải tiến |
-| 2 | **Ai làm bước nào** — コンペ担当 / コンサルタント / クリエイター | Không biết cải tiến nhắm vào ai |
-| 3 | **Thời lượng của mạch A**（提案書作成そのもの）| Không biết survey chiếm bao nhiêu phần trong khung |
-| 4 | **「サーベイの提案」mất bao lâu** | Là bước Vis nêu **đầu tiên** ở Q10 nhưng không có số |
-| 5 | **「提案書への落とし込み」mất bao lâu** | Là công đoạn ta muốn cải tiến |
-| 6 | **Luồng 申込 gồm những bước gì** | Đang khảo sát（memo ghi 調査中）|
-| 7 | **「セイル」là gì** | Xuất hiện ở [407], không được định nghĩa |
-| 8 | **「PS」là gì** | Xuất hiện ở [348][349][351]（PS全体 / PS期間中 / PS化）, không được định nghĩa. Là chỉ số Vis dùng để đo đóng góp của nurturing |
+| # | Chưa rõ | Liên quan bước | Ảnh hưởng tới việc gì |
+|---|---|---|---|
+| 1 | **「サーベイの提案」mất bao lâu, khó ở chỗ nào** | ① | Là bước Vis nêu **đầu tiên** ở Q10 nhưng không có số |
+| 2 | **Luồng 申込 gồm những bước gì, ai xác nhận** | ③ | Đang khảo sát（memo ghi 調査中）. Là khối 2 tuần |
+| 3 | **URL形式 đã cắt vào bước nào** | ③ hay ④ | Nếu cắt vào ③ thì con số 2 tuần đã khác |
+| 4 | **④ và ⑤ ranh giới ở đâu** | ④⑤ | Không biết đâu là thời gian mở survey, đâu là xử lý |
+| 5 | **⑤ 結果 2 tuần gồm những gì** | ⑤ | **Câu quan trọng nhất** — quyết định hướng cải tiến |
+| 6 | **「提案書への落とし込み」mất bao lâu** | ⑥ | Là công đoạn muốn cải tiến nhưng không có số |
+| 7 | **Ai làm bước nào** | Toàn bộ | Không biết cải tiến nhắm vào ai |
+| 8 | **「セイル」là gì** | — | Xuất hiện ở [407], không được định nghĩa |
+| 9 | **「PS」là gì** | — | Xuất hiện ở [348][349][351]（PS全体 / PS期間中 / PS化）. Là chỉ số Vis dùng để đo đóng góp của nurturing |
 
 ---
 
-# Tóm tắt cho việc thiết kế cải tiến
+# Tóm tắt
 
 **Điều chắc chắn có trong tài liệu:**
 
-1. Khung là **3–4 tuần**（[382] và cả Q1, Q10 đều xác nhận）
-2. Chuỗi WDS phần được ghi số là **6 tuần**（[403]–[406]，nhưng là 参考値）
-3. Vis nêu **ba** việc phải làm trong khung: サーベイの提案 / 実施 / 提案書への落とし込み（Q10）
+1. Khung là **3–4 tuần**（[382]，Q1 và Q10 đều xác nhận）
+2. Chuỗi survey phần được ghi số là **6 tuần**（[403]–[406]，nhưng là 参考値）
+3. Vis nêu **ba** việc trong khung: サーベイの提案 / 実施 / 提案書への落とし込み（Q10）
 4. Trong ba việc đó, **chỉ 実施 có số**; hai đầu không có
-5. 事業計画 tự cho rằng cả hai 課題 họ liệt kê **đã có lời giải**（URL形式 + 早期実施）
+5. Hai khối lớn nhất trong phần có số là **③申込 2w** và **⑤結果 2w**
+6. 事業計画 tự cho rằng cả hai 課題 họ liệt kê **đã có lời giải**（URL形式 + 早期実施）
 
-**Điều nên hỏi Vis trước khi báo effort:**
+**Thứ tự hỏi Vis:**
 
-- Luồng 申込 hiện tại gồm những bước nào, ai xác nhận, mất bao lâu
-- 「サーベイの提案」thực tế mất bao lâu, khó ở chỗ nào
-- 「提案書への落とし込み」thực tế mất bao lâu
-- Mạch A và mạch B chạy song song hay nối tiếp
-- 「セイル」và「PS」nghĩa là gì
+| Ưu tiên | Câu hỏi | Vì sao |
+|---|---|---|
+| 1 | ⑤結果 2 tuần gồm những gì | Quyết định hướng cải tiến（tỷ lệ phản hồi vs tự động hóa）|
+| 2 | Luồng ③申込 gồm những bước nào | Khối 2 tuần, và là yêu cầu đã có ở Q8 |
+| 3 | URL đã cắt vào bước nào, còn lại bao nhiêu | Con số hiện tại có thể đã khác 参考値 |
+| 4 | ⑥落とし込み mất bao lâu | Công đoạn muốn cải tiến |
+| 5 | ①サーベイの提案 khó ở chỗ nào | Vis nêu đầu tiên nhưng ta chưa chạm tới |
