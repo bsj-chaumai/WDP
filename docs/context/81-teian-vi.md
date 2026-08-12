@@ -150,11 +150,59 @@ Chúng tôi bổ sung hai phần vào trước và sau điểm đó.
 | Phần bổ sung | Nội dung |
 |---|---|
 | **Lớp hỏi lý do** (phía câu hỏi) | Chỉ hiển thị câu hỏi bổ sung với những câu trả lời có mức độ hài lòng thấp.<br>Thu thập: khu vực nào, điểm gì, ảnh hưởng tới công việc thế nào.<br>Thêm phần trả lời tự do, và cho phép chỉ vị trí trên bản layout |
-| **Lớp chuyển thành đề xuất** (phía kết quả) | Thêm màn hình phân tích tổng hợp "ở đâu, vì sao, ảnh hưởng gì".<br>Thêm chức năng xuất ra dưới dạng dán được vào tài liệu đề xuất |
+| **Lớp hỗ trợ phán đoán** (phía kết quả) | Thêm màn hình phân tích tổng hợp "ở đâu, vì sao, với ai, ảnh hưởng bao nhiêu".<br>Cho phép chọn nội dung sẽ dùng và xuất ra ở dạng dùng được ngay |
 
 **Không can thiệp vào bộ câu hỏi hiện tại.**
 Các câu hỏi đang có được giữ nguyên, và **câu hỏi bổ sung được thêm vào phía sau**.
 Mục đích là tránh làm mất khả năng so sánh với những điểm số đã tích lũy.
+
+#### Về quan hệ với AI report
+
+Với AI report đang được triển khai phía Vis, chúng tôi cho rằng vai trò được phân chia như sau:
+
+| | Vai trò |
+|---|---|
+| **AI report** | Viết thành câu chữ |
+| **Màn hình phân tích** | Để con người **phán đoán** (ưu tiên vấn đề nào, lấy khu vực nào làm đối tượng, đặt mục tiêu gì) |
+| **Lớp hỏi lý do** | **Tạo dữ liệu đầu vào** cho hai phần trên |
+
+Hiện tại thông tin có thể đưa cho AI **chỉ là điểm số**.
+Vì không có thông tin về lý do, vị trí và mức ảnh hưởng,
+đầu ra sẽ chỉ dừng ở việc diễn giải lại điểm số.
+
+Khi thêm lớp hỏi lý do, **bản thân đầu ra của AI report cũng trở nên cụ thể hơn**.
+Chúng tôi xem đây là đề xuất tạo tiền đề để nâng độ chính xác, không phải tính năng cạnh tranh.
+
+Việc AI report có bao gồm cả phần sinh nội dung đề xuất hay không,
+chúng tôi đã ghi ở mục 2-9 như một điểm muốn xác nhận trước.
+
+#### Cấu trúc màn hình phân tích
+
+Được cấu trúc theo đúng thứ tự phán đoán cần thiết khi viết đề xuất.
+
+| # | Khối | Nội dung | Trả lời câu hỏi |
+|---|---|---|---|
+| 1 | **Ưu tiên** | Điểm của 6 mục, thứ hạng các mục thấp, sắp xếp theo **độ ảnh hưởng** (số người trả lời × tỷ lệ không hài lòng), so sánh với lần trước và trung bình nội bộ | Xử lý cái gì trước |
+| 2 | **Vị trí** | Tổng hợp theo khu vực, thể hiện trên bản layout, loại không gian còn thiếu | Xảy ra ở đâu |
+| 3 | **Lý do** | Tổng hợp phân loại câu hỏi bổ sung (ồn, thiếu chỗ, thiết bị, riêng tư, nhiệt độ, đặt chỗ…), nhóm các câu trả lời tự do | Vì sao xảy ra |
+| 4 | **Đối tượng** | Cross theo bộ phận, loại công việc, số năm làm việc, nhóm tuổi. Kèm nơi làm việc và tỷ lệ loại công việc theo nghề | Xảy ra với ai |
+| 5 | **Ảnh hưởng** | Mức ảnh hưởng tới công việc, đối chiếu với dữ liệu vận hành | Nghiêm trọng cỡ nào |
+| 6 | **Phương án** | Phương án ứng với từng dạng vấn đề, case tương tự từ dự án trước | Nên làm gì |
+| 7 | **KPI** | Đề xuất 2–3 mục làm mục tiêu, thiết lập điểm mục tiêu | Đo bằng gì |
+| 8 | **Chọn và xuất** | Chọn nội dung sẽ dùng, xuất ra dạng dùng được cho tài liệu đề xuất | Giao sang đề xuất |
+
+Khối 1–5 là **để đọc**, 6–7 là **để quyết định**, 8 là **để giao**.
+
+Bổ sung:
+
+- **Vì sao khối 1 sắp theo độ ảnh hưởng:** cần chọn 2–3 mục trong số nhiều mục,
+  nên thứ tự phải phản ánh cả quy mô trả lời, không chỉ độ thấp của điểm
+- **Vì sao có khối 4:** để đáp ứng yêu cầu "tạo môi trường phù hợp đặc thù nhiều loại công việc"
+  và "cấu trúc layout dựa trên kế hoạch nhân sự" thì việc nắm theo nghề là tiền đề
+- **Vì sao có khối 7:** mục được chọn ở đây chính là đối tượng so sánh ở After.
+  Vấn đề 1 và vấn đề 3 nối với nhau qua khối này
+
+Nếu triển khai bản tối thiểu, ưu tiên **khối 1, 2, 3, 8**.
 
 ### Vấn đề 2: Không vừa với khung thời gian chuẩn bị đề xuất
 
@@ -163,23 +211,49 @@ Xử lý riêng hai công đoạn đang tốn thời gian.
 | Công đoạn | Nội dung cải tiến |
 |---|---|
 | **Thủ tục đăng ký và xác nhận điều khoản** | Cho phép hoàn tất bên trong WDP.<br>Chuyển việc trao đổi văn bản thành thao tác trên màn hình, và làm cho trạng thái xác nhận nhìn thấy được |
-| **Phân tích kết quả và phản ánh vào đề xuất** | Sinh ra các block nội dung đề xuất từ kết quả.<br>Rút ngắn phần "đọc hiểu rồi viết ra" vốn đang làm thủ công |
+| **Phân tích kết quả và phản ánh vào đề xuất** | Chọn nội dung sẽ dùng trên màn hình phân tích và xuất ra dạng dùng được ngay.<br>Rút ngắn phần "đọc hiểu rồi viết ra" vốn đang làm thủ công |
 
 Song song đó, chuẩn bị trạng thái **có thể triển khai nhẹ nhàng từ giai đoạn sớm**
 như giai đoạn nurturing.
 
 ### Vấn đề 3: After không được thực hiện, nên cửa vào hợp đồng có phí không mở ra
 
-Thay đổi trạng thái "nếu để tự nhiên thì không được thực hiện" bằng cơ chế.
+**Xác nhận hiện trạng:**
+Chúng tôi được biết cơ chế tự động phát hành survey sau 6 tháng kể từ ngày thiết lập
+đã được trang bị.
+Trên cơ sở đó, với việc số case thực hiện vẫn dừng ở 5,
+**chúng tôi cho rằng nguyên nhân không nằm ở việc có thông báo hay không,
+mà ở phần trước và sau đó.**
 
-| Tính năng bổ sung | Nội dung |
-|---|---|
-| **Thông báo thời điểm đánh giá** | Gắn kế hoạch After vào các dự án đã làm Before, và thông báo cho người phụ trách khi đến thời điểm đánh giá |
-| **Hỗ trợ tạo After** | Cho phép tạo After bằng cách kế thừa thiết lập của Before, không phải thiết lập lại từ đầu |
-| **Quản lý KPI** | Thiết lập và theo dõi các mục survey mục tiêu cùng điểm mục tiêu |
-| **Chạy định kỳ** | Thiết lập lịch triển khai để có thể thực hiện lặp lại |
-| **Báo cáo so sánh Before/After** | Tổng hợp diễn biến điểm và mức chênh lệch của các mục mục tiêu vào một báo cáo |
-| **Danh sách trạng thái thực hiện** | Xem được dự án nào đã đề xuất After và dự án nào đã thực hiện |
+#### Nội dung cải tiến
+
+| Nội dung bổ sung / thay đổi | Hiện trạng | Nội dung |
+|---|---|---|
+| **Gắn mốc tính vào ngày hoàn tất chuyển văn phòng** | 6 tháng từ ngày thiết lập | Chuẩn đánh giá là "nửa năm sau khi chuyển". Vì Before được thực hiện ở giai đoạn đề xuất, nếu tính từ ngày thiết lập thì có khả năng phát hành trước khi chuyển. Chuyển mốc sang ngày hoàn tất chuyển và cho phép điều chỉnh sau |
+| **Tự động tạo kế hoạch After** | Cần thiết lập | Tự động tạo kế hoạch After khi thực hiện Before hoặc khi thắng dự án, để không bị bỏ sót thiết lập |
+| **Danh sách dự án đối tượng** | Không có | Hiển thị danh sách các dự án đang tới gần mốc 6 tháng sau chuyển |
+| **Quản lý trạng thái đề xuất** | Không có | Ghi nhận theo từng dự án việc đã đề xuất After hay chưa, và xem được cùng với tỷ lệ thực hiện |
+| **Hỗ trợ tạo After** | Cần thiết lập lại | Cho phép tạo After bằng cách kế thừa thiết lập của Before |
+| **Quản lý KPI** | Không có | Thiết lập và theo dõi các mục survey mục tiêu cùng điểm mục tiêu |
+| **Báo cáo so sánh Before/After** | Làm thủ công | Tổng hợp diễn biến điểm và mức chênh lệch của các mục mục tiêu vào một báo cáo |
+
+**Cơ chế chạy định kỳ được tận dụng từ cái đã có, chỉ xem lại cách tính mốc.**
+
+#### Về cách đo tỷ lệ thực hiện
+
+Before được thực hiện ở giai đoạn đề xuất, After ở nửa năm sau khi chuyển,
+nên giữa hai mốc có khoảng thời gian triển khai dự án.
+
+Vì vậy, nếu đặt cạnh nhau "số case Before và số case After trong cùng một năm tài chính"
+thì sẽ là so sánh những dự án ở các thời điểm khác nhau.
+
+Để nắm đúng tỷ lệ thực hiện, chúng tôi cho rằng cần tổng hợp
+**với mẫu số là "các dự án đã qua nửa năm kể từ khi chuyển"**.
+Phần "danh sách dự án đối tượng" và "quản lý trạng thái đề xuất" ở trên
+tồn tại để làm được phép tổng hợp này.
+
+Đây cũng là nội dung tương ứng với việc nắm bắt
+`số case và tỷ lệ đề xuất After, số case và tỷ lệ thực hiện After` mà Vis đã nêu ra.
 
 ## 2-3. Cách triển khai để hạn chế ảnh hưởng tới tính năng hiện có
 
@@ -202,10 +276,16 @@ thời kỳ vừa xác nhận "ai cần, cái gì hiệu quả, vì sao" vừa �
 
 | Giai đoạn | Nội dung | Mục tiêu |
 |---|---|---|
-| **Giai đoạn 1** | Vận hành After (thông báo thời điểm, hỗ trợ tạo, quản lý KPI) | Mở cửa vào việc thu phí |
-| **Giai đoạn 2** | Lớp hỏi lý do (câu hỏi bổ sung, trả lời tự do) và báo cáo so sánh | Chuẩn bị phần nội dung để khách dùng tiếp có phí |
-| **Giai đoạn 3** | Hoàn tất đăng ký và điều khoản, xuất block nội dung đề xuất | Đưa vào khung thời gian chuẩn bị đề xuất |
-| **Giai đoạn 4** | Layout từ kế hoạch nhân sự, tùy biến theo khách hàng | Làm cho đề xuất tối ưu theo từng khách hàng |
+| **Giai đoạn 1** | Xem lại mốc tính, tự động tạo kế hoạch After, danh sách dự án đối tượng và quản lý trạng thái đề xuất | Đưa After về trạng thái được thực hiện |
+| **Giai đoạn 2** | Lớp hỏi lý do (câu hỏi bổ sung, trả lời tự do), quản lý KPI, báo cáo so sánh Before/After | Chuẩn bị phần nội dung để khách dùng tiếp có phí |
+| **Giai đoạn 3** | Màn hình phân tích (ưu tiên, vị trí, lý do) và phần xuất, hoàn tất đăng ký và điều khoản | Đưa vào khung thời gian chuẩn bị đề xuất |
+| **Giai đoạn 4** | Mở rộng màn hình phân tích (đối tượng, ảnh hưởng, phương án), layout từ kế hoạch nhân sự, tùy biến theo khách hàng | Làm cho đề xuất tối ưu theo từng khách hàng |
+
+**Vì sao giai đoạn 1 bắt đầu bằng những việc nhẹ:**
+Việc xem lại mốc tính và tự động tạo kế hoạch nằm trong phạm vi tận dụng được
+cơ chế hiện có, nên có thể xác nhận hiệu quả ở giai đoạn sớm.
+Trước tiên tạo trạng thái để việc thực hiện bắt đầu vận hành,
+sau đó mới bổ sung phần nội dung.
 
 Cách suy nghĩ về thứ tự được ghi ở mục 2-10.
 
@@ -266,18 +346,22 @@ Cách suy nghĩ về thứ tự được ghi ở mục 2-10.
 Phân loại theo **dùng cho đề xuất** (giá trị gia tăng khi Vis đi đề xuất)
 và **có phí** (khách hàng sử dụng liên tục).
 
-| # | Tính năng | Người dùng chính | Phân loại | Vấn đề tương ứng |
-|---|---|---|---|---|
-| **F1** | Hoàn tất đăng ký và xác nhận điều khoản trực tuyến | Phụ trách コンペ / Khách hàng | Dùng cho đề xuất | Vấn đề 2 |
-| **F2** | Tiếng nói worker (câu hỏi bổ sung theo điều kiện + trả lời tự do + chỉ vị trí trên layout) | Worker / XP | **Có phí** | Vấn đề 1 |
-| **F3** | Từ kết quả survey xuất ra block nội dung đề xuất | Consultant | Dùng cho đề xuất | Vấn đề 1, 2 |
-| **F4** | Phương án layout dựa trên kế hoạch nhân sự | Consultant | Dùng cho đề xuất (bản cập nhật là có phí) | Vấn đề 1, 2 |
-| **F5** | Hỗ trợ thiết lập KPI (gợi ý vài mục từ bộ câu hỏi + điểm mục tiêu) | XP | **Có phí** | Vấn đề 3 |
-| **F6** | Báo cáo kiểm chứng hiệu quả Before/After | Khách hàng / XP | **Có phí** | Vấn đề 3 |
-| **F7** | Survey định kỳ (chọn nội dung, chạy theo lịch) | Khách hàng | **Có phí** | Vấn đề 3 |
-| **F8** | Tùy biến survey theo từng khách hàng | Khách hàng / XP | **Có phí** | Vấn đề 3 |
-| **F9** | Nhắc thời điểm đánh giá + hỗ trợ tạo After (tái sử dụng dữ liệu Before) | XP | Dùng cho đề xuất → cửa vào có phí | Vấn đề 3 |
-| **F10** | Trực quan hóa tình hình cơ hội bán (trạng thái đề xuất và thực hiện After) | Kinh doanh / CS | Dùng cho đề xuất (nội bộ) | Vấn đề 3 |
+| # | Tính năng | Người dùng chính | Phân loại | Vấn đề | Hiện trạng |
+|---|---|---|---|---|---|
+| **F1** | Hoàn tất đăng ký và xác nhận điều khoản trực tuyến | Phụ trách コンペ / Khách hàng | Dùng cho đề xuất | 2 | Mới |
+| **F2** | Tiếng nói worker (câu hỏi bổ sung theo điều kiện + trả lời tự do + chỉ vị trí trên layout) | Worker / XP | **Có phí** | 1 | Mới |
+| **F3** | Màn hình phân tích và phần xuất nội dung đã chọn | Consultant | Dùng cho đề xuất | 1, 2 | Mới |
+| **F4** | Phương án layout dựa trên kế hoạch nhân sự | Consultant | Dùng cho đề xuất (bản cập nhật là có phí) | 1, 2 | Mới |
+| **F5** | Hỗ trợ thiết lập KPI (gợi ý vài mục từ bộ câu hỏi + điểm mục tiêu) | XP | **Có phí** | 3 | Mới |
+| **F6** | Báo cáo kiểm chứng hiệu quả Before/After | Khách hàng / XP | **Có phí** | 3 | Mới |
+| **F7** | Survey định kỳ | Khách hàng | **Có phí** | 3 | **Có một phần** — cơ chế tự động phát hành đã có; thêm việc xem lại mốc tính và chọn nội dung |
+| **F8** | Tùy biến survey theo từng khách hàng | Khách hàng / XP | **Có phí** | 3 | Mới |
+| **F9** | Gắn mốc tính cho After, tự động tạo kế hoạch, hỗ trợ tạo | XP | Dùng cho đề xuất → cửa vào có phí | 3 | **Có một phần** — cơ chế phát hành đã có; thêm mốc tính và tự động tạo |
+| **F10** | Danh sách dự án đối tượng và quản lý trạng thái đề xuất | Kinh doanh / CS / XP | Dùng cho đề xuất (nội bộ) | 3 | Mới |
+
+**Về cột "Hiện trạng":**
+F7 và F9 dựa trên tiền đề tận dụng cơ chế tự động phát hành đã được trang bị.
+Không phải làm mới, mà là **xem lại cách tính mốc và thời điểm tạo kế hoạch**.
 
 ## 2-7. Về các tính năng có phí — "vì sao tính năng này tốt"
 
@@ -326,6 +410,11 @@ sẽ trở nên cụ thể.
 Lưu ý: thiết kế theo hướng **không bắt tất cả mọi người trả lời bộ câu hỏi dài.**
 Chỉ hiển thị câu hỏi bổ sung cho những người có điểm không hài lòng,
 nhờ đó duy trì được tỷ lệ trả lời.
+
+**Đây cũng là phần liên quan tới độ chính xác của AI report.**
+Hiện tại thứ có thể đưa cho AI chỉ là điểm số. Khi có thêm thông tin về lý do,
+vị trí và mức ảnh hưởng, độ cụ thể của đầu ra sẽ khác.
+Tính năng này đồng thời đảm nhận vai trò tạo ra dữ liệu đầu vào đó.
 
 ### F5: Hỗ trợ thiết lập KPI
 
@@ -384,6 +473,9 @@ Dưới đây là những điểm chúng tôi muốn xác nhận trước khi b�
 
 | Điều muốn xác nhận | Vì sao cần |
 |---|---|
+| **Phạm vi dự kiến của AI report** — có bao gồm việc sinh nội dung đề xuất không, dự kiến dùng gì làm đầu vào | Phạm vi thiết kế của màn hình phân tích và phần xuất sẽ thay đổi. Để tránh trùng lặp, đây là điểm muốn xác nhận đầu tiên |
+| **Mốc tính của cơ chế tự động phát hành hiện tại** — tính từ ngày thiết lập, hay có thể chỉ định ngày khác | Cách hiện thực việc chuyển mốc sang ngày hoàn tất chuyển văn phòng sẽ thay đổi |
+| **WDP có đang lưu ngày hoàn tất chuyển văn phòng không** | Cần cho việc gắn mốc tính. Nếu chưa lưu thì sẽ làm dạng cho phép nhập |
 | Dữ liệu trả lời đã có có tham chiếu được theo dạng so sánh Before/After không | Là tiền đề để báo cáo so sánh thành lập |
 | Luồng đăng ký và xác nhận điều khoản hiện tại (đang mất mấy ngày ở bước nào) | Cần cho việc phán đoán chuyển được bao nhiêu lên màn hình |
 | Sẽ đặt ai làm người phụ trách After | Cần người nhận thông báo và chuyển sang thực hiện |
@@ -395,18 +487,30 @@ Nếu thay đổi các câu hỏi hiện có thì sẽ không so sánh được 
 Vì vậy chúng tôi đề xuất phương án **không thay đổi câu hỏi hiện có,
 chỉ thêm câu hỏi bổ sung**.
 
+**Về những tính năng đã được trang bị:**
+Trong đề xuất này, những cơ chế **đã hoạt động — như tự động phát hành —
+sẽ không làm lại mà được tận dụng**.
+Nếu còn những tính năng tương tự khác, mong được thông báo trước
+để chúng tôi điều chỉnh nội dung, tránh trùng lặp.
+
 ## 2-10. Thứ tự phát huy hiệu quả của đề xuất
 
 | Thứ tự | Nội dung | Hiệu quả |
 |---|---|---|
-| **1** | Tạo dòng chảy để After được thực hiện (F9, F5) | Cửa vào việc thu phí mở ra |
-| **2** | Chuẩn bị phần nội dung để khách dùng tiếp có phí (F6, F7, F2, F8) | Không còn kết thúc sau một lần |
+| **1** | Đưa After về trạng thái được thực hiện (F9, F10) | Cửa vào việc thu phí mở ra, và đo được tỷ lệ thực hiện |
+| **2** | Chuẩn bị phần nội dung để khách dùng tiếp có phí (F2, F5, F6, F7, F8) | Không còn kết thúc sau một lần |
 | **3** | Đưa vào khung thời gian chuẩn bị đề xuất (F1, F3) | Số lượng sử dụng phía Before tăng, làm tăng mẫu số cho bước 1 |
-| **4** | Nâng chất lượng đề xuất (F4, F2) | Đề xuất trở nên tối ưu theo từng khách hàng |
+| **4** | Nâng chất lượng đề xuất (F4, mở rộng F3) | Đề xuất trở nên tối ưu theo từng khách hàng |
 
 **Vì sao đặt bước 1 trước:**
 Vì hợp đồng có phí đi qua cửa After, nếu chỗ đó chưa mở
 thì những cải thiện khác không dẫn tới doanh thu.
+
+Ngoài ra, bước 1 còn có vai trò **làm cho tình hình thực hiện đo được**.
+Hiện nay khó nắm được "có bao nhiêu dự án thuộc đối tượng,
+và trong đó đã đề xuất được bao nhiêu".
+Khi phần này nhìn thấy được, sẽ phán đoán được nên tác động vào
+số lượng dự án hay vào tỷ lệ chuyển đổi.
 
 **Vì sao bước 3 đứng sau bước 1:**
 Hiệu quả của việc tăng sử dụng phía Before chỉ phát huy sau khi dòng chảy After đã thông.
@@ -459,6 +563,85 @@ Nguyên tắc này xuất hiện ở cả mục 2-2 và 2-9.
 **2. Tách biệt xử lý mới khỏi xử lý cũ.**
 Đây là cách xử lý thực tế cho vấn đề "phạm vi ảnh hưởng rộng" của WDP hiện tại —
 thay vì đề xuất làm lại nền tảng, ta giảm rủi ro bằng cách cô lập phần mới.
+
+## Hai điều chỉnh lớn sau khi rà lại hiện trạng
+
+### A. Tự động gửi sau 6 tháng ĐÃ CÓ — nên vấn đề 3 phải đổi trọng tâm
+
+Bản trước đề xuất "nhắc mốc đánh giá" như tính năng mới. **Sai** — cơ chế tự động gửi
+sau 6 tháng kể từ ngày thiết lập đã tồn tại.
+
+Vậy vì sao After vẫn chỉ 5 case? Ba khả năng, xếp theo mức độ quan trọng:
+
+**1. Mốc tính có thể sai gốc.**
+Hiện là 6 tháng từ **ngày thiết lập**. Yêu cầu nghiệp vụ là 6 tháng từ
+**ngày chuyển văn phòng** (kế hoạch ghi 「移転から約6ヶ月後」).
+Nhưng Before làm ở giai đoạn đề xuất — cách ngày chuyển nhiều tháng.
+Nên survey After có thể đang được gửi **khi khách còn ở văn phòng cũ**.
+
+→ Nếu đúng, đây là cải tiến **rẻ nhất, tác động lớn nhất** trong cả đề xuất.
+Đã đưa lên đầu giai đoạn 1 và vào danh sách xác nhận.
+
+**2. Tự động gửi chỉ chạy nếu có người thiết lập.**
+Nếu lúc làm Before không ai tạo kế hoạch After thì không có gì được gửi.
+Khâu thiếu là **tạo kế hoạch**, không phải nhắc.
+
+**3. Con số 83 và 5 có thể không cùng một lứa.**
+Before ở giai đoạn đề xuất; After ở 6 tháng sau chuyển.
+Cộng chuỗi đề xuất → thắng → thi công → chuyển → +6 tháng, dễ tới 1,5–2 năm.
+Kế hoạch cũng ghi lead time từ lúc dùng WDP tới lúc ghi nhận doanh thu là 4 tháng–1 năm.
+
+→ Nên 83 Before của FY2025 phần lớn sinh After ở FY2026–2027.
+Cách đo đúng phải lấy mẫu số là **dự án đã chuyển trên 6 tháng**.
+Đây chính là lý do mục "danh sách đối tượng" và "trạng thái đề xuất" quan trọng —
+và cũng đúng chỉ số Vis đã tự liệt kê.
+
+**Lưu ý khi trình bày:** không nói "con số 83/5 của Vis sai".
+Nói theo hướng *"để đo đúng thì cần mẫu số là dự án đã qua 6 tháng"* —
+tức là ta giúp họ đo, không phê bình.
+
+### B. Ranh giới với AI report — dùng phân vai, không cạnh tranh
+
+Rủi ro: nếu AI report đã sinh được báo cáo và nội dung đề xuất thì phần xuất của ta
+trùng lặp, mà AI report lại ngoài scope.
+
+Phân vai đã đưa vào mục 2-2:
+
+| | Vai trò |
+|---|---|
+| **AI report** | Viết câu chữ |
+| **Màn hình phân tích** | Để **người quyết định** — ưu tiên vấn đề nào, khu vực nào, KPI nào |
+| **Lớp hỏi lý do** | **Tạo dữ liệu đầu vào** cho cả hai |
+
+Lập luận then chốt: **hiện AI chỉ nhận được điểm số**, nên đầu ra chỉ là diễn giải lại điểm.
+Thêm lý do, vị trí, ảnh hưởng thì **AI report cũng mạnh lên**.
+Nên đây là tiền đề cho AI, không phải đối thủ.
+
+Cách diễn đạt đã đổi: bỏ "sinh block nội dung đề xuất" (dễ đụng AI),
+thay bằng "chọn nội dung sẽ dùng và xuất ra dạng dùng được" —
+nhấn vào **chọn và xuất**, không phải **sinh nội dung**.
+
+Và đã đặt **phạm vi AI report** làm câu hỏi **đầu tiên** trong mục 2-9.
+
+## Vì sao chia màn hình phân tích thành 8 khối
+
+Nguyên tắc: khối phải khớp **thứ tự câu hỏi mà consultant tự hỏi khi viết đề xuất**,
+không phải khớp cấu trúc dữ liệu.
+
+Ba lựa chọn thiết kế đáng chú ý:
+
+**Khối 1 sắp theo độ ảnh hưởng, không chỉ theo điểm thấp.**
+Mục 55 điểm với 200 người trả lời quan trọng hơn mục 50 điểm với 12 người.
+Vì phải chọn 2–3 trong nhiều mục nên thứ tự cần phản ánh quy mô.
+
+**Khối 4 (đối tượng) gắn trực tiếp yêu cầu của Vis.**
+Không có cross theo nghề thì không dựng được "layout dựa trên kế hoạch nhân sự"
+và "môi trường phù hợp đặc thù nhiều loại công việc".
+
+**Khối 7 (KPI) là chỗ nối vấn đề 1 với vấn đề 3.**
+Mục chọn ở đây chính là mục so sánh ở After. Nên hai vấn đề không rời rạc.
+
+Bản tối thiểu: **1, 2, 3, 8** — biết sửa gì, ở đâu, vì sao, và giao được ra.
 
 ## Cách phân biệt "dùng cho đề xuất" và "có phí"
 
@@ -522,23 +705,29 @@ thứ tự này chính là việc xây quy trình đó.
 
 ## Những điểm cần xác nhận trước khi chốt
 
-| # | Nội dung | Ảnh hưởng |
-|---|---|---|
-| 1 | Dữ liệu trả lời cũ có **truy vấn được theo cùng một đối tượng qua thời gian** không | Điều kiện cho báo cáo so sánh Before/After (F6) |
-| 2 | Chi tiết luồng đăng ký và kiểm tra pháp lý — đang mất mấy ngày ở bước nào | Biết cắt được bao nhiêu → F1 |
-| 3 | Có được phép **thêm câu hỏi vào bộ hiện tại** không, và cấu trúc cho phép tới đâu | Điều kiện cho F2 |
-| 4 | Ai sẽ là người chịu trách nhiệm về After phía Vis | F9 gửi thông báo nhưng cần người nhận |
-| 5 | Cho phép tùy biến setting tới mức nào | Cân bằng giữa F8 và khả năng so sánh |
-| 6 | Định nghĩa của 勝率 (tỷ lệ thắng) — chưa được trả lời | Cách viết phần hiệu quả |
+| # | Nội dung | Ảnh hưởng | Ai xác nhận |
+|---|---|---|---|
+| 1 | **Phạm vi AI report** — có sinh nội dung đề xuất không, đầu vào là gì | Phạm vi thiết kế màn hình phân tích và phần xuất | Vis |
+| 2 | **Gốc tính mốc tự động gửi** — từ ngày thiết lập hay chỉ định được ngày khác | Cách hiện thực việc đổi sang ngày chuyển văn phòng | Dev |
+| 3 | WDP có **lưu ngày chuyển văn phòng** không | Điều kiện gắn mốc. Nếu chưa có thì phải cho nhập | Dev |
+| 4 | Dữ liệu trả lời cũ có **truy vấn được theo cùng đối tượng qua thời gian** không | Điều kiện cho báo cáo so sánh (F6) | Dev |
+| 5 | Có được phép **thêm câu hỏi vào bộ hiện tại** không, cấu trúc cho phép tới đâu | Điều kiện cho F2 | Vis + Dev |
+| 6 | Luồng đăng ký và kiểm tra pháp lý — mất mấy ngày ở bước nào | Biết F1 cắt được bao nhiêu | Vis |
+| 7 | Ai là người chịu trách nhiệm về After phía Vis | F9 gửi thông báo nhưng cần người nhận | Vis |
+| 8 | Cho phép tùy biến setting tới mức nào | Cân bằng F8 và khả năng so sánh | Vis |
+| 9 | Định nghĩa của 勝率 (tỷ lệ thắng) — chưa được trả lời | Cách viết phần hiệu quả | Vis |
 
-Mục 1, 2, 3 phải đưa vào brief khảo sát của dev (`30-dev-survey-brief.md`)
-**trước khi** báo effort.
+**Mục 1 nên hỏi trước tiên** — nó quyết định phạm vi phần xuất, và là chỗ dễ trùng lặp nhất.
+**Mục 2, 3, 4, 5 đưa vào brief dev** trước khi báo effort.
 
 ## Việc cần làm tiếp cho phần 2
 
 | Việc | Vì sao |
 |---|---|
-| Khảo sát cấu trúc dữ liệu survey hiện tại | Biết Before/After có nối được không — điều kiện của nhóm tính năng có phí |
-| Khảo sát cách setting survey đang được quản lý | Biết thêm câu hỏi phân nhánh có khả thi không |
-| Đo thời gian thực tế từng bước của đăng ký và điều khoản | Biết F1 cắt được bao nhiêu, để nói con số có căn cứ |
+| **Xác nhận gốc tính mốc 6 tháng trong code hiện tại** | Nếu đúng là từ ngày thiết lập thì đây là cải tiến rẻ nhất, tác động lớn nhất |
+| Kiểm tra WDP có lưu ngày chuyển văn phòng không | Điều kiện của toàn bộ giai đoạn 1 |
+| Khảo sát cấu trúc dữ liệu survey | Biết Before/After có nối được không |
+| Khảo sát cách setting survey được quản lý | Biết thêm câu hỏi phân nhánh có khả thi không |
+| Hỏi Vis về phạm vi AI report | Tránh trùng lặp phần xuất |
+| Thống kê dự án đã chuyển trên 6 tháng | Có mẫu số thật để nói về tỷ lệ thực hiện After |
 | Ước lượng effort theo từng giai đoạn | Để Vis phán đoán được mức đầu tư |
