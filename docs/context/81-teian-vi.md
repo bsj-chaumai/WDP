@@ -78,7 +78,8 @@ triển khai, phân tích kết quả, và phản ánh vào tài liệu đề xu
 Hai công đoạn tốn thời gian nhất là:
 
 - **Thủ tục đăng ký và xác nhận điều khoản**
-  Có trao đổi văn bản và kiểm tra pháp lý, nên số ngày khó dự đoán.
+  Là công đoạn phát sinh việc xác nhận và trao đổi.
+  Luồng hiện tại đang trong quá trình khảo sát.
 - **Phân tích kết quả và phản ánh vào tài liệu đề xuất**
   Việc chuyển từ điểm số sang câu chữ và hình vẽ trong đề xuất đang làm thủ công.
 
@@ -232,25 +233,29 @@ Xử lý riêng hai công đoạn đang tốn thời gian.
 Song song đó, chuẩn bị trạng thái **có thể triển khai nhẹ nhàng từ giai đoạn sớm**
 như giai đoạn nurturing.
 
-#### Về đăng ký và điều khoản — điều lớn nhất là "số ngày trở nên đoán được"
+#### Về đăng ký và điều khoản — giảm thời gian xác nhận và trao đổi
 
-Hiện tại có trao đổi văn bản và kiểm tra pháp lý,
-nên số ngày phụ thuộc vào phía khách hàng và bộ phận pháp chế.
+**Bằng cách gộp việc đăng ký và xác nhận điều khoản thành một luồng trên WDP,
+chúng tôi cho rằng có thể giảm được thời gian xác nhận và trao đổi
+đang phát sinh giữa consultant và khách hàng cuối.**
 
-Trong khung 3–4 tuần, **thứ làm dừng tiến độ không phải là chậm mà là không đoán được.**
-Không đoán được thì không xếp được vào lịch.
+Lưu ý: luồng đăng ký và xác nhận điều khoản hiện tại đang trong quá trình khảo sát,
+và nội dung điều khoản cần xác nhận thì chúng tôi dự định hỏi thêm.
+Vì vậy **phạm vi cắt giảm được sẽ chốt sau khi có kết quả khảo sát và xác nhận.**
 
-| Cải thiện được | Nội dung |
+Trên cơ sở đó, chúng tôi kỳ vọng các hiệu quả sau:
+
+| Kỳ vọng được | Nội dung |
 |---|---|
-| **Số ngày từ đăng ký đến thực hiện trở nên đoán được** | Giảm những chỗ phát sinh thời gian chờ, nhờ đó xếp được vào lịch chuẩn bị đề xuất |
-| **Có khả năng không cần kiểm tra pháp lý cho từng dự án** | Nếu chuẩn hóa điều khoản và được xác nhận một lần thì từng dự án không cần xác nhận lại. Chúng tôi muốn hỏi nội dung điều khoản cần xác nhận rồi mới chốt phạm vi cắt giảm được |
-| **Trạng thái thủ tục nhìn thấy được** | Không cần đi xác nhận giấy tờ đang ở đâu |
-| **Có thể thực hiện từ giai đoạn sớm** | Thủ tục nhẹ hơn thì việc thực hiện ở giai đoạn nurturing trở nên khả thi |
+| **Giảm việc trao đổi xác nhận** | Thay việc đi lại xác nhận phát sinh theo từng dự án bằng thao tác trên màn hình |
+| **Thủ tục gom về một chỗ** | Không cần tiến hành đăng ký và xác nhận điều khoản một cách riêng rẽ |
+| **Xác nhận được tiến độ** | Biết được đã hoàn tất tới đâu, nên giảm công đi xác nhận tình hình |
+| **Dễ thực hiện từ giai đoạn sớm** | Thủ tục nhẹ hơn thì việc thực hiện ở giai đoạn nurturing trở nên khả thi |
 
 #### Về phân tích kết quả — từ tuần tự sang song song
 
-Hiện tại thứ tự là: chờ câu trả lời về đủ → đọc số liệu → viết thành câu chữ →
-phản ánh vào đề xuất.
+Chúng tôi được biết hiện tại thứ tự là: sau khi lấy được kết quả,
+consultant xác nhận nội dung, chuyển từ số liệu thành câu chữ rồi phản ánh vào đề xuất.
 
 Nếu dữ liệu trả lời được tự động tổng hợp,
 **xu hướng nhìn thấy được ngay khi câu trả lời còn đang về.**
@@ -1316,7 +1321,7 @@ còn F8 phải chờ dự án Before tiếp theo. Đây là lý do thứ tự nh
 | 7 | Dữ liệu **phân tích vận hành có ghép vào báo cáo** được không | Chỉ số không phụ thuộc tỷ lệ trả lời (F11) | Dev |
 | 8 | Dữ liệu trả lời cũ có **truy vấn theo cùng đối tượng qua thời gian** không | Điều kiện cho báo cáo so sánh | Dev |
 | 9 | **Phạm vi AI report** | Phạm vi màn hình phân tích và phần xuất | Vis |
-| 10 | Luồng đăng ký và kiểm tra pháp lý — mất mấy ngày ở bước nào | Biết F1 cắt được bao nhiêu | Vis |
+| 10 | Luồng đăng ký và xác nhận điều khoản hiện tại — gồm những bước nào, ai xác nhận, mất bao lâu | Biết F1 cắt được bao nhiêu | Vis |
 | 11 | Cho phép tùy biến setting tới mức nào | Cân bằng F12 và khả năng so sánh | Vis |
 | 12 | Định nghĩa của 勝率 (tỷ lệ thắng) — chưa được trả lời | Cách viết phần hiệu quả | Vis |
 
