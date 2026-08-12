@@ -85,16 +85,29 @@ Hai công đoạn tốn thời gian nhất là:
 Việc phát hành survey qua URL đã giúp rút ngắn công đoạn thu thập địa chỉ email.
 Nhưng hai công đoạn trên vẫn còn, nên tình trạng không vừa khung thời gian vẫn tiếp diễn.
 
-## 1-4. Vấn đề 3: Câu trả lời After không được thu về, nên hiệu quả không tích lũy
+## 1-4. Vấn đề 3: Không cho thấy được hiệu quả trước và sau cải tạo, nên không dẫn tới việc dùng tiếp và thu phí
 
 **Before 83 case, trong khi After chỉ 5 case.**
 
 Chúng tôi được biết After hiện được cung cấp **miễn phí**,
 và cơ chế tự động phát hành lại tới người cần khảo sát cũng đã có.
-Trên cơ sở đó, chúng tôi nhận thức vấn đề nằm ở chỗ
-**sau khi phát hành thì câu trả lời không được thu về.**
+Dù vậy, việc thực hiện vẫn không tích lũy được.
 
-Bối cảnh là **động cơ trả lời survey giảm đi sau khi chuyển văn phòng.**
+**Nguyên nhân gốc, theo chúng tôi, là hệ thống chưa cho thấy được
+"cái gì đã thay đổi và thay đổi thế nào" giữa trước và sau khi cải tạo.**
+
+Hiện tại, thứ thực sự còn lại là cảm nhận
+"**không gian đã đẹp hơn**", "**việc cải tạo đã xong**".
+
+Vì vậy phát sinh chuỗi nhân quả sau:
+
+```
+Không cho thấy được hiệu quả trước và sau cải tạo
+  → Không sinh ra lý do để tiếp tục đo
+  → Không có căn cứ và sức thuyết phục để đề xuất như một dịch vụ có phí
+```
+
+Bối cảnh của điều này gồm:
 
 - Vì tập trung toàn lực cho tới ngày chuyển, nên khó còn sức cho việc kiểm chứng sau đó
 - Ngay sau khi có văn phòng mới, nhìn bề ngoài mức độ hài lòng đã cao
@@ -219,7 +232,7 @@ Xử lý riêng hai công đoạn đang tốn thời gian.
 Song song đó, chuẩn bị trạng thái **có thể triển khai nhẹ nhàng từ giai đoạn sớm**
 như giai đoạn nurturing.
 
-### Vấn đề 3: Câu trả lời After không được thu về, hiệu quả không tích lũy
+### Vấn đề 3: Không cho thấy được hiệu quả trước và sau cải tạo, nên không dẫn tới việc dùng tiếp và thu phí
 
 #### Xác nhận hiện trạng
 
@@ -229,9 +242,29 @@ như giai đoạn nurturing.
 - After **hiện được cung cấp miễn phí**
 
 Nghĩa là **cả cơ chế phát hành và gánh nặng chi phí đều không phải vấn đề.**
-Chúng tôi nhận thức vấn đề nằm ở chỗ sau khi phát hành thì **câu trả lời không được thu về.**
 
-#### Nguyên nhân: sự thay đổi mức quan tâm sau khi chuyển
+#### Nguyên nhân gốc: chưa cho thấy được hiệu quả trước và sau cải tạo
+
+**Hệ thống hiện tại chưa cho thấy được "cái gì đã thay đổi và thay đổi thế nào"
+giữa trước và sau khi cải tạo.**
+
+Thứ thực sự còn lại là cảm nhận
+"**không gian đã đẹp hơn**", "**việc cải tạo đã xong**".
+
+Vì vậy phát sinh chuỗi nhân quả sau:
+
+```
+Không cho thấy được hiệu quả trước và sau cải tạo (chỉ còn lại cảm nhận)
+  ↓
+Không sinh ra lý do để tiếp tục đo (không có điều kiện tạo thói quen dùng tiếp)
+  ↓
+Không có căn cứ và sức thuyết phục để đề xuất như dịch vụ có phí
+```
+
+Việc câu trả lời không được thu về cũng nằm trong chuỗi này.
+**Khi không có gì cần xác nhận thì cũng không sinh ra lý do để trả lời.**
+
+#### Bối cảnh: sự thay đổi mức quan tâm sau khi chuyển
 
 Điều này trùng với nội dung đã ghi trong kế hoạch kinh doanh:
 
@@ -840,8 +873,8 @@ Nếu còn những tính năng tương tự khác, mong được thông báo tr�
 
 **Vì sao đặt bước 1 trước:**
 
-Vấn đề hiện tại được nhận thức là sau khi phát hành thì **câu trả lời không được thu về**.
-Nếu câu trả lời không được thu về, dù chuẩn bị báo cáo cũng không phát huy hiệu quả.
+Gốc của vấn đề là chưa cho thấy được hiệu quả trước và sau cải tạo.
+Nhưng trước đó, **nếu câu trả lời không được thu về thì không có tư liệu để cho thấy.**
 
 Ba việc ở bước 1 đều liên quan tới **nội dung câu hỏi và cách trình bày**,
 không can thiệp vào cơ chế phát hành.
