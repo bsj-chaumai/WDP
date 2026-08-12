@@ -37,6 +37,7 @@ Sau đó mở thư mục repo bằng Cursor ở máy. Khi chat mới, tham chi�
 | `81-teian-vi.md` | **Bản tiếng Việt của nội dung 提案** — để chia sẻ và rà soát nội bộ |
 | `82-kadai-teian-map.md` | **Bản đồ 課題 → 提案** sắp xếp từ memo của PM, theo thứ tự 課題 → nguyên nhân → hướng 提案 → lợi ích, kèm danh sách mục cần bổ sung |
 | `82-kadai-teian-map.html` | **Bản HTML của file trên** — cùng nội dung, có mục lục và định dạng để dễ đọc. Mở trực tiếp bằng trình duyệt. Sinh lại bằng `scripts/build_kadai_map_html.py` |
+| `83-vis-teian-flow.md` | **Quy trình 提案 của Vis dựng lại từ tài liệu**, mỗi bước có dẫn nguồn. Tập trung vào khung 3–4 tuần: hai mạch song song, timeline WDS 6 tuần, và 8 điểm tài liệu không nói |
 
 ## Tài liệu đã có từ trước (không nằm trong pack này)
 
