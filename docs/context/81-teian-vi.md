@@ -227,10 +227,70 @@ Xử lý riêng hai công đoạn đang tốn thời gian.
 | Công đoạn | Nội dung cải tiến |
 |---|---|
 | **Thủ tục đăng ký và xác nhận điều khoản** | Cho phép hoàn tất bên trong WDP.<br>Chuyển việc trao đổi văn bản thành thao tác trên màn hình, và làm cho trạng thái xác nhận nhìn thấy được |
-| **Phân tích kết quả và phản ánh vào đề xuất** | Chọn nội dung sẽ dùng trên màn hình phân tích và xuất ra dạng dùng được ngay.<br>Rút ngắn phần "đọc hiểu rồi viết ra" vốn đang làm thủ công |
+| **Phân tích kết quả và phản ánh vào đề xuất** | Tự động tổng hợp dữ liệu trả lời để xác nhận được xu hướng.<br>Trên cơ sở đó, cho phép chọn nội dung sẽ dùng và xuất ra |
 
 Song song đó, chuẩn bị trạng thái **có thể triển khai nhẹ nhàng từ giai đoạn sớm**
 như giai đoạn nurturing.
+
+#### Về đăng ký và điều khoản — điều lớn nhất là "số ngày trở nên đoán được"
+
+Hiện tại có trao đổi văn bản và kiểm tra pháp lý,
+nên số ngày phụ thuộc vào phía khách hàng và bộ phận pháp chế.
+
+Trong khung 3–4 tuần, **thứ làm dừng tiến độ không phải là chậm mà là không đoán được.**
+Không đoán được thì không xếp được vào lịch.
+
+| Cải thiện được | Nội dung |
+|---|---|
+| **Số ngày từ đăng ký đến thực hiện trở nên đoán được** | Giảm những chỗ phát sinh thời gian chờ, nhờ đó xếp được vào lịch chuẩn bị đề xuất |
+| **Có khả năng không cần kiểm tra pháp lý cho từng dự án** | Nếu chuẩn hóa điều khoản và được xác nhận một lần thì từng dự án không cần xác nhận lại. Chúng tôi muốn hỏi nội dung điều khoản cần xác nhận rồi mới chốt phạm vi cắt giảm được |
+| **Trạng thái thủ tục nhìn thấy được** | Không cần đi xác nhận giấy tờ đang ở đâu |
+| **Có thể thực hiện từ giai đoạn sớm** | Thủ tục nhẹ hơn thì việc thực hiện ở giai đoạn nurturing trở nên khả thi |
+
+#### Về phân tích kết quả — từ tuần tự sang song song
+
+Hiện tại thứ tự là: chờ câu trả lời về đủ → đọc số liệu → viết thành câu chữ →
+phản ánh vào đề xuất.
+
+Nếu dữ liệu trả lời được tự động tổng hợp,
+**xu hướng nhìn thấy được ngay khi câu trả lời còn đang về.**
+Không cần chờ đủ mới bắt đầu xem xét, nên việc phân tích chạy song song với việc thu.
+
+Điều này rút ngắn **tổng thời gian** nhiều hơn là chỉ "phân tích nhanh hơn".
+
+| Cải thiện được | Nội dung |
+|---|---|
+| **Bắt đầu xem xét song song với việc thu câu trả lời** | Xác nhận được xu hướng mà không phải chờ đủ |
+| **Bắt đầu công việc từ nội dung đã tổng hợp** | Giảm phần chuyển số liệu thành câu chữ |
+| **Giảm chênh lệch giữa người phụ trách** | Mọi người bắt đầu từ cùng một bản tổng hợp, nên tính phụ thuộc cá nhân giảm |
+| **Thông tin dễ bỏ sót luôn được đưa lên** | Phần trả lời tự do dễ bị đọc lướt, nhưng khi được tổng hợp thì luôn xác nhận được |
+
+#### Hiệu quả ở tầng kinh doanh
+
+Việc cải thiện vấn đề này cũng là tiền đề cho các vấn đề khác.
+
+```
+Vừa với khung thời gian đề xuất
+  → Số dự án thực hiện được survey trong thời gian đề xuất tăng
+  → Số dự án đề xuất được dựa trên dữ liệu tăng (góp vào tỷ lệ thắng)
+  → Số case Before tăng → mẫu số của After cũng tăng
+```
+
+**Đồng thời, tổn thất cơ hội giảm.**
+Hiện tại nếu survey không kịp trong thời gian đó,
+đề xuất sẽ đi ra mà không có dữ liệu, và ở dự án đó không thu được
+phần đóng góp vào tỷ lệ thắng.
+Việc rút ngắn lead time cũng chính là **giảm số dự án như vậy.**
+
+#### Cách đo hiệu quả
+
+| Chỉ số | Xem cái gì |
+|---|---|
+| Số ngày từ đăng ký đến thực hiện | Hiệu quả của cải tiến đăng ký, điều khoản |
+| Số ngày từ lấy kết quả đến phản ánh vào đề xuất | Hiệu quả của cải tiến phân tích |
+| **Tỷ lệ dự án thực hiện được survey trong thời gian đề xuất** | Chỉ số tổng của vấn đề này |
+| Số case thực hiện ở giai đoạn nurturing | Hiệu quả của việc làm nhẹ thủ tục |
+| Số đề xuất có kết quả survey làm căn cứ | Sự kết nối với tỷ lệ thắng |
 
 ### Vấn đề 3: Không cho thấy được hiệu quả trước và sau cải tạo, nên không dẫn tới việc dùng tiếp và thu phí
 
