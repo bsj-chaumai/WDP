@@ -301,7 +301,7 @@ Mục tiêu là tạo ra trạng thái sinh ra "muốn xác nhận" đối với
 | **2** | **Đặt mục tiêu ở thời điểm Before** | Thiết lập mục tiêu và điểm mục tiêu trong luồng Before. Ở After hiển thị song song "mục tiêu đã đặt" và "thực tế" |
 | **3** | **Thêm câu hỏi về vận hành sau khi chuyển** | Không gian mới có được dùng đúng ý định không, quy tắc mới có hoạt động không, chỗ ngồi có bị cố định lại không, hiện đang gặp khó gì |
 | **4** | **Phản hồi lại cho người trả lời** | Truyền đạt "nội dung đã nêu lần trước → nội dung đã xử lý" ở đầu phần trả lời |
-| **5** | **Thu hẹp số câu hỏi** | After chỉ giữ các mục để so sánh và câu hỏi về vận hành, giảm gánh nặng trả lời |
+| **5** | **Xây dựng cấu trúc câu hỏi theo mục tiêu** | Không thu hẹp một cách đồng loạt, mà chia thành: mục giữ chung, mục đã đặt làm mục tiêu, và câu hỏi theo từng dự án (chi tiết bên dưới) |
 | **6** | **Hiển thị tình hình trả lời theo bộ phận** | Để bộ phận hành chính xác nhận bộ phận nào chưa trả lời và thúc đẩy trong nội bộ |
 | **7** | **Mẫu văn thông báo** | Chuẩn bị mẫu văn thông báo có kèm mục tiêu đã đặt và nội dung đã xử lý lần trước |
 
@@ -322,19 +322,74 @@ Nó làm cho Before và After thành một cặp, và trở thành chính lý do
 
 #### Cấu trúc bộ câu hỏi After (phương án)
 
-| Khối | Số câu dự kiến | Nội dung |
-|---|---|---|
-| Mục tiêu đã đặt | 2–3 | Các mục đã chọn ở Before. Giữ nguyên câu hỏi để so sánh |
-| Xác nhận nội dung đã nêu lần trước | 2–3 | Sinh tự động từ kết quả Before |
-| Thực tế nơi làm việc | 1 | Dùng nguyên câu hỏi hiện có |
-| Cách dùng không gian mới | 2–3 | Thiết lập theo từng dự án |
-| Tình trạng quy tắc | 1–2 | Mới |
-| Hiện đang gặp khó gì | 1 | Trả lời tự do, hoặc hiển thị theo điều kiện |
+Chúng tôi đề xuất **chia thành ba lớp** thay vì thu hẹp số câu một cách đồng loạt.
 
-Tổng khoảng **10–13 câu**.
-So với cấu trúc hiện tại, thời gian trả lời được rút ngắn đáng kể.
+| Lớp | Nội dung | Cách quyết định | Thay đổi |
+|---|---|---|---|
+| **1. Lõi chung** | Thông tin người trả lời, tỷ lệ nơi làm việc, mức hài lòng tổng thể, eNPS | Cố định | **Không thay đổi** |
+| **2. Mục đã đặt làm mục tiêu** | Các câu hỏi cấu thành 2–3 mục đã chọn ở Before | Consultant, XP đề xuất và khách hàng đồng ý | Chốt ở Before, cố định cho cặp Before/After đó |
+| **3. Câu hỏi theo từng dự án** | Xác nhận nội dung đã nêu lần trước (sinh tự động), câu hỏi về không gian và quy tắc mới, trả lời tự do | Theo từng dự án | Thiết lập theo dự án |
+
+**Vì sao lõi chung được cố định:**
+Điểm của 6 mục và điểm Work Design được tính từ toàn bộ bộ câu hỏi.
+Nếu giảm câu hỏi thì **không thể tính điểm theo cùng phương pháp như Before,
+và tiền đề của việc so sánh bị phá vỡ.**
+Ngoài ra việc so sánh với các công ty khác đã tích lũy được,
+cùng đồ thị diễn biến, cũng không còn thành lập.
+
+Vì vậy phần làm nền cho việc so sánh được cố định thành lõi chung,
+còn phần thay đổi là lớp 2 và lớp 3.
+
+#### Số câu hỏi thay đổi theo lượng can thiệp
+
+Với cấu trúc trên, số câu hỏi sẽ khác nhau theo từng dự án.
+
+| Nội dung dự án | Lớp 2 gồm gì | Số câu dự kiến |
+|---|---|---|
+| **Chỉ Workplace Design** | Chủ yếu Place, Style | Khoảng 12–15 câu |
+| **Workplace Design + XD** | Bao gồm cả Engagement, Culture | Khoảng 20–28 câu |
+
+**Vì sao dự án có XD thì tăng số mục:**
+
+Kế hoạch kinh doanh có ghi:
+
+> **Trong 6 mục, không phải mục nào cũng có thể cải thiện chỉ bằng
+> thời điểm chuyển văn phòng.**
+
+Chúng tôi hiểu đây chính là lý do XD được cần đến.
+Nếu XD là việc tác động vào những mục khó thay đổi chỉ bằng việc chuyển,
+thông qua workshop và các sự kiện,
+thì **ở dự án có XD, chính những mục đó mới là thứ cần đo.**
+
+Ngược lại, nếu đo những mục đó ở dự án không có XD,
+vì không có biện pháp tác động nên thay đổi khó nhìn thấy,
+chỉ còn lại gánh nặng trả lời.
+
+**Về mặt vận hành cũng nhất quán.**
+Chúng tôi được biết ở dự án có XD, phía khách hàng sẽ lập nhóm vận hành.
+Ở những dự án có người thúc đẩy trong nội bộ, dù số câu nhiều hơn
+thì câu trả lời vẫn dễ được thu về.
+Còn ở dự án không có cơ chế đó, cấu trúc ngắn sẽ dễ được trả lời hơn.
+
+Nói cách khác, **mục đích không phải "làm cho ngắn",
+mà là khớp số câu hỏi với lượng can thiệp và mức độ kết quả được cần đến.**
 
 Lưu ý là không can thiệp vào bản thân bộ câu hỏi hiện có (xem mục 2-9).
+
+#### Điều này cũng góp phần cho việc kiểm chứng hiệu quả của XD
+
+Vì các mục ở lớp 2 được thiết lập theo nội dung triển khai của XD,
+**ở những dự án có XD, ghi nhận về các mục được nhắm tới sẽ tự động được lưu lại.**
+
+Nhờ đó có thể so sánh:
+
+- So với mục tiêu đã đặt thì thực tế đã thay đổi thế nào
+- Khác biệt giữa dự án có XD và dự án không có XD
+
+Kế hoạch kinh doanh có ghi "việc có đưa XD vào hay không tạo ra khác biệt một trời một vực",
+nhưng chúng tôi hiểu rằng ở thời điểm hiện tại,
+tư liệu để thể hiện điều đó bằng số liệu còn hạn chế.
+Cấu trúc này cũng là hình thức để tư liệu đó được tích lũy dần.
 
 #### Về nội dung truyền đạt ở đầu phần trả lời
 
@@ -468,7 +523,7 @@ Cách suy nghĩ về thứ tự được ghi ở mục 2-10.
 | **F4** | Phương án layout dựa trên kế hoạch nhân sự | Consultant | 1, 2 | Mới |
 | **F5** | **Câu hỏi xác nhận nội dung đã nêu lần trước** (sinh tự động từ kết quả Before) | Worker / XP | 3 | Mới |
 | **F6** | **Hiển thị phản hồi ở đầu phần trả lời** (nội dung lần trước và việc đã xử lý) | Worker | 3 | Dùng cơ chế hiển thị nội dung đã có |
-| **F7** | **Cấu trúc bộ câu hỏi After** (mục so sánh + câu hỏi vận hành, thu hẹp số câu) | Khách hàng / XP | 3 | **Cơ chế phát hành đã có**; thêm cấu trúc câu hỏi |
+| **F7** | **Cấu trúc bộ câu hỏi After** (lõi chung + mục tiêu + câu hỏi theo dự án, 3 lớp) | Khách hàng / XP | 3 | **Cơ chế phát hành đã có**; thêm cấu trúc câu hỏi |
 | **F8** | **Đặt mục tiêu ở Before** (mục và điểm mục tiêu, hiển thị suốt dự án) | Consultant / XP | 3 | Mới |
 | **F9** | **Tình hình trả lời theo bộ phận** và mẫu văn thông báo | Hành chính / XP | 3 | Mới |
 | **F10** | Trực quan hóa tình hình thực hiện (đối tượng, phát hành, câu trả lời, báo cáo) | Kinh doanh / CS / XP | 3 | Mới |
@@ -532,10 +587,31 @@ chúng tôi cho rằng **thực hiện được với cấu trúc hiện tại**
 Mặt khác, để so sánh thì cần đo cùng những mục giống nhau.
 Vì vậy cấu trúc là **giữ lại các mục đã đặt làm mục tiêu, đồng thời thêm câu hỏi về vận hành**.
 
-**Việc thu hẹp số câu hỏi cũng quan trọng.**
-Nếu phát hành lại nguyên cấu trúc hiện tại, sẽ chứa nhiều câu hỏi
-ngoài những mục muốn xác nhận.
-Thu hẹp After còn khoảng 10–13 câu sẽ giảm được gánh nặng trả lời.
+**Tuy nhiên chúng tôi không thu hẹp một cách đồng loạt.**
+
+Vì điểm của 6 mục được tính từ toàn bộ bộ câu hỏi,
+nếu giảm câu hỏi thì không thể tính điểm theo cùng phương pháp như Before,
+và tiền đề của việc so sánh bị phá vỡ.
+Việc so sánh với các công ty khác và đồ thị diễn biến cũng không còn thành lập.
+
+Vì vậy cấu trúc gồm **lõi chung (cố định) + mục đã đặt làm mục tiêu +
+câu hỏi theo từng dự án** — chỉ lớp 2 và lớp 3 là thay đổi.
+
+Kết quả là số câu hỏi khác nhau theo từng dự án.
+
+| Nội dung dự án | Số câu dự kiến |
+|---|---|
+| Chỉ Workplace Design | Khoảng 12–15 câu |
+| Workplace Design + XD | Khoảng 20–28 câu |
+
+**Vì sao dự án có XD thì tăng số mục:**
+Nếu XD là việc tác động vào những mục khó thay đổi chỉ bằng việc chuyển văn phòng,
+thì ở dự án có XD, chính những mục đó mới là thứ cần đo.
+Ngược lại ở dự án không có XD, vì không có biện pháp tác động nên
+thay đổi khó nhìn thấy, chỉ còn lại gánh nặng trả lời.
+
+Ngoài ra chúng tôi được biết ở dự án có XD, phía khách hàng sẽ lập nhóm vận hành —
+có người thúc đẩy trong nội bộ thì dù số câu nhiều hơn, câu trả lời vẫn dễ được thu về.
 
 Lưu ý là không can thiệp vào bản thân bộ câu hỏi hiện có (xem mục 2-9).
 
@@ -622,11 +698,28 @@ vị trí và mức ảnh hưởng, độ cụ thể của đầu ra sẽ khác.
 
 Nếu không phải là những mục có ý nghĩa với công ty đó, động lực đo lặp lại
 sẽ không duy trì được.
+Tùy theo ngành, cơ cấu loại công việc và cách làm việc, những mục muốn đo là khác nhau.
 
 Đây cũng là tính năng được người phụ trách コンペ và các consultant nêu ra như một yêu cầu.
 
-Để giữ khả năng so sánh, **chúng tôi muốn xác định trước phạm vi được phép thay đổi**
-(xem mục 2-9).
+**Tuy nhiên chúng tôi muốn tránh hình thức cho phép thay đổi tự do.**
+
+| Vấn đề dự kiến | Nội dung |
+|---|---|
+| Không còn so sánh được với công ty khác | Nếu mỗi khách hàng có mục khác nhau, việc so sánh với dữ liệu đã tích lũy không thành lập |
+| Những mục quan trọng bị loại ra | Có khả năng chọn những mục dễ trả lời, còn mục thực sự cần xác nhận thì không còn |
+| Không theo được diễn biến | Nếu mỗi lần thực hiện lại đổi mục, việc so sánh theo thời gian không thực hiện được |
+
+Vì vậy chúng tôi đề xuất hình thức sau:
+
+- **Lõi chung không thay đổi được** (nền của việc so sánh)
+- Phần thay đổi được là **chọn từ những mục đã chuẩn bị sẵn**, không phải nhập tự do
+- Tiêu chí chọn là "mục tiêu của dự án đó", do consultant và XP đề xuất
+- Mục đã chốt thì **không thay đổi trong cặp Before/After đó**
+- Việc thay đổi được thực hiện ở thời điểm bắt đầu chu kỳ tiếp theo
+
+Nói cách khác, tùy biến được thiết kế như **cơ chế để khớp với mục tiêu của dự án**,
+không phải hình thức chỉ do mong muốn của khách hàng quyết định (xem mục 2-9).
 
 ### F4: Phương án layout
 
@@ -663,6 +756,9 @@ vào phương án thay đổi layout.
 | **Luồng thông báo trong nội bộ** — ai, thông báo cho nhân viên bằng cách nào | Là tiền đề để thiết kế cơ chế thúc đẩy |
 | **Những vấn đề vận hành hay được hỏi sau khi chuyển** | Là căn cứ để quyết định nên thêm gì vào câu hỏi After |
 | **Có được phép can thiệp vào câu hỏi hiện có, hay chỉ thêm mới** | Để giữ khả năng so sánh với điểm số cũ, chúng tôi khuyến nghị chỉ thêm mới |
+| **Phương pháp tính điểm của 6 mục** — câu hỏi nào tương ứng với mục nào | Cần để xác định phạm vi phải cố định thành lõi chung |
+| **Ở dự án có XD, những mục nào đặc biệt muốn xác nhận** | Là căn cứ để quyết định đưa gì vào lớp 2 |
+| **Việc so sánh với công ty khác đang được dùng ở phạm vi nào** | Là căn cứ xác nhận mức cần thiết của việc cố định lõi chung |
 | **Cấu trúc có hỗ trợ thiết lập điều kiện hiển thị câu hỏi không** | Cách hiện thực việc hiển thị câu hỏi theo kết quả lần trước sẽ thay đổi |
 | **Có tham chiếu được kết quả Before để sinh câu hỏi không** | Liên quan tới cách hiện thực F5 |
 | **Dữ liệu phân tích vận hành có đưa vào báo cáo được không** | Cần để bảo đảm có chỉ số không phụ thuộc câu trả lời |
@@ -844,7 +940,7 @@ tạo lý do trả lời, đặt bối cảnh cho các câu hỏi phía sau.
 
 ### Giảm số câu — thay đổi lớn nhất về tỷ lệ trả lời
 
-Bộ After đề xuất khoảng **10–13 câu** thay vì 52:
+Bộ After không dùng lại nguyên 52 câu. Cấu trúc theo lớp（xem 2-2）:
 
 | Khối | Số câu |
 |---|---|
@@ -855,7 +951,8 @@ Bộ After đề xuất khoảng **10–13 câu** thay vì 52:
 | Quy tắc còn sống không | 1–2 |
 | Vấn đề đang gặp | 1 |
 
-Từ 10–15 phút xuống 2–3 phút. Không cần thêm cơ chế gì.
+Với dự án chỉ WD thì khoảng 12–15 câu — từ 10–15 phút xuống 3–4 phút.
+Với dự án có XD thì 20–28 câu, nhưng có nhóm vận hành để thúc đẩy nên chịu được.
 
 Bộ pulse 19 câu đã có sẵn làm điểm khởi đầu — nhưng cần thay phần văn hóa
 và career bằng phần vận hành.
@@ -868,6 +965,77 @@ thì không biết thúc ai.
 **Mẫu văn thông báo.** Survey phát từ phía khách, nên cách họ giới thiệu quyết định
 tỷ lệ trả lời. Mẫu có sẵn phần "mục tiêu đã đặt" và "lần trước đã xử lý gì"
 giúp họ không phải tự viết mà vẫn giữ thông điệp đúng.
+
+### Điểm quan trọng: không cắt câu hỏi theo quy tắc cứng
+
+Bản trước viết "giảm xuống 10–13 câu" cho mọi trường hợp. **Sai** — có hai rủi ro:
+
+**1. Ảnh hưởng tới XD.**
+Đã xếp Culture và Well-being là sức kéo yếu vì không đổi trong 6 tháng.
+Nhưng bỏ qua điều kiện: **sức kéo phụ thuộc vào có can thiệp nào nhắm vào nó hay không.**
+
+Kế hoạch kinh doanh viết 「6項目の内、すべてが移転というタイミングだけでは向上させるのが難しい」
+— câu này **chính là lý do XD tồn tại**, không phải lý do bỏ đo.
+
+| Loại dự án | Có can thiệp vào culture/engagement | Sức kéo |
+|---|---|---|
+| Chỉ WD | Không — chỉ có bản thân văn phòng | Yếu |
+| WD + XD | Có — workshop, event, change management | **Mạnh, và bắt buộc đo** |
+
+→ Với dự án XD, cắt culture/engagement là **cắt đúng bằng chứng XD cần**
+để chứng minh giá trị.
+
+**2. Phá điểm số và benchmark.**
+Điểm 6 trục và điểm Work Design tính từ toàn bộ bộ câu hỏi. Cắt câu thì:
+- Không tính được điểm theo cùng cách như Before → **so sánh mất căn cứ**
+- Không so được với dữ liệu tích lũy của Vis (8.500 case thực tế) — tài sản của họ
+- Đường xu hướng theo thời gian bị đứt
+
+### Giải pháp: cấu trúc 3 lớp, cắt theo mục tiêu
+
+| Lớp | Nội dung | Đổi được? |
+|---|---|---|
+| **1. Lõi chung** | Thông tin người trả lời, tỷ lệ nơi làm việc, hài lòng tổng thể, eNPS | **Không** — giữ benchmark và đường xu hướng |
+| **2. Mục tiêu dự án** | Các câu cấu thành 2–3 trục chọn làm KPI ở Before | Chốt ở Before, khóa cho cặp Before/After |
+| **3. Theo dự án** | Xác nhận vấn đề lần trước (tự sinh), câu hỏi vận hành, tự do | Có |
+
+Độ dài tự điều chỉnh: **chỉ WD khoảng 12–15 câu · WD+XD khoảng 20–28 câu**.
+
+Lý do vận hành hỗ trợ điều này: **dự án XD có nhóm vận hành phía khách**
+(bước ② quy trình XD). Có người sở hữu thì chịu được bộ dài hơn.
+Dự án chỉ WD không có ai sở hữu — bộ ngắn mới có cơ hội được trả lời.
+
+→ Cách phát biểu: **không phải "cắt cho ngắn", mà "độ dài tương ứng với việc
+có ai thực sự cần kết quả"**.
+
+### Về custom theo client (F12) — là cơ chế đúng nhưng cần ràng buộc
+
+Custom giải quyết được vấn đề XD, nhưng tự do thì sinh ba rủi ro:
+
+| Rủi ro | Hậu quả |
+|---|---|
+| Mỗi khách chọn khác nhau | Mất benchmark liên công ty |
+| Chọn theo cái dễ trả lời | Bỏ mất mục quan trọng |
+| Mỗi kỳ đổi mục | Mất so sánh theo thời gian |
+
+Ràng buộc đã đưa vào đề xuất: lõi chung không đổi · chọn từ thư viện,
+không tự do nhập · tiêu chí chọn là **mục tiêu dự án**, không phải sở thích khách ·
+khóa cho cặp Before/After · đổi chỉ ở đầu chu kỳ mới.
+
+**Điểm cần nhấn khi trình bày:** tiêu chí quyết định là **mục tiêu dự án**,
+không phải khách muốn gì. Cùng một khách, dự án chỉ WD và dự án có XD
+cần bộ khác nhau.
+
+### Lợi ích phụ cho XD — đáng nêu khi trình bày
+
+Nếu lớp 2 bắt buộc chứa các trục XD nhắm tới, thì hệ thống tự tạo ra bằng chứng
+cho XD ở **mọi dự án có XD**, không chỉ 5–6 dự án có workshop.
+
+Và cho phép so sánh **dự án có XD vs không có XD**.
+
+Kế hoạch kinh doanh viết 「XDを取り入れるか否かで天と地の差が出る」— nhưng hiện chưa có
+số để nói. Cấu trúc này làm số đó tích lũy dần.
+Đây là lập luận bán hàng mạnh cho XD mà họ đang thiếu.
 
 ### Vì sao F8 (mục tiêu) xếp sau F5–F7
 
@@ -978,5 +1146,5 @@ từ kinh nghiệm hiện trường.
 | Kiểm tra cấu trúc setting có hỗ trợ điều kiện hiển thị không | Cách hiện thực F5 |
 | Kiểm tra có tham chiếu kết quả Before để sinh câu hỏi được không | Điều kiện F5 |
 | Kiểm tra dữ liệu phân tích vận hành có ghép vào báo cáo được không | Phòng rủi ro cho tỷ lệ trả lời thấp |
-| **Thiết kế thử bộ After 10–13 câu để xem với Vis** | Cụ thể hóa F7, dễ lấy phản hồi |
+| **Thiết kế thử 2 bộ After（chỉ WD / có XD）để xem với Vis** | Cụ thể hóa F7, dễ lấy phản hồi |
 | Ước lượng effort theo từng giai đoạn | Để Vis phán đoán mức đầu tư |
