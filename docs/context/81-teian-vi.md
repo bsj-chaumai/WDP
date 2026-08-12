@@ -330,15 +330,56 @@ Chúng tôi đề xuất **chia thành ba lớp** thay vì thu hẹp số câu m
 | **2. Mục đã đặt làm mục tiêu** | Các câu hỏi cấu thành 2–3 mục đã chọn ở Before | Consultant, XP đề xuất và khách hàng đồng ý | Chốt ở Before, cố định cho cặp Before/After đó |
 | **3. Câu hỏi theo từng dự án** | Xác nhận nội dung đã nêu lần trước (sinh tự động), câu hỏi về không gian và quy tắc mới, trả lời tự do | Theo từng dự án | Thiết lập theo dự án |
 
-**Vì sao lõi chung được cố định:**
-Điểm của 6 mục và điểm Work Design được tính từ toàn bộ bộ câu hỏi.
-Nếu giảm câu hỏi thì **không thể tính điểm theo cùng phương pháp như Before,
-và tiền đề của việc so sánh bị phá vỡ.**
-Ngoài ra việc so sánh với các công ty khác đã tích lũy được,
-cùng đồ thị diễn biến, cũng không còn thành lập.
+#### Tiền đề: cần tách hai thứ
 
-Vì vậy phần làm nền cho việc so sánh được cố định thành lõi chung,
-còn phần thay đổi là lớp 2 và lớp 3.
+| | Nội dung | Cách xử lý |
+|---|---|---|
+| **Bản thân câu hỏi** | Câu chữ, các lựa chọn, thang đo | **Không thay đổi** |
+| **Phạm vi phát hành và phần thêm** | Phát hành câu nào / thêm câu nào | Quyết theo mục tiêu dự án |
+
+**Thứ bảo vệ logic tính toán là phần thứ nhất.**
+Điểm của từng câu hỏi được tính từ câu trả lời cho chính câu hỏi đó,
+nên miễn không thay đổi bản thân câu hỏi thì phương pháp tính vẫn còn hiệu lực.
+
+Nói cách khác, đề xuất này là cách nghĩ:
+**không can thiệp chút nào vào bộ câu hỏi hiện có,
+mà quyết định theo từng dự án là "phát hành cái nào" và "thêm cái gì".**
+
+**Vì sao lõi chung được cố định:**
+Trong khi phạm vi phát hành thay đổi theo dự án,
+vẫn cần giữ lại phần để việc so sánh với công ty khác
+và đồ thị diễn biến còn thành lập.
+Vì vậy thông tin người trả lời, tỷ lệ nơi làm việc, mức hài lòng tổng thể và eNPS
+được cố định thành lõi chung.
+
+#### Về việc ở After cần so sánh tới mức nào
+
+Kế hoạch kinh doanh có ghi:
+
+> Chọn **3 mục** có liên quan nhất trong 52 câu của WDS,
+> và thiết lập điểm mục tiêu so với hiện trạng
+
+Chúng tôi hiểu rằng ở XD, mục tiêu được thiết lập ở **cấp từng câu hỏi**.
+Trong trường hợp đó, nếu ở After phát hành nguyên các câu hỏi tương ứng
+thì việc so sánh với Before thành lập ở cấp câu hỏi.
+
+Mặt khác, để tính điểm của 6 mục và điểm Work Design
+thì cần toàn bộ các câu hỏi thuộc mục đó.
+
+Số câu hỏi cần phát hành thay đổi tùy theo ở After cần so sánh tới mức nào.
+
+| Điều cần có ở After | Câu hỏi cần phát hành | Số câu |
+|---|---|---|
+| So sánh các câu hỏi đã đặt làm mục tiêu | Chỉ những câu đó | 2–3 câu |
+| + Điểm của mục tương ứng | Toàn bộ câu thuộc mục đó | Khoảng 8–18 câu |
+| + Điểm Work Design | Toàn bộ câu hỏi | 52 câu |
+
+Chúng tôi muốn xác nhận **hiện tại ở After đang sử dụng tới mức nào**,
+rồi quyết định cấu trúc theo phạm vi cần thiết (xem mục 2-9).
+
+Ngoài ra, chúng tôi hiểu rằng bộ câu hỏi bản pulse đã là cấu trúc
+dùng một phần trong toàn bộ câu hỏi,
+nên cách nghĩ đo bằng một phần câu hỏi vốn đã được vận hành.
 
 #### Số câu hỏi thay đổi theo lượng can thiệp
 
@@ -756,7 +797,8 @@ vào phương án thay đổi layout.
 | **Luồng thông báo trong nội bộ** — ai, thông báo cho nhân viên bằng cách nào | Là tiền đề để thiết kế cơ chế thúc đẩy |
 | **Những vấn đề vận hành hay được hỏi sau khi chuyển** | Là căn cứ để quyết định nên thêm gì vào câu hỏi After |
 | **Có được phép can thiệp vào câu hỏi hiện có, hay chỉ thêm mới** | Để giữ khả năng so sánh với điểm số cũ, chúng tôi khuyến nghị chỉ thêm mới |
-| **Phương pháp tính điểm của 6 mục** — câu hỏi nào tương ứng với mục nào | Cần để xác định phạm vi phải cố định thành lõi chung |
+| **Ở After đang sử dụng so sánh tới mức nào** — chỉ so sánh câu mục tiêu, tới điểm của mục, hay tới điểm Work Design | **Số câu hỏi cần phát hành thay đổi rất nhiều.** Là điểm muốn xác nhận nhất |
+| **Phương pháp tính điểm của 6 mục** — câu hỏi nào tương ứng với mục nào | Cần để xác định phạm vi phát hành và lõi chung |
 | **Ở dự án có XD, những mục nào đặc biệt muốn xác nhận** | Là căn cứ để quyết định đưa gì vào lớp 2 |
 | **Việc so sánh với công ty khác đang được dùng ở phạm vi nào** | Là căn cứ xác nhận mức cần thiết của việc cố định lõi chung |
 | **Cấu trúc có hỗ trợ thiết lập điều kiện hiển thị câu hỏi không** | Cách hiện thực việc hiển thị câu hỏi theo kết quả lần trước sẽ thay đổi |
@@ -768,9 +810,17 @@ vào phương án thay đổi layout.
 | Cho phép tùy biến câu hỏi theo khách hàng tới mức nào | Cần xác định phạm vi được phép thay đổi, để giữ khả năng so sánh |
 
 **Về cách xử lý bộ câu hỏi:**
-Nếu thay đổi các câu hỏi hiện có thì sẽ không so sánh được với điểm số đã tích lũy.
-Vì vậy chúng tôi đề xuất phương án **không thay đổi câu hỏi hiện có,
-chỉ thêm câu hỏi bổ sung**.
+
+Trong đề xuất này, chúng tôi muốn theo phương châm sau:
+
+> **Không thay đổi chút nào các câu hỏi hiện có (câu chữ, lựa chọn, thang đo).**
+> **Điều quyết định theo từng dự án là: phát hành câu nào, và thêm câu gì.**
+
+Nếu thay đổi bản thân câu hỏi thì sẽ không so sánh được với điểm số đã tích lũy.
+Việc sửa nhẹ câu chữ hay đổi thang đo cũng là nguyên nhân
+phá vỡ khả năng so sánh mà không ai nhận ra.
+Vì vậy chúng tôi đề xuất xử lý bằng **phạm vi phát hành và phần thêm**,
+không phải bằng việc thay đổi.
 
 **Về những tính năng đã được trang bị:**
 Trong đề xuất này, những cơ chế **đã hoạt động — như tự động phát hành lại —
@@ -991,13 +1041,59 @@ Kế hoạch kinh doanh viết 「6項目の内、すべてが移転というタ
 - Không so được với dữ liệu tích lũy của Vis (8.500 case thực tế) — tài sản của họ
 - Đường xu hướng theo thời gian bị đứt
 
+### Cách phát biểu nguyên tắc cho chính xác
+
+Đừng nói "giữ bộ chuẩn + thêm" — câu đó gộp hai quyết định khác nhau. Nói:
+
+> **Không sửa câu hỏi nào đang có. Quyết định theo mục tiêu dự án là:
+> gửi những câu nào, và thêm những câu gì.**
+
+| | Nội dung | Trạng thái |
+|---|---|---|
+| **Bất biến** | Câu hỏi, lựa chọn, thang đo | **Không bao giờ đổi** |
+| **Khả biến** | (a) Gửi câu nào · (b) Thêm câu gì | Theo mục tiêu dự án |
+
+**Cái bảo vệ logic tính toán là phần bất biến** — điểm của một mục tính từ câu trả lời
+của chính câu hỏi đó, nên miễn câu hỏi không đổi thì cách tính vẫn đúng.
+
+Cách nói này chặt hơn "giữ bộ chuẩn" vì nó **cấm cả việc sửa nhẹ chữ hay đổi thang đo**
+— thứ dễ bị bỏ qua nhưng làm hỏng so sánh mà không ai nhận ra.
+
 ### Giải pháp: cấu trúc 3 lớp, cắt theo mục tiêu
 
 | Lớp | Nội dung | Đổi được? |
 |---|---|---|
 | **1. Lõi chung** | Thông tin người trả lời, tỷ lệ nơi làm việc, hài lòng tổng thể, eNPS | **Không** — giữ benchmark và đường xu hướng |
-| **2. Mục tiêu dự án** | Các câu cấu thành 2–3 trục chọn làm KPI ở Before | Chốt ở Before, khóa cho cặp Before/After |
+| **2. Mục tiêu dự án** | Các câu KPI chọn ở Before | Chốt ở Before, khóa cho cặp Before/After |
 | **3. Theo dự án** | Xác nhận vấn đề lần trước (tự sinh), câu hỏi vận hành, tự do | Có |
+
+### Phát hiện quan trọng: KPI của XD ở cấp câu hỏi, không phải cấp trục
+
+Kế hoạch kinh doanh viết: 「52問あるWDSの中から最も関連性の高い**項目を3つ選択**し」
+— chọn **3 câu hỏi** trong 52, không phải 3 trục. Bản MVP thì 2 câu.
+
+Nghĩa là **cách so sánh của chính XD đã làm việc ở cấp câu hỏi**.
+Nếu After giữ nguyên 3 câu đó, so sánh hợp lệ — **không cần tính lại điểm trục**.
+
+Điều này làm việc gửi tập con dễ chấp nhận hơn nhiều.
+
+### Ba mức so sánh — cần Vis quyết
+
+| Muốn có gì ở After | Phải gửi gì | Số câu |
+|---|---|---|
+| So sánh câu KPI ở cấp câu hỏi | Đúng 2–3 câu đó | 2–3 |
+| + điểm của trục chứa câu KPI | Toàn bộ câu thuộc trục đó | ~8–18 |
+| + điểm tổng Work Design | Toàn bộ 52 câu | 52 |
+
+Ba mức khác nhau **rất nhiều** về gánh nặng trả lời.
+Chưa biết Vis đang dùng tới mức nào ở After — đã đưa lên **đầu danh sách xác nhận** ở 2-9.
+
+### Tiền lệ hỗ trợ: pulse 19 câu đã là tập con
+
+Bộ pulse Vis tự tạo tháng 1/2025 **chính là một tập con của 52 câu**.
+Nghĩa là họ **đã chấp nhận nguyên tắc đo bằng tập con** —
+nên đề xuất gửi tập con ở After không phải ý lạ.
+Đây là lập luận tốt để dùng khi trình bày.
 
 Độ dài tự điều chỉnh: **chỉ WD khoảng 12–15 câu · WD+XD khoảng 20–28 câu**.
 
