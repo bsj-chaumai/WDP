@@ -36,6 +36,7 @@ Sau đó mở thư mục repo bằng Cursor ở máy. Khi chat mới, tham chi�
 | `80-teian-genjo-kadai-scratch.md` | **Nội dung 提案 (JA — bản chính thức gửi khách)** cho 2 đề mục『現状の課題と目指したいこと』『ご提案：スクラッチ開発』— kèm **chính sách dùng số liệu**, user story, 10 tính năng phân 有料/提案用, lý giải từng 有料機能, và織り込み yêu cầu của Vis |
 | `81-teian-vi.md` | **Bản tiếng Việt của nội dung 提案** — để chia sẻ và rà soát nội bộ |
 | `82-kadai-teian-map.md` | **Bản đồ 課題 → 提案** sắp xếp từ memo của PM, theo thứ tự 課題 → nguyên nhân → hướng 提案 → lợi ích, kèm danh sách mục cần bổ sung |
+| `82-kadai-teian-map.html` | **Bản HTML của file trên** — cùng nội dung, có mục lục và định dạng để dễ đọc. Mở trực tiếp bằng trình duyệt. Sinh lại bằng `scripts/build_kadai_map_html.py` |
 
 ## Tài liệu đã có từ trước (không nằm trong pack này)
 

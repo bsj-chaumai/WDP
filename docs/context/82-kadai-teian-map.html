@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>課題 → 提案 マップ（memo の整理版）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --text: #4F4D4D;
+    --text-strong: #2f2d2d;
+    --muted: #7a7777;
+    --line: #e6e4e0;
+    --bg: #f6f5f2;
+    --paper: #fff;
+    --gold: #b28e00;
+    --gold-soft: #f7f1d6;
+    --k1: #1f4e79;
+    --k1-soft: #e8f0f8;
+    --k2: #8b5a2b;
+    --k2-soft: #f5ebe0;
+    --k3: #2f6f6a;
+    --k3-soft: #e7f3f1;
+    --warn: #9a3412;
+    --warn-soft: #fff1eb;
+    --max: 1000px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    letter-spacing: 0.02em;
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+  }
+  .layout { max-width: var(--max); margin: 0 auto; padding: 28px 16px 80px; }
+
+  /* TOC */
+  .toc {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin: 0 0 24px;
+  }
+  .toc-title {
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+  }
+  .toc ol { list-style: none; margin: 0; padding: 0; }
+  .toc li { margin: 3px 0; font-size: 14px; }
+  .toc li.lv2 { padding-left: 18px; font-size: 13px; color: var(--muted); }
+  .toc a { color: var(--text); text-decoration: none; border-bottom: 1px solid transparent; }
+  .toc a:hover { color: var(--gold); border-bottom-color: var(--gold); }
+  .toc li.lv1 > a { font-weight: 700; color: var(--text-strong); }
+
+  /* Content card */
+  .doc {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 34px 34px 44px;
+  }
+
+  h1 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-strong);
+    margin: 46px 0 6px;
+    padding: 12px 0 12px 16px;
+    border-left: 5px solid var(--gold);
+    background: var(--gold-soft);
+    border-radius: 0 6px 6px 0;
+    line-height: 1.5;
+  }
+  h1:first-of-type { margin-top: 0; }
+  h2 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text-strong);
+    margin: 34px 0 10px;
+    padding-bottom: 7px;
+    border-bottom: 2px solid var(--line);
+  }
+  h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--k1);
+    margin: 26px 0 8px;
+  }
+  h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--muted);
+    margin: 20px 0 6px;
+  }
+
+  p { margin: 10px 0; }
+  strong { color: var(--text-strong); font-weight: 700; }
+  hr { border: 0; border-top: 1px solid var(--line); margin: 36px 0; }
+
+  ul, ol { margin: 10px 0; padding-left: 22px; }
+  li { margin: 5px 0; }
+
+  blockquote {
+    margin: 14px 0;
+    padding: 12px 18px;
+    background: var(--k3-soft);
+    border-left: 4px solid var(--k3);
+    border-radius: 0 6px 6px 0;
+    color: var(--text-strong);
+  }
+  blockquote p { margin: 5px 0; }
+
+  pre {
+    background: #2f2d2d;
+    color: #f2efe9;
+    padding: 16px 18px;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-size: 13.5px;
+    line-height: 1.75;
+    margin: 14px 0;
+  }
+  pre code { font-family: "SFMono-Regular", Menlo, Consolas, monospace; }
+  :not(pre) > code {
+    background: var(--gold-soft);
+    color: #6b5500;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 20px;
+    font-size: 14px;
+    background: var(--paper);
+  }
+  th, td {
+    border: 1px solid var(--line);
+    padding: 9px 12px;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.7;
+  }
+  th {
+    background: #faf9f6;
+    color: var(--text-strong);
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  tbody tr:nth-child(even) td { background: #fcfbf9; }
+  td strong { color: var(--k1); }
+
+  /* 課題ごとの色分け */
+  h1[id^="課題-1"] { border-left-color: var(--k1); background: var(--k1-soft); }
+  h1[id^="課題-2"] { border-left-color: var(--k2); background: var(--k2-soft); }
+  h1[id^="課題-3"] { border-left-color: var(--k3); background: var(--k3-soft); }
+  h1[id^="補足"]   { border-left-color: var(--warn); background: var(--warn-soft); }
+
+  /* TOC: 課題行を色分け */
+  .toc a[href^="#課題-1"] { color: var(--k1); font-weight: 700; }
+  .toc a[href^="#課題-2"] { color: var(--k2); font-weight: 700; }
+  .toc a[href^="#課題-3"] { color: var(--k3); font-weight: 700; }
+  .toc a[href^="#補足"]   { color: var(--warn); font-weight: 700; }
+
+  .foot {
+    margin-top: 18px;
+    color: var(--muted);
+    font-size: 12px;
+    text-align: center;
+  }
+
+  @media (max-width: 720px) {
+    .doc { padding: 22px 18px 30px; }
+    table { font-size: 13px; }
+    th { white-space: normal; }
+  }
+  @media print {
+    body { background: #fff; }
+    .toc { display: none; }
+    .doc { border: 0; padding: 0; }
+    h1 { break-after: avoid; }
+    table { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="layout">
+<nav class="toc"><div class="toc-title">目次</div><ol>
+<li class="lv1"><a href="#課題-提案-マップmemo-の整理版">課題 → 提案 マップ（memo の整理版）</a></li>
+<li class="lv1"><a href="#Khung-tổng-thể">Khung tổng thể</a></li>
+<li class="lv1"><a href="#課題-1-サーベイ結果が提案の言葉に変わらない">課題 1 — サーベイ結果が、提案の言葉に変わらない</a></li>
+<li class="lv2"><a href="#Nguyên-nhân">Nguyên nhân</a></li>
+<li class="lv2"><a href="#Hướng-提案">Hướng 提案</a></li>
+<li class="lv2"><a href="#Lợi-ích-và-cải-thiện-cụ-thể">Lợi ích và cải thiện cụ thể</a></li>
+<li class="lv1"><a href="#課題-2-有料化が難しい">課題 2 — 有料化が難しい</a></li>
+<li class="lv2"><a href="#Nguyên-nhân-nguyên-nhân-gốc">Nguyên nhân — nguyên nhân gốc</a></li>
+<li class="lv2"><a href="#Nguyên-nhân-biểu-hiện-cụ-thể">Nguyên nhân — biểu hiện cụ thể</a></li>
+<li class="lv2"><a href="#Hướng-提案">Hướng 提案</a></li>
+<li class="lv2"><a href="#Lợi-ích-và-cải-thiện-cụ-thể">Lợi ích và cải thiện cụ thể</a></li>
+<li class="lv1"><a href="#課題-3-提案準備の時間枠34週間に収まらない">課題 3 — 提案準備の時間枠（3〜4週間）に収まらない</a></li>
+<li class="lv2"><a href="#Nguyên-nhân">Nguyên nhân</a></li>
+<li class="lv2"><a href="#Hướng-提案">Hướng 提案</a></li>
+<li class="lv2"><a href="#Lợi-ích-và-cải-thiện-cụ-thể">Lợi ích và cải thiện cụ thể</a></li>
+<li class="lv1"><a href="#提案内容の一覧課題との対応">提案内容の一覧（課題との対応）</a></li>
+<li class="lv1"><a href="#補足が必要な項目">補足が必要な項目</a></li>
+<li class="lv2"><a href="#A-内容として足りていない部分">A. 内容として足りていない部分</a></li>
+<li class="lv2"><a href="#B-技術的に確定が必要な部分">B. 技術的に確定が必要な部分</a></li>
+<li class="lv2"><a href="#C-ヴィス様への確認事項">C. ヴィス様への確認事項</a></li>
+<li class="lv2"><a href="#D-他の取り組みとの関係">D. 他の取り組みとの関係</a></li>
+<li class="lv1"><a href="#整理して見えたこと">整理して見えたこと</a></li>
+</ol></nav>
+<article class="doc">
+<h1 id="課題-提案-マップmemo-の整理版">課題 → 提案 マップ（memo の整理版）</h1>
+<p>Sắp xếp lại nội dung memo theo thứ tự: <strong>課題 → Nguyên nhân → Hướng 提案 → Lợi ích và cải thiện cụ thể.</strong></p>
+<p>Nội dung dựa trên memo, chưa thêm phán đoán mới.
+Những mục cần bổ sung được ghi riêng ở phần cuối.</p>
+<blockquote>
+<p><strong>Lưu ý về số hiệu 課題:</strong> file này dùng thứ tự trong memo.
+Trong <code>80-teian-genjo-kadai-scratch.md</code> và <code>81-teian-vi.md</code> thì thứ tự khác:
+課題2 ở đó là vấn đề thời gian（tương ứng 課題3 ở đây），
+còn 課題3 ở đó là vấn đề After（tương ứng 課題2 ở đây）.</p>
+</blockquote>
+<hr />
+<h1 id="Khung-tổng-thể">Khung tổng thể</h1>
+<blockquote>
+<p>今までの「空間を作って終わり」の方法では、
+「<strong>作った後にどう使うか</strong>」という顧客の問題を解決できていない。</p>
+</blockquote>
+<p>→ <strong>どうやって改善できるか</strong> — đây là câu hỏi bao trùm cả ba 課題 bên dưới.</p>
+<hr />
+<h1 id="課題-1-サーベイ結果が提案の言葉に変わらない">課題 1 — サーベイ結果が、提案の言葉に変わらない</h1>
+<h2 id="Nguyên-nhân">Nguyên nhân</h2>
+<p>サーベイからはスコアが得られます。
+しかし「<strong>どの場所が</strong>」「<strong>なぜ</strong>」「<strong>何を変えるべきか</strong>」はスコアには含まれていません。</p>
+<p>設問の大半が5段階評価で構成され、自由記述がないため、
+<strong>回答者が感じた理由がデータとして残りません。</strong></p>
+<p>結果として、スコアを読み解いて提案に落とし込む作業は、
+<strong>コンサルタントの経験に依存します。</strong>
+同じ結果を見ても、提案に活かせる方とそうでない方が出てしまう状態です。</p>
+<h2 id="Hướng-提案">Hướng 提案</h2>
+<h3 id="①-理由を聞く層設問側">① 理由を聞く層（設問側）</h3>
+<ul>
+<li>満足度が低い回答に対してのみ、追加の設問を表示します</li>
+<li><strong>どの場所か・どんな点か・仕事にどう影響しているか</strong>を取得します</li>
+<li>自由記述も加え、<strong>レイアウト上で場所を指定できる</strong>ようにします</li>
+</ul>
+<h3 id="②-判断を支える層結果側">② 判断を支える層（結果側）</h3>
+<ul>
+<li>「<strong>どこ・なぜ・誰に・どれくらい影響しているか</strong>」を集約した分析画面を追加します</li>
+<li>採用する内容を選び、<strong>そのまま使える形で出力</strong>できるようにします</li>
+</ul>
+<h2 id="Lợi-ích-và-cải-thiện-cụ-thể">Lợi ích và cải thiện cụ thể</h2>
+<p><strong>提案に入れる根拠の説得力を向上させる。</strong></p>
+<p>具体的には:</p>
+<ul>
+<li>スコアだけでなく「どこ・なぜ」が残るため、提案内容が具体化する</li>
+<li>読み解きが属人的でなくなり、担当者による差が縮まる</li>
+</ul>
+<hr />
+<h1 id="課題-2-有料化が難しい">課題 2 — 有料化が難しい</h1>
+<h2 id="Nguyên-nhân-nguyên-nhân-gốc">Nguyên nhân — nguyên nhân gốc</h2>
+<p><strong>現在の仕組みでは、改修の前後で「何がどう変わったのか」を示せていません。</strong></p>
+<p>実際に残るのは「<strong>空間がきれいになった</strong>」「<strong>改修が終わった</strong>」という体感のみです。</p>
+<p>そのため、次の連鎖が起きています。</p>
+<pre><code>改修前後の効果が示せていない
+（残るのは体感のみ）
+  ↓
+継続して使う理由（使用継続の条件）が生まれない
+  ↓
+有料化するための根拠と説得力が揃わない
+</code></pre>
+<h2 id="Nguyên-nhân-biểu-hiện-cụ-thể">Nguyên nhân — biểu hiện cụ thể</h2>
+<p>上記の結果として、次の状態が現れています。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>現れている状態</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1</strong></td>
+<td><strong>移転後のサーベイ実施数が少ない</strong></td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td>比較用の数値が弱い</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td>サーベイの内容が（移転後の状況に）適用しなくなってしまう</td>
+</tr>
+</tbody>
+</table>
+<p>2と3のいずれも、<strong>現在のサーベイ内容には十分な訴求力がなく、
+企業側が「効果を比較するために測りたい」と思う状態になっていない</strong>という点で
+共通しています。</p>
+<p><strong>根拠：</strong></p>
+<blockquote>
+<p>6項目の内、<strong>すべてが移転というタイミングだけでは向上させるのが難しい</strong></p>
+</blockquote>
+<p>事業計画にも、体感だけが残る状態についての記載があります。</p>
+<blockquote>
+<p>オフィスではその先が<strong>おざなり</strong>になっています。
+<strong>いいオフィスができてみんな喜んでいる。と一見は映るからです。</strong></p>
+</blockquote>
+<h2 id="Hướng-提案_1">Hướng 提案</h2>
+<h3 id="①-クライアントごとにサーベイ内容をカスタムできるよう改修">① クライアントごとにサーベイ内容をカスタムできるよう改修</h3>
+<p>現在のような共通サーベイのみの形から変更します。</p>
+<p><strong>目的：</strong> クライアントに合ったサーベイを設計できる状態にする</p>
+<ul>
+<li><strong>既存の設問から選ぶ</strong></li>
+<li><strong>end user が関心を持っている内容について、設問を追加できる</strong></li>
+</ul>
+<p>回答後には、<strong>不満を選んだ回答者のデータから、
+現在の不満点を集約した部分</strong>を用意します。</p>
+<h3 id="②-改修前に決めておく目標項目">② 改修前に決めておく目標項目</h3>
+<p><strong>オフィス改修を行う前（Before段階）で主要な目標項目を選び、
+改修後の比較のためにそのまま維持します。</strong></p>
+<h3 id="③-カスタムする際に注目が必要な点">③ カスタムする際に注目が必要な点</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>前回挙がった内容の確認</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Beforeの時点で目標を設定する</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>移転後の運用に関する設問を加える</strong></td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>回答者へのフィードバック</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="Lợi-ích-và-cải-thiện-cụ-thể_1">Lợi ích và cải thiện cụ thể</h2>
+<p><strong>オフィスを作った後の比較において、効果の比較がより可視化される。</strong></p>
+<p>そして、<strong>end user 側の「比較したい」という意識を向上させられる。</strong></p>
+<p>その結果:</p>
+<pre><code>改修前後の効果が示せる状態になる
+  → 比較したい意識の向上
+  → 定期利用の継続率が向上
+  → 有料化の根拠と説得力が揃う
+</code></pre>
+<p><strong>原因の連鎖と対応しています。</strong>
+課題2の原因は「効果が示せていない」ことにあるため、
+改善の効果もその順序で現れます。</p>
+<table>
+<thead>
+<tr>
+<th>原因</th>
+<th>対応する改善</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>効果が示せていない</td>
+<td>Before段階での目標設定 ＋ カスタムによる測る内容の見直し</td>
+</tr>
+<tr>
+<td>継続する理由が生まれない</td>
+<td>前回内容の確認 ＋ 回答者へのフィードバック</td>
+</tr>
+<tr>
+<td>有料化の根拠がない</td>
+<td>目標に対する結果を示せる状態</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="課題-3-提案準備の時間枠34週間に収まらない">課題 3 — 提案準備の時間枠（3〜4週間）に収まらない</h1>
+<h2 id="Nguyên-nhân_1">Nguyên nhân</h2>
+<p>提案までにかかる期間は <strong>3〜4週間</strong>。
+この中に収まらない工程が2つ残っています。</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>工程</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>①</td>
+<td><strong>お申込みと規約の確認</strong></td>
+</tr>
+<tr>
+<td>②</td>
+<td><strong>結果の分析と提案への反映</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>すでに解決している部分：</strong>
+サーベイ実施にかかる時間は、<strong>共通ID（共通URL）の導入により解決済み</strong>。
+ただし上記2工程は残っています。</p>
+<h3 id="工程①-お申込みと規約の確認-現状">工程① お申込みと規約の確認 — 現状</h3>
+<p>ヴィス様からも、<strong>お申込みや確認のステップをWDP上で完結したい</strong>という
+ご要望をいただいています。</p>
+<p><strong>現在の状況：</strong></p>
+<ul>
+<li><strong>クライアント作成</strong>部分の申込フローについて<strong>調査中</strong></li>
+<li><strong>確認が必要な規約が何か</strong>は未確認 → <strong>ヴィス様に確認予定</strong></li>
+</ul>
+<h3 id="工程②-結果の分析と提案への反映-現状">工程② 結果の分析と提案への反映 — 現状</h3>
+<p>現在は、サーベイ結果を取得した後、
+<strong>コンサルタントが内容を確認し、数値から文章へ変換して提案に落とし込んでいます。</strong></p>
+<p>すべて<strong>手作業</strong>で行われているため、時間がかかっています。</p>
+<h2 id="Hướng-提案_2">Hướng 提案</h2>
+<h3 id="工程①-お申込みと規約の確認">工程① お申込みと規約の確認</h3>
+<p><strong>WDP上でお申込みと規約確認を完結できるようにします。</strong>
+（調査結果と確認事項を踏まえて詳細を確定）</p>
+<h3 id="工程②-結果の分析と提案への反映">工程② 結果の分析と提案への反映</h3>
+<p>回答後に、<strong>サーベイのデータを自動で集約します。</strong></p>
+<p>集約する内容の例:</p>
+<ul>
+<li><strong>不満の回答比率が高い設問</strong></li>
+<li><strong>回答者からの意見（自由記述）</strong></li>
+</ul>
+<p>これらを <strong>クイックレポート</strong> としてまとめ、
+<strong>コンサルタントが end user の状況を最短で把握できる</strong>状態にします。</p>
+<h2 id="Lợi-ích-và-cải-thiện-cụ-thể_2">Lợi ích và cải thiện cụ thể</h2>
+<h3 id="工程①-お申込み・規約確認-の改善効果">工程① お申込み・規約確認 の改善効果</h3>
+<p><strong>お申込みと規約の確認をWDP上の一つの流れにまとめることで、
+コンサルタントとエンドクライアントとの間で発生している
+確認・やりとりの時間を削減できると考えています。</strong></p>
+<p>なお、現在のお申込みと規約確認の流れについては<strong>調査中</strong>であり、
+確認が必要な規約の内容も<strong>これから伺う予定</strong>です。
+そのため、<strong>削減できる範囲は調査と確認の結果を踏まえて確定</strong>させたいと考えております。</p>
+<p>そのうえで、次の効果を期待しています。</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>期待できること</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>確認のやりとりが減る</strong></td>
+<td>案件ごとに発生している確認の往復を、画面上の手続きに置き換えます</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>手続きが一箇所にまとまる</strong></td>
+<td>お申込みと規約の確認を別々に進める必要がなくなります</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>進捗が確認できる</strong></td>
+<td>どこまで完了しているかが分かるため、状況を確認する手間が減ります</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>早い段階から実施しやすくなる</strong></td>
+<td>手続きが軽くなることで、ナーチャリング段階での実施が現実的になります</td>
+</tr>
+</tbody>
+</table>
+<p>4については、事業計画にも次の記載があります。</p>
+<blockquote>
+<p>ナーチャリング段階や早期段階からサーベイの実施を促す</p>
+</blockquote>
+<h3 id="工程②-結果の分析と提案への反映-の改善効果">工程② 結果の分析と提案への反映 の改善効果</h3>
+<p><strong>最も大きいのは「順番に進める形から、並行して進める形に変わること」です。</strong></p>
+<p>現在は、結果を取得した後にコンサルタントが内容を確認し、
+数値から文章へ変換して提案に反映する、という順番で進められていると伺っております。</p>
+<p>クイックレポートがあれば、<strong>回答が集まっている途中でも傾向が見えます。</strong>
+すべて揃うのを待たずに検討を始められるため、
+分析が回収と並行して進む形になります。</p>
+<p>これは「分析が速くなる」以上に、<strong>全体の期間を短縮します。</strong></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>改善できること</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5</td>
+<td><strong>回答の回収と並行して検討を始められる</strong></td>
+<td>全件揃うのを待たずに傾向が見えるため、提案の検討を早く始められます</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>集約された内容から作業を始められる</strong></td>
+<td>数値から文章に変換する作業が減ります</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>担当者による差が縮まる</strong></td>
+<td>全員が同じ集約内容から始めるため、読み解きの属人性が下がります（課題1とも繋がります）</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>見落としやすい情報が漏れなく上がる</strong></td>
+<td>自由記述などは手作業では読み飛ばされやすいですが、集約されることで必ず上がってきます</td>
+</tr>
+</tbody>
+</table>
+<h3 id="事業面での効果">事業面での効果</h3>
+<p>課題3の改善は、他の課題の前提にもなります。</p>
+<pre><code>提案期間内に収まる
+  → 提案期間中にサーベイを実施できる案件が増える
+  → データに基づいた提案ができる案件が増える（受注率への貢献）
+  → Before実施件数が増える → Afterの母数も増える（課題2へ）
+</code></pre>
+<p><strong>あわせて、機会損失が減ります。</strong>
+現在は、サーベイが期間内に間に合わない場合、
+提案はデータなしで出ることになり、その案件では受注率への貢献が得られません。
+リードタイムの短縮は、<strong>そうした案件を減らすこと</strong>にもなります。</p>
+<h3 id="効果の測り方">効果の測り方</h3>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>何を見るか</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>お申込みから実施までの日数</td>
+<td>工程①の効果</td>
+</tr>
+<tr>
+<td>結果取得から提案反映までの日数</td>
+<td>工程②の効果</td>
+</tr>
+<tr>
+<td><strong>提案期間内にサーベイを実施できた案件の割合</strong></td>
+<td>課題3全体の指標</td>
+</tr>
+<tr>
+<td>ナーチャリング段階での実施件数</td>
+<td>手続きを軽くしたことの効果</td>
+</tr>
+<tr>
+<td>サーベイ結果を根拠として含めた提案の件数</td>
+<td>受注率への繋がり</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="提案内容の一覧課題との対応">提案内容の一覧（課題との対応）</h1>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>提案内容</th>
+<th>対応する課題</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>理由を聞く層（条件付き追加設問・自由記述・レイアウト上の位置指定）</td>
+<td>課題1（主）・課題2</td>
+</tr>
+<tr>
+<td>2</td>
+<td>判断を支える層（分析画面と出力）</td>
+<td>課題1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>クライアントごとのサーベイカスタム</td>
+<td>課題2（主）・課題1</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Before段階での目標項目の設定</td>
+<td>課題2</td>
+</tr>
+<tr>
+<td>5</td>
+<td>カスタム時の4つの観点（前回内容の確認／目標設定／運用の設問／回答者へのフィードバック）</td>
+<td>課題2</td>
+</tr>
+<tr>
+<td>6</td>
+<td>お申込み・規約確認のWDP内完結</td>
+<td>課題3①</td>
+</tr>
+<tr>
+<td>7</td>
+<td>クイックレポート（回答データの自動集約）</td>
+<td>課題3②（主）・課題1</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="補足が必要な項目">補足が必要な項目</h1>
+<p>memo の内容を整理した結果、次の点が未記載または未確定です。</p>
+<h2 id="A-内容として足りていない部分">A. 内容として足りていない部分</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A2</td>
+<td><strong>効果の測り方</strong></td>
+<td>「説得力が向上する」「比較意識が向上する」をどう確認するか。回答率・実施件数・提案件数などの指標を決める必要があります</td>
+</tr>
+<tr>
+<td>A3</td>
+<td><strong>開発の順序</strong></td>
+<td>7つの提案内容のうち、どれを先に行うか。課題3②のクイックレポートは他より軽い可能性があります</td>
+</tr>
+<tr>
+<td>A4</td>
+<td><strong>誰が使う機能なのか</strong></td>
+<td>提案内容ごとに、コンサルタント／XP／総務／回答者のどれが使うのかを明記すると、必要性が伝わりやすくなります</td>
+</tr>
+</tbody>
+</table>
+<h2 id="B-技術的に確定が必要な部分">B. 技術的に確定が必要な部分</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B1</td>
+<td><strong>カスタム時の集計ロジックへの影響</strong></td>
+<td>既存の設問（文言・選択肢・尺度）は変更せず、「どの設問を配信するか」と「何を追加するか」で対応する方針を明記する必要があります。設問自体を変更すると過去スコアとの比較が崩れます</td>
+</tr>
+<tr>
+<td>B2</td>
+<td><strong>Afterでどこまでの比較が必要か</strong></td>
+<td>目標設問の比較のみか、項目スコアまでか、ワークデザインスコアまでか。配信する設問数が大きく変わります</td>
+</tr>
+<tr>
+<td>B3</td>
+<td><strong>「共通ID」の呼び方</strong></td>
+<td>memo では「共通ID」、事業計画では「URL形式」と記載。ヴィス様への説明時に用語を揃える必要があります</td>
+</tr>
+<tr>
+<td>B4</td>
+<td><strong>クイックレポートの集約範囲</strong></td>
+<td>「不満比率の高い設問」「自由記述」以外に何を含めるか</td>
+</tr>
+</tbody>
+</table>
+<h2 id="C-ヴィス様への確認事項">C. ヴィス様への確認事項</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>状態</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C1</td>
+<td><strong>確認が必要な規約の内容</strong></td>
+<td>memo に記載済み（確認予定）</td>
+</tr>
+<tr>
+<td>C2</td>
+<td><strong>クライアント作成部分の申込フロー</strong></td>
+<td>調査中</td>
+</tr>
+<tr>
+<td>C3</td>
+<td><strong>Afterで使われている比較の範囲</strong></td>
+<td>未確認（B2 と同じ）</td>
+</tr>
+<tr>
+<td>C4</td>
+<td><strong>移転後に運用面でよくいただくご相談</strong></td>
+<td>カスタム時に追加する設問内容の判断材料</td>
+</tr>
+<tr>
+<td>C5</td>
+<td><strong>XDが入る案件で特に確認したい項目</strong></td>
+<td>カスタムの対象範囲に関わる</td>
+</tr>
+</tbody>
+</table>
+<h2 id="D-他の取り組みとの関係">D. 他の取り組みとの関係</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D1</td>
+<td><strong>AIレポートとの境界</strong></td>
+<td>「判断を支える層」「クイックレポート」がヴィス様社内のAIレポートと重複しないか。役割分担を整理する必要があります</td>
+</tr>
+<tr>
+<td>D2</td>
+<td><strong>XD（エクスペリエンスデザイン）への影響</strong></td>
+<td>カスタムで設問を絞る場合、XDが働きかける項目（エンゲージメント・カルチャーなど）が測れなくなる可能性があります</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="整理して見えたこと">整理して見えたこと</h1>
+<p>memo の内容を課題ごとに並べると、次の構造になっています。</p>
+<pre><code>課題1（結果 → 提案）  → 理由を聞く層 ＋ 判断を支える層
+課題2（効果 → 有料化）→ カスタム ＋ Before目標 ＋ 4つの観点
+課題3（時間枠）        → 申込・規約の完結 ＋ クイックレポート
+</code></pre>
+<p><strong>共通している考え方：</strong></p>
+<p>いずれも「<strong>測った後に何が残るか</strong>」を変える内容になっています。</p>
+<ul>
+<li>課題1：理由が残る</li>
+<li>課題2：比較したい理由が残る</li>
+<li>課題3：手作業ではなく形になって残る</li>
+</ul>
+<p>この点を提案全体の方針として最初に置くと、
+3つの課題が別々の話に見えにくくなります。</p>
+</article>
+<div class="foot">docs/context/82-kadai-teian-map.md をそのままHTML化したものです（内容の変更はありません）</div>
+</div>
+</body>
+</html>
