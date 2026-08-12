@@ -218,26 +218,62 @@ như giai đoạn nurturing.
 
 ### Vấn đề 3: After không được thực hiện, nên cửa vào hợp đồng có phí không mở ra
 
-**Xác nhận hiện trạng:**
-Chúng tôi được biết cơ chế tự động phát hành survey sau 6 tháng kể từ ngày thiết lập
-đã được trang bị.
-Trên cơ sở đó, với việc số case thực hiện vẫn dừng ở 5,
-**chúng tôi cho rằng nguyên nhân không nằm ở việc có thông báo hay không,
-mà ở phần trước và sau đó.**
+#### Xác nhận hiện trạng
+
+- Thời điểm đánh giá là sau 6 tháng kể từ khi chuyển văn phòng
+- Cơ chế **tự động phát hành survey sau 6 tháng kể từ ngày thiết lập đã được trang bị**
+- Không cần người phụ trách thiết lập thủ công
+
+Nghĩa là **bản thân cơ chế phát hành không phải là vấn đề.**
+
+#### Vậy đang tắc ở đâu
+
+Việc survey được phát hành tự động mà số case thực hiện vẫn dừng ở 5
+có nghĩa là **đang tắc ở tiền đề của việc phát hành, hoặc ở sau khi phát hành.**
+
+Nếu tách các điểm có thể tắc:
+
+| Điểm | Trạng thái có thể đang xảy ra | Cách kiểm chứng |
+|---|---|---|
+| **Mốc tính của việc phát hành** | Tính từ ngày thiết lập, nên có khả năng phát hành trước khi chuyển văn phòng | Xem cấu hình mốc tính |
+| **Việc phát hành thực tế** | Có thực sự chạy trên các dự án đối tượng không | Tổng hợp số case đã phát hành |
+| **Thu hồi câu trả lời** | Đã phát hành nhưng không có động thái thúc đẩy nên câu trả lời không được thu về | So sánh số phát hành với tỷ lệ trả lời |
+| **Hợp đồng có phí** | Vì After lấy việc có phí làm tiền đề, có khả năng chưa tới bước đề xuất và ký kết | Số case đề xuất và số case ký |
+| **Việc làm báo cáo** | Có câu trả lời nhưng chưa tới bước làm báo cáo so sánh | Số báo cáo đã tạo |
+
+Ở thời điểm hiện tại, **chưa thể xác nhận bằng số liệu là đang tắc ở điểm nào.**
 
 #### Nội dung cải tiến
 
-| Nội dung bổ sung / thay đổi | Hiện trạng | Nội dung |
-|---|---|---|
-| **Gắn mốc tính vào ngày hoàn tất chuyển văn phòng** | 6 tháng từ ngày thiết lập | Chuẩn đánh giá là "nửa năm sau khi chuyển". Vì Before được thực hiện ở giai đoạn đề xuất, nếu tính từ ngày thiết lập thì có khả năng phát hành trước khi chuyển. Chuyển mốc sang ngày hoàn tất chuyển và cho phép điều chỉnh sau |
-| **Tự động tạo kế hoạch After** | Cần thiết lập | Tự động tạo kế hoạch After khi thực hiện Before hoặc khi thắng dự án, để không bị bỏ sót thiết lập |
-| **Danh sách dự án đối tượng** | Không có | Hiển thị danh sách các dự án đang tới gần mốc 6 tháng sau chuyển |
-| **Quản lý trạng thái đề xuất** | Không có | Ghi nhận theo từng dự án việc đã đề xuất After hay chưa, và xem được cùng với tỷ lệ thực hiện |
-| **Hỗ trợ tạo After** | Cần thiết lập lại | Cho phép tạo After bằng cách kế thừa thiết lập của Before |
-| **Quản lý KPI** | Không có | Thiết lập và theo dõi các mục survey mục tiêu cùng điểm mục tiêu |
-| **Báo cáo so sánh Before/After** | Làm thủ công | Tổng hợp diễn biến điểm và mức chênh lệch của các mục mục tiêu vào một báo cáo |
+Vì vậy, chúng tôi bắt đầu từ việc **làm cho điểm đang tắc hiện ra được.**
 
-**Cơ chế chạy định kỳ được tận dụng từ cái đã có, chỉ xem lại cách tính mốc.**
+| Thứ tự | Nội dung cải tiến | Nội dung |
+|---|---|---|
+| **1** | **Trực quan hóa tình hình thực hiện** | Hiển thị theo số case từng bước: dự án đối tượng → phát hành → câu trả lời → đề xuất → ký kết → báo cáo. Đưa về trạng thái phán đoán được đang tắc ở đâu |
+| **2** | **Đường dẫn đề xuất và báo giá After có phí** | Cho phép đưa ra đề xuất và báo giá After ngay từ màn hình kết quả của Before, và lưu lại lịch sử đề xuất |
+| **3** | **Hỗ trợ thực hiện sau khi phát hành** | Cho phép xác nhận tình hình trả lời và nhắc thúc khi tỷ lệ trả lời thấp |
+| **4** | **Báo cáo so sánh Before/After** | Tổng hợp diễn biến điểm và mức chênh lệch của các mục mục tiêu vào một báo cáo |
+| **5** | **Quản lý KPI** | Thiết lập và theo dõi các mục survey mục tiêu cùng điểm mục tiêu |
+| **6** | **Xem lại mốc tính** (sau khi xác nhận) | Chuẩn đánh giá là "nửa năm sau khi chuyển". Nếu đang tính từ ngày thiết lập, điều chỉnh để lấy ngày hoàn tất chuyển làm mốc |
+
+**Cơ chế phát hành được giữ nguyên như hiện có.**
+Nội dung 1–3 là phần bổ trợ cho trước và sau khi phát hành,
+không can thiệp vào bản thân việc phát hành.
+
+#### Vì sao đặt "trực quan hóa" lên đầu tiên
+
+Nếu thêm tính năng trong khi chưa xác định được nguyên nhân,
+có khả năng can thiệp vào chỗ không có hiệu quả.
+
+Khi số case từng bước nhìn thấy được, sẽ phân biệt được là
+"đề xuất chưa được thực hiện", "câu trả lời không được thu về",
+hay "chưa tới bước làm báo cáo".
+
+Trên cơ sở đó mới triển khai nội dung 2–6 vào chỗ thực sự đang tắc —
+chúng tôi cho rằng cách này chắc chắn hơn.
+
+Đây cũng là nội dung tương ứng với việc nắm bắt
+`số case và tỷ lệ đề xuất After, số case và tỷ lệ thực hiện After` mà Vis đã nêu ra.
 
 #### Về cách đo tỷ lệ thực hiện
 
@@ -249,11 +285,7 @@ thì sẽ là so sánh những dự án ở các thời điểm khác nhau.
 
 Để nắm đúng tỷ lệ thực hiện, chúng tôi cho rằng cần tổng hợp
 **với mẫu số là "các dự án đã qua nửa năm kể từ khi chuyển"**.
-Phần "danh sách dự án đối tượng" và "quản lý trạng thái đề xuất" ở trên
-tồn tại để làm được phép tổng hợp này.
-
-Đây cũng là nội dung tương ứng với việc nắm bắt
-`số case và tỷ lệ đề xuất After, số case và tỷ lệ thực hiện After` mà Vis đã nêu ra.
+Phần "trực quan hóa tình hình thực hiện" ở trên tồn tại để làm được phép tổng hợp này.
 
 ## 2-3. Cách triển khai để hạn chế ảnh hưởng tới tính năng hiện có
 
@@ -276,16 +308,22 @@ thời kỳ vừa xác nhận "ai cần, cái gì hiệu quả, vì sao" vừa �
 
 | Giai đoạn | Nội dung | Mục tiêu |
 |---|---|---|
-| **Giai đoạn 1** | Xem lại mốc tính, tự động tạo kế hoạch After, danh sách dự án đối tượng và quản lý trạng thái đề xuất | Đưa After về trạng thái được thực hiện |
-| **Giai đoạn 2** | Lớp hỏi lý do (câu hỏi bổ sung, trả lời tự do), quản lý KPI, báo cáo so sánh Before/After | Chuẩn bị phần nội dung để khách dùng tiếp có phí |
-| **Giai đoạn 3** | Màn hình phân tích (ưu tiên, vị trí, lý do) và phần xuất, hoàn tất đăng ký và điều khoản | Đưa vào khung thời gian chuẩn bị đề xuất |
-| **Giai đoạn 4** | Mở rộng màn hình phân tích (đối tượng, ảnh hưởng, phương án), layout từ kế hoạch nhân sự, tùy biến theo khách hàng | Làm cho đề xuất tối ưu theo từng khách hàng |
+| **Giai đoạn 1** | Trực quan hóa tình hình thực hiện After | Xác định chắc chắn đang tắc ở đâu |
+| **Giai đoạn 2** | Đường dẫn đề xuất và báo giá After có phí, hỗ trợ thực hiện sau phát hành, điều chỉnh mốc tính | Can thiệp vào chỗ đã xác định |
+| **Giai đoạn 3** | Lớp hỏi lý do (câu hỏi bổ sung, trả lời tự do), quản lý KPI, báo cáo so sánh Before/After | Chuẩn bị phần nội dung để khách dùng tiếp có phí |
+| **Giai đoạn 4** | Màn hình phân tích (ưu tiên, vị trí, lý do) và phần xuất, hoàn tất đăng ký và điều khoản | Đưa vào khung thời gian chuẩn bị đề xuất |
+| **Giai đoạn 5** | Mở rộng màn hình phân tích (đối tượng, ảnh hưởng, phương án), layout từ kế hoạch nhân sự, tùy biến theo khách hàng | Làm cho đề xuất tối ưu theo từng khách hàng |
 
-**Vì sao giai đoạn 1 bắt đầu bằng những việc nhẹ:**
-Việc xem lại mốc tính và tự động tạo kế hoạch nằm trong phạm vi tận dụng được
-cơ chế hiện có, nên có thể xác nhận hiệu quả ở giai đoạn sớm.
-Trước tiên tạo trạng thái để việc thực hiện bắt đầu vận hành,
-sau đó mới bổ sung phần nội dung.
+**Vì sao giai đoạn 1 bắt đầu bằng trực quan hóa:**
+Cơ chế phát hành đã hoạt động, nên nguyên nhân được cho là nằm ở trước và sau
+việc phát hành. Tuy nhiên ở thời điểm hiện tại chưa thể xác nhận bằng số liệu
+là đang tắc ở điểm nào.
+
+Vì vậy chúng tôi đề xuất cách tiến hành: trước tiên tạo trạng thái nhìn thấy được
+số case từng bước, rồi **quyết định nội dung giai đoạn 2 dựa trên thực tế đã xác nhận được.**
+
+Việc trực quan hóa nằm trong phạm vi thực hiện được mà không can thiệp vào
+cơ chế hiện có, nên có thể bắt tay sớm.
 
 Cách suy nghĩ về thứ tự được ghi ở mục 2-10.
 
@@ -354,14 +392,18 @@ và **có phí** (khách hàng sử dụng liên tục).
 | **F4** | Phương án layout dựa trên kế hoạch nhân sự | Consultant | Dùng cho đề xuất (bản cập nhật là có phí) | 1, 2 | Mới |
 | **F5** | Hỗ trợ thiết lập KPI (gợi ý vài mục từ bộ câu hỏi + điểm mục tiêu) | XP | **Có phí** | 3 | Mới |
 | **F6** | Báo cáo kiểm chứng hiệu quả Before/After | Khách hàng / XP | **Có phí** | 3 | Mới |
-| **F7** | Survey định kỳ | Khách hàng | **Có phí** | 3 | **Có một phần** — cơ chế tự động phát hành đã có; thêm việc xem lại mốc tính và chọn nội dung |
+| **F7** | Chọn nội dung cho survey định kỳ | Khách hàng | **Có phí** | 3 | **Cơ chế phát hành đã có**; thêm phần chọn nội dung |
 | **F8** | Tùy biến survey theo từng khách hàng | Khách hàng / XP | **Có phí** | 3 | Mới |
-| **F9** | Gắn mốc tính cho After, tự động tạo kế hoạch, hỗ trợ tạo | XP | Dùng cho đề xuất → cửa vào có phí | 3 | **Có một phần** — cơ chế phát hành đã có; thêm mốc tính và tự động tạo |
-| **F10** | Danh sách dự án đối tượng và quản lý trạng thái đề xuất | Kinh doanh / CS / XP | Dùng cho đề xuất (nội bộ) | 3 | Mới |
+| **F9** | Đường dẫn đề xuất và báo giá After có phí | Kinh doanh / CS / XP | Dùng cho đề xuất → cửa vào có phí | 3 | Mới |
+| **F10** | **Trực quan hóa tình hình thực hiện After** (đối tượng, phát hành, câu trả lời, đề xuất, ký kết, báo cáo) | Kinh doanh / CS / XP | Dùng cho đề xuất (nội bộ) | 3 | Mới |
+| **F11** | Hỗ trợ thực hiện sau phát hành (xác nhận tình hình trả lời và nhắc thúc) | XP / Khách hàng | Dùng cho đề xuất → có phí | 3 | Mới |
 
-**Về cột "Hiện trạng":**
-F7 và F9 dựa trên tiền đề tận dụng cơ chế tự động phát hành đã được trang bị.
-Không phải làm mới, mà là **xem lại cách tính mốc và thời điểm tạo kế hoạch**.
+**Về những tính năng đã được trang bị:**
+Cơ chế **tự động phát hành survey After là cái đã có**, và đề xuất này không can thiệp vào đó.
+F7, F9, F10, F11 đều là nội dung bổ trợ cho **trước và sau khi phát hành**.
+
+Về thiết lập mốc tính, sau khi xác nhận, nếu cần thiết chúng tôi sẽ đề xuất điều chỉnh
+(xem mục 2-9).
 
 ## 2-7. Về các tính năng có phí — "vì sao tính năng này tốt"
 
@@ -473,12 +515,14 @@ Dưới đây là những điểm chúng tôi muốn xác nhận trước khi b�
 
 | Điều muốn xác nhận | Vì sao cần |
 |---|---|
-| **Phạm vi dự kiến của AI report** — có bao gồm việc sinh nội dung đề xuất không, dự kiến dùng gì làm đầu vào | Phạm vi thiết kế của màn hình phân tích và phần xuất sẽ thay đổi. Để tránh trùng lặp, đây là điểm muốn xác nhận đầu tiên |
-| **Mốc tính của cơ chế tự động phát hành hiện tại** — tính từ ngày thiết lập, hay có thể chỉ định ngày khác | Cách hiện thực việc chuyển mốc sang ngày hoàn tất chuyển văn phòng sẽ thay đổi |
-| **WDP có đang lưu ngày hoàn tất chuyển văn phòng không** | Cần cho việc gắn mốc tính. Nếu chưa lưu thì sẽ làm dạng cho phép nhập |
+| **Tình hình phát hành tự động thực tế** — đã phát hành bao nhiêu case, có bao nhiêu câu trả lời | Cần cho việc xác định điểm đang tắc. Đây cũng là nội dung muốn làm rõ qua việc trực quan hóa ở giai đoạn 1 |
+| **Luồng đề xuất và ký kết After hiện tại** — ai làm, ở đâu, ghi nhận thế nào | Là tiền đề để thiết kế đường dẫn đề xuất |
+| **Phạm vi dự kiến của AI report** — có bao gồm việc sinh nội dung đề xuất không, dự kiến dùng gì làm đầu vào | Phạm vi thiết kế của màn hình phân tích và phần xuất sẽ thay đổi. Để tránh trùng lặp, đây là điểm muốn xác nhận sớm |
+| **Mốc tính của cơ chế tự động phát hành** — tính từ ngày thiết lập, hay có thể chỉ định ngày khác | Để xác nhận có khớp với chuẩn "nửa năm sau khi chuyển" không |
+| **WDP có đang lưu ngày hoàn tất chuyển văn phòng không** | Cần nếu phải đổi mốc tính. Nếu chưa lưu thì sẽ làm dạng cho phép nhập |
 | Dữ liệu trả lời đã có có tham chiếu được theo dạng so sánh Before/After không | Là tiền đề để báo cáo so sánh thành lập |
 | Luồng đăng ký và xác nhận điều khoản hiện tại (đang mất mấy ngày ở bước nào) | Cần cho việc phán đoán chuyển được bao nhiêu lên màn hình |
-| Sẽ đặt ai làm người phụ trách After | Cần người nhận thông báo và chuyển sang thực hiện |
+| Sẽ đặt ai làm người phụ trách After | Cần người chuyển sang thực hiện |
 | Cho phép tùy biến câu hỏi theo khách hàng tới mức nào | Cần xác định phạm vi được phép thay đổi, để giữ khả năng so sánh |
 | Có được phép can thiệp vào câu hỏi hiện có, hay chỉ thêm mới | Để giữ khả năng so sánh với điểm số cũ, chúng tôi khuyến nghị chỉ thêm mới |
 
@@ -497,22 +541,25 @@ Nếu còn những tính năng tương tự khác, mong được thông báo tr�
 
 | Thứ tự | Nội dung | Hiệu quả |
 |---|---|---|
-| **1** | Đưa After về trạng thái được thực hiện (F9, F10) | Cửa vào việc thu phí mở ra, và đo được tỷ lệ thực hiện |
-| **2** | Chuẩn bị phần nội dung để khách dùng tiếp có phí (F2, F5, F6, F7, F8) | Không còn kết thúc sau một lần |
-| **3** | Đưa vào khung thời gian chuẩn bị đề xuất (F1, F3) | Số lượng sử dụng phía Before tăng, làm tăng mẫu số cho bước 1 |
-| **4** | Nâng chất lượng đề xuất (F4, mở rộng F3) | Đề xuất trở nên tối ưu theo từng khách hàng |
+| **1** | Xác định chắc chắn điểm đang tắc (F10) | Chỗ cần can thiệp được quyết định dựa trên thực tế |
+| **2** | Can thiệp vào chỗ đã xác định (F9, F11, mốc tính) | After về trạng thái được thực hiện |
+| **3** | Chuẩn bị phần nội dung để khách dùng tiếp có phí (F2, F5, F6, F7, F8) | Không còn kết thúc sau một lần |
+| **4** | Đưa vào khung thời gian chuẩn bị đề xuất (F1, F3) | Số lượng sử dụng phía Before tăng, làm tăng mẫu số cho bước 2 |
+| **5** | Nâng chất lượng đề xuất (F4, mở rộng F3) | Đề xuất trở nên tối ưu theo từng khách hàng |
 
 **Vì sao đặt bước 1 trước:**
+Cơ chế phát hành đã hoạt động, nên nguyên nhân được cho là nằm ở trước và sau
+việc phát hành. Nhưng hiện chưa thể xác nhận bằng số liệu là tắc ở điểm nào.
+
+Trực quan hóa trước sẽ **tránh được việc can thiệp vào chỗ không có hiệu quả**.
+Ngoài ra, bản thân việc trực quan hóa chính là việc nắm bắt
+`số case và tỷ lệ đề xuất After, số case và tỷ lệ thực hiện After`.
+
+**Vì sao bước 2 đặt ở After:**
 Vì hợp đồng có phí đi qua cửa After, nếu chỗ đó chưa mở
 thì những cải thiện khác không dẫn tới doanh thu.
 
-Ngoài ra, bước 1 còn có vai trò **làm cho tình hình thực hiện đo được**.
-Hiện nay khó nắm được "có bao nhiêu dự án thuộc đối tượng,
-và trong đó đã đề xuất được bao nhiêu".
-Khi phần này nhìn thấy được, sẽ phán đoán được nên tác động vào
-số lượng dự án hay vào tỷ lệ chuyển đổi.
-
-**Vì sao bước 3 đứng sau bước 1:**
+**Vì sao bước 4 đứng sau bước 2:**
 Hiệu quả của việc tăng sử dụng phía Before chỉ phát huy sau khi dòng chảy After đã thông.
 Nếu làm ngược thứ tự, Before tăng nhưng vẫn không dẫn được sang After.
 
@@ -566,39 +613,68 @@ thay vì đề xuất làm lại nền tảng, ta giảm rủi ro bằng cách c
 
 ## Hai điều chỉnh lớn sau khi rà lại hiện trạng
 
-### A. Tự động gửi sau 6 tháng ĐÃ CÓ — nên vấn đề 3 phải đổi trọng tâm
+### A. Vấn đề 3 — cơ chế gửi đã tự động, nên chuyển sang "đo trước, sửa sau"
 
-Bản trước đề xuất "nhắc mốc đánh giá" như tính năng mới. **Sai** — cơ chế tự động gửi
-sau 6 tháng kể từ ngày thiết lập đã tồn tại.
+Hai giả thuyết ban đầu **đều sai** và đã bị loại:
 
-Vậy vì sao After vẫn chỉ 5 case? Ba khả năng, xếp theo mức độ quan trọng:
+| Giả thuyết đã loại | Vì sao sai |
+|---|---|
+| ~~Thiếu chức năng nhắc mốc đánh giá~~ | Cơ chế tự động gửi sau 6 tháng đã có |
+| ~~Cần người thiết lập thủ công~~ | Tự động chạy, không cần thiết lập |
 
-**1. Mốc tính có thể sai gốc.**
-Hiện là 6 tháng từ **ngày thiết lập**. Yêu cầu nghiệp vụ là 6 tháng từ
-**ngày chuyển văn phòng** (kế hoạch ghi 「移転から約6ヶ月後」).
-Nhưng Before làm ở giai đoạn đề xuất — cách ngày chuyển nhiều tháng.
-Nên survey After có thể đang được gửi **khi khách còn ở văn phòng cũ**.
+**Kết luận:** việc **gửi** không phải vấn đề. Vấn đề nằm ở **trước hoặc sau khi gửi**.
 
-→ Nếu đúng, đây là cải tiến **rẻ nhất, tác động lớn nhất** trong cả đề xuất.
-Đã đưa lên đầu giai đoạn 1 và vào danh sách xác nhận.
+Các điểm còn lại có thể tắc:
 
-**2. Tự động gửi chỉ chạy nếu có người thiết lập.**
-Nếu lúc làm Before không ai tạo kế hoạch After thì không có gì được gửi.
-Khâu thiếu là **tạo kế hoạch**, không phải nhắc.
+| Điểm | Trạng thái có thể đang xảy ra |
+|---|---|
+| **Hợp đồng có phí** | After là hàng có phí. Nếu bước đề xuất, báo giá, ký không diễn ra thì survey gửi ra cũng không thành "đã thực hiện" |
+| **Thu hồi câu trả lời** | Gửi rồi nhưng không ai thúc đẩy nên không có phản hồi |
+| **Báo cáo** | Có phản hồi nhưng không ai làm báo cáo so sánh |
+| **Mốc tính** | Từ ngày thiết lập → có thể gửi trước khi khách chuyển văn phòng |
 
-**3. Con số 83 và 5 có thể không cùng một lứa.**
+**Điểm nghi ngờ lớn nhất là hợp đồng có phí**, vì kế hoạch kinh doanh tự viết
+「有料契約は**アフター経由**を対象にしており、コンスタントな受注には至っていない」
+và 「**商談プロセスの構築が命題**」.
+Tức là cơ chế kỹ thuật gửi được, nhưng **bước thương mại chưa thành quy trình**.
+
+### Vì sao đổi sang "đo trước, sửa sau"
+
+Đã hai lần đoán sai nguyên nhân. Nên đề xuất **không tiếp tục đoán** —
+thay vào đó đặt việc đầu tiên là **F10: làm cho từng bước hiện ra bằng số**
+(đối tượng → gửi → phản hồi → đề xuất → ký → báo cáo).
+
+Ba lợi ích:
+
+1. Tránh làm tính năng ở chỗ không phải nguyên nhân
+2. Không đụng vào cơ chế đang chạy → rủi ro thấp, làm được sớm
+3. Bản thân việc này **chính là** chỉ số Vis đã tự liệt kê
+   `after提案件数と率、after実施数と率`
+
+**Cách trình bày:** đây là điểm mạnh chứ không phải điểm yếu của đề xuất.
+Nó cho thấy bravesoft **không áp giải pháp sẵn** mà xác nhận thực tế trước —
+phù hợp với tinh thần giai đoạn kiểm chứng của FY2026.
+
+### Còn về con số 83 và 5
+
 Before ở giai đoạn đề xuất; After ở 6 tháng sau chuyển.
 Cộng chuỗi đề xuất → thắng → thi công → chuyển → +6 tháng, dễ tới 1,5–2 năm.
 Kế hoạch cũng ghi lead time từ lúc dùng WDP tới lúc ghi nhận doanh thu là 4 tháng–1 năm.
 
 → Nên 83 Before của FY2025 phần lớn sinh After ở FY2026–2027.
 Cách đo đúng phải lấy mẫu số là **dự án đã chuyển trên 6 tháng**.
-Đây chính là lý do mục "danh sách đối tượng" và "trạng thái đề xuất" quan trọng —
-và cũng đúng chỉ số Vis đã tự liệt kê.
 
 **Lưu ý khi trình bày:** không nói "con số 83/5 của Vis sai".
 Nói theo hướng *"để đo đúng thì cần mẫu số là dự án đã qua 6 tháng"* —
 tức là ta giúp họ đo, không phê bình.
+
+### Bài học cho cả đề xuất
+
+Hai lần sai đều cùng một dạng: **giả định WDP thiếu tính năng mà chưa xác nhận**.
+Trước khi đưa bất kỳ tính năng nào vào đề xuất, cần hỏi dev: *"cái này đã có chưa?"*
+
+Vì vậy mục 2-6 đã thêm cột **hiện trạng**, và mục 2-9 đã thêm câu
+"nếu còn những tính năng tương tự khác, mong được thông báo trước".
 
 ### B. Ranh giới với AI report — dùng phân vai, không cạnh tranh
 
@@ -707,27 +783,35 @@ thứ tự này chính là việc xây quy trình đó.
 
 | # | Nội dung | Ảnh hưởng | Ai xác nhận |
 |---|---|---|---|
-| 1 | **Phạm vi AI report** — có sinh nội dung đề xuất không, đầu vào là gì | Phạm vi thiết kế màn hình phân tích và phần xuất | Vis |
-| 2 | **Gốc tính mốc tự động gửi** — từ ngày thiết lập hay chỉ định được ngày khác | Cách hiện thực việc đổi sang ngày chuyển văn phòng | Dev |
-| 3 | WDP có **lưu ngày chuyển văn phòng** không | Điều kiện gắn mốc. Nếu chưa có thì phải cho nhập | Dev |
-| 4 | Dữ liệu trả lời cũ có **truy vấn được theo cùng đối tượng qua thời gian** không | Điều kiện cho báo cáo so sánh (F6) | Dev |
-| 5 | Có được phép **thêm câu hỏi vào bộ hiện tại** không, cấu trúc cho phép tới đâu | Điều kiện cho F2 | Vis + Dev |
-| 6 | Luồng đăng ký và kiểm tra pháp lý — mất mấy ngày ở bước nào | Biết F1 cắt được bao nhiêu | Vis |
-| 7 | Ai là người chịu trách nhiệm về After phía Vis | F9 gửi thông báo nhưng cần người nhận | Vis |
-| 8 | Cho phép tùy biến setting tới mức nào | Cân bằng F8 và khả năng so sánh | Vis |
-| 9 | Định nghĩa của 勝率 (tỷ lệ thắng) — chưa được trả lời | Cách viết phần hiệu quả | Vis |
+| 1 | **Số liệu tự động gửi thực tế** — đã gửi bao nhiêu, có bao nhiêu phản hồi | Xác định chỗ tắc. Là cơ sở của toàn bộ vấn đề 3 | Dev |
+| 2 | **Luồng đề xuất và ký hợp đồng After hiện tại** — ai làm, ở đâu, ghi nhận thế nào | Điều kiện thiết kế F9 | Vis |
+| 3 | **Phạm vi AI report** — có sinh nội dung đề xuất không, đầu vào là gì | Phạm vi thiết kế màn hình phân tích và phần xuất | Vis |
+| 4 | **Gốc tính mốc tự động gửi** — từ ngày thiết lập hay chỉ định được ngày khác | Xác nhận có khớp chuẩn "6 tháng sau chuyển" không | Dev |
+| 5 | WDP có **lưu ngày chuyển văn phòng** không | Điều kiện nếu cần đổi gốc tính | Dev |
+| 6 | Dữ liệu trả lời cũ có **truy vấn được theo cùng đối tượng qua thời gian** không | Điều kiện cho báo cáo so sánh (F6) | Dev |
+| 7 | Có được phép **thêm câu hỏi vào bộ hiện tại** không, cấu trúc cho phép tới đâu | Điều kiện cho F2 | Vis + Dev |
+| 8 | Luồng đăng ký và kiểm tra pháp lý — mất mấy ngày ở bước nào | Biết F1 cắt được bao nhiêu | Vis |
+| 9 | Ai là người chịu trách nhiệm về After phía Vis | Cần người chuyển sang thực hiện | Vis |
+| 10 | Cho phép tùy biến setting tới mức nào | Cân bằng F8 và khả năng so sánh | Vis |
+| 11 | Định nghĩa của 勝率 (tỷ lệ thắng) — chưa được trả lời | Cách viết phần hiệu quả | Vis |
 
-**Mục 1 nên hỏi trước tiên** — nó quyết định phạm vi phần xuất, và là chỗ dễ trùng lặp nhất.
-**Mục 2, 3, 4, 5 đưa vào brief dev** trước khi báo effort.
+**Mục 1 quan trọng nhất** — nó quyết định nội dung giai đoạn 2.
+Nếu số liệu cho thấy gửi ít thì vấn đề ở gốc tính;
+nếu gửi nhiều mà phản hồi ít thì vấn đề ở thu hồi;
+nếu phản hồi có mà không thành hợp đồng thì vấn đề ở bước thương mại.
+
+**Mục 3 nên hỏi Vis sớm** — dễ trùng lặp nhất.
 
 ## Việc cần làm tiếp cho phần 2
 
 | Việc | Vì sao |
 |---|---|
-| **Xác nhận gốc tính mốc 6 tháng trong code hiện tại** | Nếu đúng là từ ngày thiết lập thì đây là cải tiến rẻ nhất, tác động lớn nhất |
-| Kiểm tra WDP có lưu ngày chuyển văn phòng không | Điều kiện của toàn bộ giai đoạn 1 |
+| **Lấy số liệu tự động gửi và tỷ lệ phản hồi từ DB** | Xác định chỗ tắc thật, thay cho phỏng đoán |
+| **Rà soát toàn bộ tính năng WDP đang có, đối chiếu với F1–F11** | Đã hai lần đề xuất thứ đã tồn tại — cần loại trừ trước |
+| Xác nhận gốc tính mốc 6 tháng trong code | Xem có khớp chuẩn "6 tháng sau chuyển" không |
+| Kiểm tra WDP có lưu ngày chuyển văn phòng không | Điều kiện nếu cần đổi gốc tính |
 | Khảo sát cấu trúc dữ liệu survey | Biết Before/After có nối được không |
 | Khảo sát cách setting survey được quản lý | Biết thêm câu hỏi phân nhánh có khả thi không |
-| Hỏi Vis về phạm vi AI report | Tránh trùng lặp phần xuất |
+| Hỏi Vis về phạm vi AI report và luồng ký After | Tránh trùng lặp, và thiết kế đúng F9 |
 | Thống kê dự án đã chuyển trên 6 tháng | Có mẫu số thật để nói về tỷ lệ thực hiện After |
 | Ước lượng effort theo từng giai đoạn | Để Vis phán đoán được mức đầu tư |

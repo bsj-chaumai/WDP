@@ -241,24 +241,61 @@ Lý do chọn cặp này:
 
 ### 課題3：Afterが実行されず、有料化の入口が開かない
 
-**現状の確認：**
-サーベイを設定日から6ヶ月後に自動配信する仕組みは、すでに備わっていると伺っております。
-そのうえで実施が5件に留まっている状況を踏まえ、
-**通知の有無ではなく、その前後に原因があると考えています。**
+#### 現状の確認
+
+- 評価のタイミングは移転後半年
+- 設定日から6ヶ月後にサーベイが**自動配信される仕組みはすでに備わっている**
+- 担当者による手動の設定は不要
+
+つまり、**配信の仕組み自体は課題ではありません。**
+
+#### では、どこで止まっているのか
+
+自動で配信されているにもかかわらず実施が5件に留まっているということは、
+**配信の前提、または配信された後のどこかで止まっている**ことになります。
+
+考えられる箇所を分けると、次のようになります。
+
+| 箇所 | 想定される状態 | 確認方法 |
+|---|---|---|
+| **配信の起点日** | 設定日起点のため、移転前に配信されている可能性 | 起点日の設定を確認 |
+| **配信の実行** | 対象案件で実際に配信が動いているか | 配信件数の集計 |
+| **回答の回収** | 配信されても、回答を促す動きがなく集まっていない可能性 | 配信件数と回答率の比較 |
+| **有料のご契約** | Afterは有料を前提とするため、ご提案・ご契約に至っていない可能性 | ご提案件数とご契約件数 |
+| **レポートの作成** | 回答が集まっても、比較レポートまで至っていない可能性 | レポート作成件数 |
+
+現時点では、**どの箇所で止まっているかを数値で確認できる状態にありません。**
 
 #### 改善内容
 
-| 追加・変更する内容 | 現状 | 内容 |
-|---|---|---|
-| **起点日を移転完了日に紐づける** | 設定日から6ヶ月後 | 評価の基準は「移転から半年後」です。Beforeは提案段階で実施されるため、設定日起点では移転前に配信される可能性があります。起点日を移転完了日とし、後から調整できるようにします |
-| **Afterの予定を自動で作成** | 設定が必要 | Before実施時、または受注時にAfterの予定を自動で作成します。設定漏れをなくします |
-| **対象案件の一覧** | なし | 移転後6ヶ月が近づいている案件を一覧で表示します |
-| **ご提案状況の管理** | なし | 案件ごとにAfterのご提案済み・未提案を記録し、実施率とあわせて確認できるようにします |
-| **Afterの作成支援** | 再設定が必要 | Beforeの設定を引き継いでAfterを作成できるようにします |
-| **KPIの管理** | なし | 目標とするサーベイ項目と目標スコアを設定し、追跡できるようにします |
-| **Before/After比較レポート** | 手作業 | 対象項目のスコア推移と差分を、1つのレポートにまとめます |
+そのため、まず**止まっている箇所が見える状態にすること**から始めます。
 
-**定点実行の仕組みは既存のものを活かし、起点日の考え方のみ見直す形を想定しています。**
+| 順 | 改善内容 | 内容 |
+|---|---|---|
+| **1** | **実行状況の可視化** | 対象案件 → 配信 → 回答 → ご提案 → ご契約 → レポート の各段階を件数で表示します。どこで止まっているかが判断できる状態にします |
+| **2** | **有料Afterのご提案・お見積の導線** | Beforeの結果画面から、そのままAfterのご提案とお見積を出せるようにします。ご提案の記録も残します |
+| **3** | **配信後の実行支援** | 回答状況を確認できるようにし、回答率が低い場合の督促を行えるようにします |
+| **4** | **Before/After比較レポート** | 対象項目のスコア推移と差分を、1つのレポートにまとめます |
+| **5** | **KPIの管理** | 目標とするサーベイ項目と目標スコアを設定し、追跡できるようにします |
+| **6** | **起点日の見直し**（確認のうえ） | 評価の基準は「移転から半年後」です。設定日起点となっている場合、移転完了日を起点にできるよう調整します |
+
+**配信の仕組みは既存のものをそのまま活かします。**
+1〜3は配信の前後を補う内容であり、配信そのものには手を入れません。
+
+#### なぜ「可視化」を最初に置くのか
+
+原因が特定できていない状態で機能を追加すると、
+効かない箇所に手を入れてしまう可能性があります。
+
+各段階の件数が見えるようになれば、
+「ご提案が行われていないのか」「回答が集まっていないのか」
+「レポートまで至っていないのか」が切り分けられます。
+
+そのうえで、実際に止まっている箇所に対して2〜6を進める形が
+確実だと考えています。
+
+これは、貴社が挙げられている
+`after提案件数と率、after実施数と率` の把握にも対応する内容です。
 
 #### 実施率の測り方について
 
@@ -270,10 +307,7 @@ Beforeは提案段階、Afterは移転から半年後に実施されるため、
 
 実施率を正しく把握するには、
 **「移転から半年が経過した案件」を母数とした集計**が必要と考えます。
-上記の「対象案件の一覧」「ご提案状況の管理」は、この集計を可能にするためのものです。
-
-これは、貴社が挙げられている
-`after提案件数と率、after実施数と率` の把握にも対応する内容です。
+上記の「実行状況の可視化」は、この集計を可能にするためのものです。
 
 ## 2-3. 既存機能への影響を抑える進め方
 
@@ -296,15 +330,21 @@ FY2026はXD MVPの検証を進める段階と伺っております。
 
 | 段階 | 内容 | 狙い |
 |---|---|---|
-| **第1段階** | 起点日の見直し、Afterの予定の自動作成、対象案件の一覧とご提案状況の管理 | Afterが実行される状態にする |
-| **第2段階** | 理由を聞く層（追加設問・自由記述）、KPIの管理、Before/After比較レポート | 有料で使い続ける中身を用意する |
-| **第3段階** | 分析画面（優先度・場所・理由）と出力、お申込み・規約の完結 | 提案の時間枠に収める |
-| **第4段階** | 分析画面の拡張（対象・影響・施策候補）、人員計画からのレイアウト構成、クライアント別カスタム | 個社最適化された提案にする |
+| **第1段階** | Afterの実行状況の可視化 | どこで止まっているかを確定させる |
+| **第2段階** | 有料Afterのご提案・お見積の導線、配信後の実行支援、起点日の調整 | 止まっている箇所に手を入れる |
+| **第3段階** | 理由を聞く層（追加設問・自由記述）、KPIの管理、Before/After比較レポート | 有料で使い続ける中身を用意する |
+| **第4段階** | 分析画面（優先度・場所・理由）と出力、お申込み・規約の完結 | 提案の時間枠に収める |
+| **第5段階** | 分析画面の拡張（対象・影響・施策候補）、人員計画からのレイアウト構成、クライアント別カスタム | 個社最適化された提案にする |
 
-**第1段階を軽い内容から始める理由：**
-起点日の見直しと予定の自動作成は、既存の仕組みを活かせる範囲であり、
-早い段階で効果を確認できると考えています。
-まず実施が回り始める状態を作り、そのうえで中身を足していく順序としています。
+**第1段階を可視化から始める理由：**
+配信の仕組みはすでに動いているため、原因は配信の前後にあると考えられます。
+ただし現時点では、どの箇所で止まっているかを数値で確認できません。
+
+そのため、まず各段階の件数が見える状態を作り、
+**確認できた事実に基づいて第2段階の内容を決める**進め方をご提案します。
+
+可視化は既存の仕組みに手を入れずに実現できる範囲であり、
+早い段階で着手できると考えています。
 
 順序の考え方は 2-10 に記載します。
 
@@ -373,14 +413,17 @@ FY2026はXD MVPの検証を進める段階と伺っております。
 | **F4** | 人員計画からのレイアウト構成案 | コンサルタント | 提案用（更新は有料）| 課題1・2 | 新規 |
 | **F5** | KPI設定支援（設問から数項目の候補提示＋目標スコア）| XP | **有料** | 課題3 | 新規 |
 | **F6** | Before/After 効果検証レポート | クライアント / XP | **有料** | 課題3 | 新規 |
-| **F7** | 定点サーベイ | クライアント | **有料** | 課題3 | **一部あり**（自動配信の仕組みは既存。起点日の見直しと内容選択を追加）|
+| **F7** | 定点サーベイの内容選択 | クライアント | **有料** | 課題3 | **配信の仕組みは既存**。内容の選択を追加 |
 | **F8** | クライアントごとのサーベイカスタム | クライアント / XP | **有料** | 課題3 | 新規 |
-| **F9** | Afterの起点日の紐づけと予定の自動作成、作成支援 | XP | 提案用 → 有料の入口 | 課題3 | **一部あり**（配信の仕組みは既存。起点日と自動作成を追加）|
-| **F10** | 対象案件の一覧とご提案状況の管理 | 営業 / CS / XP | 提案用（社内）| 課題3 | 新規 |
+| **F9** | 有料Afterのご提案・お見積の導線 | 営業 / CS / XP | 提案用 → 有料の入口 | 課題3 | 新規 |
+| **F10** | **Afterの実行状況の可視化**（対象案件・配信・回答・ご提案・ご契約・レポート）| 営業 / CS / XP | 提案用（社内）| 課題3 | 新規 |
+| **F11** | 配信後の実行支援（回答状況の確認と督促）| XP / クライアント | 提案用 → 有料 | 課題3 | 新規 |
 
-**「現状」欄について：**
-F7とF9は、すでに備わっている自動配信の仕組みを活かす前提です。
-新しく作るのではなく、**起点日の考え方と、予定の作成タイミングを見直す**内容になります。
+**すでに備わっている機能について：**
+Afterサーベイの**自動配信の仕組みは既存**であり、本提案では手を入れません。
+F7・F9・F10・F11は、いずれも**配信の前後**を補う内容です。
+
+起点日の設定については、確認のうえ必要であれば調整のご提案をいたします（2-9 参照）。
 
 ## 2-7. 有料機能について ―「なぜこの機能が良いのか」
 
@@ -488,11 +531,13 @@ F7とF9は、すでに備わっている自動配信の仕組みを活かす前�
 | 確認したいこと | なぜ必要か |
 |---|---|
 | **AIレポートの想定範囲** — 提案内容の生成まで含まれるか、入力として何を使う想定か | 分析画面と出力の設計範囲が変わります。重複を避けるため、最初に確認させていただきたい点です |
-| **現在の自動配信の起点日** — 設定日起点か、他の日付を指定できるか | 移転完了日を起点にする改善の実現方法が変わります |
-| **移転完了日をWDP上で保持しているか** | 起点日の紐づけに必要です。保持していない場合は入力できる形にします |
+| **自動配信の実行状況** — 対象案件でどの程度配信されているか、回答は集まっているか | 止まっている箇所の特定に必要です。第1段階の可視化で明らかにしたい内容でもあります |
+| **自動配信の起点日** — 設定日起点か、他の日付を指定できるか | 移転から半年後という基準に合っているかの確認になります |
+| **移転完了日をWDP上で保持しているか** | 起点日を移転基準にする場合に必要です。保持していない場合は入力できる形にします |
+| **Afterのご提案とご契約の流れ** — 現在どのように行われているか | ご提案の導線を設計するうえで前提になります |
 | これまでの回答データを、Before/Afterで比較できる形で参照できるか | 比較レポートが成立する前提となります |
 | 現在のお申込み・規約確認の流れ（どこで何日かかっているか）| どこまで画面上に置き換えられるかの判断に必要です |
-| Afterを担当する方をどなたに置くか | 通知を受け取り、実行に移す方が必要になります |
+| Afterを担当する方をどなたに置くか | 実行に移す方が必要になります |
 | クライアントごとの設問カスタムをどこまで許容するか | 比較可能性を保つため、変更してよい範囲を決める必要があります |
 | 既存の設問に手を入れてよいか、追加のみとするか | 過去スコアとの比較を維持するため、追加のみを推奨しています |
 
@@ -509,21 +554,24 @@ F7とF9は、すでに備わっている自動配信の仕組みを活かす前�
 
 | 順番 | 内容 | 効果 |
 |---|---|---|
-| **1** | Afterが実行される状態にする（F9・F10）| 有料化の入口が開き、実施率が測れるようになる |
-| **2** | 有料で使い続ける中身を用意する（F2・F5・F6・F7・F8）| 1回で終わらなくなる |
-| **3** | 提案の時間枠に収める（F1・F3）| Before側の利用が増え、1の母数が増える |
-| **4** | 提案の質を上げる（F4・F3の拡張）| 個社最適化された提案になる |
+| **1** | 止まっている箇所を確定させる（F10）| 手を入れる場所が事実に基づいて決まる |
+| **2** | 確定した箇所に手を入れる（F9・F11・起点日）| Afterが実行される状態になる |
+| **3** | 有料で使い続ける中身を用意する（F2・F5・F6・F7・F8）| 1回で終わらなくなる |
+| **4** | 提案の時間枠に収める（F1・F3）| Before側の利用が増え、2の母数が増える |
+| **5** | 提案の質を上げる（F4・F3の拡張）| 個社最適化された提案になる |
 
 **1を先に置く理由：**
+配信の仕組みはすでに動いており、原因は配信の前後にあると考えられます。
+ただし現時点では、どの箇所で止まっているかを数値で確認できません。
+
+先に可視化を行うことで、**効かない箇所に手を入れることを避けられます。**
+また、可視化そのものが `after提案件数と率、after実施数と率` の把握になります。
+
+**2をAfterに置く理由：**
 有料契約はAfter経由が入口となるため、
 まずそこが開かないと、他の改善が売上に繋がりません。
 
-また、1には**実施状況を測れるようにする**という役割もあります。
-現在は「対象となる案件が何件あり、そのうち何件にご提案できているか」が
-把握しづらい状態です。ここが見えるようになると、
-案件数と転換率のどちらに手を打つべきかが判断できるようになります。
-
-**3が1の後になる理由：**
+**4が2の後になる理由：**
 Before側の利用を増やす効果は、Afterの流れが整った後に効きます。
 順序を逆にすると、Beforeが増えてもAfterに繋がらない状態が続きます。
 
@@ -569,23 +617,53 @@ Nếu sửa 52 câu hiện tại thì mất khả năng so sánh với dữ li�
 
 ## Hai điều chỉnh lớn sau khi rà lại hiện trạng
 
-### A. Tự động gửi sau 6 tháng ĐÃ CÓ — nên 課題3 phải đổi trọng tâm
+### A. 課題3 — cơ chế gửi đã tự động, nên trọng tâm chuyển sang "đo trước, sửa sau"
 
-Bản trước đề xuất "nhắc mốc đánh giá" như tính năng mới. **Sai** — cơ chế tự động gửi sau 6 tháng kể từ ngày thiết lập đã tồn tại.
+Hai giả thuyết ban đầu **đều sai** và đã bị loại:
 
-Vậy vì sao After vẫn chỉ 5 件? Ba khả năng, xếp theo mức độ quan trọng:
+| Giả thuyết đã loại | Vì sao sai |
+|---|---|
+| ~~Thiếu chức năng nhắc mốc đánh giá~~ | Cơ chế tự động gửi sau 6 tháng đã có |
+| ~~Cần người thiết lập thủ công~~ | Tự động chạy, không cần thiết lập |
 
-**1. Mốc tính có thể sai gốc.** Hiện là 6 tháng từ **ngày thiết lập**. Yêu cầu nghiệp vụ là 6 tháng từ **ngày chuyển văn phòng**（事業計画: 「移転から約6ヶ月後」）. Nhưng Before làm ở giai đoạn đề xuất — cách ngày chuyển nhiều tháng. Nên survey After có thể đang được gửi **khi khách còn ở văn phòng cũ**.
+**Kết luận:** việc **gửi** không phải vấn đề. Vấn đề nằm ở **trước hoặc sau khi gửi**.
 
-→ Nếu đúng, đây là cải tiến **rẻ nhất, tác động lớn nhất** trong cả đề xuất. Đã đưa lên đầu 段階1 và vào danh sách xác nhận.
+Các điểm còn lại có thể tắc:
 
-**2. Tự động gửi chỉ chạy nếu có người thiết lập.** Nếu lúc làm Before không ai tạo kế hoạch After thì không có gì được gửi. Khâu thiếu là **tạo kế hoạch**, không phải nhắc.
+| Điểm | Trạng thái có thể đang xảy ra |
+|---|---|
+| **Hợp đồng có phí** | After là hàng có phí. Nếu bước đề xuất/báo giá/ký không diễn ra thì survey gửi ra cũng không thành "đã thực hiện" |
+| **Thu hồi câu trả lời** | Gửi rồi nhưng không ai thúc đẩy nên không có phản hồi |
+| **Báo cáo** | Có phản hồi nhưng không ai làm báo cáo so sánh |
+| **Mốc tính** | Từ ngày thiết lập → có thể gửi trước khi khách chuyển văn phòng |
 
-**3. 83 và 5 có thể không cùng lứa.** Before ở giai đoạn đề xuất; After ở 6 tháng sau chuyển. Cộng chuỗi đề xuất → thắng → thi công → chuyển → +6 tháng, dễ tới 1,5–2 năm. 事業計画 cũng ghi 「WDPの利用から売上計上までは4か月〜1年程度のリードタイム」.
+**Điểm nghi ngờ lớn nhất là hợp đồng có phí**, vì 事業計画 tự viết 「有料契約は**アフター経由**を対象にしており、コンスタントな受注には至っていない」 và 「**商談プロセスの構築が命題**」. Tức là cơ chế kỹ thuật gửi được, nhưng **bước thương mại chưa thành quy trình**.
 
-→ Nên 83 Before của FY2025 phần lớn sinh After ở FY2026–2027. Cách đo đúng phải lấy mẫu số là **dự án đã chuyển trên 6 tháng**. Đây chính là lý do mục "danh sách đối tượng" và "trạng thái đề xuất" quan trọng — và cũng đúng chỉ số Vis đã tự liệt kê `after提案件数と率、after実施数と率`.
+### Vì sao đổi sang "đo trước, sửa sau"
+
+Đã hai lần đoán sai nguyên nhân. Nên đề xuất **không tiếp tục đoán** — thay vào đó đặt việc đầu tiên là **F10: làm cho từng bước hiện ra bằng số** (đối tượng → gửi → phản hồi → đề xuất → ký → báo cáo).
+
+Ba lợi ích:
+
+1. Tránh làm tính năng ở chỗ không phải nguyên nhân
+2. Không đụng vào cơ chế đang chạy → rủi ro thấp, làm được sớm
+3. Bản thân việc này **chính là** chỉ số Vis đã tự liệt kê `after提案件数と率、after実施数と率`
+
+**Cách trình bày:** đây là điểm mạnh chứ không phải điểm yếu của đề xuất. Nó cho thấy BS **không áp giải pháp sẵn** mà xác nhận thực tế trước — phù hợp với tinh thần giai đoạn 検証 của FY2026.
+
+### Còn về con số 83 và 5
+
+Before ở giai đoạn đề xuất; After ở 6 tháng sau chuyển. Cộng chuỗi đề xuất → thắng → thi công → chuyển → +6 tháng, dễ tới 1,5–2 năm. 事業計画 cũng ghi 「WDPの利用から売上計上までは4か月〜1年程度のリードタイム」.
+
+→ Nên 83 Before của FY2025 phần lớn sinh After ở FY2026–2027. Cách đo đúng phải lấy mẫu số là **dự án đã chuyển trên 6 tháng**.
 
 **Lưu ý khi trình bày:** không nói "con số 83/5 của Vis sai". Nói theo hướng *"để đo đúng thì cần mẫu số là dự án đã qua 6 tháng"* — tức là ta giúp họ đo, không phê bình.
+
+### Bài học cho cả đề xuất
+
+Hai lần sai đều cùng một dạng: **giả định WDP thiếu tính năng mà chưa xác nhận**. Trước khi đưa bất kỳ tính năng nào vào đề xuất, cần hỏi dev: *"cái này đã có chưa?"*
+
+Vì vậy trong 2-6 đã thêm cột **現状**, và trong 2-9 đã thêm câu 「その他にも同様の機能がある場合は、事前にお知らせいただけますと」.
 
 ### B. Ranh giới với AIレポート — dùng phân vai, không cạnh tranh
 
@@ -670,27 +748,32 @@ Phần này thay cho bảng đối chiếu KPI bằng số. Nó cho thấy BS hi
 
 | # | Nội dung | Ảnh hưởng | Ai xác nhận |
 |---|---|---|---|
-| 1 | **Phạm vi AIレポート** — có sinh nội dung đề xuất không, đầu vào là gì | Phạm vi thiết kế màn hình phân tích và phần xuất | Vis |
-| 2 | **Gốc tính mốc tự động gửi** — từ ngày thiết lập hay chỉ định được ngày khác | Cách hiện thực việc đổi sang ngày chuyển văn phòng | Dev |
-| 3 | WDP có **giữ ngày chuyển văn phòng** không | Điều kiện gắn mốc. Nếu chưa có thì phải cho nhập | Dev |
-| 4 | Dữ liệu trả lời cũ có **truy vấn được theo cùng đối tượng qua thời gian** không | Điều kiện cho báo cáo so sánh（F6）| Dev |
-| 5 | Có được phép **thêm câu hỏi vào bộ hiện tại** không, cấu trúc cho phép tới đâu | Điều kiện cho F2 | Vis + Dev |
-| 6 | Luồng お申込み・リーガルチェック — tốn mấy ngày ở bước nào | Biết F1 cắt được bao nhiêu | Vis |
-| 7 | Ai là owner của After ở phía Vis | F9 gửi thông báo nhưng cần người nhận | Vis |
-| 8 | Cho phép custom setting tới mức nào | Cân bằng F8 và khả năng so sánh | Vis |
-| 9 | Định nghĩa **勝率**（chưa được trả lời）| Cách viết phần 効果 | Vis |
+| 1 | **Số liệu tự động gửi thực tế** — đã gửi bao nhiêu, có bao nhiêu phản hồi | Xác định chỗ tắc. Là cơ sở của toàn bộ 課題3 | Dev |
+| 2 | **Luồng đề xuất/ký hợp đồng After hiện tại** — ai làm, ở đâu, ghi nhận thế nào | Điều kiện thiết kế F9 | Vis |
+| 3 | **Phạm vi AIレポート** — có sinh nội dung đề xuất không, đầu vào là gì | Phạm vi thiết kế màn hình phân tích và phần xuất | Vis |
+| 4 | **Gốc tính mốc tự động gửi** — từ ngày thiết lập hay chỉ định được ngày khác | Xác nhận có khớp chuẩn "6 tháng sau chuyển" không | Dev |
+| 5 | WDP có **lưu ngày chuyển văn phòng** không | Điều kiện nếu cần đổi gốc tính | Dev |
+| 6 | Dữ liệu trả lời cũ có **truy vấn được theo cùng đối tượng qua thời gian** không | Điều kiện cho báo cáo so sánh（F6）| Dev |
+| 7 | Có được phép **thêm câu hỏi vào bộ hiện tại** không, cấu trúc cho phép tới đâu | Điều kiện cho F2 | Vis + Dev |
+| 8 | Luồng お申込み・リーガルチェック — tốn mấy ngày ở bước nào | Biết F1 cắt được bao nhiêu | Vis |
+| 9 | Ai là owner của After ở phía Vis | Cần người chuyển sang thực hiện | Vis |
+| 10 | Cho phép custom setting tới mức nào | Cân bằng F8 và khả năng so sánh | Vis |
+| 11 | Định nghĩa **勝率**（chưa được trả lời）| Cách viết phần 効果 | Vis |
 
-**Mục 1 nên hỏi trước tiên** — nó quyết định phạm vi phần xuất, và là chỗ dễ trùng lặp nhất.
-**Mục 2, 3, 4, 5 đưa vào ブリーフ dev** trước khi báo effort.
+**Mục 1 quan trọng nhất** — nó quyết định nội dung 段階2. Nếu số liệu cho thấy gửi ít thì vấn đề ở gốc tính; nếu gửi nhiều mà phản hồi ít thì vấn đề ở thu hồi; nếu phản hồi có mà không thành hợp đồng thì vấn đề ở bước thương mại.
+
+**Mục 3 nên hỏi Vis sớm** — dễ trùng lặp nhất.
 
 ## Việc cần làm tiếp cho phần 2
 
 | Việc | Vì sao |
 |---|---|
-| **Xác nhận gốc tính mốc 6 tháng trong code hiện tại** | Nếu đúng là từ ngày thiết lập thì đây là cải tiến rẻ nhất, tác động lớn nhất |
-| Kiểm tra WDP có lưu ngày chuyển văn phòng không | Điều kiện của toàn bộ 段階1 |
+| **Lấy số liệu tự động gửi và tỷ lệ phản hồi từ DB** | Xác định chỗ tắc thật, thay cho phỏng đoán |
+| **Rà soát toàn bộ tính năng WDP đang có, đối chiếu với F1–F11** | Đã hai lần đề xuất thứ đã tồn tại — cần loại trừ trước |
+| Xác nhận gốc tính mốc 6 tháng trong code | Xem có khớp chuẩn "6 tháng sau chuyển" không |
+| Kiểm tra WDP có lưu ngày chuyển văn phòng không | Điều kiện nếu cần đổi gốc tính |
 | Khảo sát cấu trúc dữ liệu survey | Biết Before/After nối được không |
 | Khảo sát cách setting survey được quản lý | Biết thêm câu hỏi phân nhánh có khả thi không |
-| Hỏi Vis về phạm vi AIレポート | Tránh trùng lặp phần xuất |
+| Hỏi Vis về phạm vi AIレポート và luồng ký After | Tránh trùng lặp, và thiết kế đúng F9 |
 | Thống kê dự án đã chuyển trên 6 tháng | Có mẫu số thật để nói về tỷ lệ thực hiện After |
 | Ước lượng effort theo từng 段階 | Để Vis phán đoán được mức đầu tư |
