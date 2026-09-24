@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WDP チーム内報告書：本番環境への誤操作（2026-07-22）</title>
+  <style>
+    :root {
+      --ink: #1c2430;
+      --muted: #5b6573;
+      --line: #d9dee7;
+      --bg: #f3f5f8;
+      --card: #ffffff;
+      --accent: #b42318;
+      --ok: #1f7a3f;
+      --stg-green: #2ea84a;
+      --stg-yellow: #c49a23;
+      --sidebar: #1f2a44;
+      --menu-active: #e85d3b;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse at top left, #e8eef8 0%, transparent 45%),
+        radial-gradient(ellipse at bottom right, #ece8e2 0%, transparent 40%),
+        var(--bg);
+      font-family: "Hiragino Sans", "Noto Sans JP", "Yu Gothic", sans-serif;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+    .page {
+      max-width: 980px;
+      margin: 32px auto;
+      padding: 40px 44px 56px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 30px rgba(28, 36, 48, 0.06);
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 1.55rem;
+      letter-spacing: 0.02em;
+      border-bottom: 3px solid var(--accent);
+      padding-bottom: 14px;
+    }
+    .meta {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 6px 14px;
+      margin: 18px 0 24px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .meta strong { color: var(--ink); font-weight: 600; }
+    .lead {
+      margin: 0 0 28px;
+      padding: 14px 16px;
+      background: #fff7f5;
+      border-left: 4px solid var(--accent);
+    }
+    h2 {
+      margin: 34px 0 12px;
+      font-size: 1.15rem;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--line);
+    }
+    h3 { margin: 18px 0 8px; font-size: 1rem; }
+    p, li { margin: 0 0 10px; }
+    ul, ol { margin: 0 0 12px; padding-left: 1.35em; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0 16px;
+      font-size: 0.95rem;
+    }
+    th, td {
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { width: 28%; background: #f2f4f8; font-weight: 600; }
+    .tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    .tag-ok { background: #e7f7ec; color: var(--ok); }
+    .tag-warn { background: #fff3d6; color: #8a5a00; }
+    .tag-risk { background: #fde8e6; color: var(--accent); }
+    a { color: #1a5fb4; }
+    .evidence-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin: 14px 0 8px;
+    }
+    .evidence-card {
+      border: 1px solid var(--line);
+      background: #fafbfc;
+      padding: 12px;
+    }
+    .evidence-card img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid #cfd6e2;
+      background: #fff;
+    }
+    .evidence-card figcaption {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    .badge {
+      display: inline-block;
+      margin: 8px 0 0;
+      padding: 3px 8px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .badge.green { background: var(--stg-green); }
+    .badge.yellow { background: var(--stg-yellow); }
+    .badge.prod { background: #4a5568; }
+    .actions li { margin-bottom: 12px; }
+    .footer {
+      margin-top: 36px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+    .checklist {
+      list-style: none;
+      padding-left: 0;
+    }
+    .checklist li {
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      margin-bottom: 8px;
+      background: #fafbfc;
+    }
+    .checklist li strong { display: block; margin-bottom: 4px; }
+    @media (max-width: 720px) {
+      .page { margin: 0; padding: 24px 16px 40px; border: none; }
+      .meta { grid-template-columns: 1fr; }
+      .mock-main { grid-template-columns: 1fr; }
+    }
+    @media print {
+      body { background: #fff; }
+      .page { box-shadow: none; border: none; margin: 0; }
+    }
+  </style>
+</head>
+<body>
+  <article class="page">
+    <h1>WDP チーム内報告書：本番環境への誤操作</h1>
+
+    <div class="meta">
+      <span>報告種別</span><strong>チーム内共有</strong>
+      <span>発生日時</span><strong>2026/7/22（水）16:55:05</strong>
+      <span>対象クライアント</span><strong>ヴィス東京</strong>
+      <span>影響箇所</span><strong>TOPページ_稼働分析エリア_更新日</strong>
+      <span>チケット</span>
+      <strong>
+        <a href="https://workdesign.backlog.com/view/DEV_WDT-1151#comment-785356460" target="_blank" rel="noopener">
+          DEV_WDT-1151
+        </a>
+      </strong>
+      <span>データ影響</span>
+      <strong><span class="tag tag-ok">本体データ差異なし</span> <span class="tag tag-warn">更新日のみ当日に変更</span></strong>
+    </div>
+
+    <p class="lead">
+      本資料は、WDP本番環境への誤アップロード事象について、チーム内で共有・振り返りを行うための報告書です。<br />
+      顧客向け報告書の内容をベースに、原因・影響確認・再発防止策を整理しています。
+    </p>
+
+    <h2>1. 事象概要</h2>
+    <p>
+      自動テスト用スクリプト作成のため、検証メンバーが <strong>STG</strong> と <strong>PRO</strong> の2タブを並行して開き、両環境の値を比較しておりました。
+      操作中、タブが近接していたこと、および両環境の画面外見が酷似していたことから、環境を取り違え、<strong>本番環境（PRO）へデータを投稿</strong>してしまいました。
+    </p>
+    <p>
+      本日別件で検証チーム内でテスト内容の報告を行っていた際に、上記の問題が発覚しました。
+    </p>
+
+    <h2>2. 影響範囲と確認結果</h2>
+    <table>
+      <tr>
+        <th>対象クライアント</th>
+        <td>ヴィス東京</td>
+      </tr>
+      <tr>
+        <th>影響箇所</th>
+        <td>TOPページ ／ 稼働分析エリア ／ <strong>更新日</strong></td>
+      </tr>
+      <tr>
+        <th>誤ってアップロードしたファイル</th>
+        <td>
+          手入力のExcelデータ形式<br />
+          ・従業員情報<br />
+          ・出社滞在情報
+        </td>
+      </tr>
+    </table>
+
+    <h3>確認結果</h3>
+    <ul>
+      <li>稼働分析設定は計算方式として <strong>Meraki</strong> が設定されていたため、アップロードされたファイル形式との差異により、<strong>新規データの更新はエラーとなり完了しませんでした。</strong></li>
+      <li>そのため、現時点まで <strong>プロダクトデータへの差異・影響は確認されておりません。</strong></li>
+      <li>さらに確実を期すため、S3上に保管されているヴィス東京向けの現行適用データ（従業員情報・出社滞在情報）を取得し、再アップロードを実施しました。</li>
+      <li>その結果、以下の範囲においても表示データの差異・誤りは確認されませんでした。
+        <ul>
+          <li>トップ_稼働分析の表示データ</li>
+          <li>現状把握_稼働分析の表示データ</li>
+        </ul>
+      </li>
+      <li>唯一、TOP画面の稼働分析エリアにおける <strong>「更新日」が本日日付に変更された</strong> ことを確認しております。</li>
+    </ul>
+
+    <h2>3. 原因</h2>
+    <p>
+      現在、システムへの自動テスト導入に向け、検証工数削減のためのスクリプト作成を進めております。
+      その過程で、計算値・表示値の正確性を担保するため、STGとPROの値を照らし合わせる必要があり、検証メンバーが両環境のタブを並行して操作しておりました。
+    </p>
+    <p>
+      本番環境とSTG環境は画面外見が非常に似ており、ドメイン以外での判別が難しい状態であったことに加え、
+      2つのタブを近接して操作していたことから、検証メンバーが環境を取り違え、本番環境へデータを投稿してしまいました。
+    </p>
+    <p>
+      <span class="tag tag-risk">補足（チーム内）</span>
+      本件は本番環境への誤操作として <strong>2回目</strong> の発生です。
+      チーム内の振り返りでは、本番環境での操作に対する慎重さ・報告意識が十分でなかった点も共有されています。
+    </p>
+
+    <h2>4. 再発防止策（人為的ミスのリスク低減）</h2>
+
+    <h3>4.1 UIによる環境色分け（対応済み）</h3>
+    <p>
+      開発／STG環境のヘッダー色を変更し、本番環境と視覚的に明確に区別できるようにしました。
+      環境判定用フラグにより非本番環境のみ配色を適用し、<strong>本番環境のUIには影響させません。</strong>
+    </p>
+    <table>
+      <tr>
+        <th>環境</th>
+        <td>識別ポイント</td>
+      </tr>
+      <tr>
+        <th>開発環境</th>
+        <td>ヘッダーを<strong>緑</strong>に変更</td>
+      </tr>
+      <tr>
+        <th>STG環境</th>
+        <td>ヘッダーを<strong>黄</strong>に変更</td>
+      </tr>
+      <tr>
+        <th>本番環境</th>
+        <td>従来どおりの配色（色分け変更なし）</td>
+      </tr>
+    </table>
+
+    <div class="evidence-grid">
+      <figure class="evidence-card">
+        <img src="evidence/開発環境.png" alt="開発環境の画面（緑ヘッダー）" />
+        <span class="badge green">証跡A：開発環境（緑ヘッダー）</span>
+        <figcaption>
+          開発環境ではヘッダーを緑系に変更しています。タブを並行操作している場合でも、一目で開発環境と判別できます。
+        </figcaption>
+      </figure>
+
+      <figure class="evidence-card">
+        <img src="evidence/STG環境.png" alt="STG環境の画面（黄ヘッダー）" />
+        <span class="badge yellow">証跡B：STG環境（黄ヘッダー）</span>
+        <figcaption>
+          STG環境ではヘッダーを黄系に変更しています。本番環境との取り違えを視覚的に防止します。
+        </figcaption>
+      </figure>
+
+      <figure class="evidence-card">
+        <img src="evidence/本番環境.png" alt="本番環境の画面（従来配色）" />
+        <span class="badge prod">証跡C：本番環境（従来配色）</span>
+        <figcaption>
+          本番環境は従来どおりの配色のままです。非本番環境のみ色分けを適用し、本番利用への影響を避けています。
+        </figcaption>
+      </figure>
+    </div>
+
+    <h3>4.2 ブラウザ拡張機能の導入（メンバー端末）</h3>
+    <p>
+      チームメンバーのローカル端末にブラウザ拡張機能を導入し、
+      <strong>本番環境（PRO）へアクセスしていることを即座に警告表示</strong>します。
+    </p>
+    <ul>
+      <li>目的：UI色分けと併用し、「現在操作している環境が本番である」ことを端末側でも明確に意識させる</li>
+      <li>対象：検証・開発メンバー全員の作業用ブラウザ</li>
+      <li>期待効果：STGとPROを並行操作する際の取り違えを、画面内表示とブラウザ側警告の二重で抑止する</li>
+    </ul>
+
+    <h3>4.3 運用ルールの徹底</h3>
+    <ul class="actions">
+      <li>
+        <strong>本番環境（PRO）での操作は事前承認必須</strong><br />
+        本番環境での操作を行う場合は、実施前にリーダーへ報告し、承認を得たうえで実施します。
+        アップロード、設定変更、再設定など、データ変更を伴う操作に限らず、本番環境への操作全般を対象とします。
+      </li>
+      <li>
+        <strong>環境比較作業も承認プロセスの対象とする</strong><br />
+        STGとPROの値比較が必要な場合も、事前に報告・承認を行い、承認なく本番環境へ操作を行いません。
+      </li>
+      <li>
+        <strong>教育・共通認識の継続</strong><br />
+        「本番データの保護を最優先とする」ことをチーム共通ルールとして明文化し、定期的に周知します。
+      </li>
+    </ul>
+
+    <h2>5. チーム内アクション一覧</h2>
+    <ul class="checklist">
+      <li>
+        <strong>1. UIによる環境色分け</strong>
+        開発＝緑ヘッダー、STG＝黄ヘッダーを適用済み。本番環境の配色は変更しない。証跡（3環境）確認済み。
+      </li>
+      <li>
+        <strong>2. ブラウザ拡張機能の導入</strong>
+        メンバー端末へ、本番環境アクセス時に警告する拡張機能を作成・配布・インストールする。
+      </li>
+      <li>
+        <strong>3. 本番環境操作の事前承認</strong>
+        本番環境での操作は、リーダー承認後にのみ実施する。チャットまたはチケットで証跡を残す。
+      </li>
+      <li>
+        <strong>4. チケット管理</strong>
+        進捗・判断は
+        <a href="https://workdesign.backlog.com/view/DEV_WDT-1151#comment-785356460" target="_blank" rel="noopener">DEV_WDT-1151</a>
+        で継続管理する。
+      </li>
+    </ul>
+
+    <h2>6. まとめ</h2>
+    <p>
+      今回はデータ本体への影響は確認されなかったものの、更新日の変更が発生し、顧客信頼に関わる事案となりました。
+      再発防止として、<strong>UI色分け（対応済み）</strong>、<strong>ブラウザ拡張機能による本番環境警告</strong>、
+      <strong>本番環境操作の事前承認</strong>を徹底してまいります。
+    </p>
+
+    <div class="footer">
+      チケット：
+      <a href="https://workdesign.backlog.com/view/DEV_WDT-1151#comment-785356460" target="_blank" rel="noopener">
+        https://workdesign.backlog.com/view/DEV_WDT-1151#comment-785356460
+      </a><br />
+      本資料はチーム内共有用です。顧客提出用文書とは用途を分けて扱ってください。
+    </div>
+  </article>
+</body>
+</html>

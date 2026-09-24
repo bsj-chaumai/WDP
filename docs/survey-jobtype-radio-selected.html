@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>職種選択（選択済・ラジオ）</title>
+  <style>
+    :root {
+      --gold: #d4a017;
+      --gold-line: #e0b33a;
+      --text: #333;
+      --muted: #8a8a8a;
+      --radio-ring: #9b9b9b;
+      --radio-dot: #5a5a5a;
+      --focus: #e8c44a;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      background: #fff;
+      color: var(--text);
+      font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", sans-serif;
+    }
+    .header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: 18px 28px 10px;
+    }
+    .title { color: var(--gold); font-size: 22px; font-weight: 500; margin: 0 0 6px; }
+    .note { margin: 0; color: var(--gold); font-size: 11px; }
+    .actions { display: flex; align-items: center; gap: 8px; }
+    .actions select {
+      height: 32px; min-width: 88px; border: 1px solid #d0d0d0; border-radius: 4px;
+      padding: 0 8px; color: #666; background: #fff;
+    }
+    .btn { height: 32px; padding: 0 12px; border-radius: 4px; font-size: 13px; }
+    .btn-dark { background: #2b2b2b; color: #fff; border: 1px solid #2b2b2b; }
+    .btn-light { background: #fff; color: #333; border: 1px solid #cfcfcf; }
+    .progress { height: 3px; background: #eee; margin-top: 8px; }
+    .progress span { display: block; width: 21%; height: 100%; background: var(--gold-line); }
+    .pager { padding: 10px 28px 0; color: var(--muted); font-size: 12px; }
+    .content { padding: 36px 48px 48px; }
+    .question { font-size: 16px; margin: 0 0 14px; font-weight: 500; }
+    .required { color: #d33; margin-left: 2px; }
+    .options { list-style: none; margin: 0; padding: 0; }
+    .options li {
+      display: flex; align-items: center; gap: 10px; min-height: 28px;
+      margin: 0 0 8px; color: #555; font-size: 14px;
+    }
+    .radio {
+      width: 18px; height: 18px; border: 3px solid var(--radio-ring);
+      border-radius: 50%; background: #fff; flex-shrink: 0; position: relative;
+    }
+    .radio.is-focus { box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--focus); }
+    .radio.is-checked::after {
+      content: "";
+      position: absolute;
+      inset: 2px;
+      border-radius: 50%;
+      background: var(--radio-dot);
+    }
+    .footer {
+      padding: 28px 48px 48px;
+    }
+    .btn-previous {
+      appearance: none;
+      border: 0;
+      background: #e0c256;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      padding: 14px 36px;
+      border-radius: 999px;
+      min-width: 220px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div>
+      <h1 class="title">ワークデザインサーベイ（パルス）</h1>
+      <p class="note">※回答しない状態で30分が経過するとタイムアウトされます。離れる場合は途中保存ボタンを押してください。</p>
+    </div>
+    <div class="actions">
+      <select aria-label="選択"><option>選択</option></select>
+      <button class="btn btn-dark" type="button">途中保存</button>
+      <button class="btn btn-light" type="button">一覧に戻る</button>
+    </div>
+  </header>
+  <div class="progress"><span></span></div>
+  <div class="pager">Page 4 of 19</div>
+  <main class="content">
+    <p class="question">4.あなたが所属する部署の職種をお選びください<span class="required">*</span></p>
+    <ul class="options">
+      <li><span class="radio is-focus is-checked"></span>代表</li>
+      <li><span class="radio"></span>役員/監査役</li>
+      <li><span class="radio"></span>営業</li>
+      <li><span class="radio"></span>企画/管理</li>
+      <li><span class="radio"></span>事務/アシスタント</li>
+      <li><span class="radio"></span>IT/通信系エンジニア</li>
+      <li><span class="radio"></span>モノづくり系エンジニア</li>
+      <li><span class="radio"></span>建築/土木系エンジニア</li>
+      <li><span class="radio"></span>素材/化学/食品系エンジニア</li>
+      <li><span class="radio"></span>医療関係専門職</li>
+      <li><span class="radio"></span>金融関係専門職</li>
+      <li><span class="radio"></span>コンサルタント</li>
+      <li><span class="radio"></span>販売/サービス</li>
+      <li><span class="radio"></span>カスタマーサービス/コールセンター</li>
+      <li><span class="radio"></span>クリエイティブ</li>
+      <li><span class="radio"></span>上記にあてはまるものはない</li>
+    </ul>
+  </main>
+  <footer class="footer">
+    <button class="btn-previous" type="button">元に設問に戻る</button>
+  </footer>
+</body>
+</html>
